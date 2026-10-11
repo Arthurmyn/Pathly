@@ -1,0 +1,15 @@
+flowchart TB
+  FE[Next.js frontend] -->|REST/JSON + JWT| API[FastAPI backend]
+  API --> AUTH[Auth and roles]
+  API --> RULES[Requirement matching and gap analysis]
+  API --> RM[Roadmap generator]
+  API --> REM[Reminders and notifications]
+  API --> AI[AI service]
+  AI --> RET[Retriever]
+  AI --> LLMI[Provider-neutral LLM interface]
+  LLMI --> LLM[External LLM API]
+  RET --> DB[(PostgreSQL + pgvector)]
+  RULES --> DB
+  RM --> DB
+  AUTH --> DB
+  REM --> EMAIL[Email service]

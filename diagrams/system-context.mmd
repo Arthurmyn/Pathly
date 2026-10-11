@@ -1,0 +1,10 @@
+flowchart LR
+  A[Applicant] --> P[Unified Applicant Platform]
+  T[Teacher] --> P
+  M[Mentor] --> P
+  S[Supervisor] --> P
+  AD[Administrator] --> P
+  P --> LLM[LLM API provider]
+  P --> EM[Email service]
+  AD -. verifies sources .-> KB[(Official university websites)]
+  P -. reads verified data .-> KB
