@@ -54,7 +54,7 @@ Next.js (frontend), FastAPI (backend), PostgreSQL + pgvector, REST/JSON, JWT aut
 Pre-defense preparation, 24 Oct 2026.
 
 ## Links
-- YouTrack: TODO (project "Unified Applicant Platform", key DIP)
+- YouTrack: [project DIP](https://udp.youtrack.cloud/dashboard?id=177-0), [Scrum board](https://udp.youtrack.cloud/agiles/204-5/current)
 - Documentation: [docs/README.md](docs/README.md)
 - Contribution tracing: [docs/CONTRIBUTION_LOG.md](docs/CONTRIBUTION_LOG.md)
 
