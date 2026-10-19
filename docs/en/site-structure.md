@@ -24,7 +24,9 @@ Why this shape:
 ```
 /                              Landing: value proposition, how verification works, CTA
 /how-it-works                  Five statuses, source tiers, what Unknown means
-/programs                      Catalog with filters (degree level, country)
+/programs                      Catalog with faceted filters (degree level, format, country, university, field, language, verification)
+/institutions                  Institutions with country filter and pagination (Bolashak 2024-2026 list plus demo universities)
+/institutions/[id]             Institution page: country, website, source, programmes in Pathly
 /programs/[slug]               Programme page: requirements, deadlines, sources
                                + personal layer for applicants: eligibility, gaps, roadmap CTA, advisor panel
 /universities/[slug]           University page (Should): its programmes and general information
@@ -35,10 +37,10 @@ Why this shape:
 /app/onboarding                AI chat on the left, editable extracted profile on the right (W1, S1)
 /app/profile                   Review and edit profile (FR-03)
 /app/applications              Shortlist and deadline overview (Should, FR-11)
-/app/applications/[id]         One application: eligibility, checklist, deadlines
-/app/applications/[id]/roadmap Ordered tasks with reason, dependencies, linked gap (W3, S2)
+/app/applications/[id]         One application: eligibility, deadline, "I am enrolled"
+/app/roadmap                   Tasks of all applications grouped by programme, plus general tasks (W3, S2)
 /app/advisor                   Full-page advisor chat (W4, S3); also available as a side panel on programme pages
-/app/settings                  Account, reminders (Should), delete account and data (NFR-02)
+/app/settings                  Account, notifications and email reminders (Should), study preferences, export and delete data (NFR-02)
 
 /admin                         Overview: queue sizes, recent changes
 /admin/queue                   Tabs: Stale, Missing, Unverified, Conflict (FR-06)
@@ -47,6 +49,7 @@ Why this shape:
 /admin/universities
 /admin/sources                 Registered Tier 1 pages, last fetch, hash changed or not (FR-07)
 /admin/audit-log               All status changes with author and time
+/admin/users                   Accounts: name, email, registration date, status (search, pagination)
 ```
 
 Advisor "request verification" actions create an Unverified/Missing entry that appears in `/admin/queue`, closing the loop between applicant and data curator.
@@ -79,7 +82,7 @@ Rules: Unknown, Stale, Missing and Conflict are never green; colour is never the
 | Scenario | Route sequence |
 |---|---|
 | S1 new applicant creates a profile | `/register` -> `/app/onboarding` -> `/app/profile` |
-| S2 eligibility and roadmap | `/programs` -> `/programs/[slug]` -> `/app/applications/[id]/roadmap` |
+| S2 eligibility and roadmap | `/programs` -> `/programs/[slug]` -> `/app/roadmap` |
 | S3 ask the advisor | `/programs/[slug]` (panel) or `/app/advisor` |
 | Admin curation | `/admin/queue` -> `/admin/requirements/[id]` |
 

@@ -58,6 +58,7 @@ function navFor(area: Area, role: Role, queueCount: number): NavGroup[] {
           { href: "/admin", label: "Overview", icon: IconHome, exact: true },
           { href: "/admin/queue", label: "Verification queue", icon: IconDatabase, badge: queueCount },
           { href: "/admin/audit-log", label: "Audit log", icon: IconClock },
+          { href: "/admin/users", label: "Users", icon: IconUser },
         ],
       },
       { label: "Site", items: [{ href: "/", label: "Public site", icon: IconCompass, exact: true }] },
@@ -137,6 +138,7 @@ const STATIC_CRUMBS: { [path: string]: Crumb[] } = {
   "/admin": [{ label: "Admin", href: "/admin" }, { label: "Overview" }],
   "/admin/queue": [{ label: "Admin", href: "/admin" }, { label: "Verification queue" }],
   "/admin/audit-log": [{ label: "Admin", href: "/admin" }, { label: "Audit log" }],
+  "/admin/users": [{ label: "Admin", href: "/admin" }, { label: "Users" }],
 };
 
 export function crumbsFor(pathname: string): Crumb[] {

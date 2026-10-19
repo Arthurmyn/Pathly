@@ -2,17 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { useState, type ReactNode } from "react";
-import { programs, universities } from "@/lib/mock-data";
-import type { Settings } from "@/lib/settings";
-import type { DegreeLevel } from "@/lib/types";
+import { programs } from "@/lib/mock-data";
 import { useSettingsQuery } from "@/lib/search-store";
+import { REMINDER_DAY_OPTIONS } from "@/lib/settings";
+import type { DegreeLevel } from "@/lib/types";
 import { useAppState } from "./app-state";
 import { DemoControls } from "./demo-controls";
-import { NumberField, Pills, Section, Select, SelectField, TextField, Toggle, inputClass } from "./form-controls";
+import { Section, SelectField, TextField, Toggle, inputClass } from "./form-controls";
 import { Button, PageHeader } from "./ui";
 
-const DEADLINE_DAYS = [30, 14, 7, 1];
-const COUNTRIES = Array.from(new Set(universities.map((u) => u.country)));
 const FIELDS = Array.from(new Set(programs.map((p) => p.field))).sort();
 const LANGS = Array.from(new Set(programs.map((p) => p.language)));
 const LEVELS: { value: DegreeLevel; label: string }[] = [
@@ -28,10 +26,17 @@ const NAV = [
   ["account", "Account"],
   ["notifications", "Notifications"],
   ["study", "Study preferences"],
-  ["ai", "AI preferences"],
   ["privacy", "Privacy and data"],
   ...(DEMO_MODE ? [["developer", "Developer tools"]] : []),
 ] as const;
+
+const KEYWORDS: { [id: string]: string[] } = {
+  account: ["account", "name", "email", "profile"],
+  notifications: ["notification", "notifications", "reminder", "reminders", "deadline", "email", "roadmap", "requirement", "days", "bell"],
+  study: ["study", "study preferences", "preferences", "degree", "field", "language", "highlight"],
+  privacy: ["privacy", "data", "export", "delete", "account", "download"],
+  developer: ["developer", "demo", "date", "reset", "test data"],
+};
 
 /** Chips for picking several values from a short list. */
 function MultiChips({ label, options, value, onChange }: { label: string; options: { value: string; label: string }[]; value: string[]; onChange: (v: string[]) => void }) {
@@ -57,15 +62,6 @@ function MultiChips({ label, options, value, onChange }: { label: string; option
     </div>
   );
 }
-
-const KEYWORDS: { [id: string]: string[] } = {
-  account: ["account", "name", "email", "google", "profile"],
-  notifications: ["notification", "notifications", "reminder", "deadline", "email", "roadmap", "requirement", "updates", "marketing", "days"],
-  study: ["study", "study preferences", "preferences", "country", "degree", "field", "language", "budget", "currency"],
-  ai: ["ai", "advisor", "answer", "citation", "language", "style", "personalised"],
-  privacy: ["privacy", "data", "export", "delete", "account", "download"],
-  developer: ["developer", "demo", "date", "reset", "test data"],
-};
 
 function Anchor({ id, show = true, children }: { id: string; show?: boolean; children: ReactNode }) {
   return show ? <div id={id} className="scroll-mt-6">{children}</div> : null;
@@ -107,90 +103,45 @@ export function SettingsPanel() {
 
         <div className="max-w-3xl space-y-5">
           {NAV.every(([id]) => !visible(id)) ? <p className="rounded-2xl border border-dashed border-line px-4 py-8 text-center text-sm text-muted">No settings match &quot;{query}&quot;.</p> : null}
+
           <Anchor id="account" show={visible("account")}>
             <Section title="Account" description={role === "guest" ? "You are browsing as a guest." : `Signed in as ${role}. Sign-in is simulated in this demo.`}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <TextField label="Name" value={settings.account.name || null} placeholder="Your name" onChange={(v) => updateSettings("account", { name: v ?? "" })} />
                 <TextField label="Email" value={settings.account.email || null} placeholder="you@example.com" onChange={(v) => updateSettings("account", { email: v ?? "" })} />
               </div>
-              <div className="mt-4 border-t border-line pt-2">
-                <Toggle
-                  label="Google account"
-                  description="Simulated: nothing is sent to Google in this demo."
-                  checked={settings.account.googleConnected}
-                  onChange={(v) => updateSettings("account", { googleConnected: v })}
-                />
-              </div>
             </Section>
           </Anchor>
 
           <Anchor id="notifications" show={visible("notifications")}>
-            <Section title="Notifications" description="Nothing is sent in this demo; these choices are saved for when reminders are connected.">
-              <Toggle label="Deadline reminders" description="For verified deadlines of programmes on your shortlist." checked={n.deadlines} onChange={(v) => updateSettings("notifications", { deadlines: v })} />
-              {n.deadlines ? (
-                <div className="mb-2 space-y-3 rounded-2xl bg-surface-2 p-4">
+            <Section title="Notifications">
+              <Toggle label="Email reminders before a deadline" description="Your choice is saved. Emails are not sent in the demo because no email service is connected." checked={n.emailReminders} onChange={(v) => updateSettings("notifications", { emailReminders: v })} />
+              {n.emailReminders ? (
+                <div className="mb-3 rounded-2xl bg-surface-2 p-4">
                   <MultiChips
-                    label="Remind me this many days before"
-                    options={DEADLINE_DAYS.map((d) => ({ value: String(d), label: d === 1 ? "1 day" : `${d} days` }))}
-                    value={n.deadlineDays.map(String)}
-                    onChange={(v) => updateSettings("notifications", { deadlineDays: v.map(Number).sort((a, b) => b - a) })}
+                    label="Remind me this many days before the deadline"
+                    options={REMINDER_DAY_OPTIONS.map((d) => ({ value: String(d), label: d === 1 ? "1 day" : `${d} days` }))}
+                    value={n.reminderDays.map(String)}
+                    onChange={(v) => updateSettings("notifications", { reminderDays: v.map(Number).sort((a, b) => b - a) })}
                   />
-                  <div className="divide-y divide-line">
-                    <Toggle label="By email" checked={n.email} onChange={(v) => updateSettings("notifications", { email: v })} />
-                    <Toggle label="In the app" checked={n.inApp} onChange={(v) => updateSettings("notifications", { inApp: v })} />
-                  </div>
                 </div>
               ) : null}
               <div className="divide-y divide-line border-t border-line">
-                <Toggle label="Requirement updates" description="When a requirement of a shortlisted programme changes or becomes outdated." checked={n.requirementUpdates} onChange={(v) => updateSettings("notifications", { requirementUpdates: v })} />
-                <Toggle label="Roadmap reminders" description="When a task on your roadmap is due soon." checked={n.roadmapReminders} onChange={(v) => updateSettings("notifications", { roadmapReminders: v })} />
-                <Toggle label="Product updates" checked={n.productUpdates} onChange={(v) => updateSettings("notifications", { productUpdates: v })} />
-                <Toggle label="Marketing emails" checked={n.marketing} onChange={(v) => updateSettings("notifications", { marketing: v })} />
+                <Toggle label="Notifications in the app" description="Shows the bell with reminders, requirement changes and tasks due soon. The same days apply to deadline notices." checked={n.inApp} onChange={(v) => updateSettings("notifications", { inApp: v })} />
+                <Toggle label="Requirement updates" description="When a requirement of a programme you applied to changes or becomes outdated." checked={n.requirementUpdates} onChange={(v) => updateSettings("notifications", { requirementUpdates: v })} />
+                <Toggle label="Roadmap reminders" description="When a task on your roadmap is due within two weeks." checked={n.roadmapReminders} onChange={(v) => updateSettings("notifications", { roadmapReminders: v })} />
               </div>
             </Section>
           </Anchor>
 
           <Anchor id="study" show={visible("study")}>
-            <Section title="Study preferences" description="What you are looking for. These are kept apart from your Profile and are used to highlight matching programmes in the catalogue. Leave a group empty for no preference.">
+            <Section title="Study preferences" description="What you are looking for. Programmes that fit get a “Matches your preferences” tag in the catalogue. Your target countries are set in the Profile. Leave a group empty for no preference.">
               <div className="space-y-5">
-                <MultiChips label="Countries" options={COUNTRIES.map((c) => ({ value: c, label: c }))} value={st.countries} onChange={(v) => updateSettings("study", { countries: v })} />
                 <MultiChips label="Degree levels" options={LEVELS} value={st.levels} onChange={(v) => updateSettings("study", { levels: v as DegreeLevel[] })} />
                 <MultiChips label="Fields of study" options={FIELDS.map((f) => ({ value: f, label: f }))} value={st.fields} onChange={(v) => updateSettings("study", { fields: v })} />
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="max-w-xs">
                   <SelectField label="Language of instruction" value={st.teachingLanguage} placeholder="Any" options={LANGS.map((l) => ({ value: l, label: l }))} onChange={(v) => updateSettings("study", { teachingLanguage: v })} />
-                  <div className="text-sm font-medium">
-                    <span>Currency</span>
-                    <Select label="Currency" placeholder={null} value={st.currency} options={[{ value: "USD", label: "USD" }, { value: "KZT", label: "KZT" }, { value: "EUR", label: "EUR" }]} onChange={(v) => updateSettings("study", { currency: (v ?? "USD") as Settings["study"]["currency"] })} />
-                  </div>
-                  <NumberField label={`Budget from (${st.currency}, per year)`} value={st.budgetMin} min={0} max={10000000} step={500} onCommit={(v) => updateSettings("study", { budgetMin: v })} />
-                  <NumberField label={`Budget up to (${st.currency}, per year)`} value={st.budgetMax} min={0} max={10000000} step={500} onCommit={(v) => updateSettings("study", { budgetMax: v })} />
                 </div>
-                <p className="text-xs text-muted">The budget range is saved but not applied yet, because programmes in the demo carry no tuition data. Your funding preference lives in the Profile.</p>
-              </div>
-            </Section>
-          </Anchor>
-
-          <Anchor id="ai" show={visible("ai")}>
-            <Section title="AI preferences" description="How the advisor and onboarding talk to you. They never change what is verified.">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <p className="text-sm font-medium">Response language</p>
-                  <div className="mt-2.5">
-                    <Pills label="Response language" value={settings.ai.language} options={[{ value: "en", label: "English" }, { value: "ru", label: "Русский" }, { value: "kk", label: "Қазақша" }]} onChange={(v) => updateSettings("ai", { language: v })} />
-                  </div>
-                  {settings.ai.language !== "en" ? <p className="mt-2 text-xs text-muted">Saved. The demo advisor still answers in English.</p> : null}
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Answer style</p>
-                  <div className="mt-2.5">
-                    <Pills label="Answer style" value={settings.ai.style} options={[{ value: "short", label: "Short" }, { value: "detailed", label: "Detailed" }]} onChange={(v) => updateSettings("ai", { style: v })} />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-3 divide-y divide-line border-t border-line">
-                <Toggle label="Show source citations" description="Verified answers always keep their source; this only controls how prominent it is." checked={settings.ai.citations} onChange={(v) => updateSettings("ai", { citations: v })} />
-                <Toggle label="Personalised answers" description="Use your Profile to tailor answers." checked={settings.ai.personalised} onChange={(v) => updateSettings("ai", { personalised: v })} />
-                <Toggle label="Suggest alternatives" description="Mention similar programmes when one does not fit." checked={settings.ai.alternatives} onChange={(v) => updateSettings("ai", { alternatives: v })} />
               </div>
             </Section>
           </Anchor>
@@ -221,7 +172,6 @@ export function SettingsPanel() {
                       <ul className="mt-1 list-disc pl-5 text-muted">
                         <li>Profile and settings</li>
                         <li>Shortlist and roadmap progress</li>
-                        <li>Chat history</li>
                       </ul>
                       <label className="mt-3 block font-medium">
                         Type DELETE to confirm

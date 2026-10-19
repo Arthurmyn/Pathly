@@ -53,7 +53,7 @@ export function ProgramView({ slug }: { slug: string }) {
 
   function startRoadmap() {
     if (!inShortlist) state.toggleShortlist(slug);
-    router.push(`/app/applications/${slug}`);
+    router.push("/app/roadmap");
   }
 
   return (
