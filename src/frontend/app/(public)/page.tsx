@@ -19,8 +19,8 @@ function Seal() {
       </defs>
       <circle cx="80" cy="80" r="76" fill="var(--sheet)" stroke="currentColor" strokeWidth="2" />
       <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
-      <text fontSize="11.5" fontWeight="600" letterSpacing="3.2" fill="currentColor">
-        <textPath href="#seal-ring">VERIFIED SOURCE · TIER 1 · VERIFIED SOURCE · TIER 1 ·</textPath>
+      <text fontSize="12" fontWeight="600" fill="currentColor">
+        <textPath href="#seal-ring" textLength="344" lengthAdjust="spacing">VERIFIED SOURCE · TIER 1 · ADMISSIONS PAGE ·</textPath>
       </text>
       <path d="m64 80 11 11 22-25" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -29,19 +29,26 @@ function Seal() {
 
 export default function Landing() {
   const rows = getRequirements("steppe-msc-data-science");
+  const verified = rows.filter((r) => r.status === "verified").length;
+  const open = rows.length - verified;
+  const parts = (["conflict", "unverified", "missing", "stale"] as const)
+    .map((st) => [st, rows.filter((r) => r.status === st).length] as const)
+    .filter(([, n]) => n > 0)
+    .map(([st, n]) => `${n} ${st}`)
+    .join(", ");
   return (
     <div className="space-y-28">
       <section aria-labelledby="hero">
-        <div className="enter">
+        <div className="enter pt-5">
           <h1 id="hero" className="text-balance text-[clamp(2.5rem,5.4vw,4.75rem)] font-medium leading-[1] tracking-[-0.035em] text-heading">
             Know where you stand
             <span className="block font-normal text-muted">and what to do next.</span>
           </h1>
-          <div className="mt-8 grid items-center gap-x-12 gap-y-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+          <div className="mt-7 max-w-[40rem]">
             <p className="max-w-[34rem] text-[1.0625rem] leading-relaxed text-muted">
               Admission requirements for Bachelor&apos;s, Master&apos;s and PhD programmes in Kazakhstan and abroad, each with its source and the date it was checked, and an honest result for you.
             </p>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 lg:justify-end">
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <LinkButton href="/register">
                 Get started <IconArrowRight />
               </LinkButton>
@@ -52,7 +59,7 @@ export default function Landing() {
           </div>
         </div>
 
-        <figure className="stagger-lines relative mt-16" aria-label="Example: requirements of MSc Data Science as Pathly shows them">
+        <figure className="stagger-lines relative mt-12" aria-label="Example: requirements of MSc Data Science as Pathly shows them">
           <div className="absolute -top-8 right-6 z-10 -rotate-[9deg] sm:right-12">
             <Seal />
           </div>
@@ -61,24 +68,24 @@ export default function Landing() {
               <span className="text-xl font-medium tracking-tight text-heading">MSc Data Science, Steppe Technical University</span>
               <span className="text-sm text-muted">Requirements as Pathly shows them · illustrative data</span>
             </figcaption>
+            <p className="border-b border-line py-4 text-[1.0625rem] leading-snug text-ink">
+              <strong className="font-semibold">{verified} of {rows.length} requirements verified, {open} cannot be confirmed ({parts}).</strong>{" "}
+              <span className="text-muted">So Pathly will not tell you that you are eligible. It tells you what to verify.</span>
+            </p>
             <ul>
               {rows.map((r) => (
-                <li key={r.id} className="bulletin-row border-b border-line py-4 last:border-b-0">
+                <li key={r.id} className="bulletin-row border-b border-line py-3 last:border-b-0">
                   <div className="flex items-end gap-3">
                     <span className="text-[1.0625rem] font-medium text-ink">{r.label}</span>
                     <span className="leader" aria-hidden="true" />
                     <StatusBadge status={r.status} />
                   </div>
                   <div className="mt-1">
-                    <SourceChip source={r.source} date={r.verifiedAt} />
+                    <SourceChip source={r.source} date={r.verifiedAt} dateLabel={r.status === "verified" ? "Verified" : "Checked"} />
                   </div>
                 </li>
               ))}
             </ul>
-            <p className="mt-2 border-t-2 border-ink/80 pt-5 text-[1.0625rem] leading-snug text-ink">
-              <strong className="font-semibold">2 requirements met, 3 cannot be confirmed.</strong>{" "}
-              <span className="text-muted">So Pathly will not tell you that you are eligible. It tells you what to verify.</span>
-            </p>
           </div>
         </figure>
       </section>
