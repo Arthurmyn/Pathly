@@ -169,7 +169,7 @@ export function Catalogue() {
                     <div className="flex items-center gap-2">
                       <span className="text-muted">Deadline</span>
                       <strong>{dStatus === "verified" ? formatDate(p.deadline.date) : "No verified deadline"}</strong>
-                      <StatusBadge status={dStatus} />
+                      <StatusBadge status={dStatus} plain />
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-muted">{verified} of {total} requirements verified</span>

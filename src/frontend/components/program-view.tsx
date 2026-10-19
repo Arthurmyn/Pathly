@@ -204,7 +204,7 @@ export function ProgramView({ slug }: { slug: string }) {
         ) : null}
 
         <RailCard label="Sources"><SourceList items={sourcesFor(reqs)} /></RailCard>
-        <RailCard label="Related programmes"><RelatedList items={relatedFor(slug)} /></RailCard>
+        {state.enrolled.includes(slug) ? null : <RailCard label="Related programmes"><RelatedList items={relatedFor(slug)} /></RailCard>}
       </aside>
     </div>
   );

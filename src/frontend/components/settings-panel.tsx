@@ -5,6 +5,7 @@ import { useState, type ReactNode } from "react";
 import { programs, universities } from "@/lib/mock-data";
 import type { Settings } from "@/lib/settings";
 import type { DegreeLevel } from "@/lib/types";
+import { useSettingsQuery } from "@/lib/search-store";
 import { useAppState } from "./app-state";
 import { DemoControls } from "./demo-controls";
 import { NumberField, Pills, Section, Select, SelectField, TextField, Toggle, inputClass } from "./form-controls";
@@ -57,8 +58,17 @@ function MultiChips({ label, options, value, onChange }: { label: string; option
   );
 }
 
-function Anchor({ id, children }: { id: string; children: ReactNode }) {
-  return <div id={id} className="scroll-mt-6">{children}</div>;
+const KEYWORDS: { [id: string]: string[] } = {
+  account: ["account", "name", "email", "google", "profile"],
+  notifications: ["notification", "notifications", "reminder", "deadline", "email", "roadmap", "requirement", "updates", "marketing", "days"],
+  study: ["study", "study preferences", "preferences", "country", "degree", "field", "language", "budget", "currency"],
+  ai: ["ai", "advisor", "answer", "citation", "language", "style", "personalised"],
+  privacy: ["privacy", "data", "export", "delete", "account", "download"],
+  developer: ["developer", "demo", "date", "reset", "test data"],
+};
+
+function Anchor({ id, show = true, children }: { id: string; show?: boolean; children: ReactNode }) {
+  return show ? <div id={id} className="scroll-mt-6">{children}</div> : null;
 }
 
 export function SettingsPanel() {
@@ -67,6 +77,8 @@ export function SettingsPanel() {
   const [confirm, setConfirm] = useState(false);
   const [typed, setTyped] = useState("");
   const [exported, setExported] = useState(false);
+  const query = useSettingsQuery().trim().toLowerCase();
+  const visible = (id: string) => !query || KEYWORDS[id].some((k) => k.includes(query));
   const n = settings.notifications;
   const st = settings.study;
 
@@ -88,13 +100,14 @@ export function SettingsPanel() {
       <PageHeader title="Settings" subtitle="Changes are saved as you make them." />
       <div className="grid gap-6 lg:grid-cols-[13rem_1fr] lg:items-start">
         <nav aria-label="Settings sections" className="flex gap-1 overflow-x-auto lg:sticky lg:top-6 lg:flex-col">
-          {NAV.map(([id, label]) => (
+          {NAV.filter(([id]) => visible(id)).map(([id, label]) => (
             <a key={id} href={`#${id}`} className="whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-ink hover:bg-surface-2">{label}</a>
           ))}
         </nav>
 
         <div className="max-w-3xl space-y-5">
-          <Anchor id="account">
+          {NAV.every(([id]) => !visible(id)) ? <p className="rounded-2xl border border-dashed border-line px-4 py-8 text-center text-sm text-muted">No settings match &quot;{query}&quot;.</p> : null}
+          <Anchor id="account" show={visible("account")}>
             <Section title="Account" description={role === "guest" ? "You are browsing as a guest." : `Signed in as ${role}. Sign-in is simulated in this demo.`}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <TextField label="Name" value={settings.account.name || null} placeholder="Your name" onChange={(v) => updateSettings("account", { name: v ?? "" })} />
@@ -111,7 +124,7 @@ export function SettingsPanel() {
             </Section>
           </Anchor>
 
-          <Anchor id="notifications">
+          <Anchor id="notifications" show={visible("notifications")}>
             <Section title="Notifications" description="Nothing is sent in this demo; these choices are saved for when reminders are connected.">
               <Toggle label="Deadline reminders" description="For verified deadlines of programmes on your shortlist." checked={n.deadlines} onChange={(v) => updateSettings("notifications", { deadlines: v })} />
               {n.deadlines ? (
@@ -137,7 +150,7 @@ export function SettingsPanel() {
             </Section>
           </Anchor>
 
-          <Anchor id="study">
+          <Anchor id="study" show={visible("study")}>
             <Section title="Study preferences" description="What you are looking for. These are kept apart from your Profile and are used to highlight matching programmes in the catalogue. Leave a group empty for no preference.">
               <div className="space-y-5">
                 <MultiChips label="Countries" options={COUNTRIES.map((c) => ({ value: c, label: c }))} value={st.countries} onChange={(v) => updateSettings("study", { countries: v })} />
@@ -157,7 +170,7 @@ export function SettingsPanel() {
             </Section>
           </Anchor>
 
-          <Anchor id="ai">
+          <Anchor id="ai" show={visible("ai")}>
             <Section title="AI preferences" description="How the advisor and onboarding talk to you. They never change what is verified.">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
@@ -182,7 +195,7 @@ export function SettingsPanel() {
             </Section>
           </Anchor>
 
-          <Anchor id="privacy">
+          <Anchor id="privacy" show={visible("privacy")}>
             <Section title="Privacy and data">
               <div className="space-y-5 text-sm">
                 <div>
@@ -226,7 +239,7 @@ export function SettingsPanel() {
           </Anchor>
 
           {DEMO_MODE ? (
-            <Anchor id="developer">
+            <Anchor id="developer" show={visible("developer")}>
               <DemoControls />
             </Anchor>
           ) : null}
