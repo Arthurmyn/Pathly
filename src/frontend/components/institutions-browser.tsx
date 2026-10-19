@@ -8,7 +8,7 @@ import { IconChevron, IconFilter, IconSearch } from "./icons";
 import { initials } from "./rail-data";
 import { EmptyState, Tag } from "./ui";
 
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 30;
 const TILES = [
   { bg: "var(--deco-cyan)", fg: "var(--deco-teal)" },
   { bg: "var(--deco-sky)", fg: "var(--deco-navy)" },
@@ -26,24 +26,22 @@ export function InstitutionTile({ name, size = 56 }: { name: string; size?: numb
   );
 }
 
-function InstitutionCard({ i }: { i: Institution }) {
+function InstitutionRow({ i }: { i: Institution }) {
   const n = programsOf(i.id).length;
   return (
     <li>
-      <Link href={`/institutions/${i.id}`} className="lift flex h-full flex-col rounded-[20px] border border-line bg-surface p-5 shadow-[var(--shadow)] hover:border-primary">
-        <div className="flex items-start gap-3">
-          <InstitutionTile name={i.name} />
-          <div className="min-w-0">
-            <h2 className="font-semibold leading-snug">{i.name}</h2>
-            <p className="text-sm text-muted">{i.city ? `${i.city}, ` : ""}{i.country}</p>
-          </div>
+      <Link href={`/institutions/${i.id}`} className="lift flex flex-wrap items-center gap-x-4 gap-y-3 rounded-[20px] border border-line bg-surface p-4 shadow-[var(--shadow)] hover:border-primary">
+        <InstitutionTile name={i.name} size={48} />
+        <div className="min-w-0 flex-1 basis-56">
+          <h2 className="text-lg font-semibold leading-snug">{i.name}</h2>
+          <p className="text-sm text-muted">{i.city ? `${i.city}, ` : ""}{i.country}{i.nameRu ? ` · ${i.nameRu}` : ""}</p>
         </div>
-        <div className="mt-auto flex items-center justify-between gap-3 pt-4 text-sm">
+        <div className="flex flex-wrap items-center gap-2">
+          {i.origin === "bolashak" ? <Tag>Bolashak 2024–2026</Tag> : <Tag>Demo university</Tag>}
+        </div>
+        <div className="flex items-center gap-2 text-sm">
           <span className={n ? "font-medium" : "text-muted"}>{n ? `${n} programme${n > 1 ? "s" : ""} in Pathly` : "Programmes not loaded yet"}</span>
           <IconChevron size={16} />
-        </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {i.origin === "bolashak" ? <Tag>Bolashak 2024–2026 list</Tag> : <Tag>Demo university</Tag>}
         </div>
       </Link>
     </li>
@@ -102,7 +100,7 @@ export function InstitutionsBrowser() {
             <Option type="radio" name="origin" label="Bolashak list" checked={origin === "bolashak"} onChange={() => change(setOrigin)("bolashak")} />
           </FilterGroup>
           <FilterGroup title="Country">
-            <div className="max-h-72 space-y-1 overflow-y-auto pr-1">
+            <div className="space-y-1">
               {allCountries.map((c) => (
                 <Option key={c} type="checkbox" name="country" label={c} count={countryCount(c)} checked={countries.includes(c)} onChange={() => change(setCountries)(countries.includes(c) ? countries.filter((x) => x !== c) : [...countries, c])} />
               ))}
@@ -115,8 +113,8 @@ export function InstitutionsBrowser() {
           {rows.length === 0 ? (
             <EmptyState title="No institutions match" action={<button type="button" onClick={reset} className="btn rounded-full border border-line bg-surface px-5 py-2 text-sm font-semibold hover:bg-surface-2">Clear filters</button>}>Try another country or search.</EmptyState>
           ) : (
-            <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {shown.map((i) => <InstitutionCard key={i.id} i={i} />)}
+            <ul className="space-y-3">
+              {shown.map((i) => <InstitutionRow key={i.id} i={i} />)}
             </ul>
           )}
           {pages > 1 ? (

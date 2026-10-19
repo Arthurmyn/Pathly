@@ -8,7 +8,6 @@ import { getProgram, getUniversity, LEVEL_LABEL } from "@/lib/mock-data";
 import { effectiveStatus } from "@/lib/status";
 import type { Requirement } from "@/lib/types";
 import { useAppState } from "./app-state";
-import { OutcomeBadge } from "./badges";
 import { DeadlineLine } from "./deadline-line";
 import { IconChat, IconFilter } from "./icons";
 import { OutcomeBar } from "./outcome-bar";
@@ -16,7 +15,7 @@ import { PillTabs } from "./pill-tabs";
 import { BookmarkButton, ShareButton, StatsCard, TitleRow, UniversityCard } from "./page-hero";
 import { Select } from "./form-controls";
 import { hasProfileData } from "./profile-utils";
-import { ProgressCard, RailCard, RelatedList, SourceList } from "./rail";
+import { RailCard, RelatedList, SourceList } from "./rail";
 import { relatedFor, sourcesFor } from "./rail-data";
 import { RequirementRow } from "./requirement-row";
 import { Button, Callout, Card, IllustrativeNote, LinkButton, Tag } from "./ui";
@@ -47,7 +46,6 @@ export function ProgramView({ slug }: { slug: string }) {
   }, [visible]);
 
   const lastChecked = reqs.map((r) => r.verifiedAt).filter(Boolean).sort().pop() ?? null;
-  const gaps = results.filter((r) => r.outcome !== "met");
   const inShortlist = state.shortlist.includes(slug);
   const needAttention = reqs.length - verified;
 
@@ -152,13 +150,6 @@ export function ProgramView({ slug }: { slug: string }) {
       </div>
 
       <aside className="space-y-4" aria-label="Summary">
-        <ProgressCard
-          label="Data health"
-          title={`${verified} of ${reqs.length} requirements verified`}
-          subtitle={needAttention === 0 ? "Nothing needs attention." : `${needAttention} stale, missing, conflicting or unverified.`}
-          percent={(verified / Math.max(reqs.length, 1)) * 100}
-        />
-
         {showResults ? (
           <>
             <RailCard label="Your eligibility">
@@ -168,21 +159,6 @@ export function ProgramView({ slug }: { slug: string }) {
                 <Button onClick={startRoadmap}>{inShortlist ? "Open my roadmap" : "Create my roadmap"}</Button>
               </div>
             </RailCard>
-            {gaps.length > 0 ? (
-              <RailCard label="Gaps">
-                <ul className="space-y-3">
-                  {gaps.map((g) => (
-                    <li key={g.requirementId} className="text-sm">
-                      <div className="flex items-start justify-between gap-2">
-                        <span className="font-medium">{g.label}</span>
-                        <OutcomeBadge outcome={g.outcome} />
-                      </div>
-                      <p className="mt-1 text-xs text-muted">{g.explanation}</p>
-                    </li>
-                  ))}
-                </ul>
-              </RailCard>
-            ) : null}
           </>
         ) : role === "applicant" ? (
           <RailCard label="Your eligibility">

@@ -47,12 +47,12 @@ function TaskCheck({ id, checked, disabled, label, onChange }: { id: string; che
   );
 }
 
-function TaskRow({ r, slug, today, flash, onToggle }: { r: Row; slug: string; today: string; flash: boolean; onToggle: () => void }) {
+function TaskRow({ r, slug, today, flash, leaving, onToggle }: { r: Row; slug: string; today: string; flash: boolean; leaving: boolean; onToggle: () => void }) {
   const blocked = r.blockedBy.length > 0 && !r.done;
   const overdue = !r.done && r.task.dueDate !== null && r.task.dueDate < today;
   const id = `rm-${slug}-${r.task.id}`;
   return (
-    <li className={`rounded-2xl border border-line bg-surface p-4 transition-opacity duration-200 ${r.done ? "opacity-70" : ""} ${flash ? "task-flash" : ""}`}>
+    <li className={`rounded-2xl border border-line bg-surface p-4 transition-opacity duration-200 ${r.done ? "opacity-70" : ""} ${flash ? "task-flash" : ""} ${leaving ? "task-leave" : ""}`}>
       <div className="flex items-start gap-3">
         <TaskCheck id={id} checked={r.done} disabled={blocked} label={r.task.title} onChange={onToggle} />
         <div className="min-w-0 flex-1">
@@ -74,8 +74,9 @@ export function RoadmapView() {
   const state = useAppState();
   const { shortlist, today, profile } = state;
   const [show, setShow] = useState<"todo" | "all">("todo");
-  const [flash, setFlash] = useState<string | null>(null);
-  const timer = useRef<number | undefined>(undefined);
+  // A task just ticked: its circle fills blue, it stays for a moment, then leaves the "To do" list.
+  const [just, setJust] = useState<{ key: string; leaving: boolean } | null>(null);
+  const timers = useRef<number[]>([]);
 
   const blocks = useMemo<Block[]>(
     () =>
@@ -102,10 +103,14 @@ export function RoadmapView() {
 
   function toggle(slug: string, row: Row) {
     state.toggleTask(slug, row.task.id);
+    timers.current.forEach((t) => window.clearTimeout(t));
+    timers.current = [];
     if (!row.done) {
-      window.clearTimeout(timer.current);
-      setFlash(`${slug}-${row.task.id}`);
-      timer.current = window.setTimeout(() => setFlash(null), 750);
+      const key = `${slug}-${row.task.id}`;
+      setJust({ key, leaving: false });
+      timers.current.push(window.setTimeout(() => setJust({ key, leaving: true }), 700), window.setTimeout(() => setJust(null), 1000));
+    } else {
+      setJust(null);
     }
   }
 
@@ -141,7 +146,7 @@ export function RoadmapView() {
             {blocks.map((b) => {
               const doneN = b.rows.filter((r) => r.done).length;
               // A task just ticked stays visible for the length of its animation before it leaves the "To do" list.
-              const rows = show === "todo" ? b.rows.filter((r) => !r.done || flash === `${b.slug}-${r.task.id}`) : b.rows;
+              const rows = show === "todo" ? b.rows.filter((r) => !r.done || just?.key === `${b.slug}-${r.task.id}`) : b.rows;
               if (show === "todo" && rows.length === 0) return null;
               const pct = b.rows.length ? (doneN / b.rows.length) * 100 : 0;
               return (
@@ -158,7 +163,7 @@ export function RoadmapView() {
                   </summary>
                   <ul className="space-y-2 px-5 pb-5">
                     {rows.map((r) => (
-                      <TaskRow key={r.task.id} r={r} slug={b.slug} today={today} flash={flash === `${b.slug}-${r.task.id}`} onToggle={() => toggle(b.slug, r)} />
+                      <TaskRow key={r.task.id} r={r} slug={b.slug} today={today} flash={just?.key === `${b.slug}-${r.task.id}`} leaving={just?.key === `${b.slug}-${r.task.id}` && just.leaving && show === "todo"} onToggle={() => toggle(b.slug, r)} />
                     ))}
                     {rows.length === 0 ? <li className="text-sm text-muted">Everything is done here. Submit on the official website.</li> : null}
                   </ul>
