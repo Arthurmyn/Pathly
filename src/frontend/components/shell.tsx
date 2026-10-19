@@ -161,7 +161,7 @@ function SidebarNav({ groups, onNavigate }: { groups: NavGroup[]; onNavigate?: (
                     href={n.href}
                     onClick={onNavigate}
                     aria-current={active ? "page" : undefined}
-                    className={`flex items-center gap-3 rounded-xl px-2 py-2 text-[15px] transition-colors ${active ? "font-semibold text-[var(--nav-active)]" : "text-muted hover:text-ink"}`}
+                    className={`flex items-center gap-3 rounded-xl px-2 py-2 text-[15px] transition-colors duration-150 ${active ? "font-semibold text-[var(--nav-active)]" : "text-ink hover:bg-surface-2"}`}
                   >
                     <Icon size={19} />
                     <span className="flex-1">{n.label}</span>
@@ -181,7 +181,7 @@ function SidebarFooter({ role, onSignOut }: { role: Role; onSignOut: () => void 
   return (
     <div className="mt-auto pt-8 text-sm text-muted">
       {role !== "guest" ? (
-        <button type="button" onClick={onSignOut} className="flex items-center gap-3 rounded-xl px-2 py-2 hover:text-ink">
+        <button type="button" onClick={onSignOut} className="flex items-center gap-3 rounded-xl px-2 py-2 text-ink transition-colors duration-150 hover:bg-surface-2">
           <IconLogout size={19} /> Sign out
         </button>
       ) : null}
@@ -205,7 +205,7 @@ function Topbar({ role, onMenu, attention }: { role: Role; onMenu: () => void; a
   return (
     <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-5 pb-3 pt-5 md:px-8">
       <div className="flex min-w-0 items-center gap-3">
-        <button type="button" onClick={onMenu} className="rounded-full border border-line bg-surface p-2 md:hidden" aria-label="Open menu">
+        <button type="button" onClick={onMenu} className="press rounded-full border border-line bg-surface p-2 md:hidden" aria-label="Open menu">
           <IconMenu size={18} />
         </button>
         <nav aria-label="Breadcrumb" className="min-w-0 text-[13px] text-muted">
@@ -258,6 +258,7 @@ function Topbar({ role, onMenu, attention }: { role: Role; onMenu: () => void; a
 export function Shell({ area, children }: { area: Area; children: ReactNode }) {
   const state = useAppState();
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const role = state.ready ? state.role : "guest";
 
   const queueCount = area === "admin" || role === "admin" ? buildQueue(state.allRequirements(), state.today).length : 0;
@@ -267,6 +268,14 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
       : state.shortlist.reduce((n, slug) => n + state.requirementsFor(slug).filter((r) => ["stale", "conflict", "missing"].includes(effectiveStatus(r, state.today))).length, 0);
 
   const groups = navFor(area, role, queueCount);
+  // The drawer leaves the way it came (slides back to the left) before it is removed.
+  const closeDrawer = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setOpen(false);
+      setClosing(false);
+    }, 200);
+  };
   const inner = (
     <div className="flex min-h-screen bg-page">
       <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-y-auto px-5 py-6 md:flex" aria-label="Sidebar">
@@ -276,15 +285,15 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
       </aside>
 
       {open ? (
-        <div className="fixed inset-0 z-30 md:hidden" role="dialog" aria-modal="true" aria-label="Menu">
-          <button type="button" className="absolute inset-0 bg-black/40" aria-label="Close menu" onClick={() => setOpen(false)} />
-          <div className="absolute inset-y-0 left-0 flex w-72 flex-col overflow-y-auto bg-page px-6 py-6">
+        <div className="fixed inset-0 z-30 md:hidden" role="dialog" aria-modal="true" aria-label="Menu" data-closing={closing}>
+          <button type="button" className="drawer-overlay absolute inset-0 bg-black/40" aria-label="Close menu" onClick={closeDrawer} />
+          <div className="drawer-panel absolute inset-y-0 left-0 flex w-72 flex-col overflow-y-auto bg-page px-6 py-6">
             <div className="mb-8 flex items-center justify-between">
               <Logo href="/" />
-              <button type="button" onClick={() => setOpen(false)} className="rounded-full border border-line bg-surface p-2" aria-label="Close menu"><IconX size={16} /></button>
+              <button type="button" onClick={closeDrawer} className="press rounded-full border border-line bg-surface p-2" aria-label="Close menu"><IconX size={16} /></button>
             </div>
-            <SidebarNav groups={groups} onNavigate={() => setOpen(false)} />
-            <SidebarFooter role={role} onSignOut={() => { state.signOut(); setOpen(false); }} />
+            <SidebarNav groups={groups} onNavigate={closeDrawer} />
+            <SidebarFooter role={role} onSignOut={() => { state.signOut(); closeDrawer(); }} />
           </div>
         </div>
       ) : null}

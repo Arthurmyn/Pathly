@@ -36,7 +36,7 @@ export function PillTabs<T extends string>({
               aria-selected={active}
               aria-controls={`panel-${t.id}`}
               onClick={() => onChange(t.id)}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+              className={`press inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium ${
                 active ? "border-primary bg-primary text-primary-fg" : "border-line bg-surface text-ink hover:bg-surface-2"
               }`}
             >

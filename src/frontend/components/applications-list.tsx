@@ -27,7 +27,7 @@ export function ApplicationsList() {
           Open a programme and choose &quot;Add to shortlist&quot; or &quot;Create my roadmap&quot;.
         </EmptyState>
       ) : (
-        <ul className="space-y-4">
+        <ul className="stagger space-y-4">
           {shortlist.map((slug) => {
             const program = getProgram(slug);
             if (!program) return null;

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Onest } from "next/font/google";
 import { AppStateProvider } from "@/components/app-state";
 import "./globals.css";
 
-const inter = Inter({ variable: "--font-inter", subsets: ["latin", "cyrillic"] });
+const onest = Onest({ variable: "--font-onest", subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: { default: "Pathly", template: "%s · Pathly" },
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={onest.variable}>
       <body className="min-h-screen">
         <AppStateProvider>
           {children}

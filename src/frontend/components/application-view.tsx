@@ -115,7 +115,7 @@ export function ApplicationView({ slug }: { slug: string }) {
                 <div role="tabpanel" id="panel-roadmap" aria-labelledby="tab-roadmap" className="space-y-4">
                   <p className="text-sm text-muted">The roadmap is recomputed whenever your profile or the data changes.</p>
                   {shown.length === 0 ? <Callout>Everything is done. Submit on the official website.</Callout> : null}
-                  <ol className="space-y-3" aria-label="Roadmap tasks">
+                  <ol className="stagger space-y-3" aria-label="Roadmap tasks">
                     {shown.map((t) => (
                       <TaskCard
                         key={t.id}

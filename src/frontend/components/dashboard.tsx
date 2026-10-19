@@ -78,7 +78,7 @@ export function Dashboard() {
         {nextActions.length === 0 ? (
           <EmptyState title="No actions yet" action={<LinkButton href="/programs">Choose a programme</LinkButton>}>Add a programme to your shortlist to get a roadmap.</EmptyState>
         ) : (
-          <ul className="space-y-2">
+          <ul className="stagger space-y-2">
             {nextActions.map((t) => (
               <li key={`${t.slug}-${t.id}`} className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] px-4 py-3">
                 <p className="font-medium">{t.title}</p>

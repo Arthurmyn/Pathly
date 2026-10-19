@@ -25,7 +25,7 @@ export function CircleButton({ label, pressed, onClick, children }: { label: str
       aria-pressed={pressed}
       title={label}
       onClick={onClick}
-      className={`flex h-11 w-11 items-center justify-center rounded-full border border-line transition-colors ${pressed ? "bg-primary text-primary-fg" : "bg-surface hover:bg-surface-2"}`}
+      className={`press flex h-11 w-11 items-center justify-center rounded-full border border-line ${pressed ? "bg-primary text-primary-fg" : "bg-surface hover:bg-surface-2"}`}
     >
       {children}
     </button>
@@ -54,7 +54,7 @@ export function ShareButton() {
   return (
     <span className="relative">
       <CircleButton label="Copy link" onClick={copy}><IconShare size={18} /></CircleButton>
-      {copied ? <span role="status" className="absolute -bottom-7 right-0 whitespace-nowrap rounded-full bg-primary px-2 py-0.5 text-xs text-primary-fg">Link copied</span> : null}
+      {copied ? <span role="status" className="pop absolute -bottom-7 right-0 whitespace-nowrap rounded-full bg-primary px-2 py-0.5 text-xs text-primary-fg">Link copied</span> : null}
     </span>
   );
 }

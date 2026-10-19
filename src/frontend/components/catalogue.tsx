@@ -94,10 +94,10 @@ export function Catalogue() {
         {rows.length === 0 ? (
           <EmptyState title="No programmes match your filters">Try another degree level or country, or clear the search.</EmptyState>
         ) : (
-          <ul className="space-y-3">
+          <ul className="stagger space-y-3">
             {rows.map(({ p, uni, verified, total, dStatus }) => (
               <li key={p.slug}>
-                <Link href={`/programs/${p.slug}`} className="block rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] p-5 transition-colors hover:border-primary">
+                <Link href={`/programs/${p.slug}`} className="lift block rounded-[20px] border border-line bg-surface p-5 shadow-[var(--shadow)] hover:border-primary">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <h2 className="text-lg font-semibold">{p.name}</h2>

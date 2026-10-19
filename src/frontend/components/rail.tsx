@@ -25,7 +25,7 @@ export function ProgressRing({ percent, size = 44 }: { percent: number; size?: n
     <div className="relative shrink-0" style={{ width: size, height: size }} role="img" aria-label={`${Math.round(p)} percent`}>
       <svg viewBox="0 0 44 44" width={size} height={size} className="-rotate-90" aria-hidden="true">
         <circle cx="22" cy="22" r={r} fill="none" stroke="var(--border)" strokeWidth="4" />
-        <circle cx="22" cy="22" r={r} fill="none" stroke="var(--primary)" strokeWidth="4" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - p / 100)} />
+        <circle className="ring-arc" cx="22" cy="22" r={r} fill="none" stroke="var(--primary)" strokeWidth="4" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - p / 100)} style={{ ["--ring-from" as string]: c }} />
       </svg>
       <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums">{Math.round(p)}</span>
     </div>
@@ -57,16 +57,16 @@ export interface StepItem {
 /** Vertical step list with check circles joined by a line, as in the reference "lesson tasks" card. */
 export function StepList({ steps }: { steps: StepItem[] }) {
   return (
-    <ol className="relative space-y-3" aria-label="Steps">
+    <ol className="stagger relative space-y-3" aria-label="Steps">
       {steps.map((s, i) => (
         <li key={s.id} className="relative flex items-center gap-3">
           {i < steps.length - 1 ? <span className="absolute left-[15px] top-8 h-[calc(100%-4px)] w-px bg-line" aria-hidden="true" /> : null}
           <span
-            className={`relative z-[1] flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 ${
+            className={`relative z-[1] flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 transition-colors duration-200 ${
               s.state === "done" ? "border-primary bg-primary text-primary-fg" : s.state === "current" ? "border-primary bg-surface text-ink" : "border-line bg-surface text-transparent"
             }`}
           >
-            {s.state === "done" ? <IconCheck size={15} /> : s.state === "current" ? <IconClock size={14} /> : null}
+            {s.state === "done" ? <span className="pop flex"><IconCheck size={15} /></span> : s.state === "current" ? <IconClock size={14} /> : null}
           </span>
           <div className="min-w-0 flex-1">
             <p className={`truncate text-sm font-medium ${s.state === "done" ? "text-muted line-through" : ""}`}>{s.title}</p>
@@ -90,7 +90,7 @@ export interface SourceItem {
 export function SourceList({ items }: { items: SourceItem[] }) {
   if (items.length === 0) return <p className="text-sm text-muted">No sources are stored yet.</p>;
   return (
-    <ul className="space-y-3">
+    <ul className="stagger space-y-3">
       {items.map((it) => (
         <li key={it.id} className="flex items-center gap-3">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-2 text-ink">
@@ -100,7 +100,7 @@ export function SourceList({ items }: { items: SourceItem[] }) {
             <p className="truncate text-sm font-semibold">{it.name}</p>
             <p className="truncate text-xs text-muted">{it.detail}</p>
           </div>
-          <a href={it.href} target="_blank" rel="noreferrer noopener" className="inline-flex shrink-0 items-center gap-1 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold hover:bg-surface-2">
+          <a href={it.href} target="_blank" rel="noreferrer noopener" className="press inline-flex shrink-0 items-center gap-1 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-surface-2">
             <IconLink size={12} /> Open
           </a>
         </li>
@@ -142,7 +142,7 @@ export function RelatedList({ items }: { items: RelatedItem[] }) {
             <p className="text-sm font-semibold leading-snug">{it.title}</p>
             <p className="mt-0.5 line-clamp-2 text-xs text-muted">{it.description}</p>
             <p className="mt-1 text-[11px] text-muted">{it.meta}</p>
-            <Link href={`/programs/${it.slug}`} className="mt-1.5 inline-flex rounded-full border border-line bg-surface px-3 py-1 text-xs font-semibold hover:bg-surface-2">
+            <Link href={`/programs/${it.slug}`} className="press mt-1.5 inline-flex rounded-full border border-line bg-surface px-3 py-1 text-xs font-semibold transition-colors hover:bg-surface-2">
               View programme
             </Link>
           </div>

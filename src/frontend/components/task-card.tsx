@@ -27,7 +27,7 @@ export function TaskCard({
   const overdue = !done && task.dueDate !== null && task.dueDate < today;
   const id = `task-${task.id}`;
   return (
-    <li className={`rounded-xl border bg-surface p-4 ${done ? "opacity-70" : ""} ${task.type === "verify" ? "border-dashed" : ""}`} style={{ borderColor: "var(--border)" }} data-task={task.id}>
+    <li className={`transition-opacity duration-200 rounded-xl border bg-surface p-4 ${done ? "opacity-70" : ""} ${task.type === "verify" ? "border-dashed" : ""}`} style={{ borderColor: "var(--border)" }} data-task={task.id}>
       <div className="flex items-start gap-3">
         <input
           id={id}

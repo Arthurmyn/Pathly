@@ -69,11 +69,11 @@ export function RequirementRow({ requirement, today, result }: { requirement: Re
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
       >
-        <IconChevron size={14} className={`transition-transform ${open ? "rotate-90" : ""}`} />
+        <IconChevron size={14} className={`transition-transform duration-200 ease-[var(--ease-out)] ${open ? "rotate-90" : ""}`} />
         {open ? "Hide details" : "Why? Show the rule and source"}
       </button>
       {open ? (
-        <div id={panelId} className="mt-2 rounded-lg border border-line bg-bg p-3 text-sm">
+        <div id={panelId} className="slide-down mt-2 rounded-lg border border-line bg-bg p-3 text-sm">
           <dl className="grid gap-x-4 gap-y-1.5 sm:grid-cols-[9rem_1fr]">
             <dt className="text-muted">Rule</dt>
             <dd>{result ? result.rule : "Shown after you add your profile."}</dd>
