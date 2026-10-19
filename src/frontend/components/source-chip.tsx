@@ -3,7 +3,7 @@ import type { Source } from "@/lib/types";
 import { IconLink } from "./icons";
 
 /** Source link with its tier and an absolute verification date. */
-export function SourceChip({ source, date, dateLabel = "Verified" }: { source: Source | null; date: string | null; dateLabel?: string }) {
+export function SourceChip({ source, date, dateLabel = "Verified", plain = false }: { source: Source | null; date: string | null; dateLabel?: string; plain?: boolean }) {
   if (!source) {
     return <span className="text-xs text-muted">No source stored</span>;
   }
@@ -17,7 +17,7 @@ export function SourceChip({ source, date, dateLabel = "Verified" }: { source: S
         className="inline-flex items-center gap-1 text-primary underline-offset-2 hover:underline"
         title={source.title}
       >
-        <IconLink size={12} />
+        {plain ? null : <IconLink size={12} />}
         {host}
       </a>
       <span>Tier {source.tier}</span>

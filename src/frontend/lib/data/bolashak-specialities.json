@@ -1,0 +1,2614 @@
+[
+ {
+  "id": "1-1",
+  "no": 1,
+  "code": "1.1",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Аналитика больших данных",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.1 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.1 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.1 Д"
+   }
+  ],
+  "programmeCount": 186,
+  "examples": [
+   "Data Science",
+   "Data Science for Cultural Heritage",
+   "Health Data Analytics"
+  ]
+ },
+ {
+  "id": "1-2",
+  "no": 2,
+  "code": "1.2",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Информационная (кибер) безопасность и криптография",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.2 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.2 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.2 Д"
+   }
+  ],
+  "programmeCount": 63,
+  "examples": [
+   "Information Security",
+   "Computing (Security and Reliability)",
+   "Security and Resilience: Science and Technology"
+  ]
+ },
+ {
+  "id": "1-3",
+  "no": 3,
+  "code": "1.3",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Робототехника",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.3 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.3 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.3 Д"
+   }
+  ],
+  "programmeCount": 56,
+  "examples": [
+   "Robotics and Autonomous Systems",
+   "Intelligent Robotics",
+   "Computer Vision, Robotics and Machine Learning"
+  ]
+ },
+ {
+  "id": "1-4",
+  "no": 4,
+  "code": "1.4",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Искусственный интеллект",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.4 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.4 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.4 Д"
+   }
+  ],
+  "programmeCount": 115,
+  "examples": [
+   "Robotics and Autonomous Systems",
+   "Intelligent Robotics",
+   "Computer Vision, Robotics and Machine Learning"
+  ]
+ },
+ {
+  "id": "1-5",
+  "no": 5,
+  "code": "1.5",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Разработка сервисных платформ. Медиа технологии. Цифровые медиа. Дизайн визуального контента",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.5 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.5 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.5 Д"
+   }
+  ],
+  "programmeCount": 115,
+  "examples": [
+   "Digital Engineering Management",
+   "Digital Innovation in Built Asset Management",
+   "Digital Media: Critical Studies"
+  ]
+ },
+ {
+  "id": "1-6",
+  "no": 6,
+  "code": "1.6",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Система удаленного управления. Интеллектуальные системы управления",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.6 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.6 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.6 Д"
+   }
+  ],
+  "programmeCount": 23,
+  "examples": [
+   "Remote Pilot Aircraft Systems",
+   "Autonomous Vehicle Dynamics and Control",
+   "Reliability and Maintenance Analysis of Unmanned Aerial Vehicles"
+  ]
+ },
+ {
+  "id": "1-7",
+  "no": 7,
+  "code": "1.7",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Технология новых материалов",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.7 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.7 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.7 Д"
+   }
+  ],
+  "programmeCount": 43,
+  "examples": [
+   "New Materials, Processes, and Methods Technology",
+   "Material and Visual Culture",
+   "Materials for Energy and Environment"
+  ]
+ },
+ {
+  "id": "1-8",
+  "no": 8,
+  "code": "1.8",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Наноматериалы и нанотехнологии",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.8 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.8 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.8 Д"
+   }
+  ],
+  "programmeCount": 22,
+  "examples": [
+   "Nanotechnology",
+   "Nanomaterials",
+   "Physics with Nanophotonics"
+  ]
+ },
+ {
+  "id": "1-9",
+  "no": 9,
+  "code": "1.9",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Авиационная и аэрокосмическая техника и технологии. Управление воздушным движением",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.9 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.9 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.9 Д"
+   }
+  ],
+  "programmeCount": 41,
+  "examples": [
+   "Space Science and Engineering: Space Science",
+   "Space Science and Engineering: Space Technology",
+   "Space Systems Engineering"
+  ]
+ },
+ {
+  "id": "1-10",
+  "no": 10,
+  "code": "1.10",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Урбанистика. Архитектура. Управление городами. Устойчивые города. Система умного города. Строительство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.10 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.10 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.10 Д"
+   }
+  ],
+  "programmeCount": 161,
+  "examples": [
+   "City Planning",
+   "Housing and City Planning",
+   "International Real Estate and Planning"
+  ]
+ },
+ {
+  "id": "1-11",
+  "no": 11,
+  "code": "1.11",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Атомная промышленность. Ядерная инженерия",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.11 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.11 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.11 Д"
+   }
+  ],
+  "programmeCount": 38,
+  "examples": [
+   "Quantum Technologies",
+   "Nuclear Physics",
+   "Particle and Nuclear Physics"
+  ]
+ },
+ {
+  "id": "1-12",
+  "no": 12,
+  "code": "1.12",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Инженерные системы и сети",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.12 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.12 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.12 Д"
+   }
+  ],
+  "programmeCount": 94,
+  "examples": [
+   "Connected Electronic and Photonic Systems",
+   "Connected Environments",
+   "Machine Learning"
+  ]
+ },
+ {
+  "id": "1-13",
+  "no": 13,
+  "code": "1.13",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Машиностроение",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.13 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.13 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.13 Д"
+   }
+  ],
+  "programmeCount": 77,
+  "examples": [
+   "Mechanical Engineering",
+   "Advanced Mechanical Engineering",
+   "Mechanical Engineering and Management"
+  ]
+ },
+ {
+  "id": "1-14",
+  "no": 14,
+  "code": "1.14",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Химическая инженерия",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.14 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.14 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.14 Д"
+   }
+  ],
+  "programmeCount": 65,
+  "examples": [
+   "Advanced Chemical Engineering",
+   "Advanced Chemical Engineering with Biotechnology",
+   "Advanced Chemical Engineering with Process Systems Engineering"
+  ]
+ },
+ {
+  "id": "1-15",
+  "no": 15,
+  "code": "1.15",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Нефтегазовый инжиниринг",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.15 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.15 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.15 Д"
+   }
+  ],
+  "programmeCount": 64,
+  "examples": [
+   "Petroleum Engineering",
+   "Integrated Petroleum Geoscience",
+   "Oil and Gas Engineering"
+  ]
+ },
+ {
+  "id": "1-16",
+  "no": 16,
+  "code": "1.16",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Электроника и телекоммуникационные системы",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.16 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.16 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.16 Д"
+   }
+  ],
+  "programmeCount": 59,
+  "examples": [
+   "Telecommunications",
+   "Telecommunications (IGDP)",
+   "Communications and Signal Processing"
+  ]
+ },
+ {
+  "id": "1-17",
+  "no": 17,
+  "code": "1.17",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Стандартизация, сертификация и метрология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.17 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.17 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.17 Д"
+   }
+  ],
+  "programmeCount": 31,
+  "examples": [
+   "Control and Optimisation",
+   "Advanced Manufacturing Technology and Systems Management",
+   "Certification and Metrology"
+  ]
+ },
+ {
+  "id": "1-18",
+  "no": 18,
+  "code": "1.18",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Строительная инженерия",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.18 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.18 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.18 Д"
+   }
+  ],
+  "programmeCount": 101,
+  "examples": [
+   "Built Environment: Environmental Design and Engineering",
+   "Built Environment: Sustainable Heritage",
+   "Civil Engineering"
+  ]
+ },
+ {
+  "id": "1-19",
+  "no": 19,
+  "code": "1.19",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Инженерная экономика",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.19 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.19 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.19 Д"
+   }
+  ],
+  "programmeCount": 19,
+  "examples": [
+   "Engineering Economics",
+   "Electronics and Electrical Engineering and Management",
+   "Engineering Business Management"
+  ]
+ },
+ {
+  "id": "1-20",
+  "no": 20,
+  "code": "1.20",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Технология продовольственных продуктов. Пищевая безопасность. Технология производства пищевой продукции. Технология мясопереработки",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.20 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.20 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.20 Д"
+   }
+  ],
+  "programmeCount": 91,
+  "examples": [
+   "Agricultural Food and Nutritional Science",
+   "Agricultural Production Chain Management",
+   "Agricultural, Environmental, and Food Engineering"
+  ]
+ },
+ {
+  "id": "1-21",
+  "no": 21,
+  "code": "1.21",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Транспортные технологии. Транспортная инженерия. Транспорт, транспортная техника и технологии. Операционный менеджмент и логистика. Организация перевозок",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.21 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.21 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.21 Д"
+   }
+  ],
+  "programmeCount": 95,
+  "examples": [
+   "Rail Systems Engineering",
+   "Transport",
+   "Transport and City Planning"
+  ]
+ },
+ {
+  "id": "1-22",
+  "no": 22,
+  "code": "1.22",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Энергетические технологии и системы",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.22 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.22 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.22 Д"
+   }
+  ],
+  "programmeCount": 85,
+  "examples": [
+   "Energy Systems and Data Analytics",
+   "Energy, Technology and Public Policy",
+   "Power Systems Engineering"
+  ]
+ },
+ {
+  "id": "1-23",
+  "no": 23,
+  "code": "1.23",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Информационные технологии и системы. Менеджмент технологий. Финансовые технологии",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.23 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.23 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.23 Д"
+   }
+  ],
+  "programmeCount": 247,
+  "examples": [
+   "Data Science, Technology and Innovation",
+   "Management of Bioeconomy, Innovation and Governance",
+   "Science and Technology in Society"
+  ]
+ },
+ {
+  "id": "1-24",
+  "no": 24,
+  "code": "1.24",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Биотехнология. Биоинженерия. Биомедицина. Биохимия",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.24 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.24 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.24 Д"
+   }
+  ],
+  "programmeCount": 176,
+  "examples": [
+   "Biomaterials and Tissue Engineering",
+   "Biomedical Sciences",
+   "Biosciences"
+  ]
+ },
+ {
+  "id": "1-25",
+  "no": 25,
+  "code": "1.25",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Агролесоводство. Лесные ресурсы и лесоводство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.25 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.25 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.25 Д"
+   }
+  ],
+  "programmeCount": 19,
+  "examples": [
+   "Forestry",
+   "Forestry and Natural Resources",
+   "Forest Science"
+  ]
+ },
+ {
+  "id": "1-26",
+  "no": 26,
+  "code": "1.26",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Звероводство и животноводство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.26 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.26 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.26 Д"
+   }
+  ],
+  "programmeCount": 21,
+  "examples": [
+   "Wildlife Management",
+   "Animal Behaviour",
+   "Animal Biology"
+  ]
+ },
+ {
+  "id": "1-27",
+  "no": 27,
+  "code": "1.27",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Аграрные технологии",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.27 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.27 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.27 Д"
+   }
+  ],
+  "programmeCount": 79,
+  "examples": [
+   "Agricultural Innovation",
+   "Agricultural Sciences",
+   "Agribusiness"
+  ]
+ },
+ {
+  "id": "1-28",
+  "no": 28,
+  "code": "1.28",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Геология. Горное дело. Геодезия. Геофизика",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.28 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.28 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.28 Д"
+   }
+  ],
+  "programmeCount": 146,
+  "examples": [
+   "Geology",
+   "Soil Mechanics and Engineering Geology",
+   "Geology and Geophysics"
+  ]
+ },
+ {
+  "id": "1-29",
+  "no": 29,
+  "code": "1.29",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Охрана земель. Кадастр. Землеустройство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.29 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.29 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.29 Д"
+   }
+  ],
+  "programmeCount": 9,
+  "examples": [
+   "Land Reclamation",
+   "Land Reclamation, Remediation and Restoration",
+   "Land and Ecosystem Rehabilitation"
+  ]
+ },
+ {
+  "id": "1-30",
+  "no": 30,
+  "code": "1.30",
+  "group": "Engineering and technology",
+  "groupNo": 1,
+  "nameRu": "Гидрология, водные ресурсы и водопользование. Водная безопасность. Гидрогеология и инженерная геология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "1.30 Б"
+   },
+   {
+    "level": "master",
+    "code": "1.30 М"
+   },
+   {
+    "level": "phd",
+    "code": "1.30 Д"
+   }
+  ],
+  "programmeCount": 90,
+  "examples": [
+   "Water Science and Management",
+   "Hydrology and Water Resources Management",
+   "Water Science, Policy and Management"
+  ]
+ },
+ {
+  "id": "2-1",
+  "no": 31,
+  "code": "2.1",
+  "group": "Natural sciences",
+  "groupNo": 2,
+  "nameRu": "Математика. Математическое моделирование. Прикладная математика. Статистика",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "2.1 Б"
+   },
+   {
+    "level": "master",
+    "code": "2.1 М"
+   },
+   {
+    "level": "phd",
+    "code": "2.1 Д"
+   }
+  ],
+  "programmeCount": 119,
+  "examples": [
+   "Mathematics",
+   "Actuarial Science",
+   "Advanced Statistics"
+  ]
+ },
+ {
+  "id": "2-2",
+  "no": 32,
+  "code": "2.2",
+  "group": "Natural sciences",
+  "groupNo": 2,
+  "nameRu": "Физика",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "2.2 Б"
+   },
+   {
+    "level": "master",
+    "code": "2.2 М"
+   },
+   {
+    "level": "phd",
+    "code": "2.2 Д"
+   }
+  ],
+  "programmeCount": 80,
+  "examples": [
+   "Physics",
+   "Theoretical Physics",
+   "Astrophysics"
+  ]
+ },
+ {
+  "id": "2-3",
+  "no": 33,
+  "code": "2.3",
+  "group": "Natural sciences",
+  "groupNo": 2,
+  "nameRu": "Химия",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "2.3 Б"
+   },
+   {
+    "level": "master",
+    "code": "2.3 М"
+   },
+   {
+    "level": "phd",
+    "code": "2.3 Д"
+   }
+  ],
+  "programmeCount": 36,
+  "examples": [
+   "Chemistry",
+   "Organic Chemistry",
+   "Inorganic Chemistry"
+  ]
+ },
+ {
+  "id": "2-4",
+  "no": 34,
+  "code": "2.4",
+  "group": "Natural sciences",
+  "groupNo": 2,
+  "nameRu": "Биология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "2.4 Б"
+   },
+   {
+    "level": "master",
+    "code": "2.4 М"
+   },
+   {
+    "level": "phd",
+    "code": "2.4 Д"
+   }
+  ],
+  "programmeCount": 46,
+  "examples": [
+   "Biology",
+   "Oral Biology",
+   "Tissue Engineering and Regenerative Medicine"
+  ]
+ },
+ {
+  "id": "2-5",
+  "no": 35,
+  "code": "2.5",
+  "group": "Natural sciences",
+  "groupNo": 2,
+  "nameRu": "Экология. Экотехнология. Устойчивое развитие. Зеленые технологии. Охрана окружающей среды",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "2.5 Б"
+   },
+   {
+    "level": "master",
+    "code": "2.5 М"
+   },
+   {
+    "level": "phd",
+    "code": "2.5 Д"
+   }
+  ],
+  "programmeCount": 250,
+  "examples": [
+   "Applied Marine Ecology and Conservation",
+   "Computational Methods in Ecology and Evolution",
+   "Ecological Applications"
+  ]
+ },
+ {
+  "id": "2-6",
+  "no": 36,
+  "code": "2.6",
+  "group": "Natural sciences",
+  "groupNo": 2,
+  "nameRu": "Сейсмология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "2.6 Б"
+   },
+   {
+    "level": "master",
+    "code": "2.6 М"
+   },
+   {
+    "level": "phd",
+    "code": "2.6 Д"
+   }
+  ],
+  "programmeCount": 4,
+  "examples": [
+   "Soil Mechanics and Engineering Seismology",
+   "Earthquake Engineering",
+   "Earthquake Engineering and Infrastructure Resilience"
+  ]
+ },
+ {
+  "id": "3-1",
+  "no": 37,
+  "code": "3.1",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Анестезиология и реаниматология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.1 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.1 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.1 Р"
+   }
+  ],
+  "programmeCount": 25,
+  "examples": [
+   "Adult Cardiothoracic Anesthesia",
+   "Anaesthesia and Intensive Care Medicine",
+   "Anesthesiology"
+  ]
+ },
+ {
+  "id": "3-2",
+  "no": 38,
+  "code": "3.2",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Акушерство и гинекология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.2 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.2 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.2 Р"
+   }
+  ],
+  "programmeCount": 31,
+  "examples": [
+   "Obstetrics and Gynecology",
+   "Obstetrics",
+   "Gynecology"
+  ]
+ },
+ {
+  "id": "3-3",
+  "no": 39,
+  "code": "3.3",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Ветеринария. Ветеринарная медицина",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.3 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.3 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.3 Р"
+   }
+  ],
+  "programmeCount": 46,
+  "examples": [
+   "Large Animal Clinical Sciences",
+   "Pathobiology",
+   "Animal Behaviour"
+  ]
+ },
+ {
+  "id": "3-4",
+  "no": 40,
+  "code": "3.4",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Вирусология. Инфекционные болезни. Эпидемиология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.4 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.4 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.4 Р"
+   }
+  ],
+  "programmeCount": 52,
+  "examples": [
+   "Virology",
+   "Molecular Biology and Pathology of Viruses",
+   "Medical Virology"
+  ]
+ },
+ {
+  "id": "3-5",
+  "no": 41,
+  "code": "3.5",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Дерматология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.5 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.5 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.5 Р"
+   }
+  ],
+  "programmeCount": 20,
+  "examples": [
+   "Clinical dermatology",
+   "Dermatology in Clinical Practice",
+   "Practical Dermatology"
+  ]
+ },
+ {
+  "id": "3-6",
+  "no": 42,
+  "code": "3.6",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Кардиология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.6 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.6 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.6 Р"
+   }
+  ],
+  "programmeCount": 31,
+  "examples": [
+   "Advanced Physiotherapy: Cardiorespiratory",
+   "Cardiac Science",
+   "Cardiology"
+  ]
+ },
+ {
+  "id": "3-7",
+  "no": 43,
+  "code": "3.7",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Медицинская генетика",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.7 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.7 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.7 Р"
+   }
+  ],
+  "programmeCount": 54,
+  "examples": [
+   "Biology - Genetics",
+   "Genetics and Development",
+   "Genetic Counseling"
+  ]
+ },
+ {
+  "id": "3-8",
+  "no": 44,
+  "code": "3.8",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Неврология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.8 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.8 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.8 Р"
+   }
+  ],
+  "programmeCount": 55,
+  "examples": [
+   "Advanced Physiotherapy: Neurophysiotherapy",
+   "Basic and Clinical Neuroscience",
+   "Basic and Translational Neuroscience"
+  ]
+ },
+ {
+  "id": "3-9",
+  "no": 45,
+  "code": "3.9",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Неонатология. Педиатрия",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.9 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.9 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.9 Р"
+   }
+  ],
+  "programmeCount": 36,
+  "examples": [
+   "Advanced Paediatrics",
+   "Advanced Physiotherapy: Paediatrics",
+   "Applied Paediatric Neuropsychology"
+  ]
+ },
+ {
+  "id": "3-10",
+  "no": 46,
+  "code": "3.10",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Общественное здравоохранение. Общая Медицина.",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "3.10 Б"
+   },
+   {
+    "level": "master",
+    "code": "3.10 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.10 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.10 Р"
+   }
+  ],
+  "programmeCount": 92,
+  "examples": [
+   "Community Health Sciences",
+   "Public Health for Health Professionals",
+   "Public Health"
+  ]
+ },
+ {
+  "id": "3-11",
+  "no": 47,
+  "code": "3.11",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Онкология и гематология. Трансфузиология. Лучевая терапия",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.11 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.11 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.11 Р"
+   }
+  ],
+  "programmeCount": 54,
+  "examples": [
+   "Cancer",
+   "Cancer and Pharmaceutical Sciences",
+   "Cancer and Clinical Oncology"
+  ]
+ },
+ {
+  "id": "3-12",
+  "no": 48,
+  "code": "3.12",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Оториноларингология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.12 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.12 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.12 Р"
+   }
+  ],
+  "programmeCount": 21,
+  "examples": [
+   "Respiratory Medicine",
+   "Experimental Medicine (Hearing Health)",
+   "Experimental Medicine (Respiratory)"
+  ]
+ },
+ {
+  "id": "3-13",
+  "no": 49,
+  "code": "3.13",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Офтальмология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.13 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.13 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.13 Р"
+   }
+  ],
+  "programmeCount": 35,
+  "examples": [
+   "Advanced Clinical Optometry and Ophthalmology",
+   "Artificial Vision",
+   "Biology of Vision"
+  ]
+ },
+ {
+  "id": "3-14",
+  "no": 50,
+  "code": "3.14",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Патологическая анатомия (цитопатология). Судебная медицина",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.14 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.14 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.14 Р"
+   }
+  ],
+  "programmeCount": 27,
+  "examples": [
+   "Anatomical Pathology",
+   "Clinical Pathology",
+   "Forensic Medicine"
+  ]
+ },
+ {
+  "id": "3-15",
+  "no": 51,
+  "code": "3.15",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Пульмонология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.15 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.15 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.15 Р"
+   }
+  ],
+  "programmeCount": 25,
+  "examples": [
+   "Pediatric Pulmonology",
+   "Phthisiology",
+   "Pulmonary Disease"
+  ]
+ },
+ {
+  "id": "3-16",
+  "no": 52,
+  "code": "3.16",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Спортивная медицина. Физическая медицина и реабилитация",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.16 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.16 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.16 Р"
+   }
+  ],
+  "programmeCount": 55,
+  "examples": [
+   "Athletic Training and Sports Medicine",
+   "Exercise and Sports Medicine",
+   "Human Movement Sciences"
+  ]
+ },
+ {
+  "id": "3-17",
+  "no": 53,
+  "code": "3.17",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Трансплантология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.17 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.17 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.17 Р"
+   }
+  ],
+  "programmeCount": 27,
+  "examples": [
+   "Human Tissue Repair",
+   "Musculoskeletal Science",
+   "Regenerative Medicine"
+  ]
+ },
+ {
+  "id": "3-18",
+  "no": 54,
+  "code": "3.18",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Хирургия (нейрохирургия, абдоминальная, ангиохирургия, торакальная хирургия, хирургия гортани, микрохирургия, онкохирургия; черепно-челюстно-лицевая пластическая хирургия, кардиохирургия)",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.18 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.18 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.18 Р"
+   }
+  ],
+  "programmeCount": 72,
+  "examples": [
+   "Medicine and Surgery",
+   "Minimally Invasive Surgery",
+   "Surgery"
+  ]
+ },
+ {
+  "id": "3-19",
+  "no": 55,
+  "code": "3.19",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Эндокринология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.19 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.19 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.19 Р"
+   }
+  ],
+  "programmeCount": 22,
+  "examples": [
+   "Endocrinology",
+   "Endocrinology and Reproductive Physiology",
+   "Endocrinology and Diabetes"
+  ]
+ },
+ {
+  "id": "3-20",
+  "no": 56,
+  "code": "3.20",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Эндоскопия и ультразвуковая диагностика. Лучевая диагностика. Радиологоия. Ядерная медицина.",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.20 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.20 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.20 Р"
+   }
+  ],
+  "programmeCount": 35,
+  "examples": [
+   "Endoscopy",
+   "Gastro-intestinal Endoscopy",
+   "Surgical Endoscopy"
+  ]
+ },
+ {
+  "id": "3-21",
+  "no": 57,
+  "code": "3.21",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Фармацевтика. Фармацевтическое право. Фармакоэкономика",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "3.21 Б"
+   },
+   {
+    "level": "master",
+    "code": "3.21 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.21 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.21 Р"
+   }
+  ],
+  "programmeCount": 64,
+  "examples": [
+   "Biotech and Pharmaceutical Management",
+   "Pharmaceutics",
+   "Drug Discovery and Pharma Management"
+  ]
+ },
+ {
+  "id": "3-22",
+  "no": 58,
+  "code": "3.22",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Гастроэнтерология. Гепатология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.22 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.22 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.22 Р"
+   }
+  ],
+  "programmeCount": 13,
+  "examples": [
+   "Gastroenterology and Hepatology",
+   "Hepatology",
+   "Gastroenterology"
+  ]
+ },
+ {
+  "id": "3-23",
+  "no": 59,
+  "code": "3.23",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Геронтология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.23 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.23 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.23 Р"
+   }
+  ],
+  "programmeCount": 34,
+  "examples": [
+   "Integrated Care in Chronicity and Aging",
+   "Gerontology",
+   "Leadership in Gerontology & Rehabilitation"
+  ]
+ },
+ {
+  "id": "3-24",
+  "no": 60,
+  "code": "3.24",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Аллергология и иммунология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.24 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.24 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.24 Р"
+   }
+  ],
+  "programmeCount": 31,
+  "examples": [
+   "Allergy and Immunology",
+   "Applied and Experimental Clinical Immunology",
+   "Experimental and Translational Immunology"
+  ]
+ },
+ {
+  "id": "3-25",
+  "no": 61,
+  "code": "3.25",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Нефрология. Урология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.25 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.25 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.25 Р"
+   }
+  ],
+  "programmeCount": 13,
+  "examples": [
+   "Nephrology",
+   "Renal Medicine, Diabetes, Renal, Endocrine & Metabolic Medicine",
+   "Advanced Renal Physiology and Pathophysiology"
+  ]
+ },
+ {
+  "id": "3-26",
+  "no": 62,
+  "code": "3.26",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Ревматология",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.26 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.26 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.26 Р"
+   }
+  ],
+  "programmeCount": 12,
+  "examples": [
+   "Pediatric Rheumatology",
+   "Allergy, Rheumatology, and Immunology Pediatrics",
+   "Rheumatology"
+  ]
+ },
+ {
+  "id": "3-27",
+  "no": 63,
+  "code": "3.27",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Судебно-медицинская экспертиза",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.27 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.27 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.27 Р"
+   }
+  ],
+  "programmeCount": 17,
+  "examples": [
+   "Biomedical Forensic Sciences",
+   "Criminal Justice",
+   "Forensic Anthropology"
+  ]
+ },
+ {
+  "id": "3-28",
+  "no": 64,
+  "code": "3.28",
+  "group": "Medicine and health",
+  "groupNo": 3,
+  "nameRu": "Клиническая психология. Психиатрия (наркология и психотерапия)",
+  "levels": [
+   {
+    "level": "master",
+    "code": "3.28 М"
+   },
+   {
+    "level": "phd",
+    "code": "3.28 Д"
+   },
+   {
+    "level": "residency",
+    "code": "3.28 Р"
+   }
+  ],
+  "programmeCount": 88,
+  "examples": [
+   "Clinical Psychology",
+   "Cognitive Sciences",
+   "Applied Psychology"
+  ]
+ },
+ {
+  "id": "4-1",
+  "no": 65,
+  "code": "4.1",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Археология и этнология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.1 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.1 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.1 Д"
+   }
+  ],
+  "programmeCount": 100,
+  "examples": [
+   "Archaeology",
+   "Archaeological and Evolutionary Science",
+   "Classical Archaeology"
+  ]
+ },
+ {
+  "id": "4-2",
+  "no": 66,
+  "code": "4.2",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "История. Культурология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.2 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.2 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.2 Д"
+   }
+  ],
+  "programmeCount": 64,
+  "examples": [
+   "History",
+   "Historical Studies",
+   "Modern History"
+  ]
+ },
+ {
+  "id": "4-3",
+  "no": 67,
+  "code": "4.3",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Религиоведение",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.3 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.3 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.3 Д"
+   }
+  ],
+  "programmeCount": 35,
+  "examples": [
+   "Abrahamic Religions",
+   "Asian Religions",
+   "Bible and Ministry"
+  ]
+ },
+ {
+  "id": "4-4",
+  "no": 68,
+  "code": "4.4",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Государственная политика, государственное управление, антикоррупционная политика. Международные отношения. Политология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.4 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.4 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.4 Д"
+   }
+  ],
+  "programmeCount": 189,
+  "examples": [
+   "Policy",
+   "Public Policy",
+   "Social Policy"
+  ]
+ },
+ {
+  "id": "4-5",
+  "no": 69,
+  "code": "4.5",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Конфликтология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.5 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.5 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.5 Д"
+   }
+  ],
+  "programmeCount": 28,
+  "examples": [
+   "Conflictology",
+   "Conflict Studies",
+   "Conflict, Peace and Security"
+  ]
+ },
+ {
+  "id": "4-6",
+  "no": 70,
+  "code": "4.6",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Цифровая экономика. Цифровой маркетинг",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.6 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.6 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.6 Д"
+   }
+  ],
+  "programmeCount": 34,
+  "examples": [
+   "Intellectual Property and the Digital Economy",
+   "Digital Economy",
+   "Digital Business"
+  ]
+ },
+ {
+  "id": "4-7",
+  "no": 71,
+  "code": "4.7",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Журналистика и коммуникационный менеджмент. Связи с общественностью и реклама",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.7 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.7 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.7 Д"
+   }
+  ],
+  "programmeCount": 203,
+  "examples": [
+   "Journalism",
+   "International Journalism",
+   "Communication and Media Studies"
+  ]
+ },
+ {
+  "id": "4-8",
+  "no": 72,
+  "code": "4.8",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Социология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.8 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.8 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.8 Д"
+   }
+  ],
+  "programmeCount": 60,
+  "examples": [
+   "Sociology",
+   "Social Work",
+   "Social Work Studies"
+  ]
+ },
+ {
+  "id": "4-9",
+  "no": 73,
+  "code": "4.9",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Управление человеческими ресурсами. HR-менеджмент",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.9 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.9 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.9 Д"
+   }
+  ],
+  "programmeCount": 43,
+  "examples": [
+   "Human Resources",
+   "Management (Human Resources)",
+   "Strategic People Management"
+  ]
+ },
+ {
+  "id": "4-10",
+  "no": 74,
+  "code": "4.10",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Экономика",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.10 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.10 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.10 Д"
+   }
+  ],
+  "programmeCount": 130,
+  "examples": [
+   "Applied Economics",
+   "Economic Analytics",
+   "Applied Economics and Econometrics"
+  ]
+ },
+ {
+  "id": "4-11",
+  "no": 75,
+  "code": "4.11",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Переводческое дело",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.11 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.11 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.11 Д"
+   }
+  ],
+  "programmeCount": 47,
+  "examples": [
+   "Applied Translation",
+   "Arabic/English Translation and Interpreting",
+   "Arabic-English Translation and Interpreting"
+  ]
+ },
+ {
+  "id": "4-12",
+  "no": 76,
+  "code": "4.12",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Финансы. Инвестиции",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.12 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.12 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.12 Д"
+   }
+  ],
+  "programmeCount": 146,
+  "examples": [
+   "Finance",
+   "Applied Finance",
+   "Advanced Finance"
+  ]
+ },
+ {
+  "id": "4-13",
+  "no": 77,
+  "code": "4.13",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Право. Международное право и безопасность. Юриспруденция. Интеллектуальная собственность. Конкурентное право",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.13 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.13 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.13 Д"
+   }
+  ],
+  "programmeCount": 320,
+  "examples": [
+   "Law",
+   "Laws",
+   "Applied Law"
+  ]
+ },
+ {
+  "id": "4-14",
+  "no": 78,
+  "code": "4.14",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Литература",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.14 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.14 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.14 Д"
+   }
+  ],
+  "programmeCount": 79,
+  "examples": [
+   "Comparative Literature",
+   "Russian and East European Literature and Culture",
+   "French Language and Literature"
+  ]
+ },
+ {
+  "id": "4-15",
+  "no": 79,
+  "code": "4.15",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Физическая культура и спорт. Тренер по видам спорта",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.15 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.15 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.15 Д"
+   }
+  ],
+  "programmeCount": 43,
+  "examples": [
+   "Sport Management",
+   "Psychology of Sport",
+   "Sports Performance Coaching"
+  ]
+ },
+ {
+  "id": "4-16",
+  "no": 80,
+  "code": "4.16",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Предпринимательство. Социальное предпринимательство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.16 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.16 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.16 Д"
+   }
+  ],
+  "programmeCount": 69,
+  "examples": [
+   "Entrepreneurship",
+   "Business Strategy and Entrepreneurship",
+   "International Entrepreneurship and Management"
+  ]
+ },
+ {
+  "id": "4-17",
+  "no": 81,
+  "code": "4.17",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Туризм. Ресторанный и гостиничный бизнес",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.17 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.17 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.17 Д"
+   }
+  ],
+  "programmeCount": 43,
+  "examples": [
+   "Tourism, Environment and Development",
+   "Management in Hospitality",
+   "Tourism and Hospitality Management"
+  ]
+ },
+ {
+  "id": "4-18",
+  "no": 82,
+  "code": "4.18",
+  "group": "Social sciences and humanities",
+  "groupNo": 4,
+  "nameRu": "Менеджмент. Управление проектами. Риск-менеджмент",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "4.18 Б"
+   },
+   {
+    "level": "master",
+    "code": "4.18 М"
+   },
+   {
+    "level": "phd",
+    "code": "4.18 Д"
+   }
+  ],
+  "programmeCount": 93,
+  "examples": [
+   "Project Management",
+   "Applied Project Management",
+   "Project Leadership"
+  ]
+ },
+ {
+  "id": "5-1",
+  "no": 83,
+  "code": "5.1",
+  "group": "Education",
+  "groupNo": 5,
+  "nameRu": "Инклюзивное образование",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "5.1 Б"
+   },
+   {
+    "level": "master",
+    "code": "5.1 М"
+   },
+   {
+    "level": "phd",
+    "code": "5.1 Д"
+   }
+  ],
+  "programmeCount": 52,
+  "examples": [
+   "Special Education",
+   "Teaching",
+   "Education"
+  ]
+ },
+ {
+  "id": "5-2",
+  "no": 84,
+  "code": "5.2",
+  "group": "Education",
+  "groupNo": 5,
+  "nameRu": "Методология",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "5.2 Б"
+   },
+   {
+    "level": "master",
+    "code": "5.2 М"
+   },
+   {
+    "level": "phd",
+    "code": "5.2 Д"
+   }
+  ],
+  "programmeCount": 99,
+  "examples": [
+   "Teaching",
+   "Education",
+   "Counseling"
+  ]
+ },
+ {
+  "id": "5-3",
+  "no": 85,
+  "code": "5.3",
+  "group": "Education",
+  "groupNo": 5,
+  "nameRu": "Педагогика. STEM образование. Дошкольное обучение и воспитание. Раннее детское развитие",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "5.3 Б"
+   },
+   {
+    "level": "master",
+    "code": "5.3 М"
+   },
+   {
+    "level": "phd",
+    "code": "5.3 Д"
+   }
+  ],
+  "programmeCount": 215,
+  "examples": [
+   "Elementary Education",
+   "Teaching",
+   "Education"
+  ]
+ },
+ {
+  "id": "6-1",
+  "no": 86,
+  "code": "6.1",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Арт-менеджмент",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.1 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.1 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.1 Д"
+   }
+  ],
+  "programmeCount": 54,
+  "examples": [
+   "Art",
+   "Art and Design",
+   "Creative Arts"
+  ]
+ },
+ {
+  "id": "6-2",
+  "no": 87,
+  "code": "6.2",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Актерское искусство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.2 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.2 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.2 Д"
+   }
+  ],
+  "programmeCount": 15,
+  "examples": [
+   "Cultural and Creative Industries",
+   "Film Studies",
+   "Drama"
+  ]
+ },
+ {
+  "id": "6-3",
+  "no": 88,
+  "code": "6.3",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Музыка и вокальное искусство. Дирижирование",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.3 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.3 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.3 Д"
+   }
+  ],
+  "programmeCount": 128,
+  "examples": [
+   "Music",
+   "Musicology",
+   "Performance Studies"
+  ]
+ },
+ {
+  "id": "6-4",
+  "no": 89,
+  "code": "6.4",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Дизайн. Декоративное искусство. Живопись/Станковая живопись. Изобразительное искусство. Скульптура",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.4 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.4 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.4 Д"
+   }
+  ],
+  "programmeCount": 69,
+  "examples": [
+   "Art and Design",
+   "Creative Arts",
+   "Visual Arts"
+  ]
+ },
+ {
+  "id": "6-5",
+  "no": 90,
+  "code": "6.5",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Операторское искусство. Режиссура. Продюсерство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.5 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.5 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.5 Д"
+   }
+  ],
+  "programmeCount": 64,
+  "examples": [
+   "Cinema",
+   "Producing",
+   "Cultural and Creative Industries"
+  ]
+ },
+ {
+  "id": "6-6",
+  "no": 91,
+  "code": "6.6",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Театральное искусство. Сценарное мастерство",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.6 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.6 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.6 Д"
+   }
+  ],
+  "programmeCount": 64,
+  "examples": [
+   "Arts",
+   "Creative Writing",
+   "Theatre Performance"
+  ]
+ },
+ {
+  "id": "6-7",
+  "no": 92,
+  "code": "6.7",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Кино и телевизионные технологии. Анимация",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.7 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.7 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.7 Д"
+   }
+  ],
+  "programmeCount": 78,
+  "examples": [
+   "Cultural and Creative Industries",
+   "Film Studies",
+   "Drama"
+  ]
+ },
+ {
+  "id": "6-8",
+  "no": 93,
+  "code": "6.8",
+  "group": "Creative industries",
+  "groupNo": 6,
+  "nameRu": "Искусствоведение",
+  "levels": [
+   {
+    "level": "bachelor",
+    "code": "6.8 Б"
+   },
+   {
+    "level": "master",
+    "code": "6.8 М"
+   },
+   {
+    "level": "phd",
+    "code": "6.8 Д"
+   }
+  ],
+  "programmeCount": 31,
+  "examples": [
+   "History of Art and Archaeology: General",
+   "Classical Art and Archaeology",
+   "History of Art and Architecture"
+  ]
+ }
+]

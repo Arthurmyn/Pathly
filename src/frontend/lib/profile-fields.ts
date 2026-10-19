@@ -26,7 +26,7 @@ export function profileFields(p: Profile): ProfileField[] {
     { key: "field", label: "Field of study", group: "Education", value: p.field },
     { key: "gpa", label: "GPA", group: "Education", value: p.gpa != null ? `${p.gpa} / 4.0` : null },
     { key: "target", label: "Target degree", group: "Study goals", value: p.targetLevel ? LEVEL[p.targetLevel] : null },
-    { key: "country", label: "Target country", group: "Study goals", value: p.targetCountry },
+    { key: "country", label: "Target countries", group: "Study goals", value: p.targetCountries.length ? p.targetCountries.join(", ") : null },
     { key: "intake", label: "Intake", group: "Study goals", value: p.intake },
     {
       key: "language",

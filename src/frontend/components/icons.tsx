@@ -249,3 +249,9 @@ export const IconPencil = (p: IconProps) => (
     <path d="m4 20 1-4L16.5 4.5a2 2 0 0 1 3 3L8 19l-4 1ZM14 7l3 3" />
   </Svg>
 );
+export const IconSidebar = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="3.5" y="4.5" width="17" height="15" rx="3" />
+    <path d="M9.5 4.5v15" />
+  </Svg>
+);

@@ -19,10 +19,12 @@ export function sourcesFor(reqs: Requirement[]): SourceItem[] {
   return Array.from(seen.values());
 }
 
+const SKIP = new Set(["of", "the", "and", "de", "la", "del", "for", "für", "von", "der", "du", "des"]);
+
 export function initials(name: string): string {
   return name
     .split(/\s+/)
-    .filter(Boolean)
+    .filter((w) => w && !SKIP.has(w.toLowerCase()))
     .slice(0, 2)
     .map((w) => w[0].toUpperCase())
     .join("");

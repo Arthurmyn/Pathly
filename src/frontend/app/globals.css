@@ -316,6 +316,69 @@ h3 {
 .pop {
   animation: pop-in 180ms var(--ease-out) both;
 }
+.task-check {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.task-check::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--primary);
+  transform: scale(0);
+  transition: transform 260ms var(--ease-out);
+}
+.task-check:active:not(:disabled) {
+  transform: scale(0.9);
+}
+.task-check[aria-checked="true"] {
+  border-color: var(--primary);
+}
+.task-check[aria-checked="true"]::before {
+  transform: scale(1.05);
+}
+.task-check svg {
+  position: relative;
+  z-index: 1;
+}
+.task-tick {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset 200ms var(--ease-out) 120ms;
+}
+.task-check[aria-checked="true"] .task-tick {
+  stroke-dashoffset: 0;
+}
+@keyframes task-leave {
+  from {
+    opacity: 1;
+    max-height: 12rem;
+  }
+  to {
+    opacity: 0;
+    max-height: 0;
+    margin-block: 0;
+    padding-block: 0;
+    border-width: 0;
+  }
+}
+.task-leave {
+  overflow: hidden;
+  animation: task-leave 280ms var(--ease-in-out) forwards;
+}
+@keyframes task-flash {
+  from {
+    background: var(--primary-soft);
+  }
+  to {
+    background: var(--surface);
+  }
+}
+.task-flash {
+  animation: task-flash 700ms var(--ease-out);
+}
 .slide-down {
   animation: slide-down 180ms var(--ease-out) both;
 }
@@ -343,7 +406,16 @@ h3 {
   }
   .bar-reveal,
   .ring-arc,
-  .seal-turn {
+  .seal-turn,
+  .task-flash {
+    animation: none;
+  }
+  .task-check,
+  .task-check::before,
+  .task-tick {
+    transition: none;
+  }
+  .task-leave {
     animation: none;
   }
   .stagger-lines .bulletin-row {

@@ -3,16 +3,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import { sampleProfile } from "@/lib/mock-data";
+import { allCountries } from "@/lib/countries";
 import { EXAMS, effectiveTarget, examsFor, type ExamMeta } from "@/lib/exams";
 import { intakeOptions } from "@/lib/intake";
 import { completeness, profileFields } from "@/lib/profile-fields";
 import type { ExamState, IeltsSections, Profile, WorkField } from "@/lib/types";
 import { EMPTY_PROFILE, useAppState } from "./app-state";
-import { CompleteBadge, Field, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
+import { CompleteBadge, Field, MultiSelect, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
 import { ProgressRing } from "./rail";
 import { Button, Card, CardLabel, LinkButton, PageHeader } from "./ui";
 
-const COUNTRIES = ["Kazakhstan", "United States"];
+const COUNTRIES = allCountries();
 const OTHER = "__other";
 const SECTION_NAMES: (keyof IeltsSections)[] = ["listening", "reading", "writing", "speaking"];
 
@@ -181,7 +182,10 @@ function ProfileEditor({ saved }: { saved: Profile }) {
           <Section title="Study goals" badge={<CompleteBadge {...stat.goals} />}>
             <div className="grid gap-4 sm:grid-cols-2">
               <SelectField label="Target degree" value={draft.targetLevel} options={draft.currentDegree ? TARGETS_BY_DEGREE[draft.currentDegree] : ALL_TARGETS} onChange={changeTarget} />
-              <SelectField label="Target country" value={draft.targetCountry} placeholder="Any" options={COUNTRIES.map((c) => ({ value: c, label: c }))} onChange={(v) => set({ targetCountry: v })} />
+              <div className="text-sm font-medium">
+                <span>Target countries</span>
+                <MultiSelect label="Target countries" placeholder="Any country" value={draft.targetCountries} options={COUNTRIES} onChange={(v) => set({ targetCountries: v })} />
+              </div>
               <SelectField label="Intake" value={draft.intake} placeholder="Choose an intake" options={intakes.map((i) => ({ value: i, label: i }))} help="The next three years of Spring, Summer and Fall intakes." onChange={(v) => set({ intake: v })} />
             </div>
           </Section>
@@ -342,14 +346,22 @@ function ProfileEditor({ saved }: { saved: Profile }) {
               ))}
             </ul>
           </Card>
-          <Card>
-            <h2 className="font-semibold">Speed it up with AI</h2>
-            <p className="mt-1 text-sm text-muted">Describe your background in your own words and the fields fill in on this page.</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <LinkButton href="/app/onboarding">Edit with AI</LinkButton>
-              <LinkButton href="/programs" variant="secondary">Find matching programmes</LinkButton>
-            </div>
-          </Card>
+          {percent < 100 ? (
+            <Card>
+              <h2 className="font-semibold">Speed it up with AI</h2>
+              <p className="mt-1 text-sm text-muted">Describe your background in your own words and the fields fill in on this page.</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <LinkButton href="/app/onboarding">Edit with AI</LinkButton>
+                <LinkButton href="/programs" variant="secondary">Find matching programmes</LinkButton>
+              </div>
+            </Card>
+          ) : (
+            <Card>
+              <h2 className="font-semibold">Your profile is complete</h2>
+              <p className="mt-1 text-sm text-muted">See which programmes fit. You can still <Link href="/app/onboarding" className="underline">update it with AI</Link> when something changes.</p>
+              <div className="mt-4"><LinkButton href="/programs">Find matching programmes</LinkButton></div>
+            </Card>
+          )}
           <div className="flex flex-wrap gap-2">
             <Button variant="ghost" onClick={() => { setDraft({ ...sampleProfile }); setJustSaved(false); }}>Use a sample profile</Button>
             <Button variant="ghost" onClick={() => { setDraft(EMPTY_PROFILE); setJustSaved(false); }}>Clear</Button>

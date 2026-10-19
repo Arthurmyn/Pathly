@@ -17,8 +17,10 @@ export function mockOnboardingReply(text: string, profile: Profile): { patch: Pa
   else if (/phd|doctor|докторантур/.test(t)) { patch.targetLevel = "phd"; got.push("target: Doctoral / PhD"); }
   else if (/want.*bachelor|bachelor'?s? in/.test(t)) { patch.targetLevel = "bachelor"; got.push("target: Bachelor's"); }
 
-  if (/\b(us|usa|united states|america|сша)\b/.test(t)) { patch.targetCountry = "United States"; got.push("country: United States"); }
-  else if (/kazakhstan|казахстан/.test(t)) { patch.targetCountry = "Kazakhstan"; got.push("country: Kazakhstan"); }
+  const countries = [...profile.targetCountries];
+  if (/\b(us|usa|united states|america|сша)\b/.test(t) && !countries.includes("United States")) countries.push("United States");
+  if (/kazakhstan|казахстан/.test(t) && !countries.includes("Kazakhstan")) countries.push("Kazakhstan");
+  if (countries.length !== profile.targetCountries.length) { patch.targetCountries = countries; got.push(`countries: ${countries.join(", ")}`); }
 
   const gpa = t.match(/gpa\s*(?:of|is|:)?\s*(\d(?:[.,]\d{1,2})?)/);
   if (gpa) { const v = Number(gpa[1].replace(",", ".")); if (v >= 0 && v <= 4) { patch.gpa = v; got.push(`GPA: ${v}`); } }
@@ -56,7 +58,7 @@ export function mockOnboardingReply(text: string, profile: Profile): { patch: Pa
 export function nextQuestion(p: Profile): string {
   if (!p.currentDegree) return "What is your current education: high school, a Bachelor's or a Master's degree?";
   if (!p.targetLevel) return "Which degree do you want to study next?";
-  if (!p.targetCountry) return "Which country are you aiming for?";
+  if (p.targetCountries.length === 0) return "Which countries are you aiming for?";
   if (p.gpa == null) return "What is your GPA on a 4.0 scale?";
   if (!p.language.test) return "Did you take an English test, such as IELTS or TOEFL?";
   if (!p.intake) return "Which intake do you plan to start in, for example Fall 2027?";

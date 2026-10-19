@@ -21,8 +21,8 @@ const STATUS_ICON: { [K in DataStatus]: ReactNode } = {
   conflict: <IconConflict size={13} />,
 };
 
-/** Describes the DATA: how far a stored record can be trusted. Small badge with icon and text. */
-export function StatusBadge({ status }: { status: DataStatus }) {
+/** Describes the DATA: how far a stored record can be trusted. Small badge with icon and text; `plain` drops the icon where many badges repeat in one view. */
+export function StatusBadge({ status, plain = false }: { status: DataStatus; plain?: boolean }) {
   return (
     <span
       title={STATUS_HELP[status]}
@@ -30,7 +30,7 @@ export function StatusBadge({ status }: { status: DataStatus }) {
       className="badge-status"
       style={{ background: `var(--st-${status}-bg)`, color: `var(--st-${status}-fg)`, borderColor: `var(--st-${status}-bd)` }}
     >
-      {STATUS_ICON[status]}
+      {plain ? null : STATUS_ICON[status]}
       {STATUS_LABEL[status]}
     </span>
   );

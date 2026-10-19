@@ -29,6 +29,7 @@ interface Input {
 export function buildNotices(i: Input): Notice[] {
   const n = i.settings.notifications;
   const out: Notice[] = [];
+  if (!n.inApp) return out;
   const { percent } = completeness(i.profile);
 
   if (percent < 100) {
@@ -47,9 +48,9 @@ export function buildNotices(i: Input): Notice[] {
       }
     }
 
-    if (n.deadlines && n.inApp && effectiveStatus(program.deadline, i.today) === "verified" && program.deadline.date) {
+    if (effectiveStatus(program.deadline, i.today) === "verified" && program.deadline.date) {
       const left = daysBetween(i.today, program.deadline.date);
-      const window = [...n.deadlineDays].sort((a, b) => a - b).find((d) => left >= 0 && left <= d);
+      const window = [...n.reminderDays].sort((a, b) => a - b).find((d) => left >= 0 && left <= d);
       if (window !== undefined) {
         out.push({ id: `deadline-${slug}-${window}`, kind: "deadline", title: `${program.name}: deadline in ${left} day${left === 1 ? "" : "s"}`, text: `Verified deadline ${formatDate(program.deadline.date)}.`, href: `/app/applications/${slug}` });
       }

@@ -22,7 +22,7 @@ export const EMPTY_PROFILE: Profile = {
   currentDegree: null,
   field: null,
   targetLevel: null,
-  targetCountry: null,
+  targetCountries: [],
   gpa: null,
   language: { test: null, score: null, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
   exams: [],
@@ -48,6 +48,11 @@ interface DemoState {
   settings: Settings;
   /** Ids of notifications the applicant has read. */
   seen: string[];
+  /** Sidebar is collapsed to icons. */
+  collapsed: boolean;
+  /** Programmes the applicant reports as enrolled in. */
+  enrolled: string[];
+  registeredAt: string | null;
 }
 
 const INITIAL: DemoState = {
@@ -61,6 +66,9 @@ const INITIAL: DemoState = {
   requests: [],
   settings: DEFAULT_SETTINGS,
   seen: [],
+  collapsed: false,
+  enrolled: [],
+  registeredAt: null,
 };
 
 const STORAGE_KEY = "pathly-demo-v1";
@@ -84,6 +92,8 @@ interface Api extends DemoState {
   requestVerification: (id: string) => void;
   resetDemo: () => void;
   markSeen: (ids: string[]) => void;
+  setCollapsed: (v: boolean) => void;
+  toggleEnrolled: (slug: string) => void;
   updateSettings: <K extends keyof Settings>(section: K, patch: Partial<Settings[K]>) => void;
 }
 
@@ -101,7 +111,9 @@ function loadOnce() {
     if (raw) {
       const saved = JSON.parse(raw) as Partial<DemoState>;
       // Older saved states miss newer profile fields; fill them from the empty profile.
-      const profile = { ...EMPTY_PROFILE, ...saved.profile, language: { ...EMPTY_PROFILE.language, ...saved.profile?.language, sections: { ...EMPTY_PROFILE.language.sections, ...saved.profile?.language?.sections } } };
+      const old = saved.profile as (Partial<Profile> & { targetCountry?: string | null }) | undefined;
+      const migrated = old && !old.targetCountries && old.targetCountry ? { targetCountries: [old.targetCountry] } : {};
+      const profile = { ...EMPTY_PROFILE, ...saved.profile, ...migrated, language: { ...EMPTY_PROFILE.language, ...saved.profile?.language, sections: { ...EMPTY_PROFILE.language.sections, ...saved.profile?.language?.sections } } };
       current = { ...INITIAL, ...saved, profile, settings: normalizeSettings(saved.settings) };
     }
   } catch {
@@ -161,7 +173,7 @@ function buildApi(state: DemoState, ready: boolean): Api {
   return {
     ...state,
     ready,
-    signIn: (role) => update((s) => ({ ...s, role })),
+    signIn: (role) => update((s) => ({ ...s, role, registeredAt: s.registeredAt ?? s.today })),
     signOut: () => update((s) => ({ ...s, role: "guest" })),
     setToday: (iso) => update((s) => ({ ...s, today: iso })),
     updateProfile: (patch) => update((s) => ({ ...s, profile: { ...s.profile, ...patch } })),
@@ -206,6 +218,8 @@ function buildApi(state: DemoState, ready: boolean): Api {
     },
     requestVerification: (id) => update((s) => (s.requests.includes(id) ? s : { ...s, requests: [...s.requests, id] })),
     resetDemo: () => update(() => INITIAL),
+    setCollapsed: (v) => update((s) => ({ ...s, collapsed: v })),
+    toggleEnrolled: (slug) => update((s) => ({ ...s, enrolled: s.enrolled.includes(slug) ? s.enrolled.filter((x) => x !== slug) : [...s.enrolled, slug] })),
     markSeen: (ids) => update((s) => ({ ...s, seen: Array.from(new Set([...s.seen, ...ids])) })),
     updateSettings: (section, patch) => update((s) => ({ ...s, settings: { ...s.settings, [section]: { ...s.settings[section], ...patch } } })),
   };

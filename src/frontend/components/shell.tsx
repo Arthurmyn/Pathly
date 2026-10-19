@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useMemo, useState, type ComponentType, type FormEvent, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { useMemo, useState, type ComponentType, type ReactNode } from "react";
+import { getInstitution } from "@/lib/institutions";
 import { getProgram, getRequirement } from "@/lib/mock-data";
 import { effectiveStatus } from "@/lib/status";
 import { buildNotices, type Notice } from "@/lib/notifications";
@@ -14,6 +15,7 @@ import {
   IconChat,
   IconChecklist,
   IconClock,
+  IconCap,
   IconCompass,
   IconDatabase,
   IconHome,
@@ -24,11 +26,13 @@ import {
   IconRoute,
   IconSearch,
   IconSettings,
+  IconSidebar,
   IconUser,
   IconX,
 } from "./icons";
 import { Logo } from "./logo";
 import { NotificationsMenu } from "./notifications-menu";
+import { setSettingsQuery, useSettingsQuery } from "@/lib/search-store";
 import { RequireRole } from "./require-role";
 
 export type Area = "public" | "app" | "admin";
@@ -54,6 +58,7 @@ function navFor(area: Area, role: Role, queueCount: number): NavGroup[] {
           { href: "/admin", label: "Overview", icon: IconHome, exact: true },
           { href: "/admin/queue", label: "Verification queue", icon: IconDatabase, badge: queueCount },
           { href: "/admin/audit-log", label: "Audit log", icon: IconClock },
+          { href: "/admin/users", label: "Users", icon: IconUser },
         ],
       },
       { label: "Site", items: [{ href: "/", label: "Public site", icon: IconCompass, exact: true }] },
@@ -68,6 +73,7 @@ function navFor(area: Area, role: Role, queueCount: number): NavGroup[] {
           { href: "/app/roadmap", label: "Roadmap", icon: IconChecklist },
           { href: "/app/applications", label: "Applications", icon: IconRoute },
           { href: "/programs", label: "Programmes", icon: IconLayers },
+          { href: "/institutions", label: "Institutions", icon: IconCap },
         ],
       },
       {
@@ -92,6 +98,7 @@ function navFor(area: Area, role: Role, queueCount: number): NavGroup[] {
       items: [
         { href: "/", label: "Home", icon: IconHome, exact: true },
         { href: "/programs", label: "Programmes", icon: IconLayers },
+        { href: "/institutions", label: "Institutions", icon: IconCap },
         { href: "/how-it-works", label: "How it works", icon: IconBook },
       ],
     },
@@ -116,6 +123,7 @@ interface Crumb {
 const STATIC_CRUMBS: { [path: string]: Crumb[] } = {
   "/": [{ label: "Home" }],
   "/programs": [{ label: "Home", href: "/" }, { label: "Programmes" }],
+  "/institutions": [{ label: "Home", href: "/" }, { label: "Institutions" }],
   "/how-it-works": [{ label: "Home", href: "/" }, { label: "How it works" }],
   "/login": [{ label: "Home", href: "/" }, { label: "Log in" }],
   "/register": [{ label: "Home", href: "/" }, { label: "Get started" }],
@@ -130,6 +138,7 @@ const STATIC_CRUMBS: { [path: string]: Crumb[] } = {
   "/admin": [{ label: "Admin", href: "/admin" }, { label: "Overview" }],
   "/admin/queue": [{ label: "Admin", href: "/admin" }, { label: "Verification queue" }],
   "/admin/audit-log": [{ label: "Admin", href: "/admin" }, { label: "Audit log" }],
+  "/admin/users": [{ label: "Admin", href: "/admin" }, { label: "Users" }],
 };
 
 export function crumbsFor(pathname: string): Crumb[] {
@@ -138,6 +147,9 @@ export function crumbsFor(pathname: string): Crumb[] {
   const parts = path.split("/").filter(Boolean);
   if (parts[0] === "programs" && parts[1]) {
     return [{ label: "Home", href: "/" }, { label: "Programmes", href: "/programs" }, { label: getProgram(parts[1])?.name ?? parts[1] }];
+  }
+  if (parts[0] === "institutions" && parts[1]) {
+    return [{ label: "Home", href: "/" }, { label: "Institutions", href: "/institutions" }, { label: getInstitution(parts[1])?.name ?? parts[1] }];
   }
   if (parts[0] === "app" && parts[1] === "applications" && parts[2]) {
     return [{ label: "Workspace", href: "/app" }, { label: "Applications", href: "/app/applications" }, { label: getProgram(parts[2])?.name ?? parts[2] }];
@@ -148,29 +160,33 @@ export function crumbsFor(pathname: string): Crumb[] {
   return [{ label: "Home", href: "/" }, { label: parts[parts.length - 1] ?? "" }];
 }
 
-function SidebarNav({ groups, onNavigate }: { groups: NavGroup[]; onNavigate?: () => void }) {
+function SidebarNav({ groups, onNavigate, collapsed = false }: { groups: NavGroup[]; onNavigate?: () => void; collapsed?: boolean }) {
   const pathname = usePathname();
   return (
-    <nav aria-label="Main" className="space-y-7">
+    <nav aria-label="Main" className={collapsed ? "space-y-4" : "space-y-7"}>
       {groups.map((g) => (
         <div key={g.label}>
-          <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.08em] text-muted">{g.label}</p>
+          {collapsed ? <div className="mx-2 mb-2 h-px bg-line" aria-hidden="true" /> : <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.08em] text-muted">{g.label}</p>}
           <ul className="space-y-0.5">
             {g.items.map((n) => {
               const active = n.exact ? pathname === n.href : pathname === n.href || pathname.startsWith(n.href + "/");
               const Icon = n.icon;
               return (
                 <li key={n.href} className="relative">
-                  {active ? <span className="absolute -left-5 top-1/2 h-7 w-[3px] -translate-y-1/2 rounded-r-full bg-[var(--nav-line)]" aria-hidden="true" /> : null}
+                  {active ? <span className={`absolute ${collapsed ? "-left-3" : "-left-5"} top-1/2 h-7 w-[3px] -translate-y-1/2 rounded-r-full bg-[var(--nav-line)]`} aria-hidden="true" /> : null}
                   <Link
                     href={n.href}
                     onClick={onNavigate}
                     aria-current={active ? "page" : undefined}
-                    className={`flex items-center gap-3 rounded-xl px-2 py-2 text-[15px] transition-colors duration-150 ${active ? "font-semibold text-[var(--nav-active)]" : "text-ink hover:bg-surface-2"}`}
+                    title={collapsed ? n.label : undefined}
+                    aria-label={collapsed ? n.label : undefined}
+                    className={`relative flex items-center gap-3 rounded-xl px-2 py-2 text-[15px] transition-colors duration-150 ${collapsed ? "justify-center" : ""} ${active ? "font-semibold text-[var(--nav-active)]" : "text-ink hover:bg-surface-2"}`}
                   >
                     <Icon size={19} />
-                    <span className="flex-1">{n.label}</span>
-                    {n.badge ? <span className="rounded-full bg-primary px-2 text-[11px] font-semibold leading-5 text-primary-fg">{n.badge}</span> : null}
+                    {collapsed ? null : <span className="flex-1">{n.label}</span>}
+                    {n.badge ? (
+                      collapsed ? <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true" /> : <span className="rounded-full bg-primary px-2 text-[11px] font-semibold leading-5 text-primary-fg">{n.badge}</span>
+                    ) : null}
                   </Link>
                 </li>
               );
@@ -182,29 +198,28 @@ function SidebarNav({ groups, onNavigate }: { groups: NavGroup[]; onNavigate?: (
   );
 }
 
-function SidebarFooter({ role, onSignOut }: { role: Role; onSignOut: () => void }) {
+function SidebarFooter({ role, onSignOut, collapsed = false }: { role: Role; onSignOut: () => void; collapsed?: boolean }) {
+  if (role === "guest") return <div className="mt-auto" />;
   return (
-    <div className="mt-auto pt-8 text-sm text-muted">
-      {role !== "guest" ? (
-        <button type="button" onClick={onSignOut} className="flex items-center gap-3 rounded-xl px-2 py-2 text-ink transition-colors duration-150 hover:bg-surface-2">
-          <IconLogout size={19} /> Sign out
-        </button>
-      ) : null}
-      <p className="mt-3 px-2 text-xs">Pathly · diploma project, Astana IT University</p>
+    <div className="mt-auto pt-8 text-sm">
+      <button
+        type="button"
+        onClick={onSignOut}
+        title={collapsed ? "Sign out" : undefined}
+        aria-label={collapsed ? "Sign out" : undefined}
+        className={`flex w-full items-center gap-3 rounded-xl px-2 py-2 text-ink transition-colors duration-150 hover:bg-surface-2 ${collapsed ? "justify-center" : ""}`}
+      >
+        <IconLogout size={19} /> {collapsed ? null : "Sign out"}
+      </button>
     </div>
   );
 }
 
 function Topbar({ role, onMenu, attention, notices }: { role: Role; onMenu: () => void; attention: number; notices: Notice[] }) {
   const pathname = usePathname();
-  const router = useRouter();
-  const [q, setQ] = useState("");
   const crumbs = crumbsFor(pathname);
-
-  function search(e: FormEvent) {
-    e.preventDefault();
-    router.push(q.trim() ? `/programs?q=${encodeURIComponent(q.trim())}` : "/programs");
-  }
+  const onSettings = pathname.startsWith("/app/settings");
+  const q = useSettingsQuery();
 
   const bellHref = role === "admin" ? "/admin/queue" : "/app";
   return (
@@ -229,10 +244,12 @@ function Topbar({ role, onMenu, attention, notices }: { role: Role; onMenu: () =
         </nav>
       </div>
       <div className="flex items-center gap-2">
-        <form onSubmit={search} role="search" className="flex w-48 items-center gap-2 rounded-full bg-surface-2 px-4 py-2 sm:w-64">
-          <IconSearch size={16} />
-          <input value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search programmes" placeholder="Search programmes…" className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted" />
-        </form>
+        {onSettings ? (
+          <div role="search" className="flex w-48 items-center gap-2 rounded-full bg-surface-2 px-4 py-2 sm:w-64">
+            <IconSearch size={16} />
+            <input value={q} onChange={(e) => setSettingsQuery(e.target.value)} aria-label="Search settings" placeholder="Search settings…" className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted" />
+          </div>
+        ) : null}
         {role === "guest" ? (
           <>
             <Link href="/login" className="hidden rounded-full px-3 py-2 text-sm font-semibold hover:bg-surface-2 sm:inline-flex">Log in</Link>
@@ -249,7 +266,7 @@ function Topbar({ role, onMenu, attention, notices }: { role: Role; onMenu: () =
               <NotificationsMenu notices={notices} />
             )}
             {role === "applicant" ? (
-              <Link href="/app/settings" className="rounded-full p-2 hover:bg-surface-2" aria-label="Settings">
+              <Link href="/app/settings" className={`rounded-full p-2 hover:bg-surface-2 ${onSettings ? "text-[var(--nav-active)]" : ""}`} aria-label="Settings" aria-current={onSettings ? "page" : undefined}>
                 <IconSettings size={19} />
               </Link>
             ) : null}
@@ -269,6 +286,7 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const role = state.ready ? state.role : "guest";
+  const collapsed = state.ready && state.collapsed;
 
   const queueCount = area === "admin" || role === "admin" ? buildQueue(state.allRequirements(), state.today).length : 0;
   const attention =
@@ -292,10 +310,22 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
   };
   const inner = (
     <div className="flex min-h-screen bg-page">
-      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-y-auto px-5 py-6 md:flex" aria-label="Sidebar">
-        <div className="mb-9 px-2"><Logo href={area === "admin" ? "/admin" : role === "applicant" ? "/app" : "/"} /></div>
-        <SidebarNav groups={groups} />
-        <SidebarFooter role={role} onSignOut={state.signOut} />
+      <aside className={`sticky top-0 hidden h-screen shrink-0 flex-col overflow-y-auto py-6 transition-[width] duration-200 md:flex ${collapsed ? "w-[4.5rem] px-3" : "w-64 px-5"}`} aria-label="Sidebar">
+        <div className={`mb-9 flex ${collapsed ? "flex-col items-center gap-4" : "items-center justify-between px-2"}`}>
+          <Logo href={area === "admin" ? "/admin" : role === "applicant" ? "/app" : "/"} compact={collapsed} />
+          <button
+            type="button"
+            onClick={() => state.setCollapsed(!collapsed)}
+            aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+            aria-expanded={!collapsed}
+            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+            className="press rounded-full p-2 text-muted hover:bg-surface-2 hover:text-ink"
+          >
+            <IconSidebar size={18} />
+          </button>
+        </div>
+        <SidebarNav groups={groups} collapsed={collapsed} />
+        <SidebarFooter role={role} onSignOut={state.signOut} collapsed={collapsed} />
       </aside>
 
       {open ? (

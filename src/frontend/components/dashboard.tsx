@@ -75,7 +75,7 @@ export function Dashboard() {
               <li key={`${t.slug}-${t.id}`} className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] px-4 py-3">
                 <p className="font-medium">{t.title}</p>
                 <p className="text-sm text-muted">{t.program} · {t.dueDate ? `due ${formatDate(t.dueDate)}` : "date pending"} · {t.reason}</p>
-                <Link href={`/app/applications/${t.slug}`} className="mt-1 inline-block text-sm text-primary hover:underline">Open roadmap</Link>
+                <Link href="/app/roadmap" className="mt-1 inline-block text-sm text-primary hover:underline">Open roadmap</Link>
               </li>
             ))}
           </ul>

@@ -69,6 +69,8 @@ export interface Program {
   level: DegreeLevel;
   field: string;
   language: string;
+  /** How the programme is taught. */
+  format: "On campus" | "Online" | "Hybrid";
   officialUrl: string;
   summary: string;
   deadline: Deadline;
@@ -90,7 +92,8 @@ export interface Profile {
   currentDegree: "high_school" | "bachelor" | "master" | null;
   field: string | null;
   targetLevel: DegreeLevel | null;
-  targetCountry: string | null;
+  /** Countries the applicant is willing to study in. Empty means any. */
+  targetCountries: string[];
   /** GPA on a 4.0 scale. */
   gpa: number | null;
   language: { test: "ielts" | "toefl" | null; score: number | null; sections: IeltsSections; planned: boolean };
