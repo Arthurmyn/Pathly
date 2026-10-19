@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { formatDate } from "@/lib/dates";
 import { effectiveStatus } from "@/lib/status";
@@ -66,7 +67,7 @@ export function UniversityCard({ uni, children }: { uni: University; children: R
       <div className="flex items-center gap-3">
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-fg" aria-hidden="true">{initials(uni.name)}</span>
         <div className="min-w-0">
-          <p className="truncate font-semibold">{uni.name}</p>
+          <p className="truncate font-semibold"><Link href={`/institutions/${uni.id}`} className="hover:underline">{uni.name}</Link></p>
           <p className="truncate text-sm text-muted">{uni.city}, {uni.country}</p>
         </div>
       </div>

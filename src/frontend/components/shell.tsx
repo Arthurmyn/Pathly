@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo, useState, type ComponentType, type ReactNode } from "react";
+import { getInstitution } from "@/lib/institutions";
 import { getProgram, getRequirement } from "@/lib/mock-data";
 import { effectiveStatus } from "@/lib/status";
 import { buildNotices, type Notice } from "@/lib/notifications";
@@ -14,6 +15,7 @@ import {
   IconChat,
   IconChecklist,
   IconClock,
+  IconCap,
   IconCompass,
   IconDatabase,
   IconHome,
@@ -70,6 +72,7 @@ function navFor(area: Area, role: Role, queueCount: number): NavGroup[] {
           { href: "/app/roadmap", label: "Roadmap", icon: IconChecklist },
           { href: "/app/applications", label: "Applications", icon: IconRoute },
           { href: "/programs", label: "Programmes", icon: IconLayers },
+          { href: "/institutions", label: "Institutions", icon: IconCap },
         ],
       },
       {
@@ -94,6 +97,7 @@ function navFor(area: Area, role: Role, queueCount: number): NavGroup[] {
       items: [
         { href: "/", label: "Home", icon: IconHome, exact: true },
         { href: "/programs", label: "Programmes", icon: IconLayers },
+        { href: "/institutions", label: "Institutions", icon: IconCap },
         { href: "/how-it-works", label: "How it works", icon: IconBook },
       ],
     },
@@ -118,6 +122,7 @@ interface Crumb {
 const STATIC_CRUMBS: { [path: string]: Crumb[] } = {
   "/": [{ label: "Home" }],
   "/programs": [{ label: "Home", href: "/" }, { label: "Programmes" }],
+  "/institutions": [{ label: "Home", href: "/" }, { label: "Institutions" }],
   "/how-it-works": [{ label: "Home", href: "/" }, { label: "How it works" }],
   "/login": [{ label: "Home", href: "/" }, { label: "Log in" }],
   "/register": [{ label: "Home", href: "/" }, { label: "Get started" }],
@@ -140,6 +145,9 @@ export function crumbsFor(pathname: string): Crumb[] {
   const parts = path.split("/").filter(Boolean);
   if (parts[0] === "programs" && parts[1]) {
     return [{ label: "Home", href: "/" }, { label: "Programmes", href: "/programs" }, { label: getProgram(parts[1])?.name ?? parts[1] }];
+  }
+  if (parts[0] === "institutions" && parts[1]) {
+    return [{ label: "Home", href: "/" }, { label: "Institutions", href: "/institutions" }, { label: getInstitution(parts[1])?.name ?? parts[1] }];
   }
   if (parts[0] === "app" && parts[1] === "applications" && parts[2]) {
     return [{ label: "Workspace", href: "/app" }, { label: "Applications", href: "/app/applications" }, { label: getProgram(parts[2])?.name ?? parts[2] }];

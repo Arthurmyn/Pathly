@@ -9,21 +9,34 @@ import { StatusBadge } from "./badges";
 import { Select } from "./form-controls";
 import { CHAT_FRAME, Composer, MessageList, QuickReplies, nowTime, useDelayed, type ChatMessage } from "./chat";
 import { IconLink, IconShieldCheck } from "./icons";
-import { Button, Card, PageHeader } from "./ui";
+import { Button, Card, EmptyState, LinkButton, PageHeader } from "./ui";
 
 const SUGGESTED = ["What TOEFL score do I need?", "What GPA is required?", "Which exams do I need?", "How much work experience do they want?"];
 
 export function AdvisorChat() {
   const { shortlist, today, requirementsFor, requests, requestVerification, ready } = useAppState();
-  const first = shortlist[0] ?? programs[0].slug;
   const [slug, setSlug] = useState<string | null>(null);
   const [typing, setTyping] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  // One conversation per programme, so switching the context shows that programme's own thread.
+  const [threads, setThreads] = useState<{ [slug: string]: ChatMessage[] }>({});
   const later = useDelayed();
   if (!ready) return <div className="min-h-[60vh]" aria-busy="true" />;
 
-  const current = slug ?? first;
-  const program = programs.find((p) => p.slug === current)!;
+  const applications = shortlist.map((s) => programs.find((p) => p.slug === s)).filter((p): p is (typeof programs)[number] => !!p);
+  if (applications.length === 0) {
+    return (
+      <div>
+        <PageHeader title="Advisor" subtitle="Answers use verified records only and always show their source." />
+        <EmptyState title="Add a programme to your applications first" action={<LinkButton href="/programs">Browse programmes</LinkButton>}>
+          The advisor answers questions about the programmes you applied to, so it needs at least one.
+        </EmptyState>
+      </div>
+    );
+  }
+  const current = slug && shortlist.includes(slug) ? slug : applications[0].slug;
+  const program = applications.find((p) => p.slug === current)!;
+  const messages = threads[current] ?? [];
+  const addMessage = (to: string, m: Omit<ChatMessage, "id">) => setThreads((t) => ({ ...t, [to]: [...(t[to] ?? []), { ...m, id: (t[to]?.length ?? 0) + 1 }] }));
 
   function reply(r: AdvisorReply, id: number): ChatMessage {
     const extra = (
@@ -56,12 +69,14 @@ export function AdvisorChat() {
   }
 
   function ask(text: string) {
-    setMessages((m) => [...m, { id: m.length + 1, from: "user", text, time: nowTime() }]);
+    const to = current;
+    addMessage(to, { from: "user", text, time: nowTime() });
     setTyping(true);
     later(() => {
-      const r = mockAdvisorReply(text, requirementsFor(current), program.name, today);
+      const r = mockAdvisorReply(text, requirementsFor(to), program.name, today);
       setTyping(false);
-      setMessages((m) => [...m, reply(r, m.length + 1)]);
+      const m = reply(r, 0);
+      addMessage(to, { from: m.from, text: m.text, time: m.time, extra: m.extra });
     }, 800);
   }
 
@@ -77,8 +92,8 @@ export function AdvisorChat() {
               label="Context programme"
               placeholder={null}
               value={current}
-              options={programs.map((p) => ({ value: p.slug, label: p.name }))}
-              onChange={(v) => { setSlug(v); setMessages([]); }}
+              options={applications.map((p) => ({ value: p.slug, label: p.name }))}
+              onChange={(v) => setSlug(v)}
             />
           </div>
           <MessageList

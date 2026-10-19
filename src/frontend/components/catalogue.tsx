@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState } from "react";
 import { formatDate } from "@/lib/dates";
 import { LEVEL_LABEL, programs, universities } from "@/lib/mock-data";
 import { matchesPreferences } from "@/lib/settings";
@@ -12,6 +12,7 @@ import { useAppState } from "./app-state";
 import { StatusBadge } from "./badges";
 import { Select } from "./form-controls";
 import { IconChevron, IconFilter, IconList, IconSearch } from "./icons";
+import { FilterGroup, Option } from "./filter-ui";
 import { EmptyState, IllustrativeNote, Tag } from "./ui";
 
 type Sort = "name" | "deadline" | "verified";
@@ -62,30 +63,6 @@ const IconGrid = (p: { size?: number }) => (
     <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5" />
   </svg>
 );
-
-/** A collapsible group of filter options with live counts. */
-function FilterGroup({ title, children }: { title: string; children: ReactNode }) {
-  const [open, setOpen] = useState(true);
-  return (
-    <section className="border-b border-line py-4 last:border-b-0">
-      <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} className="flex w-full items-center gap-2 text-left font-semibold">
-        <span className={`text-muted transition-transform duration-150 ${open ? "rotate-90" : ""}`}><IconChevron size={14} /></span>
-        {title}
-      </button>
-      {open ? <div className="mt-3 space-y-1">{children}</div> : null}
-    </section>
-  );
-}
-
-function Option({ type, name, label, count, checked, onChange }: { type: "radio" | "checkbox"; name: string; label: string; count?: number; checked: boolean; onChange: () => void }) {
-  return (
-    <label className={`flex cursor-pointer items-center gap-2.5 rounded-lg px-1 py-1 text-sm ${count === 0 && !checked ? "text-muted-2" : ""}`}>
-      <input type={type} name={name} checked={checked} onChange={onChange} className="h-4 w-4 shrink-0 accent-[var(--primary)]" />
-      <span className="min-w-0 flex-1">{label}</span>
-      {count !== undefined ? <span className="rounded-full bg-surface-2 px-2 text-xs tabular-nums text-muted">{count}</span> : null}
-    </label>
-  );
-}
 
 export function Catalogue() {
   const { today, requirementsFor, settings, profile } = useAppState();

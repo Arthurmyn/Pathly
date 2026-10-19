@@ -1,0 +1,4403 @@
+[
+ {
+  "id": "bolashak-1-australian-national-university",
+  "no": 1,
+  "name": "Australian National University",
+  "nameRu": "Австралийский национальный университет",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "http://www.anu.edu.au/"
+ },
+ {
+  "id": "bolashak-2-curtin-university",
+  "no": 2,
+  "name": "Curtin University",
+  "nameRu": "Университет Кертин",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.curtin.edu.au/"
+ },
+ {
+  "id": "bolashak-3-deakin-university",
+  "no": 3,
+  "name": "Deakin University",
+  "nameRu": "Университет Дикина",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.deakin.edu.au/"
+ },
+ {
+  "id": "bolashak-4-macquarie-university",
+  "no": 4,
+  "name": "Macquarie University",
+  "nameRu": "Университет Маккуори",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.mq.edu.au/"
+ },
+ {
+  "id": "bolashak-5-monash-university",
+  "no": 5,
+  "name": "Monash University",
+  "nameRu": "Университет Монаша",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.unimelb.edu.au"
+ },
+ {
+  "id": "bolashak-6-queensland-university-of-technology",
+  "no": 6,
+  "name": "Queensland University of Technology",
+  "nameRu": "Квинслендский технологический университет",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.qut.edu.au/"
+ },
+ {
+  "id": "bolashak-7-university-of-adelaide",
+  "no": 7,
+  "name": "University of Adelaide",
+  "nameRu": "Университет Аделаиды",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.adelaide.edu.au/"
+ },
+ {
+  "id": "bolashak-8-university-of-melbourne",
+  "no": 8,
+  "name": "University of Melbourne",
+  "nameRu": "Университет Мельбурна",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.unimelb.edu.au"
+ },
+ {
+  "id": "bolashak-9-university-of-new-south-wales",
+  "no": 9,
+  "name": "University of New South Wales",
+  "nameRu": "Университет Нового Южного Уэльса",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.unsw.edu.au"
+ },
+ {
+  "id": "bolashak-10-university-of-queensland",
+  "no": 10,
+  "name": "University of Queensland",
+  "nameRu": "Университет Квинсленда",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.uq.edu.au"
+ },
+ {
+  "id": "bolashak-11-university-of-sydney",
+  "no": 11,
+  "name": "University of Sydney",
+  "nameRu": "Университет Сиднея",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.usyd.edu.au"
+ },
+ {
+  "id": "bolashak-12-university-of-technology-sydney",
+  "no": 12,
+  "name": "University of Technology Sydney",
+  "nameRu": "Технологический университет Сиднея",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.uts.edu.au/"
+ },
+ {
+  "id": "bolashak-13-university-of-western-australia",
+  "no": 13,
+  "name": "University of Western Australia",
+  "nameRu": "Университет Западной Австралии",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.uwa.edu.au/"
+ },
+ {
+  "id": "bolashak-14-university-of-wollongong",
+  "no": 14,
+  "name": "University of Wollongong",
+  "nameRu": "Университет Вуллонгонг",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.uow.edu.au/"
+ },
+ {
+  "id": "bolashak-15-university-of-newcastle",
+  "no": 15,
+  "name": "University of Newcastle",
+  "nameRu": "Университет Ньюкасла",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.newcastle.edu.au/"
+ },
+ {
+  "id": "bolashak-16-swinburne-university-of-technology",
+  "no": 16,
+  "name": "Swinburne University of Technology",
+  "nameRu": "Технологический Университет Суинберна",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.swinburne.edu.au/"
+ },
+ {
+  "id": "bolashak-17-universitat-innsbruck",
+  "no": 17,
+  "name": "Universität Innsbruck",
+  "nameRu": "Инсбрукский университет им. Леопольда и Франца",
+  "country": "Austria",
+  "countryRu": "Австрия",
+  "websiteUrl": "https://www.uibk.ac.at/"
+ },
+ {
+  "id": "bolashak-18-university-of-vienna",
+  "no": 18,
+  "name": "University of Vienna",
+  "nameRu": "Венский университет",
+  "country": "Austria",
+  "countryRu": "Австрия",
+  "websiteUrl": "https://www.univie.ac.at/en/"
+ },
+ {
+  "id": "bolashak-19-medical-university-of-vienna",
+  "no": 19,
+  "name": "Medical University of Vienna",
+  "nameRu": "Венский медицинский университет",
+  "country": "Austria",
+  "countryRu": "Австрия",
+  "websiteUrl": "https://www.meduniwien.ac.at/web/en/"
+ },
+ {
+  "id": "bolashak-20-ghent-university",
+  "no": 20,
+  "name": "Ghent University",
+  "nameRu": "Гентский университет",
+  "country": "Belgium",
+  "countryRu": "Королевство Бельгия",
+  "websiteUrl": "https://www.ugent.be/en"
+ },
+ {
+  "id": "bolashak-21-ku-leuven",
+  "no": 21,
+  "name": "KU Leuven",
+  "nameRu": "Левенский католический университет",
+  "country": "Belgium",
+  "countryRu": "Королевство Бельгия",
+  "websiteUrl": "https://www.kuleuven.be/english/"
+ },
+ {
+  "id": "bolashak-22-universite-libre-de-bruxelles",
+  "no": 22,
+  "name": "Universite libre de Bruxelles",
+  "nameRu": "Брюссельский свободный университет",
+  "country": "Belgium",
+  "countryRu": "Королевство Бельгия",
+  "websiteUrl": "https://www.ulb.be/"
+ },
+ {
+  "id": "bolashak-23-university-of-antwerp",
+  "no": 23,
+  "name": "University of Antwerp",
+  "nameRu": "Антверпенский университет",
+  "country": "Belgium",
+  "countryRu": "Королевство Бельгия",
+  "websiteUrl": "https://www.uantwerpen.be/en/"
+ },
+ {
+  "id": "bolashak-24-universite-catholique-de-louvain",
+  "no": 24,
+  "name": "Université catholique de Louvain",
+  "nameRu": "Лувенский католический университет",
+  "country": "Belgium",
+  "countryRu": "Королевство Бельгия",
+  "websiteUrl": "https://uclouvain.be/fr/index.html"
+ },
+ {
+  "id": "bolashak-25-university-of-sao-paulo",
+  "no": 25,
+  "name": "University of Sao Paulo",
+  "nameRu": "Университет Сан-Паулу",
+  "country": "Brazil",
+  "countryRu": "Бразилия",
+  "websiteUrl": "https://www5.usp.br/#english"
+ },
+ {
+  "id": "bolashak-26-university-of-szeged",
+  "no": 26,
+  "name": "University of Szeged",
+  "nameRu": "Сегедский университет",
+  "country": "Hungary",
+  "countryRu": "Венгрия",
+  "websiteUrl": "https://u-szeged.hu/english/master-programmes"
+ },
+ {
+  "id": "bolashak-27-university-of-debrecen",
+  "no": 27,
+  "name": "University of Debrecen",
+  "nameRu": "Дебреценский университет",
+  "country": "Hungary",
+  "countryRu": "Венгрия",
+  "websiteUrl": "https://www.edu.unideb.hu/p/graduate-programs"
+ },
+ {
+  "id": "bolashak-28-cardiff-university",
+  "no": 28,
+  "name": "Cardiff University",
+  "nameRu": "Университет Кардифф",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.cardiff.ac.uk/"
+ },
+ {
+  "id": "bolashak-29-durham-university",
+  "no": 29,
+  "name": "Durham University",
+  "nameRu": "Университет Дарема",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.dur.ac.uk/"
+ },
+ {
+  "id": "bolashak-30-imperial-college-london",
+  "no": 30,
+  "name": "Imperial College London",
+  "nameRu": "Имперский колледж Лондона",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.imperial.ac.uk/"
+ },
+ {
+  "id": "bolashak-31-kings-college-london",
+  "no": 31,
+  "name": "King’s College London",
+  "nameRu": "Королевский колледж Лондона",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.kcl.ac.uk/"
+ },
+ {
+  "id": "bolashak-32-lancaster-university",
+  "no": 32,
+  "name": "Lancaster University",
+  "nameRu": "Университет Ланкастер",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.lancaster.ac.uk/"
+ },
+ {
+  "id": "bolashak-33-london-school-of-economics-and-political-science",
+  "no": 33,
+  "name": "London School of Economics and Political Science",
+  "nameRu": "Лондонская школа экономики и политических наук",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.lse.ac.uk/"
+ },
+ {
+  "id": "bolashak-34-newcastle-university",
+  "no": 34,
+  "name": "Newcastle University",
+  "nameRu": "Ньюкаслский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.ugent.be/en"
+ },
+ {
+  "id": "bolashak-35-queen-mary-university-of-london",
+  "no": 35,
+  "name": "Queen Mary University of London",
+  "nameRu": "Лондонский университет королевы Марии",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.qmul.ac.uk/"
+ },
+ {
+  "id": "bolashak-36-university-college-london",
+  "no": 36,
+  "name": "University College London",
+  "nameRu": "Университетский колледж Лондона",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.ucl.ac.uk/"
+ },
+ {
+  "id": "bolashak-37-university-of-aberdeen",
+  "no": 37,
+  "name": "University of Aberdeen",
+  "nameRu": "Абердинский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.abdn.ac.uk/"
+ },
+ {
+  "id": "bolashak-38-university-of-bath",
+  "no": 38,
+  "name": "University of Bath",
+  "nameRu": "Университет Бата",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.bath.ac.uk/"
+ },
+ {
+  "id": "bolashak-39-university-of-birmingham",
+  "no": 39,
+  "name": "University of Birmingham",
+  "nameRu": "Университет Бирмингема",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.birmingham.ac.uk/"
+ },
+ {
+  "id": "bolashak-40-university-of-bristol",
+  "no": 40,
+  "name": "University of Bristol",
+  "nameRu": "Бристольский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.bristol.ac.uk/"
+ },
+ {
+  "id": "bolashak-41-university-of-cambridge",
+  "no": 41,
+  "name": "University of Cambridge",
+  "nameRu": "Кембриджский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.cam.ac.uk"
+ },
+ {
+  "id": "bolashak-42-university-of-east-anglia",
+  "no": 42,
+  "name": "University of East Anglia",
+  "nameRu": "Университет Восточной Англии",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.uea.ac.uk/"
+ },
+ {
+  "id": "bolashak-43-university-of-edinburgh",
+  "no": 43,
+  "name": "University of Edinburgh",
+  "nameRu": "Университет Эдинбург",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.ed.ac.uk"
+ },
+ {
+  "id": "bolashak-44-university-of-exeter",
+  "no": 44,
+  "name": "University of Exeter",
+  "nameRu": "Университет Эксетера",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.exeter.ac.uk/"
+ },
+ {
+  "id": "bolashak-45-university-of-glasgow",
+  "no": 45,
+  "name": "University of Glasgow",
+  "nameRu": "Университет Глазго",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.gla.ac.uk"
+ },
+ {
+  "id": "bolashak-46-university-of-leeds",
+  "no": 46,
+  "name": "University of Leeds",
+  "nameRu": "Университет Лидс",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.leeds.ac.uk/"
+ },
+ {
+  "id": "bolashak-47-university-of-liverpool",
+  "no": 47,
+  "name": "University of Liverpool",
+  "nameRu": "Ливерпульский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.liverpool.ac.uk/"
+ },
+ {
+  "id": "bolashak-48-university-of-manchester",
+  "no": 48,
+  "name": "University of Manchester",
+  "nameRu": "Манчестерский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.manchester.ac.uk"
+ },
+ {
+  "id": "bolashak-49-university-of-nottingham",
+  "no": 49,
+  "name": "University of Nottingham",
+  "nameRu": "Университет Ноттингем",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.nottingham.ac.uk"
+ },
+ {
+  "id": "bolashak-50-university-of-oxford",
+  "no": 50,
+  "name": "University of Oxford",
+  "nameRu": "Оксфордский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.ox.ac.uk"
+ },
+ {
+  "id": "bolashak-51-university-of-reading",
+  "no": 51,
+  "name": "University of Reading",
+  "nameRu": "Университет Рединг",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "http://www.reading.ac.uk/"
+ },
+ {
+  "id": "bolashak-52-university-of-sheffield",
+  "no": 52,
+  "name": "University of Sheffield",
+  "nameRu": "Университет Шеффилда",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.sheffield.ac.uk/"
+ },
+ {
+  "id": "bolashak-53-university-of-southampton",
+  "no": 53,
+  "name": "University of Southampton",
+  "nameRu": "Саутгемптонский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.southampton.ac.uk/"
+ },
+ {
+  "id": "bolashak-54-university-of-sussex",
+  "no": 54,
+  "name": "University of Sussex",
+  "nameRu": "Университет Сассекса",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.sussex.ac.uk/"
+ },
+ {
+  "id": "bolashak-55-university-of-warwick",
+  "no": 55,
+  "name": "University of Warwick",
+  "nameRu": "Уорикский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.warwick.ac.uk"
+ },
+ {
+  "id": "bolashak-56-university-of-york",
+  "no": 56,
+  "name": "University of York",
+  "nameRu": "Йоркский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.york.ac.uk/"
+ },
+ {
+  "id": "bolashak-57-university-of-st-andrews",
+  "no": 57,
+  "name": "University of St Andrews",
+  "nameRu": "Сент-Эндрюсский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.st-andrews.ac.uk/"
+ },
+ {
+  "id": "bolashak-58-queens-university-belfast",
+  "no": 58,
+  "name": "Queen’s University Belfast",
+  "nameRu": "Университет Квинс в Белфасте",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.qub.ac.uk/"
+ },
+ {
+  "id": "bolashak-59-university-of-leicester",
+  "no": 59,
+  "name": "University of Leicester",
+  "nameRu": "Университет Лестера",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://le.ac.uk/"
+ },
+ {
+  "id": "bolashak-60-goethe-university-frankfurt",
+  "no": 60,
+  "name": "Goethe University Frankfurt",
+  "nameRu": "Франкфуртский университет им. Иоганна Вольфганга Гете",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.goethe-university-frankfurt.de/en?legacy_request=1"
+ },
+ {
+  "id": "bolashak-61-heidelberg-university",
+  "no": 61,
+  "name": "Heidelberg University",
+  "nameRu": "Гейдельбергский университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-heidelberg.de/en"
+ },
+ {
+  "id": "bolashak-62-karlsruhe-institute-of-technology",
+  "no": 62,
+  "name": "Karlsruhe Institute of Technology",
+  "nameRu": "Технологический институт Карлсруэ",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.kit.edu/english/"
+ },
+ {
+  "id": "bolashak-63-ludwig-maximilians-universitat-munchen",
+  "no": 63,
+  "name": "Ludwig-Maximilians-Universität München",
+  "nameRu": "Мюнхенский университет имени Людвига и Максимилиана",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.en.uni-muenchen.de/"
+ },
+ {
+  "id": "bolashak-64-rwth-aachen-university",
+  "no": 64,
+  "name": "RWTH Aachen University",
+  "nameRu": "Рейнско-Вестфальский технический университет Ахена",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.rwth-aachen.de/go/id/a/?lidx=1"
+ },
+ {
+  "id": "bolashak-65-technical-university-of-berlin",
+  "no": 65,
+  "name": "Technical University of Berlin",
+  "nameRu": "Берлинский технический университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.tu.berlin/"
+ },
+ {
+  "id": "bolashak-66-technical-university-of-munich",
+  "no": 66,
+  "name": "Technical University of Munich",
+  "nameRu": "Мюнхенский технический университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.tum.de/en/"
+ },
+ {
+  "id": "bolashak-67-university-of-bonn",
+  "no": 67,
+  "name": "University of Bonn",
+  "nameRu": "Боннский университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-bonn.de/the-university"
+ },
+ {
+  "id": "bolashak-68-university-of-cologne",
+  "no": 68,
+  "name": "University of Cologne",
+  "nameRu": "Кельнский университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://portal.uni-koeln.de/en/sub/uoc-home"
+ },
+ {
+  "id": "bolashak-69-university-of-erlangen-nuremberg",
+  "no": 69,
+  "name": "University of Erlangen-Nuremberg",
+  "nameRu": "Университет Эрлангена — Нюрнберга",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.fau.eu/"
+ },
+ {
+  "id": "bolashak-70-university-of-freiburg",
+  "no": 70,
+  "name": "University of Freiburg",
+  "nameRu": "Фрайбургский университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://uni-freiburg.de/"
+ },
+ {
+  "id": "bolashak-71-university-of-gottingen",
+  "no": 71,
+  "name": "University of Göttingen",
+  "nameRu": "Геттингенский университет имени Георга-Августа",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-goettingen.de/en/1.html"
+ },
+ {
+  "id": "bolashak-72-university-of-tubingen",
+  "no": 72,
+  "name": "University of Tübingen",
+  "nameRu": "Тюбингенский университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://uni-tuebingen.de/en/university/"
+ },
+ {
+  "id": "bolashak-73-university-of-wuerzburg",
+  "no": 73,
+  "name": "University of Wuerzburg",
+  "nameRu": "Вюрцбургский университет имени Юлиуса и Максимилиана",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-wuerzburg.de/en/university/"
+ },
+ {
+  "id": "bolashak-74-german-university-of-administrative-sciences-speyer",
+  "no": 74,
+  "name": "German University of Administrative Sciences Speyer",
+  "nameRu": "Немецкий университет административных наук Шпайера",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-speyer.de"
+ },
+ {
+  "id": "bolashak-75-universitat-hamburg",
+  "no": 75,
+  "name": "Universität Hamburg",
+  "nameRu": "Гамбургский университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-hamburg.de/en.html"
+ },
+ {
+  "id": "bolashak-76-technische-universitat-dresden",
+  "no": 76,
+  "name": "Technische Universitat Dresden",
+  "nameRu": "Технический университет Дрездена",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://tu-dresden.de/"
+ },
+ {
+  "id": "bolashak-77-humboldt-university-of-berlin",
+  "no": 77,
+  "name": "Humboldt University of Berlin",
+  "nameRu": "Университет имени Гумбольдта в Берлине",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.hu-berlin.de/en"
+ },
+ {
+  "id": "bolashak-78-freie-universitat-of-berlin",
+  "no": 78,
+  "name": "Freie Universitat of Berlin",
+  "nameRu": "Свободный университет Берлина",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.fu-berlin.de/en/index.html"
+ },
+ {
+  "id": "bolashak-79-university-of-munster",
+  "no": 79,
+  "name": "University of Munster",
+  "nameRu": "Университет в Мюнстере",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-muenster.de/en/"
+ },
+ {
+  "id": "bolashak-80-aarhus-university",
+  "no": 80,
+  "name": "Aarhus University",
+  "nameRu": "Орхусский университет",
+  "country": "Denmark",
+  "countryRu": "Королевство Дания",
+  "websiteUrl": "https://international.au.dk/"
+ },
+ {
+  "id": "bolashak-81-technical-university-of-denmark",
+  "no": 81,
+  "name": "Technical University of Denmark",
+  "nameRu": "Датский технический университет",
+  "country": "Denmark",
+  "countryRu": "Королевство Дания",
+  "websiteUrl": "https://www.dtu.dk/english"
+ },
+ {
+  "id": "bolashak-82-university-of-copenhagen",
+  "no": 82,
+  "name": "University of Copenhagen",
+  "nameRu": "Копенгагенский университет",
+  "country": "Denmark",
+  "countryRu": "Королевство Дания",
+  "websiteUrl": "https://www.ku.dk"
+ },
+ {
+  "id": "bolashak-83-indian-institute-of-science",
+  "no": 83,
+  "name": "Indian Institute of Science",
+  "nameRu": "Индийский научный институт",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://iisc.ac.in/"
+ },
+ {
+  "id": "bolashak-84-hebrew-university-of-jerusalem",
+  "no": 84,
+  "name": "Hebrew University of Jerusalem",
+  "nameRu": "Еврейский университет в Иерусалиме",
+  "country": "Israel",
+  "countryRu": "Государство Израиль",
+  "websiteUrl": "https://en.huji.ac.il/en"
+ },
+ {
+  "id": "bolashak-85-tel-aviv-university",
+  "no": 85,
+  "name": "Tel Aviv University",
+  "nameRu": "Тель-Авивский университет",
+  "country": "Israel",
+  "countryRu": "Государство Израиль",
+  "websiteUrl": "https://english.tau.ac.il/"
+ },
+ {
+  "id": "bolashak-86-university-college-dublin",
+  "no": 86,
+  "name": "University College Dublin",
+  "nameRu": "Университетский колледж Дублина",
+  "country": "Ireland",
+  "countryRu": "Республика Ирландия",
+  "websiteUrl": "https://www.ucd.ie/"
+ },
+ {
+  "id": "bolashak-87-trinity-college-dublin",
+  "no": 87,
+  "name": "Trinity College Dublin",
+  "nameRu": "Тринити-колледж (Дублин)",
+  "country": "Ireland",
+  "countryRu": "Республика Ирландия",
+  "websiteUrl": "https://www.tcd.ie/"
+ },
+ {
+  "id": "bolashak-88-autonomous-university-of-barcelona",
+  "no": 88,
+  "name": "Autonomous University of Barcelona",
+  "nameRu": "Автономный университет Барселоны",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.uab.cat/en/"
+ },
+ {
+  "id": "bolashak-89-complutense-university-of-madrid",
+  "no": 89,
+  "name": "Complutense University of Madrid",
+  "nameRu": "Университет Комплутенсе",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.ucm.es/english"
+ },
+ {
+  "id": "bolashak-90-university-of-navarra",
+  "no": 90,
+  "name": "University of Navarra",
+  "nameRu": "Университет Наварры",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.unav.edu/en/home"
+ },
+ {
+  "id": "bolashak-91-universitat-de-barcelona",
+  "no": 91,
+  "name": "Universitat de Barcelona",
+  "nameRu": "Университет Барселоны",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.ub.edu/"
+ },
+ {
+  "id": "bolashak-92-universitat-pompeu-fabra",
+  "no": 92,
+  "name": "Universitat Pompeu Fabra",
+  "nameRu": "Университет Помпеу Фабра",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.upf.edu/"
+ },
+ {
+  "id": "bolashak-93-sapienza-university-of-rome",
+  "no": 93,
+  "name": "Sapienza University of Rome",
+  "nameRu": "Римский университет Сапиенца",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.uniroma1.it/en/pagina-strutturale/home"
+ },
+ {
+  "id": "bolashak-94-university-of-bologna",
+  "no": 94,
+  "name": "University of Bologna",
+  "nameRu": "Болонский университет",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.unibo.it/en"
+ },
+ {
+  "id": "bolashak-95-universita-di-padova",
+  "no": 95,
+  "name": "Università di Padova",
+  "nameRu": "Падуанский университет",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.unipd.it/"
+ },
+ {
+  "id": "bolashak-96-polytechnic-university-of-milan",
+  "no": 96,
+  "name": "Polytechnic University of Milan",
+  "nameRu": "Миланский технический университет",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.polimi.it/en"
+ },
+ {
+  "id": "bolashak-97-dalhousie-university",
+  "no": 97,
+  "name": "Dalhousie University",
+  "nameRu": "Университет Далхаузи",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.dal.ca/"
+ },
+ {
+  "id": "bolashak-98-mcgill-university",
+  "no": 98,
+  "name": "McGill University",
+  "nameRu": "Университет Макгилла",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.mcgill.ca/"
+ },
+ {
+  "id": "bolashak-99-mcmaster-university",
+  "no": 99,
+  "name": "McMaster University",
+  "nameRu": "Университет Макмастера",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.mcmaster.ca/"
+ },
+ {
+  "id": "bolashak-100-university-of-alberta",
+  "no": 100,
+  "name": "University of Alberta",
+  "nameRu": "Университет Альберты",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.ualberta.ca"
+ },
+ {
+  "id": "bolashak-101-university-of-british-columbia",
+  "no": 101,
+  "name": "University of British Columbia",
+  "nameRu": "Университет Британской Колумбии",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.ubc.ca/"
+ },
+ {
+  "id": "bolashak-102-university-of-calgary",
+  "no": 102,
+  "name": "University of Calgary",
+  "nameRu": "Университет Калгари",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.ucalgary.ca/"
+ },
+ {
+  "id": "bolashak-103-university-of-ottawa",
+  "no": 103,
+  "name": "University of Ottawa",
+  "nameRu": "Университет Оттавы",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.uottawa.ca/en"
+ },
+ {
+  "id": "bolashak-104-university-of-toronto",
+  "no": 104,
+  "name": "University of Toronto",
+  "nameRu": "Университет Торонто",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.utoronto.ca"
+ },
+ {
+  "id": "bolashak-105-university-of-waterloo",
+  "no": 105,
+  "name": "University of Waterloo",
+  "nameRu": "Университет Ватерлоо",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://uwaterloo.ca/"
+ },
+ {
+  "id": "bolashak-106-universitate-de-montreal",
+  "no": 106,
+  "name": "Universitate de Montreal",
+  "nameRu": "Монреальский университет",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.umontreal.ca/en/"
+ },
+ {
+  "id": "bolashak-107-western-university",
+  "no": 107,
+  "name": "Western University",
+  "nameRu": "Университет Западной Онтарио",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "http://www.uwo.ca/"
+ },
+ {
+  "id": "bolashak-108-beijing-normal-university",
+  "no": 108,
+  "name": "Beijing Normal University",
+  "nameRu": "Пекинский педагогический университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://english.bnu.edu.cn/"
+ },
+ {
+  "id": "bolashak-109-fudan-university",
+  "no": 109,
+  "name": "Fudan University",
+  "nameRu": "Университет Фудань",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.fudan.edu.cn/en/"
+ },
+ {
+  "id": "bolashak-110-harbin-institute-of-technology",
+  "no": 110,
+  "name": "Harbin Institute of Technology",
+  "nameRu": "Харбинский политехнический университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "http://en.hit.edu.cn/"
+ },
+ {
+  "id": "bolashak-111-nanjing-university",
+  "no": 111,
+  "name": "Nanjing University",
+  "nameRu": "Нанкинский университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.nju.edu.cn/en/"
+ },
+ {
+  "id": "bolashak-112-peking-university",
+  "no": 112,
+  "name": "Peking University",
+  "nameRu": "Пекинский университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "http://english.pku.edu.cn/"
+ },
+ {
+  "id": "bolashak-113-shanghai-jiao-tong-university",
+  "no": 113,
+  "name": "Shanghai Jiao Tong University",
+  "nameRu": "Шанхайский университет транспорта",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "http://en.sjtu.edu.cn/"
+ },
+ {
+  "id": "bolashak-114-sun-yat-sen-university",
+  "no": 114,
+  "name": "Sun Yat-sen University",
+  "nameRu": "Университет Сунь Ятсена",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "http://www.sysu.edu.cn/en/index.htm"
+ },
+ {
+  "id": "bolashak-115-tsinghua-university",
+  "no": 115,
+  "name": "Tsinghua University",
+  "nameRu": "Университет Цинхуа",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.tsinghua.edu.cn/en/"
+ },
+ {
+  "id": "bolashak-116-university-of-science-and-technology-of-china",
+  "no": 116,
+  "name": "University of Science and Technology of China",
+  "nameRu": "Научно-технический университет Китая",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://en.ustc.edu.cn/"
+ },
+ {
+  "id": "bolashak-117-zhejiang-university",
+  "no": 117,
+  "name": "Zhejiang University",
+  "nameRu": "Чжэцзянский университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.zju.edu.cn/"
+ },
+ {
+  "id": "bolashak-118-sichuan-university",
+  "no": 118,
+  "name": "Sichuan University",
+  "nameRu": "Сычуаньский университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://en.scu.edu.cn/"
+ },
+ {
+  "id": "bolashak-119-southern-university-of-science-and-technology",
+  "no": 119,
+  "name": "Southern University of Science and Technology",
+  "nameRu": "Южный университет науки и технологий",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.sustech.edu.cn/en/"
+ },
+ {
+  "id": "bolashak-120-wuhan-university",
+  "no": 120,
+  "name": "Wuhan University",
+  "nameRu": "Университет Уханя",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://en.whu.edu.cn/"
+ },
+ {
+  "id": "bolashak-121-huazhong-university-of-science-and-technology",
+  "no": 121,
+  "name": "Huazhong University of Science and Technology",
+  "nameRu": "Хуачжунский университет науки и технологии",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://english.hust.edu.cn/"
+ },
+ {
+  "id": "bolashak-122-tongji-university",
+  "no": 122,
+  "name": "Tongji University",
+  "nameRu": "Университет Тунцзи",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://en.tongji.edu.cn/p/#/"
+ },
+ {
+  "id": "bolashak-123-tianjin-university",
+  "no": 123,
+  "name": "Tianjin University",
+  "nameRu": "Тяньцзиньский университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.tju.edu.cn/english/index.htm"
+ },
+ {
+  "id": "bolashak-124-chinese-university-of-hong-kong",
+  "no": 124,
+  "name": "Chinese University of Hong Kong",
+  "nameRu": "Китайский университет Гонконга",
+  "country": "Hong Kong SAR",
+  "countryRu": "Специальный административный район Гонконг",
+  "websiteUrl": "https://www.cuhk.edu.hk/english/index.html"
+ },
+ {
+  "id": "bolashak-125-city-university-of-hong-kong",
+  "no": 125,
+  "name": "City University of Hong Kong",
+  "nameRu": "Городской университет Гонконга",
+  "country": "Hong Kong SAR",
+  "countryRu": "Специальный административный район Гонконг",
+  "websiteUrl": "https://www.cityu.edu.hk/"
+ },
+ {
+  "id": "bolashak-126-hong-kong-polytechnic-university",
+  "no": 126,
+  "name": "Hong Kong Polytechnic University",
+  "nameRu": "Гонконгский политехнический университет",
+  "country": "Hong Kong SAR",
+  "countryRu": "Специальный административный район Гонконг",
+  "websiteUrl": "https://www.polyu.edu.hk/"
+ },
+ {
+  "id": "bolashak-127-hong-kong-university-of-science-and-technology",
+  "no": 127,
+  "name": "Hong Kong University of Science and Technology",
+  "nameRu": "Гонконгский университет науки и технологии",
+  "country": "Hong Kong SAR",
+  "countryRu": "Специальный административный район Гонконг",
+  "websiteUrl": "https://hkust.edu.hk/"
+ },
+ {
+  "id": "bolashak-128-university-of-hong-kong",
+  "no": 128,
+  "name": "University of Hong Kong",
+  "nameRu": "Университет Гонконга",
+  "country": "Hong Kong SAR",
+  "countryRu": "Специальный административный район Гонконг",
+  "websiteUrl": "https://www.hku.hk/"
+ },
+ {
+  "id": "bolashak-129-delft-university-of-technology",
+  "no": 129,
+  "name": "Delft University of Technology",
+  "nameRu": "Делфтский технический университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.tudelft.nl/en/"
+ },
+ {
+  "id": "bolashak-130-erasmus-university-rotterdam",
+  "no": 130,
+  "name": "Erasmus University Rotterdam",
+  "nameRu": "Роттердамский университет Эразма",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.eur.nl/en"
+ },
+ {
+  "id": "bolashak-131-leiden-university",
+  "no": 131,
+  "name": "Leiden University",
+  "nameRu": "Лейденский университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.universiteitleiden.nl/en"
+ },
+ {
+  "id": "bolashak-132-maastricht-university",
+  "no": 132,
+  "name": "Maastricht University",
+  "nameRu": "Маастрихтский университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.maastrichtuniversity.nl/"
+ },
+ {
+  "id": "bolashak-133-university-of-amsterdam",
+  "no": 133,
+  "name": "University of Amsterdam",
+  "nameRu": "Амстердамский университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.uva.nl/"
+ },
+ {
+  "id": "bolashak-134-university-of-groningen",
+  "no": 134,
+  "name": "University of Groningen",
+  "nameRu": "Гронингенский университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.rug.nl/?lang=en"
+ },
+ {
+  "id": "bolashak-135-utrecht-university",
+  "no": 135,
+  "name": "Utrecht University",
+  "nameRu": "Утрехтский университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.uu.nl/en"
+ },
+ {
+  "id": "bolashak-136-vrije-universiteit-amsterdam",
+  "no": 136,
+  "name": "Vrije Universiteit Amsterdam",
+  "nameRu": "Амстердамский свободный университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.vu.nl/en"
+ },
+ {
+  "id": "bolashak-137-wageningen-university-research",
+  "no": 137,
+  "name": "Wageningen University & Research",
+  "nameRu": "Вагенингенский университет",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.wur.nl/en.htm"
+ },
+ {
+  "id": "bolashak-138-eindhoven-university-of-technology",
+  "no": 138,
+  "name": "Eindhoven University of Technology",
+  "nameRu": "Технический университет Эйндховена",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.tue.nl/en/"
+ },
+ {
+  "id": "bolashak-139-radboud-university-in-nijmegen",
+  "no": 139,
+  "name": "Radboud University in Nijmegen",
+  "nameRu": "Университет Неймегена",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.ru.nl/english/"
+ },
+ {
+  "id": "bolashak-140-university-of-twente",
+  "no": 140,
+  "name": "University of Twente",
+  "nameRu": "Университет Твенте",
+  "country": "Netherlands",
+  "countryRu": "Нидерланды",
+  "websiteUrl": "https://www.utwente.nl/en/"
+ },
+ {
+  "id": "bolashak-141-university-of-otago",
+  "no": 141,
+  "name": "University of Otago",
+  "nameRu": "Университет Отаго",
+  "country": "New Zealand",
+  "countryRu": "Новая Зеландия",
+  "websiteUrl": "https://www.otago.ac.nz/"
+ },
+ {
+  "id": "bolashak-142-the-university-of-auckland",
+  "no": 142,
+  "name": "The University of Auckland",
+  "nameRu": "Оклендский Университет",
+  "country": "New Zealand",
+  "countryRu": "Новая Зеландия",
+  "websiteUrl": "https://www.auckland.ac.nz/"
+ },
+ {
+  "id": "bolashak-143-university-of-bergen",
+  "no": 143,
+  "name": "University of Bergen",
+  "nameRu": "Бергенский университет",
+  "country": "Norway",
+  "countryRu": "Королевство Норвегия",
+  "websiteUrl": "https://www.uib.no/en"
+ },
+ {
+  "id": "bolashak-144-university-of-oslo",
+  "no": 144,
+  "name": "University of Oslo",
+  "nameRu": "Университет Осло",
+  "country": "Norway",
+  "countryRu": "Королевство Норвегия",
+  "websiteUrl": "https://www.uio.no/english/"
+ },
+ {
+  "id": "bolashak-145-lomonosov-moscow-state-university",
+  "no": 145,
+  "name": "Lomonosov Moscow State University",
+  "nameRu": "Московский государственный университет им. М.В.Ломоносова",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.msu.ru/"
+ },
+ {
+  "id": "bolashak-146-bauman-moscow-state-technical-university",
+  "no": 146,
+  "name": "Bauman Moscow State Technical University",
+  "nameRu": "Московский государственный технический университет им. Н.Э. Баумана",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.bmstu.ru/"
+ },
+ {
+  "id": "bolashak-147-moscow-institute-of-physics-and-technology",
+  "no": 147,
+  "name": "Moscow Institute of Physics and Technology",
+  "nameRu": "Московский физико-технический институт",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.mipt.ru/"
+ },
+ {
+  "id": "bolashak-148-national-research-nuclear-university-mephi",
+  "no": 148,
+  "name": "National Research Nuclear University MEPhI",
+  "nameRu": "Национальный исследовательский ядерный университет \"МИФИ\"",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.mephi.ru/"
+ },
+ {
+  "id": "bolashak-149-national-research-university-the-higher-school-of-economics",
+  "no": 149,
+  "name": "National Research University \"The Higher School of Economics\"",
+  "nameRu": "Национальный исследовательский университет \"Высшая школа экономики\"",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.hse.ru/"
+ },
+ {
+  "id": "bolashak-150-itmo-university",
+  "no": 150,
+  "name": "ITMO University",
+  "nameRu": "Национальный исследовательский университет ИТМО",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.itmo.ru/"
+ },
+ {
+  "id": "bolashak-151-national-university-sciense-and-technology-misis",
+  "no": 151,
+  "name": "National University Sciense and technology \"MISIS\"",
+  "nameRu": "Национальный исследовательский технологический университет \"МИСиС\"",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.misis.ru/"
+ },
+ {
+  "id": "bolashak-152-st-petersburg-state-university",
+  "no": 152,
+  "name": "St. Petersburg State University",
+  "nameRu": "Санкт-Петербургский государственный университет",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.spbu.ru/"
+ },
+ {
+  "id": "bolashak-153-nanyang-technological-university",
+  "no": 153,
+  "name": "Nanyang Technological University",
+  "nameRu": "Наньянский технологический университет",
+  "country": "Singapore",
+  "countryRu": "Республика Сингапур",
+  "websiteUrl": "https://www.ntu.edu.sg"
+ },
+ {
+  "id": "bolashak-154-national-university-of-singapore",
+  "no": 154,
+  "name": "National University of Singapore",
+  "nameRu": "Национальный университет Сингапура",
+  "country": "Singapore",
+  "countryRu": "Республика Сингапур",
+  "websiteUrl": "https://nus.edu.sg/"
+ },
+ {
+  "id": "bolashak-155-brown-university",
+  "no": 155,
+  "name": "Brown University",
+  "nameRu": "Университет Брауна",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.brown.edu/"
+ },
+ {
+  "id": "bolashak-156-california-institute-of-technology",
+  "no": 156,
+  "name": "California Institute of Technology",
+  "nameRu": "Калифорнийский технологический институт",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "http://www.caltech.edu/"
+ },
+ {
+  "id": "bolashak-157-carnegie-mellon-university",
+  "no": 157,
+  "name": "Carnegie Mellon University",
+  "nameRu": "Университет Карнеги-Меллона",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.cmu.edu/"
+ },
+ {
+  "id": "bolashak-158-case-western-reserve-university",
+  "no": 158,
+  "name": "Case Western Reserve University",
+  "nameRu": "Университет Кейс - Вестерн - Резерв",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://case.edu/"
+ },
+ {
+  "id": "bolashak-159-columbia-university",
+  "no": 159,
+  "name": "Columbia University",
+  "nameRu": "Колумбийский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.columbia.edu/"
+ },
+ {
+  "id": "bolashak-160-cornell-university",
+  "no": 160,
+  "name": "Cornell University",
+  "nameRu": "Корнеллский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.cornell.edu/"
+ },
+ {
+  "id": "bolashak-161-duke-university",
+  "no": 161,
+  "name": "Duke University",
+  "nameRu": "Университет Дьюка",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.duke.edu/"
+ },
+ {
+  "id": "bolashak-162-emory-university",
+  "no": 162,
+  "name": "Emory University",
+  "nameRu": "Университет Эмори",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "http://www.emory.edu/home/index.html"
+ },
+ {
+  "id": "bolashak-163-florida-state-university",
+  "no": 163,
+  "name": "Florida State University",
+  "nameRu": "Университет штата Флорида",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.fsu.edu/"
+ },
+ {
+  "id": "bolashak-164-george-mason-university",
+  "no": 164,
+  "name": "George Mason University",
+  "nameRu": "Университет Джорджа Мейсона",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www2.gmu.edu/"
+ },
+ {
+  "id": "bolashak-165-georgetown-university",
+  "no": 165,
+  "name": "Georgetown University",
+  "nameRu": "Джорджтаунский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.georgetown.edu/"
+ },
+ {
+  "id": "bolashak-166-georgia-institute-of-technology",
+  "no": 166,
+  "name": "Georgia Institute of Technology",
+  "nameRu": "Технологический институт Джорджии",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.gatech.edu/"
+ },
+ {
+  "id": "bolashak-167-harvard-university",
+  "no": 167,
+  "name": "Harvard University",
+  "nameRu": "Гарвардский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.harvard.edu/"
+ },
+ {
+  "id": "bolashak-168-indiana-university-bloomington",
+  "no": 168,
+  "name": "Indiana University Bloomington",
+  "nameRu": "Индианский университет в Блумингтоне",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.iu.edu/index.html"
+ },
+ {
+  "id": "bolashak-169-johns-hopkins-university",
+  "no": 169,
+  "name": "Johns Hopkins University",
+  "nameRu": "Университет Джонса Хопкинса",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.jhu.edu/"
+ },
+ {
+  "id": "bolashak-170-michigan-state-university",
+  "no": 170,
+  "name": "Michigan State University",
+  "nameRu": "Университет штата Мичиган",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://msu.edu/"
+ },
+ {
+  "id": "bolashak-171-new-york-university",
+  "no": 171,
+  "name": "New York University",
+  "nameRu": "Нью-Йоркский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.nyu.edu/"
+ },
+ {
+  "id": "bolashak-172-northwestern-university",
+  "no": 172,
+  "name": "Northwestern University",
+  "nameRu": "Северо-Западный университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.northwestern.edu/"
+ },
+ {
+  "id": "bolashak-173-ohio-state-university",
+  "no": 173,
+  "name": "Ohio State University",
+  "nameRu": "Университет штата Огайо",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.osu.edu/"
+ },
+ {
+  "id": "bolashak-174-pennsylvania-state-university",
+  "no": 174,
+  "name": "Pennsylvania State University",
+  "nameRu": "Университет штата Пенсильвания",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.psu.edu/"
+ },
+ {
+  "id": "bolashak-175-princeton-university",
+  "no": 175,
+  "name": "Princeton University",
+  "nameRu": "Принстонский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.princeton.edu/"
+ },
+ {
+  "id": "bolashak-176-purdue-university",
+  "no": 176,
+  "name": "Purdue University",
+  "nameRu": "Университет Пердью",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.purdue.edu/"
+ },
+ {
+  "id": "bolashak-177-rice-university",
+  "no": 177,
+  "name": "Rice University",
+  "nameRu": "Университет Райса",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.rice.edu/"
+ },
+ {
+  "id": "bolashak-178-rutgers-university-new-brunswick",
+  "no": 178,
+  "name": "Rutgers University, New Brunswick",
+  "nameRu": "Рутгерский университет в Нью-Джерси",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://newbrunswick.rutgers.edu/"
+ },
+ {
+  "id": "bolashak-179-stanford-university",
+  "no": 179,
+  "name": "Stanford University",
+  "nameRu": "Стэнфордский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.stanford.edu/"
+ },
+ {
+  "id": "bolashak-180-texas-a-m-university",
+  "no": 180,
+  "name": "Texas A&M University",
+  "nameRu": "Техасский университет A&M",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.tamu.edu/"
+ },
+ {
+  "id": "bolashak-181-tufts-university",
+  "no": 181,
+  "name": "Tufts University",
+  "nameRu": "Университет Тафтса",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.tufts.edu/"
+ },
+ {
+  "id": "bolashak-182-university-of-arizona",
+  "no": 182,
+  "name": "University of Arizona",
+  "nameRu": "Университет Аризона",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.arizona.edu/"
+ },
+ {
+  "id": "bolashak-183-university-of-california-berkeley",
+  "no": 183,
+  "name": "University of California, Berkeley",
+  "nameRu": "Калифорнийский университет в Беркли",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.berkeley.edu/"
+ },
+ {
+  "id": "bolashak-184-university-of-california-irvine",
+  "no": 184,
+  "name": "University of California, Irvine",
+  "nameRu": "Калифорнийский университет в Ирвайне",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://uci.edu/"
+ },
+ {
+  "id": "bolashak-185-university-of-california-los-angeles",
+  "no": 185,
+  "name": "University of California, Los Angeles",
+  "nameRu": "Калифорнийский университет в Лос-Анджелесе",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ucla.edu/"
+ },
+ {
+  "id": "bolashak-186-university-of-california-san-diego",
+  "no": 186,
+  "name": "University of California, San Diego",
+  "nameRu": "Калифорнийский университет в Сан-Диего",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://ucsd.edu/"
+ },
+ {
+  "id": "bolashak-187-university-of-california-santa-barbara",
+  "no": 187,
+  "name": "University of California, Santa Barbara",
+  "nameRu": "Калифорнийский университет в Санта-Барбаре",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ucsb.edu/"
+ },
+ {
+  "id": "bolashak-188-university-of-california-santa-cruz",
+  "no": 188,
+  "name": "University of California, Santa Cruz",
+  "nameRu": "Калифорнийский университет в Санта-Круз",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ucsc.edu/"
+ },
+ {
+  "id": "bolashak-189-university-of-chicago",
+  "no": 189,
+  "name": "University of Chicago",
+  "nameRu": "Университет Чикаго",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.uchicago.edu"
+ },
+ {
+  "id": "bolashak-190-university-of-colorado-at-boulder",
+  "no": 190,
+  "name": "University of Colorado at Boulder",
+  "nameRu": "Колорадский университет в Боулдере",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.colorado.edu/"
+ },
+ {
+  "id": "bolashak-191-university-of-florida",
+  "no": 191,
+  "name": "University of Florida",
+  "nameRu": "Университет Флориды",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ufl.edu/"
+ },
+ {
+  "id": "bolashak-192-university-of-illinois-at-chicago",
+  "no": 192,
+  "name": "University of Illinois at Chicago",
+  "nameRu": "Иллинойсский университет в Чикаго",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.uic.edu/"
+ },
+ {
+  "id": "bolashak-193-university-of-illinois-at-urbana-champaign",
+  "no": 193,
+  "name": "University of Illinois at Urbana-Champaign",
+  "nameRu": "Иллинойсский университет в Урбане-Шампейне",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.illinois.edu"
+ },
+ {
+  "id": "bolashak-194-university-of-maryland-college-park",
+  "no": 194,
+  "name": "University of Maryland, College Park",
+  "nameRu": "Мэрилендский университет в Колледж-Парке",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.umd.edu"
+ },
+ {
+  "id": "bolashak-195-university-of-massachusetts",
+  "no": 195,
+  "name": "University of Massachusetts",
+  "nameRu": "Университет Массачусетса",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.massachusetts.edu/"
+ },
+ {
+  "id": "bolashak-196-university-of-miami",
+  "no": 196,
+  "name": "University of Miami",
+  "nameRu": "Университет Майами",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://welcome.miami.edu/"
+ },
+ {
+  "id": "bolashak-197-university-of-michigan-ann-arbor",
+  "no": 197,
+  "name": "University of Michigan, Ann Arbor",
+  "nameRu": "Мичиганский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://umich.edu/"
+ },
+ {
+  "id": "bolashak-198-university-of-minnesota-twin-cities",
+  "no": 198,
+  "name": "University of Minnesota, Twin Cities",
+  "nameRu": "Университет Миннесоты",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://twin-cities.umn.edu/"
+ },
+ {
+  "id": "bolashak-199-university-of-north-carolina-at-chapel-hill",
+  "no": 199,
+  "name": "University of North Carolina at Chapel Hill",
+  "nameRu": "Университет Северной Каролины в Чапел-Хилл",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.unc.edu"
+ },
+ {
+  "id": "bolashak-200-university-of-pennsylvania",
+  "no": 200,
+  "name": "University of Pennsylvania",
+  "nameRu": "Пенсильванский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.upenn.edu/"
+ },
+ {
+  "id": "bolashak-201-university-of-pittsburgh",
+  "no": 201,
+  "name": "University of Pittsburgh",
+  "nameRu": "Питтсбургский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.pitt.edu/"
+ },
+ {
+  "id": "bolashak-202-university-of-rochester",
+  "no": 202,
+  "name": "University of Rochester",
+  "nameRu": "Рочестерский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.rochester.edu/"
+ },
+ {
+  "id": "bolashak-203-university-of-south-florida",
+  "no": 203,
+  "name": "University of South Florida",
+  "nameRu": "Университет Южной Флориды",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.usf.edu/"
+ },
+ {
+  "id": "bolashak-204-university-of-texas-at-austin",
+  "no": 204,
+  "name": "University of Texas at Austin",
+  "nameRu": "Техасский университет в Остине",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.utexas.edu"
+ },
+ {
+  "id": "bolashak-205-university-of-utah",
+  "no": 205,
+  "name": "University of Utah",
+  "nameRu": "Университет Юты",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.utah.edu/"
+ },
+ {
+  "id": "bolashak-206-university-of-virginia",
+  "no": 206,
+  "name": "University of Virginia",
+  "nameRu": "Виргинский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.virginia.edu/"
+ },
+ {
+  "id": "bolashak-207-university-of-washington",
+  "no": 207,
+  "name": "University of Washington",
+  "nameRu": "Вашингтонский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.washington.edu"
+ },
+ {
+  "id": "bolashak-208-university-of-wisconsin-madison",
+  "no": 208,
+  "name": "University of Wisconsin – Madison",
+  "nameRu": "Висконсинский университет в Мадисоне",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.wisc.edu"
+ },
+ {
+  "id": "bolashak-209-vanderbilt-university",
+  "no": 209,
+  "name": "Vanderbilt University",
+  "nameRu": "Университет Вандербильта",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.vanderbilt.edu/"
+ },
+ {
+  "id": "bolashak-210-washington-university-in-st-louis",
+  "no": 210,
+  "name": "Washington University in St Louis",
+  "nameRu": "Университет Вашингтона в Сент-Луисе",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://wustl.edu/"
+ },
+ {
+  "id": "bolashak-211-yale-university",
+  "no": 211,
+  "name": "Yale University",
+  "nameRu": "Йельский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.yale.edu/"
+ },
+ {
+  "id": "bolashak-212-dartmouth-college",
+  "no": 212,
+  "name": "Dartmouth College",
+  "nameRu": "Колледж Дартмут",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://home.dartmouth.edu/"
+ },
+ {
+  "id": "bolashak-213-massachusetts-institute-of-technology",
+  "no": 213,
+  "name": "Massachusetts Institute of Technology",
+  "nameRu": "Массачусетский технологический институт",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.mit.edu/"
+ },
+ {
+  "id": "bolashak-214-arizona-state-university",
+  "no": 214,
+  "name": "Arizona State University",
+  "nameRu": "Университет штата Аризона",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.asu.edu/"
+ },
+ {
+  "id": "bolashak-215-university-of-notre-dame",
+  "no": 215,
+  "name": "University of Notre Dame",
+  "nameRu": "Университет Нотр-Дам",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.nd.edu/"
+ },
+ {
+  "id": "bolashak-216-northeastern-university",
+  "no": 216,
+  "name": "Northeastern University",
+  "nameRu": "Северо-Восточный университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.northeastern.edu/"
+ },
+ {
+  "id": "bolashak-217-university-of-iowa",
+  "no": 217,
+  "name": "University of Iowa",
+  "nameRu": "Университет Айовы",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://uiowa.edu/"
+ },
+ {
+  "id": "bolashak-218-university-of-helsinki",
+  "no": 218,
+  "name": "University of Helsinki",
+  "nameRu": "Университет Хельсинки",
+  "country": "Finland",
+  "countryRu": "Финляндская Республика",
+  "websiteUrl": "https://www.helsinki.fi/en"
+ },
+ {
+  "id": "bolashak-219-aalto-university",
+  "no": 219,
+  "name": "Aalto University",
+  "nameRu": "Университет Аалто",
+  "country": "Finland",
+  "countryRu": "Финляндская Республика",
+  "websiteUrl": "https://www.aalto.fi/en"
+ },
+ {
+  "id": "bolashak-220-ecole-normale-superieure-de-lyon",
+  "no": 220,
+  "name": "École Normale Supérieure de Lyon",
+  "nameRu": "Высшая нормальная школа Лиона",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.ens-lyon.fr/"
+ },
+ {
+  "id": "bolashak-221-paris-saclay-university",
+  "no": 221,
+  "name": "Paris-Saclay University",
+  "nameRu": "Университет Париж-Сакле",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.universite-paris-saclay.fr/en"
+ },
+ {
+  "id": "bolashak-222-psl-university",
+  "no": 222,
+  "name": "PSL University",
+  "nameRu": "Парижский исследовательский университет PSL",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.psl.eu/en"
+ },
+ {
+  "id": "bolashak-223-sorbonne-university",
+  "no": 223,
+  "name": "Sorbonne University",
+  "nameRu": "Университет Сорбонны",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.sorbonne-universite.fr/en"
+ },
+ {
+  "id": "bolashak-224-university-of-paris",
+  "no": 224,
+  "name": "University of Paris",
+  "nameRu": "Парижский университет",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://u-paris.fr/en/"
+ },
+ {
+  "id": "bolashak-225-institut-polytechnique-de-paris",
+  "no": 225,
+  "name": "Institut Polytechnique de Paris",
+  "nameRu": "Политехническая школа (Париж)",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.polytechnique.edu/"
+ },
+ {
+  "id": "bolashak-226-ecole-des-ponts-paristech",
+  "no": 226,
+  "name": "Ecole des Ponts ParisTech",
+  "nameRu": "Национальная школа мостов и дорог",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://ecoledesponts.fr/"
+ },
+ {
+  "id": "bolashak-227-imt-atlantique",
+  "no": 227,
+  "name": "IMT Atlantique",
+  "nameRu": "Национальная школа горного дела",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.imt-atlantique.fr/en"
+ },
+ {
+  "id": "bolashak-228-sciences-po",
+  "no": 228,
+  "name": "Sciences Po",
+  "nameRu": "Институт политических исследований",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.sciencespo.fr/en/"
+ },
+ {
+  "id": "bolashak-229-universite-grenoble-alpes",
+  "no": 229,
+  "name": "Universite Grenoble Alpes",
+  "nameRu": "Университет Гренобль-Альпы",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.univ-grenoble-alpes.fr/"
+ },
+ {
+  "id": "bolashak-230-university-de-strasbourg",
+  "no": 230,
+  "name": "University de Strasbourg",
+  "nameRu": "Университет Страсбург",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://en.unistra.fr/"
+ },
+ {
+  "id": "bolashak-231-aix-marseille-university",
+  "no": 231,
+  "name": "Aix-Marseille University",
+  "nameRu": "Университет Экс-Марсель",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.univ-amu.fr/en"
+ },
+ {
+  "id": "bolashak-232-university-of-bordeaux",
+  "no": 232,
+  "name": "University of Bordeaux",
+  "nameRu": "Университет Бордо",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.u-bordeaux.com/"
+ },
+ {
+  "id": "bolashak-233-ecole-centrale-de-nantes",
+  "no": 233,
+  "name": "Ecole Centrale de Nantes",
+  "nameRu": "Центральная школа Нанта",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.ec-nantes.fr/"
+ },
+ {
+  "id": "bolashak-234-ecole-speciale-des-travaux-publics",
+  "no": 234,
+  "name": "École Spéciale des Travaux Publics",
+  "nameRu": "Высшая общеинженерная Школа",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.estp.fr/?lang=en"
+ },
+ {
+  "id": "bolashak-235-institut-national-des-sciences-appliquees-de-lyon",
+  "no": 235,
+  "name": "Institut national des sciences appliquées de Lyon",
+  "nameRu": "Национальный институт прикладных наук Лиона",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.insa-lyon.fr/"
+ },
+ {
+  "id": "bolashak-236-universite-de-poitiers",
+  "no": 236,
+  "name": "Université de Poitiers",
+  "nameRu": "Университет Пуатье",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.univ-poitiers.fr/en/"
+ },
+ {
+  "id": "bolashak-237-university-of-lorraine",
+  "no": 237,
+  "name": "University of Lorraine",
+  "nameRu": "Университет Лотарингии",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://welcome.univ-lorraine.fr/en/"
+ },
+ {
+  "id": "bolashak-238-science-po-bordeaux",
+  "no": 238,
+  "name": "Science Po Bordeaux",
+  "nameRu": "Институт политических исследований Бордо",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.sciencespobordeaux.fr/fr/index.html"
+ },
+ {
+  "id": "bolashak-239-charles-university",
+  "no": 239,
+  "name": "Charles University",
+  "nameRu": "Карлов университет",
+  "country": "Czech Republic",
+  "countryRu": "Чешская Республика",
+  "websiteUrl": "https://cuni.cz/uken-1.html"
+ },
+ {
+  "id": "bolashak-240-swiss-federal-institute-of-technology",
+  "no": 240,
+  "name": "Swiss Federal Institute of Technology",
+  "nameRu": "Швейцарская высшая техническая школа Цюриха",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://ethz.ch/en.html"
+ },
+ {
+  "id": "bolashak-241-university-of-basel",
+  "no": 241,
+  "name": "University of Basel",
+  "nameRu": "Базельский университет",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.unibas.ch/de"
+ },
+ {
+  "id": "bolashak-242-university-of-bern",
+  "no": 242,
+  "name": "University of Bern",
+  "nameRu": "Бернский университет",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.unibe.ch/index_eng.html"
+ },
+ {
+  "id": "bolashak-243-university-of-geneva",
+  "no": 243,
+  "name": "University of Geneva",
+  "nameRu": "Университет Женевы",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.unige.ch/en/university/presentation/"
+ },
+ {
+  "id": "bolashak-244-university-of-lausanne",
+  "no": 244,
+  "name": "University of Lausanne",
+  "nameRu": "Лозаннский университет",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.unil.ch/index.html"
+ },
+ {
+  "id": "bolashak-245-university-of-zurich",
+  "no": 245,
+  "name": "University of Zurich",
+  "nameRu": "Цюрихский университет",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.uzh.ch/en.html"
+ },
+ {
+  "id": "bolashak-246-swiss-federal-institute-of-technology-lausanne",
+  "no": 246,
+  "name": "Swiss Federal Institute of Technology Lausanne",
+  "nameRu": "Федеральная политехническая школа Лозанны",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.epfl.ch/en/"
+ },
+ {
+  "id": "bolashak-247-chalmers-university-of-technology",
+  "no": 247,
+  "name": "Chalmers University of Technology",
+  "nameRu": "Технический университет Чалмерса",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.chlmers.se/en/Pages/default.aspx"
+ },
+ {
+  "id": "bolashak-248-karolinska-institute",
+  "no": 248,
+  "name": "Karolinska Institute",
+  "nameRu": "Каролинский институт",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://ki.se/start"
+ },
+ {
+  "id": "bolashak-249-kth-royal-institute-of-technology",
+  "no": 249,
+  "name": "KTH Royal Institute of Technology",
+  "nameRu": "Королевский технологический институт",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.kth.se/en"
+ },
+ {
+  "id": "bolashak-250-lund-university",
+  "no": 250,
+  "name": "Lund University",
+  "nameRu": "Лундский университет",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.lu.se/"
+ },
+ {
+  "id": "bolashak-251-stockholm-university",
+  "no": 251,
+  "name": "Stockholm University",
+  "nameRu": "Стокгольмский университет",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.su.se/english/"
+ },
+ {
+  "id": "bolashak-252-university-of-gothenburg",
+  "no": 252,
+  "name": "University of Gothenburg",
+  "nameRu": "Гетеборгский университет",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.gu.se/english"
+ },
+ {
+  "id": "bolashak-253-uppsala-university",
+  "no": 253,
+  "name": "Uppsala University",
+  "nameRu": "Уппсальский университет",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.uu.se/en"
+ },
+ {
+  "id": "bolashak-254-hanyang-university",
+  "no": 254,
+  "name": "Hanyang University",
+  "nameRu": "Университет Ханьянг",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.hanyang.ac.kr/web/eng"
+ },
+ {
+  "id": "bolashak-255-korea-advanced-institute-of-science-technology",
+  "no": 255,
+  "name": "Korea Advanced Institute of Science & Technology",
+  "nameRu": "Корейский институт передовых технологий",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.kaist.ac.kr/en/"
+ },
+ {
+  "id": "bolashak-256-korea-university",
+  "no": 256,
+  "name": "Korea University",
+  "nameRu": "Университет Коре",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.korea.edu/"
+ },
+ {
+  "id": "bolashak-257-kyung-hee-university",
+  "no": 257,
+  "name": "Kyung Hee University",
+  "nameRu": "Университет Кенхи",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.khu.ac.kr/eng/main/index.do"
+ },
+ {
+  "id": "bolashak-258-seoul-national-university",
+  "no": 258,
+  "name": "Seoul National University",
+  "nameRu": "Сеульский национальный университет",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.useoul.edu/"
+ },
+ {
+  "id": "bolashak-259-sungkyunkwan-university",
+  "no": 259,
+  "name": "Sungkyunkwan University",
+  "nameRu": "Университет Сонгюнгван",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.skku.edu/eng/index.do"
+ },
+ {
+  "id": "bolashak-260-yonsei-university",
+  "no": 260,
+  "name": "Yonsei University",
+  "nameRu": "Университет Енсе",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.yonsei.ac.kr/en_sc/index.jsp"
+ },
+ {
+  "id": "bolashak-261-pohang-university-of-science-and-technology",
+  "no": 261,
+  "name": "Pohang University of Science And Technology",
+  "nameRu": "Пхоханский университет науки и технологии",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://international.postech.ac.kr/"
+ },
+ {
+  "id": "bolashak-262-ulsan-national-institute-of-science-and-technology",
+  "no": 262,
+  "name": "Ulsan National Institute of Science and Technology",
+  "nameRu": "Ульсанский национальный институт науки и техники",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.unist.ac.kr/"
+ },
+ {
+  "id": "bolashak-263-university-of-cape-town",
+  "no": 263,
+  "name": "University of Cape Town",
+  "nameRu": "Кейптаунский университет",
+  "country": "South Africa",
+  "countryRu": "Южно-Африканская Республика",
+  "websiteUrl": "https://www.uct.ac.za/"
+ },
+ {
+  "id": "bolashak-264-kyoto-university",
+  "no": 264,
+  "name": "Kyoto University",
+  "nameRu": "Киотский университет",
+  "country": "Japan",
+  "countryRu": "Государство Япония",
+  "websiteUrl": "https://www.kyoto-u.ac.jp/en/"
+ },
+ {
+  "id": "bolashak-265-nagoya-university",
+  "no": 265,
+  "name": "Nagoya University",
+  "nameRu": "Нагойский университет",
+  "country": "Japan",
+  "countryRu": "Государство Япония",
+  "websiteUrl": "https://en.nagoya-u.ac.jp/"
+ },
+ {
+  "id": "bolashak-266-tohoku-university",
+  "no": 266,
+  "name": "Tohoku University",
+  "nameRu": "Университет Тохоку",
+  "country": "Japan",
+  "countryRu": "Государство Япония",
+  "websiteUrl": "https://www.tohoku.ac.jp/en/"
+ },
+ {
+  "id": "bolashak-267-tokyo-institute-of-technology",
+  "no": 267,
+  "name": "Tokyo Institute of Technology",
+  "nameRu": "Токийский технологический институт",
+  "country": "Japan",
+  "countryRu": "Государство Япония",
+  "websiteUrl": "https://www.titech.ac.jp/english/"
+ },
+ {
+  "id": "bolashak-268-university-of-tokyo",
+  "no": 268,
+  "name": "University of Tokyo",
+  "nameRu": "Токийский университет",
+  "country": "Japan",
+  "countryRu": "Государство Япония",
+  "websiteUrl": "https://www.u-tokyo.ac.jp"
+ },
+ {
+  "id": "bolashak-269-osaka-university",
+  "no": 269,
+  "name": "Osaka University",
+  "nameRu": "Университет Осака",
+  "country": "Japan",
+  "countryRu": "Государство Япония",
+  "websiteUrl": "https://www.osaka-u.ac.jp/en"
+ },
+ {
+  "id": "bolashak-270-hokkaido-university",
+  "no": 270,
+  "name": "Hokkaido University",
+  "nameRu": "Университет Хоккайдо",
+  "country": "Japan",
+  "countryRu": "Государство Япония",
+  "websiteUrl": "https://www.global.hokudai.ac.jp/"
+ },
+ {
+  "id": "bolashak-271-new-york-film-academy",
+  "no": 271,
+  "name": "New York Film Academy",
+  "nameRu": "Нью-Йоркская академия кино",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.nyfa.edu/"
+ },
+ {
+  "id": "bolashak-272-university-of-the-arts-london",
+  "no": 272,
+  "name": "University of the Arts London",
+  "nameRu": "Лондонский Университет Искусств",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.arts.ac.uk/"
+ },
+ {
+  "id": "bolashak-273-royal-academy-of-music",
+  "no": 273,
+  "name": "Royal Academy of Music",
+  "nameRu": "Королевская академия музыки",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.ram.ac.uk/"
+ },
+ {
+  "id": "bolashak-274-i-m-sechenov-first-moscow-state-medical-university",
+  "no": 274,
+  "name": "I.M. Sechenov First Moscow State Medical University",
+  "nameRu": "Первый Московский государственный медицинский университет имени И.М. Сеченова",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.sechenov.ru/"
+ },
+ {
+  "id": "bolashak-275-london-school-of-hygiene-tropical-medicine",
+  "no": 275,
+  "name": "London School of Hygiene & Tropical Medicine",
+  "nameRu": "Лондонская школа гигиены и тропической медицины",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.lshtm.ac.uk/"
+ },
+ {
+  "id": "bolashak-276-university-of-california-san-francisco",
+  "no": 276,
+  "name": "University of California, San Francisco",
+  "nameRu": "Университет Калифорния в Сан-Франциско",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ucsf.edu/"
+ },
+ {
+  "id": "bolashak-277-edith-cowan-university",
+  "no": 277,
+  "name": "Edith Cowan University",
+  "nameRu": "Университет Эдит Коуэн",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.ecu.edu.au"
+ },
+ {
+  "id": "bolashak-278-murdoch-university",
+  "no": 278,
+  "name": "Murdoch University",
+  "nameRu": "Университет Мердока",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.murdoch.edu.au"
+ },
+ {
+  "id": "bolashak-279-rmit-university",
+  "no": 279,
+  "name": "RMIT University",
+  "nameRu": "Университет RMIT",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.rmit.edu.au"
+ },
+ {
+  "id": "bolashak-280-bmihms",
+  "no": 280,
+  "name": "BMIHMS",
+  "nameRu": "Школа гостиничного менеджмента Blue Mountains IRN  (Blue Mountains IRN Hotel Management School)",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.bluemountains.edu.au"
+ },
+ {
+  "id": "bolashak-281-australian-catholic-university",
+  "no": 281,
+  "name": "Australian Catholic University",
+  "nameRu": "Австралийский католический университет",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.acu.edu.au"
+ },
+ {
+  "id": "bolashak-282-griffith-university",
+  "no": 282,
+  "name": "Griffith University",
+  "nameRu": "Университет Гриффита",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.griffith.edu.au"
+ },
+ {
+  "id": "bolashak-283-la-trobe-university",
+  "no": 283,
+  "name": "La Trobe University",
+  "nameRu": "Университет Ла Троб",
+  "country": "Australia",
+  "countryRu": "Австралийский Союз (Австралия)",
+  "websiteUrl": "https://www.latrobe.edu.au"
+ },
+ {
+  "id": "bolashak-284-university-mozarteum-salzburg",
+  "no": 284,
+  "name": "University Mozarteum Salzburg",
+  "nameRu": "Университет Моцартеум Зальцбурга",
+  "country": "Austria",
+  "countryRu": "Австрийская Республика",
+  "websiteUrl": "https://www.moz.ac.at/en"
+ },
+ {
+  "id": "bolashak-285-university-of-veterinary-medicine-vienna",
+  "no": 285,
+  "name": "University of Veterinary Medicine Vienna",
+  "nameRu": "Венский университет ветеринарной медицины",
+  "country": "Austria",
+  "countryRu": "Австрийская Республика",
+  "websiteUrl": "https://www.vetmeduni.ac.at"
+ },
+ {
+  "id": "bolashak-286-universitat-fur-bodenkultur-wien",
+  "no": 286,
+  "name": "Universität für Bodenkultur Wien",
+  "nameRu": "Венский университет природных ресурсов и наук о жизни",
+  "country": "Austria",
+  "countryRu": "Австрийская Республика",
+  "websiteUrl": "https://www.boku.ac.at"
+ },
+ {
+  "id": "bolashak-287-central-european-university",
+  "no": 287,
+  "name": "Central European University",
+  "nameRu": "Центрально-Европейский университет",
+  "country": "Austria",
+  "countryRu": "Австрийская Республика",
+  "websiteUrl": "https://www.ceu.edu"
+ },
+ {
+  "id": "bolashak-288-universitat-fur-musik-und-darstellende-kunst-wien",
+  "no": 288,
+  "name": "Universität für Musik und darstellende Kunst Wien",
+  "nameRu": "Венский университет музыки и исполнительских искусств",
+  "country": "Austria",
+  "countryRu": "Австрийская Республика",
+  "websiteUrl": "https://www.mdw.ac.at"
+ },
+ {
+  "id": "bolashak-289-politecnico-di-torino",
+  "no": 289,
+  "name": "Politecnico di Torino",
+  "nameRu": "Туринский политехнический университет",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.polito.it"
+ },
+ {
+  "id": "bolashak-290-scuola-normale-superiore-di-pisa",
+  "no": 290,
+  "name": "Scuola Normale Superiore di Pisa",
+  "nameRu": "Высшая нормальная школа Пизы",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.sns.it/it"
+ },
+ {
+  "id": "bolashak-291-bocconi-university",
+  "no": 291,
+  "name": "Bocconi University",
+  "nameRu": "Университет коммерции имени Луиджи Боккони",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.unibocconi.eu"
+ },
+ {
+  "id": "bolashak-292-ca-foscari-university-of-venice",
+  "no": 292,
+  "name": "Ca' Foscari University of Venice",
+  "nameRu": "Университет Ка’ Фоскари в Венеции",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.unive.it"
+ },
+ {
+  "id": "bolashak-293-universita-cattolica-del-sacro-cuore",
+  "no": 293,
+  "name": "Università Cattolica del Sacro Cuore",
+  "nameRu": "Католический университет Святого Сердца",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.unicatt.it"
+ },
+ {
+  "id": "bolashak-294-university-of-rome-tor-vergata",
+  "no": 294,
+  "name": "University of Rome “Tor Vergata”",
+  "nameRu": "Университет Рима «Тор Вергата»",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.uniroma2.it"
+ },
+ {
+  "id": "bolashak-295-european-university-institute",
+  "no": 295,
+  "name": "European University Institute",
+  "nameRu": "Европейский университетский институт",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.eui.eu"
+ },
+ {
+  "id": "bolashak-296-luiss-guido-carli-university",
+  "no": 296,
+  "name": "Luiss Guido Carli University",
+  "nameRu": "Университет Луисс Гвидо Карли",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.luiss.it"
+ },
+ {
+  "id": "bolashak-297-universita-iuav-di-venezia",
+  "no": 297,
+  "name": "Università IUAV di Venezia",
+  "nameRu": "Венецианский университет архитектуры IUAV",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.iuav.it"
+ },
+ {
+  "id": "bolashak-298-university-of-milan",
+  "no": 298,
+  "name": "University of Milan",
+  "nameRu": "Миланский университет",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.unimi.it"
+ },
+ {
+  "id": "bolashak-299-university-of-pisa",
+  "no": 299,
+  "name": "University of Pisa",
+  "nameRu": "Пизанский университет",
+  "country": "Italy",
+  "countryRu": "Итальянская Республика",
+  "websiteUrl": "https://www.unipi.it"
+ },
+ {
+  "id": "bolashak-300-emily-carr-university-of-art-and-design",
+  "no": 300,
+  "name": "Emily Carr University of Art and Design",
+  "nameRu": "Университет искусства и дизайна Эмили Карр",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.ecuad.ca"
+ },
+ {
+  "id": "bolashak-301-queen-s-university-at-kingston",
+  "no": 301,
+  "name": "Queen's University at Kingston",
+  "nameRu": "Университет Куинс в Кингстоне",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.queensu.ca"
+ },
+ {
+  "id": "bolashak-302-university-of-guelph",
+  "no": 302,
+  "name": "University of Guelph",
+  "nameRu": "Университет Гуэлфа",
+  "country": "Canada",
+  "countryRu": "Канада",
+  "websiteUrl": "https://www.uoguelph.ca"
+ },
+ {
+  "id": "bolashak-303-the-education-university-of-hong-kong",
+  "no": 303,
+  "name": "The Education University of Hong Kong",
+  "nameRu": "Университет образования Гонконга",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.eduhk.hk/en/"
+ },
+ {
+  "id": "bolashak-304-hong-kong-academy-of-performing-arts",
+  "no": 304,
+  "name": "Hong Kong Academy of Performing Arts",
+  "nameRu": "Гонконгская академия исполнительских искусств",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.hkapa.edu"
+ },
+ {
+  "id": "bolashak-305-china-agricultural-university",
+  "no": 305,
+  "name": "China Agricultural University",
+  "nameRu": "Китайский сельскохозяйственный университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://en.cau.edu.cn/"
+ },
+ {
+  "id": "bolashak-306-nanjing-agricultural-university",
+  "no": 306,
+  "name": "Nanjing Agricultural University",
+  "nameRu": "Нанкинский сельскохозяйственный университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://english.njau.edu.cn/mainm.htm"
+ },
+ {
+  "id": "bolashak-307-china-university-of-mining-and-technology",
+  "no": 307,
+  "name": "China University of Mining and Technology",
+  "nameRu": "Китайский университет горного дела и технологий",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://global.cumt.edu.cn/"
+ },
+ {
+  "id": "bolashak-308-china-central-academy-of-fine-arts",
+  "no": 308,
+  "name": "China Central Academy of Fine Arts",
+  "nameRu": "Центральная академия изящных искусств Китая",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.cafa.edu.cn"
+ },
+ {
+  "id": "bolashak-309-huazhong-agricultural-university",
+  "no": 309,
+  "name": "Huazhong Agricultural University",
+  "nameRu": "Хуачжунский сельскохозяйственный университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.hzau.edu.cn"
+ },
+ {
+  "id": "bolashak-310-northwest-agriculture-and-forestry-university",
+  "no": 310,
+  "name": "Northwest Agriculture and Forestry University",
+  "nameRu": "Северо-Западный университет сельского и лесного хозяйства",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.nwafu.edu.cn"
+ },
+ {
+  "id": "bolashak-311-south-china-agricultural-university",
+  "no": 311,
+  "name": "South China Agricultural University",
+  "nameRu": "Южно-Китайский сельскохозяйственный университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.scau.edu.cn"
+ },
+ {
+  "id": "bolashak-312-southeast-university",
+  "no": 312,
+  "name": "Southeast University",
+  "nameRu": "Юго-Восточный университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.seu.edu.cn"
+ },
+ {
+  "id": "bolashak-313-shanghai-conservatory-of-music-shcm",
+  "no": 313,
+  "name": "Shanghai Conservatory of Music, SHCM",
+  "nameRu": "Шанхайская консерватория музыки",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.shcmusic.edu.cn"
+ },
+ {
+  "id": "bolashak-314-macao-university-of-tourism-utm",
+  "no": 314,
+  "name": "Macao University of Tourism, UTM",
+  "nameRu": "Университет туризма Макао",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.utm.edu.mo/"
+ },
+ {
+  "id": "bolashak-315-beijing-foreign-studies-university",
+  "no": 315,
+  "name": "Beijing Foreign Studies University",
+  "nameRu": "Пекинский университет иностранных языков",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.bfsu.edu.cn"
+ },
+ {
+  "id": "bolashak-316-china-university-of-geosciences",
+  "no": 316,
+  "name": "China University of Geosciences",
+  "nameRu": "Китайский университет геонаук",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.cug.edu.cn"
+ },
+ {
+  "id": "bolashak-317-renmin-university-of-china",
+  "no": 317,
+  "name": "Renmin University of China",
+  "nameRu": "Китайский народный университет",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.ruc.edu.cn"
+ },
+ {
+  "id": "bolashak-318-university-of-chinese-academy-of-sciences",
+  "no": 318,
+  "name": "University of Chinese Academy of Sciences",
+  "nameRu": "Университет Китайской академии наук",
+  "country": "China",
+  "countryRu": "Китайская Народная Республика",
+  "websiteUrl": "https://www.ucas.ac.cn"
+ },
+ {
+  "id": "bolashak-319-auckland-university-of-technology",
+  "no": 319,
+  "name": "Auckland University of Technology",
+  "nameRu": "Оклендский технологический университет",
+  "country": "New Zealand",
+  "countryRu": "Новая Зеландия",
+  "websiteUrl": "https://www.aut.ac.nz"
+ },
+ {
+  "id": "bolashak-320-massey-university",
+  "no": 320,
+  "name": "Massey University",
+  "nameRu": "Университет Мэсси",
+  "country": "New Zealand",
+  "countryRu": "Новая Зеландия",
+  "websiteUrl": "https://www.massey.ac.nz"
+ },
+ {
+  "id": "bolashak-321-the-royal-danish-academy-of-music",
+  "no": 321,
+  "name": "The Royal Danish Academy of Music",
+  "nameRu": "Королевская датская академия музыки",
+  "country": "Denmark",
+  "countryRu": "Королевство Дания",
+  "websiteUrl": "https://www.dkdm.dk/en"
+ },
+ {
+  "id": "bolashak-322-aalborg-university",
+  "no": 322,
+  "name": "Aalborg University",
+  "nameRu": "Ольборгский университет",
+  "country": "Denmark",
+  "countryRu": "Королевство Дания",
+  "websiteUrl": "https://www.aau.dk"
+ },
+ {
+  "id": "bolashak-323-copenhagen-business-school",
+  "no": 323,
+  "name": "Copenhagen Business School",
+  "nameRu": "Копенгагенская школа бизнеса",
+  "country": "Denmark",
+  "countryRu": "Королевство Дания",
+  "websiteUrl": "https://www.cbs.dk"
+ },
+ {
+  "id": "bolashak-324-university-college-cork",
+  "no": 324,
+  "name": "University College Cork",
+  "nameRu": "Университетский колледж Корка",
+  "country": "Ireland",
+  "countryRu": "Республика Ирландия",
+  "websiteUrl": "https://www.ucc.ie"
+ },
+ {
+  "id": "bolashak-325-universidad-pontificia-comillas",
+  "no": 325,
+  "name": "Universidad Pontificia Comillas",
+  "nameRu": "Папский университет Комильяс",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.comillas.edu"
+ },
+ {
+  "id": "bolashak-326-escuela-universitaria-de-hosteleria-y-turismo-de-sant-pol-de-mar",
+  "no": 326,
+  "name": "Escuela Universitaria de Hostelería y Turismo de Sant Pol de Mar",
+  "nameRu": "Университетская школа гостиничного дела и туризма Сан-Поль-де-Мар",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.santpol.edu.es/en/"
+ },
+ {
+  "id": "bolashak-327-universitat-internacional-de-catalunya-uic",
+  "no": 327,
+  "name": "Universitat Internacional de Catalunya, UIC",
+  "nameRu": "Международный университет Каталонии",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.uic.es"
+ },
+ {
+  "id": "bolashak-328-universidad-politecnica-de-madrid-upm",
+  "no": 328,
+  "name": "Universidad Politécnica de Madrid, UPM",
+  "nameRu": "Мадридский политехнический университет",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.upm.es"
+ },
+ {
+  "id": "bolashak-329-universitat-politecnica-de-catalunya-upc",
+  "no": 329,
+  "name": "Universitat Politècnica de Catalunya, UPC",
+  "nameRu": "Каталонский политехнический университет · BarcelonaTech",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.upc.edu"
+ },
+ {
+  "id": "bolashak-330-ie-university",
+  "no": 330,
+  "name": "IE University",
+  "nameRu": "Университет IE",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.ie.edu"
+ },
+ {
+  "id": "bolashak-331-universitat-ramon-llull",
+  "no": 331,
+  "name": "Universitat Ramon Llull",
+  "nameRu": "Университет Рамон Льюль",
+  "country": "Spain",
+  "countryRu": "Королевство Испания",
+  "websiteUrl": "https://www.url.edu"
+ },
+ {
+  "id": "bolashak-332-academic-centre-for-dentistry-amsterdam-acta",
+  "no": 332,
+  "name": "Academic Centre for Dentistry Amsterdam, ACTA",
+  "nameRu": "Академический центр стоматологии Амстердама",
+  "country": "Netherlands",
+  "countryRu": "Королевство Нидерланды",
+  "websiteUrl": "https://acta.nl/en"
+ },
+ {
+  "id": "bolashak-333-breda-university-of-applied-sciences",
+  "no": 333,
+  "name": "Breda University of Applied Sciences",
+  "nameRu": "Университет прикладных наук Бреды",
+  "country": "Netherlands",
+  "countryRu": "Королевство Нидерланды",
+  "websiteUrl": "https://www.buas.nl"
+ },
+ {
+  "id": "bolashak-334-design-academy-eindhoven",
+  "no": 334,
+  "name": "Design Academy Eindhoven",
+  "nameRu": "Академия дизайна Эйндховена",
+  "country": "Netherlands",
+  "countryRu": "Королевство Нидерланды",
+  "websiteUrl": "https://www.designacademy.nl/"
+ },
+ {
+  "id": "bolashak-335-hotelschool-the-hague",
+  "no": 335,
+  "name": "Hotelschool The Hague",
+  "nameRu": "Гаагская школа гостиничного бизнеса",
+  "country": "Netherlands",
+  "countryRu": "Королевство Нидерланды",
+  "websiteUrl": "https://www.hotelschool.nl/"
+ },
+ {
+  "id": "bolashak-336-norwegian-academy-of-music",
+  "no": 336,
+  "name": "Norwegian Academy of Music",
+  "nameRu": "Норвежская академия музыки",
+  "country": "Norway",
+  "countryRu": "Королевство Норвегия",
+  "websiteUrl": "https://nmh.no"
+ },
+ {
+  "id": "bolashak-337-norwegian-university-of-life-sciences-umb",
+  "no": 337,
+  "name": "Norwegian University of Life Sciences, UMB",
+  "nameRu": "Норвежский университет наук о жизни",
+  "country": "Norway",
+  "countryRu": "Королевство Норвегия",
+  "websiteUrl": "https://www.nmbu.no/en"
+ },
+ {
+  "id": "bolashak-338-norwegian-university-of-science-and-technology",
+  "no": 338,
+  "name": "Norwegian University of Science and Technology",
+  "nameRu": "Норвежский университет науки и технологий",
+  "country": "Norway",
+  "countryRu": "Королевство Норвегия",
+  "websiteUrl": "https://www.ntnu.edu"
+ },
+ {
+  "id": "bolashak-339-malmo-university",
+  "no": 339,
+  "name": "Malmo University",
+  "nameRu": "Университет Мальме",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://mau.se"
+ },
+ {
+  "id": "bolashak-340-konstfack-university-college-of-arts-crafts-and-design",
+  "no": 340,
+  "name": "Konstfack University College of Arts, Crafts and Design",
+  "nameRu": "Университет прикладных искусств, ремесел и дизайна Констфак",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.konstfack.se"
+ },
+ {
+  "id": "bolashak-341-swedish-university-of-agricultural-sciences",
+  "no": 341,
+  "name": "Swedish University of Agricultural Sciences",
+  "nameRu": "Шведский университет сельскохозяйственных наук",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.slu.se/en/"
+ },
+ {
+  "id": "bolashak-342-royal-college-of-music-in-stockholm",
+  "no": 342,
+  "name": "Royal College of Music in Stockholm",
+  "nameRu": "Королевский музыкальный колледж в Стокгольме",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.uniarts.se"
+ },
+ {
+  "id": "bolashak-343-lulea-university",
+  "no": 343,
+  "name": "Luleå University",
+  "nameRu": "Университет Лулео",
+  "country": "Sweden",
+  "countryRu": "Королевство Швеция",
+  "websiteUrl": "https://www.ltu.se"
+ },
+ {
+  "id": "bolashak-344-universidad-nacional-autonoma-de-mexico-unam",
+  "no": 344,
+  "name": "Universidad Nacional Autónoma de México, UNAM",
+  "nameRu": "Национальный автономный университет Мексики",
+  "country": "Mexico",
+  "countryRu": "Мексиканские Соединенные Штаты",
+  "websiteUrl": "https://www.unam.mx"
+ },
+ {
+  "id": "bolashak-345-tecnologico-de-monterrey",
+  "no": 345,
+  "name": "Tecnológico de Monterrey",
+  "nameRu": "Технологический институт Монтеррея",
+  "country": "Mexico",
+  "countryRu": "Мексиканские Соединенные Штаты",
+  "websiteUrl": "https://tec.mx"
+ },
+ {
+  "id": "bolashak-346-khalifa-university-of-science-and-technology",
+  "no": 346,
+  "name": "Khalifa University of Science and Technology",
+  "nameRu": "Университет науки и технологий Халифа",
+  "country": "United Arab Emirates",
+  "countryRu": "Объединенные Арабские Эмираты",
+  "websiteUrl": "https://www.ku.ac.ae/"
+ },
+ {
+  "id": "bolashak-347-the-liszt-academy-of-music",
+  "no": 347,
+  "name": "The Liszt Academy of Music",
+  "nameRu": "Музыкальная академия имени Ференца Листа",
+  "country": "Hungary",
+  "countryRu": "Венгрия",
+  "websiteUrl": "https://uni.lisztacademy.hu/"
+ },
+ {
+  "id": "bolashak-348-istanbul-technical-university",
+  "no": 348,
+  "name": "Istanbul Technical University",
+  "nameRu": "Стамбульский технический университет",
+  "country": "Turkey",
+  "countryRu": "Турецкая Республика",
+  "websiteUrl": "https://www.itu.edu.tr"
+ },
+ {
+  "id": "bolashak-349-middle-east-technical-university",
+  "no": 349,
+  "name": "Middle East Technical University",
+  "nameRu": "Ближневосточный технический университет",
+  "country": "Turkey",
+  "countryRu": "Турецкая Республика",
+  "websiteUrl": "https://www.metu.edu.tr"
+ },
+ {
+  "id": "bolashak-350-indian-school-of-mines-ism-university-dhanbad",
+  "no": 350,
+  "name": "Indian School of Mines (ISM) University, Dhanbad",
+  "nameRu": "Индийская школа горного дела (Индийский институт технологий ISM, Дханбад)",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.iitism.ac.in"
+ },
+ {
+  "id": "bolashak-351-saveetha-institute-of-medical-and-technical-sciences",
+  "no": 351,
+  "name": "Saveetha Institute of Medical and Technical Sciences",
+  "nameRu": "Институт медицинских и технических наук Савита",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.saveetha.com"
+ },
+ {
+  "id": "bolashak-352-indian-institute-of-management-ahmedabad",
+  "no": 352,
+  "name": "Indian Institute of Management – Ahmedabad",
+  "nameRu": "Индийский институт менеджмента Ахмадабада",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.iima.ac.in"
+ },
+ {
+  "id": "bolashak-353-indian-institute-of-management-bangalore",
+  "no": 353,
+  "name": "Indian Institute of Management – Bangalore",
+  "nameRu": "Индийский институт менеджмента Бангалора",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.iimb.ac.in"
+ },
+ {
+  "id": "bolashak-354-jawaharlal-nehru-university",
+  "no": 354,
+  "name": "Jawaharlal Nehru University",
+  "nameRu": "Университет Джавахарлала Неру",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.jnu.ac.in"
+ },
+ {
+  "id": "bolashak-355-indian-institute-of-technology-bombay",
+  "no": 355,
+  "name": "Indian Institute of Technology Bombay",
+  "nameRu": "Индийский технологический институт Бомбей",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.iitb.ac.in"
+ },
+ {
+  "id": "bolashak-356-indian-institute-of-technology-delhi",
+  "no": 356,
+  "name": "Indian Institute of Technology Delhi",
+  "nameRu": "Индийский технологический институт Дели",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://home.iitd.ac.in"
+ },
+ {
+  "id": "bolashak-357-indian-institute-of-technology-kharagpur",
+  "no": 357,
+  "name": "Indian Institute of Technology Kharagpur",
+  "nameRu": "Индийский технологический институт Харагпур",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.iitkgp.ac.in"
+ },
+ {
+  "id": "bolashak-358-indian-institute-of-technology-madras",
+  "no": 358,
+  "name": "Indian Institute of Technology Madras",
+  "nameRu": "Индийский технологический институт Мадрас",
+  "country": "India",
+  "countryRu": "Республика Индия",
+  "websiteUrl": "https://www.iitm.ac.in"
+ },
+ {
+  "id": "bolashak-359-hongik-university",
+  "no": 359,
+  "name": "Hongik University",
+  "nameRu": "Университет Хоник",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.hongik.ac.kr"
+ },
+ {
+  "id": "bolashak-360-sejong-university",
+  "no": 360,
+  "name": "Sejong University",
+  "nameRu": "Университет Седжон",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.sejong.ac.kr"
+ },
+ {
+  "id": "bolashak-361-youngsan-university",
+  "no": 361,
+  "name": "Youngsan University",
+  "nameRu": "Университет Енсан",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.ysu.ac.kr"
+ },
+ {
+  "id": "bolashak-362-hankuk-university-of-foreign-studies",
+  "no": 362,
+  "name": "Hankuk University of Foreign Studies",
+  "nameRu": "Университет иностранных языков Хангук",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.hufs.ac.kr"
+ },
+ {
+  "id": "bolashak-363-korea-national-university-of-arts",
+  "no": 363,
+  "name": "Korea National University of Arts",
+  "nameRu": "Корейский национальный университет искусств",
+  "country": "South Korea",
+  "countryRu": "Республика Корея",
+  "websiteUrl": "https://www.karts.ac.kr"
+ },
+ {
+  "id": "bolashak-364-warsaw-university-of-life-sciences-sggw",
+  "no": 364,
+  "name": "Warsaw University of Life Sciences – SGGW",
+  "nameRu": "Варшавский университет естественных наук — SGGW",
+  "country": "Poland",
+  "countryRu": "Республика Польша",
+  "websiteUrl": "https://www.sggw.edu.pl"
+ },
+ {
+  "id": "bolashak-365-saint-petersburg-mining-university",
+  "no": 365,
+  "name": "Saint Petersburg Mining University",
+  "nameRu": "Санкт-Петербургский горный университет",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://en.spmi.ru/"
+ },
+ {
+  "id": "bolashak-366-gnesin-russian-academy-of-music",
+  "no": 366,
+  "name": "Gnesin Russian Academy of Music",
+  "nameRu": "Российская академия музыки имени Гнесиных",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://eng.gnesin-academy.ru/"
+ },
+ {
+  "id": "bolashak-367-rimsky-korsakov-st-petersburg-state-conservatory",
+  "no": 367,
+  "name": "Rimsky-Korsakov St. Petersburg State Conservatory",
+  "nameRu": "Санкт-Петербургская государственная консерватория имени Н. А. Римского-Корсакова",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.conservatory.ru"
+ },
+ {
+  "id": "bolashak-368-moscow-p-i-tchaikovsky-conservatory",
+  "no": 368,
+  "name": "Moscow P. I. Tchaikovsky Conservatory",
+  "nameRu": "Московская государственная консерватория имени П. И. Чайковского",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.mosconsv.ru/en/"
+ },
+ {
+  "id": "bolashak-369-national-research-tomsk-polytechnic-university",
+  "no": 369,
+  "name": "National Research Tomsk Polytechnic University",
+  "nameRu": "Национальный исследовательский Томский политехнический университет",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.tpu.ru"
+ },
+ {
+  "id": "bolashak-370-kazan-volga-region-federal-university",
+  "no": 370,
+  "name": "Kazan (Volga region) Federal University",
+  "nameRu": "Казанский (Приволжский) федеральный университет",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://kpfu.ru"
+ },
+ {
+  "id": "bolashak-371-rudn-university",
+  "no": 371,
+  "name": "RUDN University",
+  "nameRu": "Российский университет дружбы народов",
+  "country": "Russia",
+  "countryRu": "Российская Федерация",
+  "websiteUrl": "https://www.rudn.ru"
+ },
+ {
+  "id": "bolashak-372-the-courtauld-institute-of-art",
+  "no": 372,
+  "name": "The Courtauld Institute of Art",
+  "nameRu": "Институт искусств Курто",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://courtauld.ac.uk/"
+ },
+ {
+  "id": "bolashak-373-architectural-association-school-of-architecture",
+  "no": 373,
+  "name": "Architectural Association School of Architecture",
+  "nameRu": "Архитектурная ассоциация — Школа архитектуры",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.aaschool.ac.uk"
+ },
+ {
+  "id": "bolashak-374-bournemouth-university",
+  "no": 374,
+  "name": "Bournemouth University",
+  "nameRu": "Борнмутский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.bournemouth.ac.uk"
+ },
+ {
+  "id": "bolashak-375-cranfield-university",
+  "no": 375,
+  "name": "Cranfield University",
+  "nameRu": "Крэнфилдский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.cranfield.ac.uk"
+ },
+ {
+  "id": "bolashak-376-central-school-of-speech-drama",
+  "no": 376,
+  "name": "Central School of Speech & Drama",
+  "nameRu": "Центральная школа сценической речи и драмы",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.cssd.ac.uk"
+ },
+ {
+  "id": "bolashak-377-university-of-derby",
+  "no": 377,
+  "name": "University of Derby",
+  "nameRu": "Университет Дерби",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.derby.ac.uk"
+ },
+ {
+  "id": "bolashak-378-university-of-dundee",
+  "no": 378,
+  "name": "University of Dundee",
+  "nameRu": "Университет Данди",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.dundee.ac.uk"
+ },
+ {
+  "id": "bolashak-379-goldsmiths-university-of-london",
+  "no": 379,
+  "name": "Goldsmiths, University of London",
+  "nameRu": "Голдсмитс, Лондонский университет",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.gold.ac.uk"
+ },
+ {
+  "id": "bolashak-380-glasgow-school-of-art-gsa",
+  "no": 380,
+  "name": "Glasgow School of Art, GSA",
+  "nameRu": "Школа искусств Глазго",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.gsa.ac.uk/"
+ },
+ {
+  "id": "bolashak-381-guildhall-school-of-music-and-drama",
+  "no": 381,
+  "name": "Guildhall School of Music and Drama",
+  "nameRu": "Гилдхоллская школа музыки и драмы",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.gsmd.ac.uk/"
+ },
+ {
+  "id": "bolashak-382-university-of-huddersfield",
+  "no": 382,
+  "name": "University of Huddersfield",
+  "nameRu": "Университет Хаддерсфилда",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.hud.ac.uk"
+ },
+ {
+  "id": "bolashak-383-heriot-watt-university",
+  "no": 383,
+  "name": "Heriot-Watt University",
+  "nameRu": "Университет Хериот-Уатт",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.hw.ac.uk/"
+ },
+ {
+  "id": "bolashak-384-liverpool-john-moores-university",
+  "no": 384,
+  "name": "Liverpool John Moores University",
+  "nameRu": "Ливерпульский университет имени Джона Мурса",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.ljmu.ac.uk/"
+ },
+ {
+  "id": "bolashak-385-london-business-school",
+  "no": 385,
+  "name": "London Business School",
+  "nameRu": "Лондонская школа бизнеса",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.london.edu"
+ },
+ {
+  "id": "bolashak-386-manchester-school-of-architecture",
+  "no": 386,
+  "name": "Manchester School of Architecture",
+  "nameRu": "Манчестерская школа архитектуры",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.msa.ac.uk/"
+ },
+ {
+  "id": "bolashak-387-royal-college-of-art",
+  "no": 387,
+  "name": "Royal College of Art",
+  "nameRu": "Королевский колледж искусств",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.rca.ac.uk/"
+ },
+ {
+  "id": "bolashak-388-royal-college-of-music",
+  "no": 388,
+  "name": "Royal College of Music",
+  "nameRu": "Королевский музыкальный колледж",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.rcm.ac.uk/"
+ },
+ {
+  "id": "bolashak-389-royal-conservatoire-of-scotland",
+  "no": 389,
+  "name": "Royal Conservatoire of Scotland",
+  "nameRu": "Королевская консерватория Шотландии",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.rcs.ac.uk/"
+ },
+ {
+  "id": "bolashak-390-rncm",
+  "no": 390,
+  "name": "RNCM",
+  "nameRu": "Королевский северный колледж музыки",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.rncm.ac.uk/"
+ },
+ {
+  "id": "bolashak-391-university-of-strathclyde",
+  "no": 391,
+  "name": "University of Strathclyde",
+  "nameRu": "Университет Стратклайда",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.strath.ac.uk"
+ },
+ {
+  "id": "bolashak-392-university-of-surrey",
+  "no": 392,
+  "name": "University of Surrey",
+  "nameRu": "Университет Суррея",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.surrey.ac.uk/"
+ },
+ {
+  "id": "bolashak-393-trinity-laban-conservatoire-of-music-and-dance",
+  "no": 393,
+  "name": "Trinity Laban Conservatoire of Music and Dance",
+  "nameRu": "Консерватория музыки и танца Тринити-Лабан",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.trinitylaban.ac.uk/"
+ },
+ {
+  "id": "bolashak-394-soas-university-of-london",
+  "no": 394,
+  "name": "SOAS University of London",
+  "nameRu": "Школа востоковедения и африканистики Лондонского университета",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.soas.ac.uk/"
+ },
+ {
+  "id": "bolashak-395-city-university-of-london",
+  "no": 395,
+  "name": "City University of London",
+  "nameRu": "Городской университет Лондона",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.city.ac.uk"
+ },
+ {
+  "id": "bolashak-396-loughborough-university",
+  "no": 396,
+  "name": "Loughborough University",
+  "nameRu": "Университет Лафборо",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.lboro.ac.uk"
+ },
+ {
+  "id": "bolashak-397-oxford-brookes-university",
+  "no": 397,
+  "name": "Oxford Brookes University",
+  "nameRu": "Университет Оксфорд Брукс",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.brookes.ac.uk"
+ },
+ {
+  "id": "bolashak-398-royal-holloway-university-of-london",
+  "no": 398,
+  "name": "Royal Holloway University of London",
+  "nameRu": "Лондонский университет Ройял Холлоуэй",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.royalholloway.ac.uk"
+ },
+ {
+  "id": "bolashak-399-swansea-university",
+  "no": 399,
+  "name": "Swansea University",
+  "nameRu": "Университет Суонси",
+  "country": "United Kingdom",
+  "countryRu": "Соединенное Королевство Великобритании и Северной Ирландии",
+  "websiteUrl": "https://www.swansea.ac.uk"
+ },
+ {
+  "id": "bolashak-400-california-institute-of-the-arts",
+  "no": 400,
+  "name": "California Institute of the Arts",
+  "nameRu": "Калифорнийский институт искусств",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://calarts.edu"
+ },
+ {
+  "id": "bolashak-401-university-of-hawaii-at-manoa",
+  "no": 401,
+  "name": "University of Hawaiʻi at Mānoa",
+  "nameRu": "Гавайский университет в Маноа",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://manoa.hawaii.edu"
+ },
+ {
+  "id": "bolashak-402-oregon-state-university",
+  "no": 402,
+  "name": "Oregon State University",
+  "nameRu": "Университет штата Орегон",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://oregonstate.edu"
+ },
+ {
+  "id": "bolashak-403-university-of-south-carolina",
+  "no": 403,
+  "name": "University of South Carolina",
+  "nameRu": "Университет Южной Каролины",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://sc.edu"
+ },
+ {
+  "id": "bolashak-404-school-of-visual-arts-sva",
+  "no": 404,
+  "name": "School of Visual Arts, SVA",
+  "nameRu": "Школа визуальных искусств",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://sva.edu"
+ },
+ {
+  "id": "bolashak-405-art-center-college-of-design",
+  "no": 405,
+  "name": "Art Center College of Design",
+  "nameRu": "Колледж дизайна ArtCenter",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.artcenter.edu/"
+ },
+ {
+  "id": "bolashak-406-university-at-buffalo-suny",
+  "no": 406,
+  "name": "University at Buffalo, SUNY",
+  "nameRu": "Университет в Буффало, SUNY",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.buffalo.edu"
+ },
+ {
+  "id": "bolashak-407-curtis-institute-of-music",
+  "no": 407,
+  "name": "Curtis Institute of Music",
+  "nameRu": "Институт музыки Кертиса",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.curtis.edu/"
+ },
+ {
+  "id": "bolashak-408-florida-international-university",
+  "no": 408,
+  "name": "Florida International University",
+  "nameRu": "Международный университет Флориды",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.fiu.edu"
+ },
+ {
+  "id": "bolashak-409-iowa-state-university",
+  "no": 409,
+  "name": "Iowa State University",
+  "nameRu": "Университет штата Айова",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.iastate.edu/"
+ },
+ {
+  "id": "bolashak-410-juilliard-school",
+  "no": 410,
+  "name": "Juilliard School",
+  "nameRu": "Джульярдская школа",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.juilliard.edu/"
+ },
+ {
+  "id": "bolashak-411-kansas-state-university",
+  "no": 411,
+  "name": "Kansas State University",
+  "nameRu": "Университет штата Канзас",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.k-state.edu"
+ },
+ {
+  "id": "bolashak-412-colorado-school-of-mines",
+  "no": 412,
+  "name": "Colorado School of Mines",
+  "nameRu": "Колорадская горная школа",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.mines.edu/"
+ },
+ {
+  "id": "bolashak-413-north-carolina-state-university",
+  "no": 413,
+  "name": "North Carolina State University",
+  "nameRu": "Университет штата Северная Каролина",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ncsu.edu"
+ },
+ {
+  "id": "bolashak-414-the-new-school",
+  "no": 414,
+  "name": "The New School",
+  "nameRu": "Университет The New School",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.newschool.edu/"
+ },
+ {
+  "id": "bolashak-415-parsons-school-of-design-at-the-new-school",
+  "no": 415,
+  "name": "Parsons School of Design at The New School",
+  "nameRu": "Школа дизайна Парсонс при The New School",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.newschool.edu/parsons/"
+ },
+ {
+  "id": "bolashak-416-new-mexico-institute-of-mining-and-technology",
+  "no": 416,
+  "name": "New Mexico Institute of Mining and Technology",
+  "nameRu": "Институт горного дела и технологий Нью-Мексико",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.nmt.edu"
+ },
+ {
+  "id": "bolashak-417-pratt-institute",
+  "no": 417,
+  "name": "Pratt Institute",
+  "nameRu": "Институт Пратта",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.pratt.edu/"
+ },
+ {
+  "id": "bolashak-418-rhode-island-school-of-design-risd",
+  "no": 418,
+  "name": "Rhode Island School of Design, RISD",
+  "nameRu": "Школа дизайна Род-Айленда",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.risd.edu/"
+ },
+ {
+  "id": "bolashak-419-school-of-the-art-institute-of-chicago-saic",
+  "no": 419,
+  "name": "School of the Art Institute of Chicago, SAIC",
+  "nameRu": "Школа Института искусств Чикаго",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.saic.edu/"
+ },
+ {
+  "id": "bolashak-420-savannah-college-of-art-and-design",
+  "no": 420,
+  "name": "Savannah College of Art and Design",
+  "nameRu": "Колледж искусства и дизайна Саванны",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.scad.edu/"
+ },
+ {
+  "id": "bolashak-421-texas-tech-university",
+  "no": 421,
+  "name": "Texas Tech University",
+  "nameRu": "Техасский технологический университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ttu.edu"
+ },
+ {
+  "id": "bolashak-422-university-of-central-florida",
+  "no": 422,
+  "name": "University of Central Florida",
+  "nameRu": "Университет Центральной Флориды",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.ucf.edu"
+ },
+ {
+  "id": "bolashak-423-the-university-of-georgia",
+  "no": 423,
+  "name": "The University of Georgia",
+  "nameRu": "Университет Джорджии",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.uga.edu"
+ },
+ {
+  "id": "bolashak-424-university-of-nevada-las-vegas",
+  "no": 424,
+  "name": "University of Nevada, Las Vegas",
+  "nameRu": "Университет Невады в Лас-Вегасе",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.unlv.edu/"
+ },
+ {
+  "id": "bolashak-425-university-of-nevada-reno",
+  "no": 425,
+  "name": "University of Nevada, Reno",
+  "nameRu": "Университет Невады в Рино",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.unr.edu"
+ },
+ {
+  "id": "bolashak-426-the-university-of-tennessee-knoxville",
+  "no": 426,
+  "name": "The University of Tennessee, Knoxville",
+  "nameRu": "Университет Теннесси в Ноксвилле",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.utk.edu"
+ },
+ {
+  "id": "bolashak-427-virginia-polytechnic-institute-and-state-university",
+  "no": 427,
+  "name": "Virginia Polytechnic Institute and State University",
+  "nameRu": "Вирджинский политехнический институт и государственный университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.vt.edu"
+ },
+ {
+  "id": "bolashak-428-university-of-nebraskalincoln",
+  "no": 428,
+  "name": "University of Nebraska–Lincoln",
+  "nameRu": "Университет Небраски — Линкольн",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.unl.edu"
+ },
+ {
+  "id": "bolashak-429-colorado-state-university",
+  "no": 429,
+  "name": "Colorado State University",
+  "nameRu": "Университет штата Колорадо",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.colostate.edu"
+ },
+ {
+  "id": "bolashak-430-syracuse-university",
+  "no": 430,
+  "name": "Syracuse University",
+  "nameRu": "Сиракузский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.syracuse.edu"
+ },
+ {
+  "id": "bolashak-431-university-of-houston",
+  "no": 431,
+  "name": "University of Houston",
+  "nameRu": "Хьюстонский университет",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.uh.edu"
+ },
+ {
+  "id": "bolashak-432-university-of-missouri-columbia",
+  "no": 432,
+  "name": "University of Missouri, Columbia",
+  "nameRu": "Университет Миссури, Колумбия",
+  "country": "United States",
+  "countryRu": "Соединенные Штаты Америки",
+  "websiteUrl": "https://www.missouri.edu"
+ },
+ {
+  "id": "bolashak-433-unesp",
+  "no": 433,
+  "name": "UNESP",
+  "nameRu": "Государственный университет штата Сан-Паулу",
+  "country": "Brazil",
+  "countryRu": "Федеративная Республика Бразилия",
+  "websiteUrl": "https://www.unesp.br"
+ },
+ {
+  "id": "bolashak-434-universidade-estadual-de-campinas-unicamp",
+  "no": 434,
+  "name": "Universidade Estadual de Campinas – Unicamp",
+  "nameRu": "Государственный университет Кампинаса",
+  "country": "Brazil",
+  "countryRu": "Федеративная Республика Бразилия",
+  "websiteUrl": "https://www.unicamp.br"
+ },
+ {
+  "id": "bolashak-435-universidade-federal-do-rio-de-janeiro",
+  "no": 435,
+  "name": "Universidade Federal do Rio de Janeiro",
+  "nameRu": "Федеральный университет Рио-де-Жанейро",
+  "country": "Brazil",
+  "countryRu": "Федеративная Республика Бразилия",
+  "websiteUrl": "https://ufrj.br"
+ },
+ {
+  "id": "bolashak-436-hochschule-fur-musik-hanns-eisler-berlin",
+  "no": 436,
+  "name": "Hochschule für Musik Hanns Eisler Berlin",
+  "nameRu": "Высшая школа музыки имени Ханса Айслера в Берлине",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.hfm-berlin.de"
+ },
+ {
+  "id": "bolashak-437-ruhr-universitat-bochum",
+  "no": 437,
+  "name": "Ruhr-Universität Bochum",
+  "nameRu": "Рурский университет в Бохуме",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.ruhr-uni-bochum.de"
+ },
+ {
+  "id": "bolashak-438-university-of-hohenheim",
+  "no": 438,
+  "name": "University of Hohenheim",
+  "nameRu": "Университет Хоэнхайма",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-hohenheim.de"
+ },
+ {
+  "id": "bolashak-439-christian-albrechts-university-zu-kiel",
+  "no": 439,
+  "name": "Christian-Albrechts-University zu Kiel",
+  "nameRu": "Университет имени Христиана Альбрехта в Киле",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.uni-kiel.de"
+ },
+ {
+  "id": "bolashak-440-technische-universitat-bergakademie-freiberg",
+  "no": 440,
+  "name": "Technische Universität Bergakademie Freiberg",
+  "nameRu": "Фрайбергская горная академия – Технический университет",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://tu-freiberg.de"
+ },
+ {
+  "id": "bolashak-441-universitat-der-kunste-berlin",
+  "no": 441,
+  "name": "Universität der Künste Berlin",
+  "nameRu": "Университет искусств Берлина",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.udk-berlin.de"
+ },
+ {
+  "id": "bolashak-442-hochschule-fur-musik-und-theater-felix-mendelssohn-bartholdy-leipzig",
+  "no": 442,
+  "name": "Hochschule für Musik und Theater Felix Mendelssohn Bartholdy Leipzig",
+  "nameRu": "Высшая школа музыки и театра имени Феликса Мендельсона- Бартольди в Лейпциге",
+  "country": "Germany",
+  "countryRu": "Федеративная Республика Германия",
+  "websiteUrl": "https://www.hmt-leipzig.de"
+ },
+ {
+  "id": "bolashak-443-ucsi-university",
+  "no": 443,
+  "name": "UCSI University",
+  "nameRu": "Университет UCSI",
+  "country": "Malaysia",
+  "countryRu": "Федерация Малайзия",
+  "websiteUrl": "https://www.ucsiuniversity.edu.my"
+ },
+ {
+  "id": "bolashak-444-management-and-science-university",
+  "no": 444,
+  "name": "Management and Science University",
+  "nameRu": "Университет управления и науки",
+  "country": "Malaysia",
+  "countryRu": "Федерация Малайзия",
+  "websiteUrl": "https://www.msu.edu.my"
+ },
+ {
+  "id": "bolashak-445-taylor-s-university",
+  "no": 445,
+  "name": "Taylor's University",
+  "nameRu": "Университет Тейлорс",
+  "country": "Malaysia",
+  "countryRu": "Федерация Малайзия",
+  "websiteUrl": "https://university.taylors.edu.my"
+ },
+ {
+  "id": "bolashak-446-universiti-malaya",
+  "no": 446,
+  "name": "Universiti Malaya",
+  "nameRu": "Малайский университет",
+  "country": "Malaysia",
+  "countryRu": "Федерация Малайзия",
+  "websiteUrl": "https://www.um.edu.my"
+ },
+ {
+  "id": "bolashak-447-universiti-putra-malaysia",
+  "no": 447,
+  "name": "Universiti Putra Malaysia",
+  "nameRu": "Университет Путра Малайзии",
+  "country": "Malaysia",
+  "countryRu": "Федерация Малайзия",
+  "websiteUrl": "https://www.upm.edu.my"
+ },
+ {
+  "id": "bolashak-448-universiti-teknologi-malaysia",
+  "no": 448,
+  "name": "Universiti Teknologi Malaysia",
+  "nameRu": "Технологический университет Малайзии",
+  "country": "Malaysia",
+  "countryRu": "Федерация Малайзия",
+  "websiteUrl": "https://www.utm.my"
+ },
+ {
+  "id": "bolashak-449-universiti-teknologi-petronas",
+  "no": 449,
+  "name": "Universiti Teknologi PETRONAS",
+  "nameRu": "Технологический университет Петронас",
+  "country": "Malaysia",
+  "countryRu": "Федерация Малайзия",
+  "websiteUrl": "https://www.utp.edu.my"
+ },
+ {
+  "id": "bolashak-450-university-of-jyvaskyla",
+  "no": 450,
+  "name": "University of Jyväskylä",
+  "nameRu": "Университет Ювяскюля",
+  "country": "Finland",
+  "countryRu": "Финляндская Республика",
+  "websiteUrl": "https://www.jyu.fi"
+ },
+ {
+  "id": "bolashak-451-tampere-university",
+  "no": 451,
+  "name": "Tampere University",
+  "nameRu": "Университет Тампере",
+  "country": "Finland",
+  "countryRu": "Финляндская Республика",
+  "websiteUrl": "https://www.tuni.fi"
+ },
+ {
+  "id": "bolashak-452-sibelius-academy-university-of-the-arts-helsinki",
+  "no": 452,
+  "name": "Sibelius Academy, University of the Arts Helsinki",
+  "nameRu": "Академия Сибелиуса Университета искусств Хельсинки",
+  "country": "Finland",
+  "countryRu": "Финляндская Республика",
+  "websiteUrl": "https://www.uniarts.fi/en/units/sibelius-academy/"
+ },
+ {
+  "id": "bolashak-453-university-of-turku",
+  "no": 453,
+  "name": "University of Turku",
+  "nameRu": "Университет Турку",
+  "country": "Finland",
+  "countryRu": "Финляндская Республика",
+  "websiteUrl": "https://www.utu.fi"
+ },
+ {
+  "id": "bolashak-454-conservatoire-national-superieur-de-musique-et-de-danse-de-lyon",
+  "no": 454,
+  "name": "Conservatoire national supérieur de musique et de danse de Lyon",
+  "nameRu": "Лионская национальная высшая консерватория музыки и танца",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.cnsmd-lyon.fr"
+ },
+ {
+  "id": "bolashak-455-cnsmdp",
+  "no": 455,
+  "name": "CNSMDP",
+  "nameRu": "Парижская национальная высшая консерватория музыки и танца",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.conservatoiredeparis.fr/en"
+ },
+ {
+  "id": "bolashak-456-ensad",
+  "no": 456,
+  "name": "ENSAD",
+  "nameRu": "Национальная высшая школа декоративных искусств  (École Nationale Supérieure des Arts Décoratifs)",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.ensad.fr"
+ },
+ {
+  "id": "bolashak-457-hec-paris",
+  "no": 457,
+  "name": "HEC Paris",
+  "nameRu": "Высшая коммерческая школа Парижа",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.hec.edu"
+ },
+ {
+  "id": "bolashak-458-insead-france",
+  "no": 458,
+  "name": "INSEAD, France",
+  "nameRu": "Бизнес-школа INSEAD",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.insead.edu"
+ },
+ {
+  "id": "bolashak-459-l-institut-agro",
+  "no": 459,
+  "name": "L'Institut Agro",
+  "nameRu": "Институт аграрных наук Франции «L'Institut Agro»",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.institut-agro.fr"
+ },
+ {
+  "id": "bolashak-460-universite-paris-1-pantheon-sorbonne",
+  "no": 460,
+  "name": "Université Paris 1 Panthéon-Sorbonne",
+  "nameRu": "Университет Париж 1 Пантеон — Сорбонна",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.pantheonsorbonne.fr/"
+ },
+ {
+  "id": "bolashak-461-hotel-school-vatel",
+  "no": 461,
+  "name": "Hotel School Vatel",
+  "nameRu": "Школа гостиничного бизнеса Vatel",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.vatel.com/"
+ },
+ {
+  "id": "bolashak-462-ecole-nationale-veterinaire-dalfort",
+  "no": 462,
+  "name": "École Nationale Vétérinaire d’Alfort",
+  "nameRu": "Национальная ветеринарная школа Альфора",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.vet-alfort.fr"
+ },
+ {
+  "id": "bolashak-463-ecole-des-hautes-etudes-en-sciences-sociales-ehess",
+  "no": 463,
+  "name": "Ecole des Hautes Etudes en Sciences Sociales – EHESS",
+  "nameRu": "Высшая школа социальных наук",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.ehess.fr"
+ },
+ {
+  "id": "bolashak-464-escp-europe",
+  "no": 464,
+  "name": "ESCP Europe",
+  "nameRu": "Европейская школа бизнеса ESCP",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.escp.eu"
+ },
+ {
+  "id": "bolashak-465-essec-business-school",
+  "no": 465,
+  "name": "ESSEC Business School",
+  "nameRu": "Бизнес-школа ESSEC",
+  "country": "France",
+  "countryRu": "Французская Республика",
+  "websiteUrl": "https://www.essec.edu"
+ },
+ {
+  "id": "bolashak-466-imi-luzern-irn-hotel-management-school",
+  "no": 466,
+  "name": "IMI-Luzern – IRN Hotel Management School",
+  "nameRu": "Институт гостиничного менеджмента IMI Люцерн",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://imi-luzern.com/"
+ },
+ {
+  "id": "bolashak-467-les-roches-global-hospitality-education",
+  "no": 467,
+  "name": "Les Roches Global Hospitality Education",
+  "nameRu": "Les Roches — глобальная школа гостиничного образования",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://lesroches.edu/"
+ },
+ {
+  "id": "bolashak-468-cesar-ritz-colleges",
+  "no": 468,
+  "name": "Cesar Ritz Colleges",
+  "nameRu": "Колледжи Сезара Ритца",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.cesarritzcolleges.edu/en/"
+ },
+ {
+  "id": "bolashak-469-culinary-arts-academy-switzerland",
+  "no": 469,
+  "name": "Culinary Arts Academy Switzerland",
+  "nameRu": "Академия кулинарных искусств Швейцарии",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.culinaryartsswitzerland.com/en/"
+ },
+ {
+  "id": "bolashak-470-ehl-hospitality-business-school",
+  "no": 470,
+  "name": "EHL Hospitality Business School",
+  "nameRu": "Школа гостиничного бизнеса EHL",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.ehl.edu/"
+ },
+ {
+  "id": "bolashak-471-glion-institute-of-higher-education",
+  "no": 471,
+  "name": "Glion Institute of Higher Education",
+  "nameRu": "Институт высшего образования Glion",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.glion.edu/"
+ },
+ {
+  "id": "bolashak-472-hotel-institute-montreux-him",
+  "no": 472,
+  "name": "Hotel Institute Montreux – HIM",
+  "nameRu": "Институт гостиничного менеджмента Монтре – HIM",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.him-business-school.com/en/"
+ },
+ {
+  "id": "bolashak-473-hotel-and-tourism-management-institute-switzerland",
+  "no": 473,
+  "name": "Hotel and Tourism Management Institute, Switzerland",
+  "nameRu": "Швейцарский институт управления гостиничным и туристическим бизнесом",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.htmi.ch"
+ },
+ {
+  "id": "bolashak-474-shms-swiss-hotel-management-school",
+  "no": 474,
+  "name": "SHMS – Swiss Hotel Management School",
+  "nameRu": "Швейцарская школа гостиничного менеджмента SHMS",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.shms.com/en/"
+ },
+ {
+  "id": "bolashak-475-bern-zurich",
+  "no": 475,
+  "name": "Bern & Zurich",
+  "nameRu": "Факультет ветеринарной медицины Vetsuisse",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.vetsuisse.unibe.ch/index_eng.html"
+ },
+ {
+  "id": "bolashak-476-zurich-university-of-the-arts-zhdk",
+  "no": 476,
+  "name": "Zurich University of the Arts, ZHdK",
+  "nameRu": "Цюрихский университет искусств",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.zhdk.ch"
+ },
+ {
+  "id": "bolashak-477-ecole-hoteliere-de-geneve",
+  "no": 477,
+  "name": "Ecole Hôtelière de Genève",
+  "nameRu": "Женевская школа гостиничного менеджмента",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.ehg.ch"
+ },
+ {
+  "id": "bolashak-478-business-and-hotel-management-school-bhms",
+  "no": 478,
+  "name": "Business and Hotel Management School – BHMS",
+  "nameRu": "Школа бизнеса и гостиничного менеджмента BHMS",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.bhms.ch"
+ },
+ {
+  "id": "bolashak-479-university-of-st-gallen",
+  "no": 479,
+  "name": "University of St. Gallen",
+  "nameRu": "Университет Санкт-Галлена",
+  "country": "Switzerland",
+  "countryRu": "Швейцарская Конфедерация",
+  "websiteUrl": "https://www.unisg.ch"
+ },
+ {
+  "id": "bolashak-480-university-of-pretoria",
+  "no": 480,
+  "name": "University of Pretoria",
+  "nameRu": "Университет Претории",
+  "country": "South Africa",
+  "countryRu": "Южно-Африканская Республика",
+  "websiteUrl": "https://www.up.ac.za"
+ },
+ {
+  "id": "bolashak-481-university-of-the-witwatersrand",
+  "no": 481,
+  "name": "University of the Witwatersrand",
+  "nameRu": "Университет Витватерсранда",
+  "country": "South Africa",
+  "countryRu": "Южно-Африканская Республика",
+  "websiteUrl": "https://www.wits.ac.za/"
+ },
+ {
+  "id": "bolashak-482-pontificia-universidad-catolica-de-chile",
+  "no": 482,
+  "name": "Pontificia Universidad Católica de Chile",
+  "nameRu": "Папский католический университет Чили",
+  "country": "Chile",
+  "countryRu": "Республика Чили",
+  "websiteUrl": "https://www.uc.cl"
+ },
+ {
+  "id": "bolashak-483-universidad-de-chile",
+  "no": 483,
+  "name": "Universidad de Chile",
+  "nameRu": "Университет Чили",
+  "country": "Chile",
+  "countryRu": "Республика Чили",
+  "websiteUrl": "https://www.uchile.cl"
+ },
+ {
+  "id": "bolashak-484-kyushu-university",
+  "no": 484,
+  "name": "Kyushu University",
+  "nameRu": "Университет Кюсю",
+  "country": "Japan",
+  "countryRu": "Япония",
+  "websiteUrl": "https://www.kyushu-u.ac.jp"
+ },
+ {
+  "id": "bolashak-485-ritsumeikan-university",
+  "no": 485,
+  "name": "Ritsumeikan University",
+  "nameRu": "Университет Рицумэйкан",
+  "country": "Japan",
+  "countryRu": "Япония",
+  "websiteUrl": "https://www.ritsumei.ac.jp"
+ },
+ {
+  "id": "bolashak-486-tmdu",
+  "no": 486,
+  "name": "TMDU",
+  "nameRu": "Токийский медицинский и стоматологический университет",
+  "country": "Japan",
+  "countryRu": "Япония",
+  "websiteUrl": "https://www.tmd.ac.jp/english/"
+ },
+ {
+  "id": "bolashak-487-university-of-tsukuba",
+  "no": 487,
+  "name": "University of Tsukuba",
+  "nameRu": "Университет Цукуба",
+  "country": "Japan",
+  "countryRu": "Япония",
+  "websiteUrl": "https://www.tsukuba.ac.jp"
+ },
+ {
+  "id": "bolashak-488-tokyo-university-of-agriculture-and-technology",
+  "no": 488,
+  "name": "Tokyo University of Agriculture and Technology",
+  "nameRu": "Токийский университет сельского хозяйства и технологий",
+  "country": "Japan",
+  "countryRu": "Япония",
+  "websiteUrl": "https://www.tuat.ac.jp"
+ },
+ {
+  "id": "bolashak-489-waseda-university",
+  "no": 489,
+  "name": "Waseda University",
+  "nameRu": "Университет Васэда",
+  "country": "Japan",
+  "countryRu": "Япония",
+  "websiteUrl": "https://www.waseda.jp"
+ }
+]
