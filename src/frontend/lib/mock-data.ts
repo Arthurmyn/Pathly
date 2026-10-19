@@ -140,7 +140,7 @@ export const requirements: Requirement[] = [
   verified("bsc-cs-degree", "steppe-bsc-computer-science", "degree_required", "Secondary education certificate", ["high_school"], ST),
   verified("bsc-cs-gpa", "steppe-bsc-computer-science", "gpa_min", "Minimum school GPA", 3.0, ST),
   verified("bsc-cs-exam", "steppe-bsc-computer-science", "exam_required", "National entrance test (ENT)", "ENT", ST),
-  verified("bsc-cs-language", "steppe-bsc-computer-science", "language_min", "English proficiency (IELTS)", 5.5, ST, { test: "ielts" }, "2026-03-02", "2026-08-29"),
+  verified("bsc-cs-language", "steppe-bsc-computer-science", "language_min", "English proficiency (IELTS)", 5.5, ST, { test: "ielts", sectionMin: 5.0 }, "2026-03-02", "2026-08-29"),
   verified("bsc-cs-docs", "steppe-bsc-computer-science", "documents_ready", "Application documents", "ready", ST),
 
   // MSc Data Science (Kazakhstan)
@@ -233,9 +233,12 @@ export const sampleProfile = {
   targetLevel: "master" as const,
   targetCountry: "United States",
   gpa: 3.5,
-  language: { test: "toefl" as const, score: 96, planned: false },
+  language: { test: "toefl" as const, score: 96, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
   exams: [{ name: "GRE", state: "planned" as const }],
   workYears: null,
+  workField: null,
+  workRole: null,
+  funding: "scholarship" as const,
   intake: "Fall 2027",
   budgetUsd: 30000,
   documentsReady: false,

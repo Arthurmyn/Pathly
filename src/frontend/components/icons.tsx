@@ -244,3 +244,8 @@ export const IconEyeOff = (p: IconProps) => (
     <path d="M3 3l18 18M10.6 5.7A9.6 9.6 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a16 16 0 0 1-3 3.8M6.6 6.9A16 16 0 0 0 2.5 12S6 18.5 12 18.5c1.5 0 2.8-.4 4-.9M9.9 9.9a2.7 2.7 0 0 0 3.9 3.9" />
   </Svg>
 );
+export const IconPencil = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="m4 20 1-4L16.5 4.5a2 2 0 0 1 3 3L8 19l-4 1ZM14 7l3 3" />
+  </Svg>
+);

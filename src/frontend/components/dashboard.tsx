@@ -5,28 +5,20 @@ import { useMemo } from "react";
 import { formatDate } from "@/lib/dates";
 import { evaluateProgram, summarize } from "@/lib/eligibility";
 import { getProgram } from "@/lib/mock-data";
+import { completeness } from "@/lib/profile-fields";
 import { generateRoadmap } from "@/lib/roadmap";
 import { effectiveStatus } from "@/lib/status";
 import { useAppState } from "./app-state";
 import { OutcomeBar } from "./outcome-bar";
+import { ProgressRing } from "./rail";
 import { hasProfileData } from "./profile-utils";
 import { Button, Callout, Card, EmptyState, LinkButton, PageHeader } from "./ui";
-import type { Profile } from "@/lib/types";
-
-function completeness(p: Profile): { filled: number; total: number } {
-  const checks = [
-    p.currentDegree != null, p.targetLevel != null, p.targetCountry != null, p.gpa != null,
-    p.language.score != null || p.language.planned, p.exams.length > 0, p.workYears != null,
-    p.intake != null, p.budgetUsd != null, p.documentsReady != null,
-  ];
-  return { filled: checks.filter(Boolean).length, total: checks.length };
-}
 
 export function Dashboard() {
   const state = useAppState();
   const { profile, today, shortlist } = state;
   const hasProfile = hasProfileData(profile);
-  const { filled, total } = completeness(profile);
+  const { filled, total, percent } = completeness(profile);
 
   const cards = useMemo(
     () =>
@@ -117,14 +109,16 @@ export function Dashboard() {
             </ul>
           )}
         </div>
-        <Card className="self-start">
-          <h2 className="font-semibold">Profile</h2>
-          <p className="mt-1 text-sm text-muted">{filled} of {total} fields filled</p>
-          <div className="mt-2 h-2 overflow-hidden rounded-full bg-surface-2" role="progressbar" aria-valuenow={filled} aria-valuemin={0} aria-valuemax={total}>
-            <div className="h-full bg-primary" style={{ width: `${(filled / total) * 100}%` }} />
-          </div>
-          <div className="mt-3"><LinkButton href="/app/profile" variant="secondary">Edit profile</LinkButton></div>
-        </Card>
+        <div>
+          <h2 className="mb-3 text-lg font-semibold">Profile</h2>
+          <Card>
+            <div className="flex items-center gap-4">
+              <ProgressRing percent={percent} size={56} />
+              <p className="text-sm text-muted">{filled} of {total} fields filled</p>
+            </div>
+            <div className="mt-4"><LinkButton href="/app/profile" variant="secondary">Edit profile</LinkButton></div>
+          </Card>
+        </div>
       </section>
     </div>
   );

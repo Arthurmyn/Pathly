@@ -33,6 +33,8 @@ export interface Requirement {
   value: number | string | string[] | null;
   /** Language test (ielts, toefl) or exam name where it matters. */
   test?: string;
+  /** IELTS only: the minimum for each of the four sections, when the programme states one. */
+  sectionMin?: number;
   unit?: string;
   pathway: string;
   source: Source | null;
@@ -74,6 +76,16 @@ export interface Program {
 
 export type ExamState = "passed" | "planned";
 
+export interface IeltsSections {
+  listening: number | null;
+  reading: number | null;
+  writing: number | null;
+  speaking: number | null;
+}
+
+/** How close the work is to the target programme: decides whether the years can count. */
+export type WorkField = "same" | "related" | "other";
+
 export interface Profile {
   currentDegree: "high_school" | "bachelor" | "master" | null;
   field: string | null;
@@ -81,9 +93,13 @@ export interface Profile {
   targetCountry: string | null;
   /** GPA on a 4.0 scale. */
   gpa: number | null;
-  language: { test: "ielts" | "toefl" | null; score: number | null; planned: boolean };
-  exams: { name: string; state: ExamState }[];
+  language: { test: "ielts" | "toefl" | null; score: number | null; sections: IeltsSections; planned: boolean };
+  exams: { name: string; state: ExamState; score?: number | null }[];
+  /** Total years of work. Only years in a "same" or "related" field count towards a requirement. */
   workYears: number | null;
+  workField: WorkField | null;
+  workRole: string | null;
+  funding: "self" | "scholarship" | "unsure" | null;
   intake: string | null;
   budgetUsd: number | null;
   documentsReady: boolean | null;

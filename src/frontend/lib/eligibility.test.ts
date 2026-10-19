@@ -11,9 +11,12 @@ const emptyProfile: Profile = {
   targetLevel: null,
   targetCountry: null,
   gpa: null,
-  language: { test: null, score: null, planned: false },
+  language: { test: null, score: null, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
   exams: [],
   workYears: null,
+  workField: null,
+  workRole: null,
+  funding: null,
   intake: null,
   budgetUsd: null,
   documentsReady: null,
@@ -25,9 +28,12 @@ const strongProfile: Profile = {
   targetLevel: "master",
   targetCountry: "United States",
   gpa: 4.0,
-  language: { test: "toefl", score: 120, planned: false },
+  language: { test: "toefl", score: 120, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
   exams: [{ name: "GRE", state: "passed" }],
   workYears: 10,
+  workField: "same",
+  workRole: null,
+  funding: "self",
   intake: "Fall 2027",
   budgetUsd: 100000,
   documentsReady: true,
@@ -53,12 +59,12 @@ describe("evaluateRequirement", () => {
   it("is Pending for a planned exam or language test", () => {
     const planned = { ...emptyProfile, exams: [{ name: "GRE", state: "planned" as const }] };
     expect(evaluateRequirement(planned, req("ms-cs-exam"), DEMO_TODAY).outcome).toBe("pending");
-    const tl = { ...emptyProfile, language: { test: "toefl" as const, score: null, planned: true } };
+    const tl = { ...emptyProfile, language: { test: "toefl" as const, score: null, sections: emptyProfile.language.sections, planned: true } };
     expect(evaluateRequirement(tl, req("ms-cs-language"), DEMO_TODAY).outcome).toBe("pending");
   });
 
   it("does not convert between language tests automatically", () => {
-    const ielts = { ...emptyProfile, language: { test: "ielts" as const, score: 8, planned: false } };
+    const ielts = { ...emptyProfile, language: { test: "ielts" as const, score: 8, sections: emptyProfile.language.sections, planned: false } };
     expect(evaluateRequirement(ielts, req("ms-cs-language"), DEMO_TODAY).outcome).toBe("unknown");
   });
 
@@ -125,5 +131,49 @@ describe("summarize", () => {
     const list = requirements.filter((r) => r.programSlug === "northfield-ms-computer-science");
     const s = summarize(evaluateProgram(sampleProfile as Profile, list, DEMO_TODAY));
     expect(s.met + s.not_met + s.pending + s.unknown).toBe(list.length);
+  });
+});
+
+describe("IELTS sections and work experience", () => {
+  const workReq = {
+    ...req("ms-cs-experience"),
+    value: 2,
+    status: "verified" as const,
+    verifiedAt: "2026-09-12",
+    validUntil: "2099-01-01",
+    source: req("ms-cs-docs").source,
+  };
+  const ielts = (sections: Partial<Profile["language"]["sections"]>, score = 6.5): Profile => ({
+    ...emptyProfile,
+    language: { test: "ielts", score, sections: { listening: 6, reading: 6, writing: 6, speaking: 6, ...sections }, planned: false },
+  });
+
+  it("is Not met when one section is below the section minimum", () => {
+    const r = req("bsc-cs-language");
+    expect(evaluateRequirement(ielts({ writing: 4.5 }, 6), { ...r, validUntil: "2099-01-01" }, DEMO_TODAY).outcome).toBe("not_met");
+  });
+
+  it("is Unknown when sections are required but missing", () => {
+    const r = { ...req("bsc-cs-language"), validUntil: "2099-01-01" };
+    const p = ielts({ listening: null });
+    expect(evaluateRequirement(p, r, DEMO_TODAY).outcome).toBe("unknown");
+  });
+
+  it("is Met when the overall score and every section pass", () => {
+    const r = { ...req("bsc-cs-language"), validUntil: "2099-01-01" };
+    expect(evaluateRequirement(ielts({}, 6), r, DEMO_TODAY).outcome).toBe("met");
+  });
+
+  it("does not count work in an unrelated field", () => {
+    const r = workReq;
+    const other = { ...strongProfile, workYears: 10, workField: "other" as const };
+    expect(evaluateRequirement(other, r, DEMO_TODAY).outcome).not.toBe("met");
+    const same = { ...strongProfile, workYears: 10, workField: "same" as const };
+    expect(evaluateRequirement(same, r, DEMO_TODAY).outcome).toBe("met");
+  });
+
+  it("asks for the field of work before deciding", () => {
+    const r = workReq;
+    expect(evaluateRequirement({ ...strongProfile, workField: null }, r, DEMO_TODAY).outcome).toBe("unknown");
   });
 });

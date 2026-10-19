@@ -3,6 +3,7 @@
 import { useMemo, useSyncExternalStore, type ReactNode } from "react";
 import { DEMO_TODAY, addDays } from "@/lib/dates";
 import { getRequirements, requirements as allRequirements, sampleProfile } from "@/lib/mock-data";
+import { DEFAULT_SETTINGS, normalizeSettings, type Settings } from "@/lib/settings";
 import type { DataStatus, Profile, Requirement, Source } from "@/lib/types";
 
 export type Role = "guest" | "applicant" | "admin";
@@ -23,9 +24,12 @@ export const EMPTY_PROFILE: Profile = {
   targetLevel: null,
   targetCountry: null,
   gpa: null,
-  language: { test: null, score: null, planned: false },
+  language: { test: null, score: null, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
   exams: [],
   workYears: null,
+  workField: null,
+  workRole: null,
+  funding: null,
   intake: null,
   budgetUsd: null,
   documentsReady: null,
@@ -41,6 +45,7 @@ interface DemoState {
   audit: AuditEntry[];
   /** Requirement ids for which an applicant asked an administrator to re-verify. */
   requests: string[];
+  settings: Settings;
 }
 
 const INITIAL: DemoState = {
@@ -52,6 +57,7 @@ const INITIAL: DemoState = {
   overrides: {},
   audit: [],
   requests: [],
+  settings: DEFAULT_SETTINGS,
 };
 
 const STORAGE_KEY = "pathly-demo-v1";
@@ -74,6 +80,7 @@ interface Api extends DemoState {
   setRequirementStatus: (id: string, next: DataStatus, note: string) => string | null;
   requestVerification: (id: string) => void;
   resetDemo: () => void;
+  updateSettings: <K extends keyof Settings>(section: K, patch: Partial<Settings[K]>) => void;
 }
 
 // A small external store backed by localStorage. useSyncExternalStore keeps server and first client render
@@ -87,7 +94,12 @@ function loadOnce() {
   loaded = true;
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (raw) current = { ...INITIAL, ...(JSON.parse(raw) as Partial<DemoState>) };
+    if (raw) {
+      const saved = JSON.parse(raw) as Partial<DemoState>;
+      // Older saved states miss newer profile fields; fill them from the empty profile.
+      const profile = { ...EMPTY_PROFILE, ...saved.profile, language: { ...EMPTY_PROFILE.language, ...saved.profile?.language, sections: { ...EMPTY_PROFILE.language.sections, ...saved.profile?.language?.sections } } };
+      current = { ...INITIAL, ...saved, profile, settings: normalizeSettings(saved.settings) };
+    }
   } catch {
     /* storage can be blocked or corrupt; the demo still works without it */
   }
@@ -190,6 +202,7 @@ function buildApi(state: DemoState, ready: boolean): Api {
     },
     requestVerification: (id) => update((s) => (s.requests.includes(id) ? s : { ...s, requests: [...s.requests, id] })),
     resetDemo: () => update(() => INITIAL),
+    updateSettings: (section, patch) => update((s) => ({ ...s, settings: { ...s.settings, [section]: { ...s.settings[section], ...patch } } })),
   };
 }
 

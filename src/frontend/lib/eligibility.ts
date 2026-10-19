@@ -19,7 +19,7 @@ function requiredText(req: Requirement): string {
     case "gpa_min":
       return `GPA at least ${req.value} / 4.0`;
     case "language_min":
-      return `${String(req.test ?? "").toUpperCase()} at least ${req.value}`;
+      return `${String(req.test ?? "").toUpperCase()} at least ${req.value}${req.sectionMin != null ? `, no section below ${req.sectionMin}` : ""}`;
     case "degree_required":
       return `${(req.value as string[]).map((d) => DEGREE_NAME[d] ?? d).join(" or ")}`;
     case "exam_required":
@@ -36,7 +36,7 @@ function ruleText(req: Requirement): string {
     case "gpa_min":
       return `Your GPA must be ≥ ${req.value}.`;
     case "language_min":
-      return `Your ${String(req.test).toUpperCase()} score must be ≥ ${req.value}.`;
+      return `Your ${String(req.test).toUpperCase()} score must be ≥ ${req.value}${req.sectionMin != null ? ` and each section ≥ ${req.sectionMin}` : ""}.`;
     case "degree_required":
       return "Your current degree must be one of the accepted degrees.";
     case "exam_required":
@@ -66,7 +66,7 @@ function applicantText(req: Requirement, profile: Profile): string {
       return e ? (e.state === "passed" ? "taken" : "planned") : "not taken";
     }
     case "work_experience_min":
-      return profile.workYears == null ? "not in your profile" : `${profile.workYears} year(s)`;
+      return profile.workYears == null ? "not in your profile" : `${profile.workYears} year(s)${profile.workField === "other" ? ", not in a related field" : ""}`;
     case "documents_ready":
       return profile.documentsReady == null ? "not in your profile" : profile.documentsReady ? "ready" : "not ready";
   }
@@ -89,9 +89,21 @@ function compare(req: Requirement, profile: Profile): { outcome: Outcome; why: s
         };
       }
       if (l.test === req.test && l.score != null) {
-        return l.score >= (req.value as number)
-          ? { outcome: "met", why: `Your score ${l.score} is at least ${req.value}.` }
-          : { outcome: "not_met", why: `Your score ${l.score} is below the required ${req.value}.` };
+        if (l.score < (req.value as number)) {
+          return { outcome: "not_met", why: `Your score ${l.score} is below the required ${req.value}.` };
+        }
+        if (req.sectionMin != null) {
+          const parts = Object.values(l.sections);
+          if (parts.some((x) => x == null)) {
+            return { outcome: "unknown", why: `This programme also requires at least ${req.sectionMin} in every section. Enter all four section scores.` };
+          }
+          const low = Object.entries(l.sections).filter(([, v]) => (v as number) < req.sectionMin!);
+          if (low.length > 0) {
+            return { outcome: "not_met", why: `Your overall score is enough, but ${low.map(([k, v]) => `${k} (${v})`).join(", ")} is below the section minimum ${req.sectionMin}.` };
+          }
+          return { outcome: "met", why: `Your score ${l.score} and every section are at least ${req.sectionMin}.` };
+        }
+        return { outcome: "met", why: `Your score ${l.score} is at least ${req.value}.` };
       }
       if (l.planned && (l.test === req.test || !l.test)) {
         return { outcome: "pending", why: "You plan to take the test; the score is not available yet." };
@@ -113,9 +125,14 @@ function compare(req: Requirement, profile: Profile): { outcome: Outcome; why: s
     }
     case "work_experience_min": {
       if (profile.workYears == null) return { outcome: "unknown", why: "Your work experience is not in your profile yet." };
-      return profile.workYears >= (req.value as number)
-        ? { outcome: "met", why: `You have ${profile.workYears} year(s), the minimum is ${req.value}.` }
-        : { outcome: "not_met", why: `You have ${profile.workYears} year(s), the minimum is ${req.value}.` };
+      if (profile.workField == null) {
+        return { outcome: "unknown", why: "Say whether your work is in the same or a related field, because the programme may count only relevant experience." };
+      }
+      const counted = profile.workField === "other" ? 0 : profile.workYears;
+      const note = profile.workField === "other" ? " Work outside a related field is not counted." : "";
+      return counted >= (req.value as number)
+        ? { outcome: "met", why: `You have ${counted} relevant year(s), the minimum is ${req.value}.` }
+        : { outcome: "not_met", why: `You have ${counted} relevant year(s), the minimum is ${req.value}.${note}` };
     }
     case "documents_ready": {
       if (profile.documentsReady == null) return { outcome: "unknown", why: "Document readiness is not in your profile yet." };

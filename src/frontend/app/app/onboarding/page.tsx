@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { OnboardingPreview } from "@/components/onboarding-preview";
+import { OnboardingChat } from "@/components/onboarding-chat";
 
 export const metadata: Metadata = { title: "AI onboarding" };
 
 export default function Page() {
-  return <OnboardingPreview />;
+  return <OnboardingChat />;
 }

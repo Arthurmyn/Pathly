@@ -27,7 +27,7 @@ export function ProgressRing({ percent, size = 44 }: { percent: number; size?: n
         <circle cx="22" cy="22" r={r} fill="none" stroke="var(--border)" strokeWidth="4" />
         <circle className="ring-arc" cx="22" cy="22" r={r} fill="none" stroke="var(--primary)" strokeWidth="4" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - p / 100)} style={{ ["--ring-from" as string]: c }} />
       </svg>
-      <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums">{Math.round(p)}</span>
+      <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums">{Math.round(p)}<span className="text-[0.6em]">%</span></span>
     </div>
   );
 }

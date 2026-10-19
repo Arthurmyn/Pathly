@@ -96,6 +96,9 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-strong: var(--border-strong);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-danger: var(--danger);
   --color-heading: var(--heading);
   --color-muted-2: var(--muted-2);
   --color-line: var(--border);

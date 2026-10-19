@@ -1,177 +1,322 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
-import { requirements } from "@/lib/mock-data";
-import type { ExamState, Profile } from "@/lib/types";
-import { useAppState } from "./app-state";
-import { Button, Callout, Card, LinkButton, PageHeader } from "./ui";
+import Link from "next/link";
+import { useState } from "react";
+import { sampleProfile } from "@/lib/mock-data";
+import { effectiveTarget, examsFor } from "@/lib/exams";
+import { intakeOptions } from "@/lib/intake";
+import { completeness, profileFields } from "@/lib/profile-fields";
+import type { ExamState, IeltsSections, Profile, WorkField } from "@/lib/types";
+import { EMPTY_PROFILE, useAppState } from "./app-state";
+import { CompleteBadge, Field, NumberField, Pills, SelectField, Section, TextField } from "./form-controls";
+import { ProgressRing } from "./rail";
+import { Button, Card, CardLabel, LinkButton, PageHeader } from "./ui";
 
-const KNOWN_EXAMS = Array.from(new Set(requirements.filter((r) => r.kind === "exam_required").map((r) => String(r.value))));
 const COUNTRIES = ["Kazakhstan", "United States"];
+const SECTION_NAMES: (keyof IeltsSections)[] = ["listening", "reading", "writing", "speaking"];
 
-const inputClass = "mt-1 w-full rounded-lg border border-line bg-bg px-3 py-2 text-sm";
+const DEGREES = [
+  { value: "high_school", label: "High school" },
+  { value: "bachelor", label: "Bachelor's degree" },
+  { value: "master", label: "Master's degree" },
+];
 
-function Field({ label, help, error, children }: { label: string; help?: string; error?: string | null; children: ReactNode }) {
-  return (
-    <label className="block text-sm font-medium">
-      {label}
-      {children}
-      {help && !error ? <span className="mt-1 block text-xs font-normal text-muted">{help}</span> : null}
-      {error ? <span role="alert" className="mt-1 block text-xs font-normal" style={{ color: "var(--st-conflict-fg)" }}>{error}</span> : null}
-    </label>
-  );
+const TARGETS_BY_DEGREE: { [k: string]: { value: string; label: string }[] } = {
+  high_school: [{ value: "bachelor", label: "Bachelor's" }],
+  bachelor: [{ value: "master", label: "Master's" }, { value: "phd", label: "Doctoral / PhD" }],
+  master: [{ value: "master", label: "Master's" }, { value: "phd", label: "Doctoral / PhD" }],
+};
+const ALL_TARGETS = [{ value: "bachelor", label: "Bachelor's" }, ...TARGETS_BY_DEGREE.bachelor];
+
+const WORK_FIELD = [
+  { value: "same", label: "Same field as my target programme" },
+  { value: "related", label: "A related field" },
+  { value: "other", label: "A different field" },
+];
+
+/** IELTS overall band: the mean of the four sections, rounded to the nearest half band. */
+function ieltsOverall(s: IeltsSections): number | null {
+  const v = Object.values(s);
+  if (v.some((x) => x == null)) return null;
+  const mean = (v as number[]).reduce((a, b) => a + b, 0) / 4;
+  return Math.round(mean * 2) / 2;
 }
 
-/** Number field that commits on blur and rejects values outside the range with a message. */
-function NumberField({ label, value, min, max, step = 1, help, onCommit }: { label: string; value: number | null; min: number; max: number; step?: number; help?: string; onCommit: (v: number | null) => void }) {
-  const [error, setError] = useState<string | null>(null);
-  return (
-    <Field label={label} help={help} error={error}>
-      <input
-        key={String(value)}
-        type="number"
-        inputMode="decimal"
-        min={min}
-        max={max}
-        step={step}
-        defaultValue={value ?? ""}
-        className={inputClass}
-        onBlur={(e) => {
-          const raw = e.target.value.trim();
-          if (raw === "") { setError(null); return onCommit(null); }
-          const n = Number(raw);
-          if (Number.isNaN(n) || n < min || n > max) return setError(`Enter a number from ${min} to ${max}.`);
-          setError(null);
-          onCommit(n);
-        }}
-      />
-    </Field>
-  );
+function sameProfile(a: Profile, b: Profile) {
+  return JSON.stringify(a) === JSON.stringify(b);
 }
 
 export function ProfileForm() {
-  const { profile, updateProfile, loadSampleProfile, clearProfile } = useAppState();
-  const set = (patch: Partial<Profile>) => updateProfile(patch);
-  const lang = profile.language;
+  const { profile, ready } = useAppState();
+  // The editor starts from the saved profile once it is loaded from the browser.
+  if (!ready) return <div className="min-h-[60vh]" aria-busy="true" />;
+  return <ProfileEditor saved={profile} />;
+}
 
-  function setExam(name: string, state: ExamState | "none") {
-    const rest = profile.exams.filter((e) => e.name !== name);
-    set({ exams: state === "none" ? rest : [...rest, { name, state }] });
+function ProfileEditor({ saved }: { saved: Profile }) {
+  const { updateProfile, today } = useAppState();
+  const [draft, setDraft] = useState<Profile>(saved);
+  const [justSaved, setJustSaved] = useState(false);
+  const dirty = !sameProfile(draft, saved);
+
+  const set = (patch: Partial<Profile>) => {
+    setJustSaved(false);
+    setDraft((d) => ({ ...d, ...patch }));
+  };
+  const lang = draft.language;
+  const isSchool = draft.currentDegree === "high_school";
+  const fields = profileFields(draft);
+  const { percent } = completeness(draft);
+  const groupStat = (keys: string[]) => {
+    const f = fields.filter((x) => keys.includes(x.key));
+    return { filled: f.filter((x) => x.value != null).length, total: f.length };
+  };
+  const stat = {
+    education: groupStat(["degree", "field", "gpa"]),
+    goals: groupStat(["target", "country", "intake"]),
+    language: groupStat(["language"]),
+    exams: groupStat(["exams"]),
+    budget: groupStat(["budget", "funding"]),
+    work: groupStat(["work"]),
+    docs: groupStat(["documents"]),
+  };
+
+  const intakes = intakeOptions(today);
+  if (draft.intake && !intakes.includes(draft.intake)) intakes.unshift(draft.intake);
+
+  function changeDegree(v: string | null) {
+    const deg = v as Profile["currentDegree"];
+    const allowed = deg ? TARGETS_BY_DEGREE[deg] : ALL_TARGETS;
+    const keep = draft.targetLevel && allowed.some((t) => t.value === draft.targetLevel);
+    const only = deg === "high_school" ? ("bachelor" as const) : null;
+    set({ currentDegree: deg, targetLevel: keep ? draft.targetLevel : only });
   }
+
+  function changeTarget(v: string | null) {
+    set({ targetLevel: v as Profile["targetLevel"] });
+  }
+
+  function setTest(test: "ielts" | "toefl", state: "none" | "planned" | "taken") {
+    if (state === "none") {
+      if (lang.test === test) set({ language: { ...lang, test: null, score: null, planned: false, sections: { listening: null, reading: null, writing: null, speaking: null } } });
+      return;
+    }
+    const fresh = lang.test === test ? lang : { ...lang, score: null, sections: { listening: null, reading: null, writing: null, speaking: null } };
+    set({ language: { ...fresh, test, planned: state === "planned" } });
+  }
+  const testState = (test: "ielts" | "toefl") =>
+    lang.test !== test ? "none" : lang.planned && lang.score == null ? "planned" : "taken";
+
+  function setSection(name: keyof IeltsSections, v: number | null) {
+    const sections = { ...lang.sections, [name]: v };
+    const overall = ieltsOverall(sections);
+    set({ language: { ...lang, sections, score: overall ?? lang.score } });
+  }
+
+  function setExam(name: string, state: ExamState | "none", score?: number | null) {
+    const rest = draft.exams.filter((e) => e.name !== name);
+    const prev = draft.exams.find((e) => e.name === name);
+    set({ exams: state === "none" ? rest : [...rest, { name, state, score: state === "passed" ? (score !== undefined ? score : prev?.score ?? null) : null }] });
+  }
+
+  const exams = examsFor(draft);
+  const targetLabel = ALL_TARGETS.find((t) => t.value === effectiveTarget(draft))?.label;
+
+  function save() {
+    updateProfile(draft);
+    setJustSaved(true);
+  }
+
+  const checklist = [
+    { label: "Education", ...stat.education },
+    { label: "Study goals", ...stat.goals },
+    { label: "Language tests", ...stat.language },
+    ...(stat.exams.total ? [{ label: "Entrance exams", ...stat.exams }] : []),
+    { label: "Budget and funding", ...stat.budget },
+    ...(isSchool ? [] : [{ label: "Work experience", ...stat.work }]),
+    { label: "Documents", ...stat.docs },
+  ];
 
   return (
     <div>
       <PageHeader
         title="Profile"
-        subtitle="Only the fields needed to compare you with requirements. Every change updates your eligibility results and roadmaps."
+        subtitle="Only the fields needed to compare you with requirements. Save your changes to update your results and roadmaps."
         actions={
           <>
-            <LinkButton href="/app/onboarding" variant="secondary">AI onboarding</LinkButton>
-            <Button variant="secondary" onClick={loadSampleProfile}>Use a sample profile</Button>
-            <Button variant="ghost" onClick={clearProfile}>Clear</Button>
+            <Button variant="ghost" onClick={() => { setDraft(saved); setJustSaved(false); }} disabled={!dirty}>Discard</Button>
+            <Button onClick={save} disabled={!dirty}>Save Changes</Button>
           </>
         }
       />
+      <p className="-mt-3 mb-5 min-h-5 text-sm" role="status" aria-live="polite">
+        {justSaved && !dirty ? <span className="text-success">Changes saved.</span> : dirty ? <span className="text-muted">You have unsaved changes.</span> : null}
+      </p>
 
-      <div className="grid gap-5 md:grid-cols-2">
-        <Card className="space-y-4">
-          <h2 className="font-semibold">Education and goals</h2>
-          <Field label="Current degree">
-            <select className={inputClass} value={profile.currentDegree ?? ""} onChange={(e) => set({ currentDegree: (e.target.value || null) as Profile["currentDegree"] })}>
-              <option value="">Not set</option>
-              <option value="high_school">High school</option>
-              <option value="bachelor">Bachelor&apos;s degree</option>
-              <option value="master">Master&apos;s degree</option>
-            </select>
-          </Field>
-          <Field label="Field of study">
-            <input className={inputClass} value={profile.field ?? ""} onChange={(e) => set({ field: e.target.value || null })} placeholder="For example Computer Science" />
-          </Field>
-          <Field label="Target degree">
-            <select className={inputClass} value={profile.targetLevel ?? ""} onChange={(e) => set({ targetLevel: (e.target.value || null) as Profile["targetLevel"] })}>
-              <option value="">Not set</option>
-              <option value="bachelor">Bachelor&apos;s</option>
-              <option value="master">Master&apos;s</option>
-              <option value="phd">Doctoral / PhD</option>
-            </select>
-          </Field>
-          <Field label="Target country">
-            <select className={inputClass} value={profile.targetCountry ?? ""} onChange={(e) => set({ targetCountry: e.target.value || null })}>
-              <option value="">Any</option>
-              {COUNTRIES.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </Field>
-          <Field label="Intake">
-            <input className={inputClass} value={profile.intake ?? ""} onChange={(e) => set({ intake: e.target.value || null })} placeholder="For example Fall 2027" />
-          </Field>
-          <NumberField label="Budget per year (USD)" value={profile.budgetUsd} min={0} max={1000000} step={500} onCommit={(v) => set({ budgetUsd: v })} />
-        </Card>
+      <div className="grid gap-5 lg:grid-cols-[1fr_20rem] lg:items-start">
+        <form className="stagger space-y-5" onSubmit={(e) => { e.preventDefault(); if (dirty) save(); }}>
+          <Section title="Education" badge={<CompleteBadge {...stat.education} />}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <SelectField label="Current degree" value={draft.currentDegree} options={DEGREES} onChange={changeDegree} />
+              <TextField label={isSchool ? "Intended field of study" : "Field of study"} value={draft.field} placeholder="For example Computer Science" onChange={(v) => set({ field: v })} />
+              <NumberField label={isSchool ? "School GPA (4.0 scale)" : "GPA (4.0 scale)"} value={draft.gpa} min={0} max={4} step={0.01} help="Convert your grades to a 4.0 scale." onCommit={(v) => set({ gpa: v })} />
+            </div>
+          </Section>
 
-        <Card className="space-y-4">
-          <h2 className="font-semibold">Results and experience</h2>
-          <NumberField label="GPA (4.0 scale)" value={profile.gpa} min={0} max={4} step={0.01} help="Convert your grades to a 4.0 scale." onCommit={(v) => set({ gpa: v })} />
-          <Field label="Language test">
-            <select
-              className={inputClass}
-              value={lang.test ?? ""}
-              onChange={(e) => set({ language: { ...lang, test: (e.target.value || null) as "ielts" | "toefl" | null, score: null } })}
-            >
-              <option value="">None</option>
-              <option value="ielts">IELTS</option>
-              <option value="toefl">TOEFL</option>
-            </select>
-          </Field>
-          {lang.test ? (
-            <>
-              <NumberField
-                label={`${lang.test.toUpperCase()} score`}
-                value={lang.score}
-                min={0}
-                max={lang.test === "ielts" ? 9 : 120}
-                step={lang.test === "ielts" ? 0.5 : 1}
-                onCommit={(v) => set({ language: { ...lang, score: v } })}
-              />
-              <label className="flex items-center gap-2 text-sm">
-                <input type="checkbox" checked={lang.planned} onChange={(e) => set({ language: { ...lang, planned: e.target.checked } })} className="h-4 w-4 accent-[var(--primary)]" />
-                I plan to take it (no score yet)
-              </label>
-            </>
-          ) : null}
-          <fieldset>
-            <legend className="text-sm font-medium">Exams</legend>
-            <div className="mt-2 space-y-2">
-              {KNOWN_EXAMS.map((name) => {
-                const current = profile.exams.find((e) => e.name === name)?.state ?? "none";
+          <Section title="Study goals" badge={<CompleteBadge {...stat.goals} />}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <SelectField label="Target degree" value={draft.targetLevel} options={draft.currentDegree ? TARGETS_BY_DEGREE[draft.currentDegree] : ALL_TARGETS} onChange={changeTarget} />
+              <SelectField label="Target country" value={draft.targetCountry} placeholder="Any" options={COUNTRIES.map((c) => ({ value: c, label: c }))} onChange={(v) => set({ targetCountry: v })} />
+              <SelectField label="Intake" value={draft.intake} placeholder="Choose an intake" options={intakes.map((i) => ({ value: i, label: i }))} help="The next three years of Spring, Summer and Fall intakes." onChange={(v) => set({ intake: v })} />
+            </div>
+          </Section>
+
+          <Section title="Language tests" badge={<CompleteBadge {...stat.language} />} description="Pathly does not convert between tests. A programme that asks for IELTS is compared with an IELTS score.">
+            <div className="divide-y divide-line">
+              {(["ielts", "toefl"] as const).map((t) => {
+                const st = testState(t);
                 return (
-                  <div key={name} className="flex items-center justify-between gap-3 text-sm">
-                    <span>{name}</span>
-                    <select aria-label={`${name} status`} className="rounded-lg border border-line bg-bg px-2 py-1.5 text-sm" value={current} onChange={(e) => setExam(name, e.target.value as ExamState | "none")}>
-                      <option value="none">Not taken</option>
-                      <option value="planned">Planned</option>
-                      <option value="passed">Taken</option>
-                    </select>
+                  <div key={t} className="py-4 first:pt-0 last:pb-0">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <p className="font-medium">{t.toUpperCase()}</p>
+                      <select
+                        aria-label={`${t.toUpperCase()} status`}
+                        className="rounded-xl border border-line bg-surface px-3 py-1.5 text-sm"
+                        value={st}
+                        onChange={(e) => setTest(t, e.target.value as "none" | "planned" | "taken")}
+                      >
+                        <option value="none">Not taken</option>
+                        <option value="planned">Planned</option>
+                        <option value="taken">Taken</option>
+                      </select>
+                    </div>
+                    {st === "taken" && t === "ielts" ? (
+                      <div className="mt-3">
+                        <p className="text-xs text-muted">Some programmes ask for a minimum in every section, so enter all four.</p>
+                        <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-5">
+                          {SECTION_NAMES.map((n) => (
+                            <NumberField key={n} compact label={n[0].toUpperCase() + n.slice(1)} value={lang.sections[n]} min={0} max={9} step={0.5} onCommit={(v) => setSection(n, v)} />
+                          ))}
+                          <NumberField compact label="Overall" value={lang.score} min={0} max={9} step={0.5} help={ieltsOverall(lang.sections) != null ? "Calculated" : undefined} onCommit={(v) => set({ language: { ...lang, score: v } })} />
+                        </div>
+                      </div>
+                    ) : null}
+                    {st === "taken" && t === "toefl" ? (
+                      <div className="mt-3 max-w-40">
+                        <NumberField compact label="Total score" value={lang.score} min={0} max={120} onCommit={(v) => set({ language: { ...lang, score: v } })} />
+                      </div>
+                    ) : null}
                   </div>
                 );
               })}
             </div>
-          </fieldset>
-          <NumberField label="Work experience (years)" value={profile.workYears} min={0} max={60} step={0.5} onCommit={(v) => set({ workYears: v })} />
-          <fieldset>
-            <legend className="text-sm font-medium">Application documents ready?</legend>
-            <div className="mt-2 flex gap-4 text-sm">
-              {([["Yes", true], ["No", false], ["Not sure", null]] as const).map(([label, val]) => (
-                <label key={label} className="flex items-center gap-1.5">
-                  <input type="radio" name="docs" checked={profile.documentsReady === val} onChange={() => set({ documentsReady: val })} className="accent-[var(--primary)]" />
-                  {label}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-        </Card>
-      </div>
+          </Section>
 
-      <div className="mt-5">
-        <Callout>Changes are saved automatically in this browser. Open a programme to see how they change your results.</Callout>
+          <Section
+            title="Entrance exams"
+            badge={<CompleteBadge {...stat.exams} />}
+            description={targetLabel ? `Showing the exams that ${targetLabel} programmes ask for.` : "Showing all exams. Choose a current degree to see only the relevant ones."}
+          >
+            <div className="divide-y divide-line">
+              {exams.map((meta) => {
+                const entry = draft.exams.find((e) => e.name === meta.name);
+                const st = entry?.state ?? "none";
+                return (
+                  <div key={meta.name} className="py-3 first:pt-0 last:pb-0">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <p className="font-medium">{meta.name}</p>
+                      <select aria-label={`${meta.name} status`} className="rounded-xl border border-line bg-surface px-3 py-1.5 text-sm" value={st} onChange={(e) => setExam(meta.name, e.target.value as ExamState | "none")}>
+                        <option value="none">Not taken</option>
+                        <option value="planned">Planned</option>
+                        <option value="passed">Taken</option>
+                      </select>
+                    </div>
+                    {st === "passed" && meta.score ? (
+                      <div className="mt-3 max-w-48">
+                        <NumberField compact label={meta.score.label} value={entry?.score ?? null} min={meta.score.min} max={meta.score.max} onCommit={(v) => setExam(meta.name, "passed", v)} />
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </Section>
+
+          <Section title="Budget and funding" badge={<CompleteBadge {...stat.budget} />}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <NumberField label="Budget per year (USD)" value={draft.budgetUsd} min={0} max={1000000} step={500} onCommit={(v) => set({ budgetUsd: v })} />
+              <div>
+                <p className="text-sm font-medium">Funding preference</p>
+                <div className="mt-2.5">
+                  <Pills
+                    label="Funding preference"
+                    value={draft.funding}
+                    options={[{ value: "self", label: "Self-funded" }, { value: "scholarship", label: "Scholarship" }, { value: "unsure", label: "Not sure" }]}
+                    onChange={(v) => set({ funding: v })}
+                  />
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {isSchool ? null : (
+            <Section title="Work experience" badge={<CompleteBadge {...stat.work} />} description="Some programmes count only experience that is close to the field, so say what kind of work it was.">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <NumberField label="Years of work" value={draft.workYears} min={0} max={60} step={0.5} onCommit={(v) => set({ workYears: v })} />
+                <SelectField label="How close is it to your target programme?" value={draft.workField} placeholder="Not set" options={WORK_FIELD} onChange={(v) => set({ workField: v as WorkField | null })} />
+                <TextField label="Role or sector (optional)" value={draft.workRole} placeholder="For example Backend developer, retail, teaching" onChange={(v) => set({ workRole: v })} />
+              </div>
+            </Section>
+          )}
+
+          <Section title="Application documents" badge={<CompleteBadge {...stat.docs} />}>
+            <Field label="Are your application documents ready?">
+              <div className="mt-2.5">
+                <Pills label="Documents ready" value={draft.documentsReady} options={[{ value: true, label: "Yes" }, { value: false, label: "No" }, { value: null, label: "Not sure" }]} onChange={(v) => set({ documentsReady: v })} />
+              </div>
+            </Field>
+          </Section>
+
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4">
+            <Button variant="ghost" onClick={() => { setDraft(saved); setJustSaved(false); }} disabled={!dirty}>Discard</Button>
+            <Button onClick={save} disabled={!dirty}>Save Changes</Button>
+          </div>
+        </form>
+
+        <aside className="space-y-5 lg:sticky lg:top-6">
+          <Card>
+            <div className="flex items-center gap-4">
+              <ProgressRing percent={percent} size={64} />
+              <div>
+                <CardLabel>Profile completeness</CardLabel>
+                <p className="mt-1 text-sm text-muted">{fields.filter((f) => f.value != null).length} of {fields.length} fields filled</p>
+              </div>
+            </div>
+            <ul className="mt-4 divide-y divide-line text-sm">
+              {checklist.map((c) => (
+                <li key={c.label} className="flex items-center justify-between gap-3 py-2">
+                  <span>{c.label}</span>
+                  <span className={c.filled === c.total ? "font-medium text-success" : "text-muted"}>{c.filled === c.total ? "Complete" : `${c.filled} of ${c.total}`}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+          <Card>
+            <h2 className="font-semibold">Speed it up with AI</h2>
+            <p className="mt-1 text-sm text-muted">Describe your background in your own words and the fields fill in on this page.</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <LinkButton href="/app/onboarding">Edit with AI</LinkButton>
+              <LinkButton href="/programs" variant="secondary">Find matching programmes</LinkButton>
+            </div>
+          </Card>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="ghost" onClick={() => { setDraft({ ...sampleProfile }); setJustSaved(false); }}>Use a sample profile</Button>
+            <Button variant="ghost" onClick={() => { setDraft(EMPTY_PROFILE); setJustSaved(false); }}>Clear</Button>
+          </div>
+          <p className="px-1 text-xs text-muted">
+            Your profile stays in this browser in the demo. <Link href="/privacy" className="underline">What we keep</Link>
+          </p>
+        </aside>
       </div>
     </div>
   );
