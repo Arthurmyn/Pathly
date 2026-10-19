@@ -7,6 +7,7 @@ import { effectiveStatus } from "@/lib/status";
 import { buildQueue, QUEUE_ORDER } from "./admin-data";
 import { useAppState } from "./app-state";
 import { StatusBadge } from "./badges";
+import { DemoControls } from "./demo-controls";
 import { Callout, Card, EmptyState, PageHeader } from "./ui";
 import { programs } from "@/lib/mock-data";
 
@@ -83,6 +84,8 @@ export function AdminOverview() {
           )}
         </Card>
       </section>
+
+      <DemoControls />
 
       {queue.length === 0 ? <EmptyState title="Everything is verified">Nothing needs attention on this date.</EmptyState> : null}
     </div>

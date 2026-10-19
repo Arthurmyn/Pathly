@@ -17,7 +17,7 @@ Production build: `npm run build && npm start`. Checks: `npm test` (unit tests),
 1. Open `/login` and choose **Continue as applicant**. Use **Use a sample profile** on the dashboard.
 2. Open a programme (for example *MS Computer Science, Northfield Institute*): every requirement shows its status, source and absolute verification date, and your result Met / Not met / Pending / Unknown with the rule behind it. A requirement that is not Verified is always Unknown.
 3. **Create my roadmap**: tasks are ordered by dependencies and dated back from the verified deadline. Complete a task to unlock the next one.
-4. The grey demo bar: move **Today in the demo** to a later date (for example 20 Dec 2026) and watch Verified records become Stale.
+4. In **Settings** (Demo controls) move **Today in the demo** to a later date (for example 20 Dec 2026) and watch Verified records become Stale.
 5. `/login` then **Continue as administrator**: open the verification queue, fix a record, try to verify a Tier 3 source (blocked), save a Tier 1 source and verify it; see the audit log.
 
 ## Structure

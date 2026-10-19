@@ -5,6 +5,8 @@
  * Meaning is never carried by colour alone: statuses and outcomes differ by fill, border style, pattern, icon and text.
  */
 :root {
+  color-scheme: light; /* the interface is light only, as in the reference */
+
   /* Surfaces */
   --page: #f6f6f4; /* window background and sidebar: Soft Gray */
   --sheet: #fcfcfb; /* main page: Warm White */
@@ -79,49 +81,6 @@
   --deco-teal: #3b8595;
   --deco-sand: #cbb79a;
   --deco-navy: #263946;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page: #0f131c;
-    --sheet: #151a25;
-    --surface: #1c2230;
-    --surface-2: #252c3b;
-    --bg: #151a25;
-    --border: #2b3345;
-    --border-strong: #3a4459;
-    --text: #e9ecf2;
-    --heading: #f3f5f9;
-    --muted: #9aa3b2;
-    --muted-2: #6f7889;
-    --primary: #ff7a5f;
-    --primary-hover: #ff9680;
-    --primary-fg: #1a1210;
-    --primary-soft: #3a211b;
-    --nav-active: #ff8168;
-    --nav-line: #ff7a5f;
-    --focus: #ff9680;
-    --dark: #0b0e15;
-    --shadow: 0 1px 2px rgb(0 0 0 / 0.4);
-
-    --success: #4cc794;
-    --success-bg: #12301f;
-    --info: #6aa5f5;
-    --info-bg: #14243f;
-    --warning: #f0a93c;
-    --warning-bg: #3a2a0d;
-    --danger: #f07a7a;
-    --danger-bg: #3d1a1a;
-    --neutral: #9aa3b2;
-    --neutral-bg: #232a38;
-
-    --st-verified-bd: #1f5a3d;
-    --st-unverified-bd: #3a4459;
-    --st-stale-bd: #6b4b12;
-    --st-missing-bd: #6d2d2d;
-    --hatch-a: #3a2a0d;
-    --hatch-b: #4a3612;
-  }
 }
 
 @theme inline {

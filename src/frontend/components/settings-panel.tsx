@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAppState } from "./app-state";
+import { DemoControls } from "./demo-controls";
 import { Button, Card, PageHeader } from "./ui";
 
 export function SettingsPanel() {
@@ -14,6 +15,7 @@ export function SettingsPanel() {
   return (
     <div className="max-w-2xl space-y-5">
       <PageHeader title="Settings" />
+      <DemoControls />
       <Card>
         <h2 className="font-semibold">Email reminders</h2>
         <p className="mt-1 text-sm text-muted">Choose how many days before a verified deadline you want a reminder. (Planned feature; nothing is sent in this demo.)</p>

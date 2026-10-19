@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppStateProvider } from "@/components/app-state";
-import { DemoBar } from "@/components/demo-bar";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin", "cyrillic"] });
@@ -17,7 +16,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen">
         <AppStateProvider>
-          <DemoBar />
           {children}
         </AppStateProvider>
       </body>

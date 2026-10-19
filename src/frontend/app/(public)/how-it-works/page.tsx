@@ -76,7 +76,7 @@ export default function HowItWorks() {
         </p>
         <Card>
           <p className="text-sm">
-            Try it: in the grey demo bar at the top of every page, move &quot;Today in the demo&quot; to a later date and open a programme. Records whose validity ended switch from Verified to Stale.
+            Try it: sign in, open Settings, move &quot;Today in the demo&quot; to a later date and open a programme. Records whose validity ended switch from Verified to Stale.
           </p>
         </Card>
       </section>

@@ -268,7 +268,7 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
 
   const groups = navFor(area, role, queueCount);
   const inner = (
-    <div className="flex min-h-[calc(100vh-2.1rem)] bg-page">
+    <div className="flex min-h-screen bg-page">
       <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-y-auto px-5 py-6 md:flex" aria-label="Sidebar">
         <div className="mb-9 px-2"><Logo href={area === "admin" ? "/admin" : role === "applicant" ? "/app" : "/"} /></div>
         <SidebarNav groups={groups} />
@@ -290,7 +290,7 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
       ) : null}
 
       <div className="min-w-0 flex-1 p-0 md:p-3 md:pl-0">
-        <div className="min-h-[calc(100vh-2.1rem)] rounded-none bg-sheet md:min-h-[calc(100vh-2.1rem-1.5rem)] md:rounded-[28px] md:border md:border-line/70 md:shadow-[var(--shadow)]">
+        <div className="min-h-screen rounded-none bg-sheet md:min-h-[calc(100vh-1.5rem)] md:rounded-[28px] md:border md:border-line/70 md:shadow-[var(--shadow)]">
           <Topbar role={role} onMenu={() => setOpen(true)} attention={attention} />
           <main id="content" className="px-5 pb-12 pt-3 md:px-8">{children}</main>
         </div>
