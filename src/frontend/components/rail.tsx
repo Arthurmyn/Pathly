@@ -25,7 +25,7 @@ export function ProgressRing({ percent, size = 44 }: { percent: number; size?: n
     <div className="relative shrink-0" style={{ width: size, height: size }} role="img" aria-label={`${Math.round(p)} percent`}>
       <svg viewBox="0 0 44 44" width={size} height={size} className="-rotate-90" aria-hidden="true">
         <circle cx="22" cy="22" r={r} fill="none" stroke="var(--border)" strokeWidth="4" />
-        <circle cx="22" cy="22" r={r} fill="none" stroke="var(--text)" strokeWidth="4" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - p / 100)} />
+        <circle cx="22" cy="22" r={r} fill="none" stroke="var(--primary)" strokeWidth="4" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - p / 100)} />
       </svg>
       <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums">{Math.round(p)}</span>
     </div>
