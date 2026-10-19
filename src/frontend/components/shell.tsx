@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, type ComponentType, type FormEvent, type ReactNode } from "react";
+import { useMemo, useState, type ComponentType, type FormEvent, type ReactNode } from "react";
 import { getProgram, getRequirement } from "@/lib/mock-data";
 import { effectiveStatus } from "@/lib/status";
+import { buildNotices, type Notice } from "@/lib/notifications";
 import { buildQueue } from "./admin-data";
 import { useAppState, type Role } from "./app-state";
 import {
   IconBell,
   IconBook,
   IconChat,
+  IconChecklist,
   IconClock,
   IconCompass,
   IconDatabase,
@@ -26,6 +28,7 @@ import {
   IconX,
 } from "./icons";
 import { Logo } from "./logo";
+import { NotificationsMenu } from "./notifications-menu";
 import { RequireRole } from "./require-role";
 
 export type Area = "public" | "app" | "admin";
@@ -62,6 +65,7 @@ function navFor(area: Area, role: Role, queueCount: number): NavGroup[] {
         label: "Plan",
         items: [
           { href: "/app", label: "Dashboard", icon: IconHome, exact: true },
+          { href: "/app/roadmap", label: "Roadmap", icon: IconChecklist },
           { href: "/app/applications", label: "Applications", icon: IconRoute },
           { href: "/programs", label: "Programmes", icon: IconLayers },
         ],
@@ -121,6 +125,7 @@ const STATIC_CRUMBS: { [path: string]: Crumb[] } = {
   "/app/settings": [{ label: "Workspace", href: "/app" }, { label: "Settings" }],
   "/app/onboarding": [{ label: "Workspace", href: "/app" }, { label: "AI onboarding" }],
   "/app/advisor": [{ label: "Workspace", href: "/app" }, { label: "Advisor" }],
+  "/app/roadmap": [{ label: "Workspace", href: "/app" }, { label: "Roadmap" }],
   "/app/applications": [{ label: "Workspace", href: "/app" }, { label: "Applications" }],
   "/admin": [{ label: "Admin", href: "/admin" }, { label: "Overview" }],
   "/admin/queue": [{ label: "Admin", href: "/admin" }, { label: "Verification queue" }],
@@ -190,7 +195,7 @@ function SidebarFooter({ role, onSignOut }: { role: Role; onSignOut: () => void 
   );
 }
 
-function Topbar({ role, onMenu, attention }: { role: Role; onMenu: () => void; attention: number }) {
+function Topbar({ role, onMenu, attention, notices }: { role: Role; onMenu: () => void; attention: number; notices: Notice[] }) {
   const pathname = usePathname();
   const router = useRouter();
   const [q, setQ] = useState("");
@@ -235,10 +240,14 @@ function Topbar({ role, onMenu, attention }: { role: Role; onMenu: () => void; a
           </>
         ) : (
           <>
-            <Link href={bellHref} className="relative rounded-full p-2 hover:bg-surface-2" aria-label={attention > 0 ? `${attention} items need attention` : "Notifications"}>
-              <IconBell size={19} />
-              {attention > 0 ? <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-primary ring-2 ring-sheet" aria-hidden="true" /> : null}
-            </Link>
+            {role === "admin" ? (
+              <Link href={bellHref} className="relative rounded-full p-2 hover:bg-surface-2" aria-label={attention > 0 ? `${attention} items need attention` : "Verification queue"}>
+                <IconBell size={19} />
+                {attention > 0 ? <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-primary ring-2 ring-sheet" aria-hidden="true" /> : null}
+              </Link>
+            ) : (
+              <NotificationsMenu notices={notices} />
+            )}
             {role === "applicant" ? (
               <Link href="/app/settings" className="rounded-full p-2 hover:bg-surface-2" aria-label="Settings">
                 <IconSettings size={19} />
@@ -267,6 +276,11 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
       ? queueCount
       : state.shortlist.reduce((n, slug) => n + state.requirementsFor(slug).filter((r) => ["stale", "conflict", "missing"].includes(effectiveStatus(r, state.today))).length, 0);
 
+  const notices = useMemo(
+    () => (role === "applicant" ? buildNotices({ profile: state.profile, shortlist: state.shortlist, today: state.today, done: state.done, requests: state.requests, settings: state.settings, requirementsFor: state.requirementsFor }) : []),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [role, state.profile, state.shortlist, state.today, state.done, state.requests, state.settings, state.overrides],
+  );
   const groups = navFor(area, role, queueCount);
   // The drawer leaves the way it came (slides back to the left) before it is removed.
   const closeDrawer = () => {
@@ -300,8 +314,11 @@ export function Shell({ area, children }: { area: Area; children: ReactNode }) {
 
       <div className="min-w-0 flex-1 p-0 md:p-3 md:pl-0">
         <div className="min-h-screen rounded-none bg-sheet md:min-h-[calc(100vh-1.5rem)] md:rounded-[28px] md:border md:border-line/70 md:shadow-[var(--shadow)]">
-          <Topbar role={role} onMenu={() => setOpen(true)} attention={attention} />
-          <main id="content" className="px-5 pb-12 pt-3 md:px-8">{children}</main>
+          <Topbar role={role} onMenu={() => setOpen(true)} attention={attention} notices={notices} />
+          <main id="content" className="px-5 pb-8 pt-3 md:px-8">{children}</main>
+          <footer className="border-t border-line px-5 py-4 text-xs text-muted md:px-8">
+            Pathly is a support tool only. It does not guarantee admission; always confirm requirements and submit on the official website.
+          </footer>
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { IconCheck, IconChevron } from "./icons";
 
 export const inputClass =
   "mt-1.5 w-full rounded-xl border border-line bg-surface px-3 py-2 text-sm transition-colors hover:border-strong focus:border-primary";
@@ -28,16 +30,150 @@ export function TextField({ label, value, placeholder, help, onChange }: { label
   );
 }
 
-export function SelectField({ label, value, options, placeholder = "Not set", help, onChange }: { label: string; value: string | null; options: { value: string; label: string }[]; placeholder?: string; help?: string; onChange: (v: string | null) => void }) {
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
+/**
+ * Custom dropdown (listbox) in the site's style instead of the browser's native list.
+ * Keyboard: Arrow keys, Home, End, Enter or Space to choose, Escape to close.
+ */
+export function Select({
+  label,
+  value,
+  options,
+  placeholder = "Not set",
+  onChange,
+  icon,
+  variant = "field",
+  className = "",
+}: {
+  label: string;
+  value: string | null;
+  options: SelectOption[];
+  /** Shown when the value is empty. When set, an empty choice is offered as the first option. */
+  placeholder?: string | null;
+  onChange: (v: string | null) => void;
+  icon?: ReactNode;
+  variant?: "field" | "pill" | "compact";
+  className?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
+  const root = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLUListElement>(null);
+  const [box, setBox] = useState<{ left: number; top: number; minWidth: number } | null>(null);
+  const listId = useId();
+  const all: SelectOption[] = placeholder != null ? [{ value: "", label: placeholder }, ...options] : options;
+  const current = all.find((o) => o.value === (value ?? ""));
+
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (!root.current?.contains(t) && !list.current?.contains(t)) setOpen(false);
+    };
+    // The list is fixed to the viewport, so follow the button when the page scrolls or resizes.
+    const follow = (e: Event) => {
+      if (list.current?.contains(e.target as Node)) return;
+      const r = root.current?.getBoundingClientRect();
+      if (r) setBox({ left: r.left, top: r.bottom + 6, minWidth: r.width });
+    };
+    document.addEventListener("pointerdown", away);
+    window.addEventListener("resize", follow);
+    window.addEventListener("scroll", follow, true);
+    return () => {
+      document.removeEventListener("pointerdown", away);
+      window.removeEventListener("resize", follow);
+      window.removeEventListener("scroll", follow, true);
+    };
+  }, [open]);
+
+  function show() {
+    const r = root.current?.getBoundingClientRect();
+    if (r) setBox({ left: r.left, top: r.bottom + 6, minWidth: r.width });
+    setActive(Math.max(0, all.findIndex((o) => o.value === (value ?? ""))));
+    setOpen(true);
+  }
+  function choose(o: SelectOption) {
+    onChange(o.value === "" ? null : o.value);
+    setOpen(false);
+    root.current?.querySelector("button")?.focus();
+  }
+  function key(e: React.KeyboardEvent) {
+    if (!open) {
+      if (["ArrowDown", "ArrowUp", "Enter", " "].includes(e.key)) { e.preventDefault(); show(); }
+      return;
+    }
+    if (e.key === "Escape") { e.preventDefault(); setOpen(false); }
+    else if (e.key === "ArrowDown") { e.preventDefault(); setActive((a) => Math.min(all.length - 1, a + 1)); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(0, a - 1)); }
+    else if (e.key === "Home") { e.preventDefault(); setActive(0); }
+    else if (e.key === "End") { e.preventDefault(); setActive(all.length - 1); }
+    else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(all[active]); }
+    else if (e.key === "Tab") setOpen(false);
+  }
+
+  const size = variant === "pill" ? "rounded-full py-2.5 pl-4 pr-3.5" : variant === "compact" ? "rounded-xl py-1.5 pl-3 pr-2.5" : "mt-1.5 w-full rounded-xl py-2 pl-3 pr-2.5";
   return (
-    <Field label={label} help={help}>
-      <select className={inputClass} value={value ?? ""} onChange={(e) => onChange(e.target.value || null)}>
-        <option value="">{placeholder}</option>
-        {options.map((o) => (
-          <option key={o.value} value={o.value}>{o.label}</option>
-        ))}
-      </select>
-    </Field>
+    <div ref={root} className={`relative ${variant === "field" ? "block" : "inline-block"} ${className}`} onKeyDown={key}>
+      <button
+        type="button"
+        aria-label={`${label}: ${current?.label ?? ""}`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={open ? listId : undefined}
+        onClick={() => (open ? setOpen(false) : show())}
+        className={`flex items-center justify-between gap-3 border bg-surface text-sm transition-colors ${open ? "border-primary" : "border-line hover:border-strong"} ${size}`}
+      >
+        <span className="flex min-w-0 items-center gap-2.5">
+          {icon ? <span className="text-muted">{icon}</span> : null}
+          <span className={`truncate ${value ? "font-medium" : "text-muted"} ${variant === "pill" ? "font-medium text-ink" : ""}`}>{current?.label ?? placeholder}</span>
+        </span>
+        <span className={`shrink-0 text-muted transition-transform duration-150 ${open ? "-rotate-90" : "rotate-90"}`}><IconChevron size={14} /></span>
+      </button>
+      {open && box
+        ? createPortal(
+        <ul
+          ref={list}
+          id={listId}
+          role="listbox"
+          aria-label={label}
+          style={{ position: "fixed", left: box.left, top: box.top, minWidth: box.minWidth }}
+          className="pop z-[60] max-h-64 origin-top overflow-auto rounded-2xl border border-line bg-surface p-1.5 shadow-[var(--shadow-lift)]"
+        >
+          {all.map((o, i) => {
+            const selected = o.value === (value ?? "");
+            return (
+              <li
+                key={o.value || "__empty"}
+                role="option"
+                aria-selected={selected}
+                onPointerEnter={() => setActive(i)}
+                onClick={() => choose(o)}
+                className={`flex cursor-pointer items-center justify-between gap-4 whitespace-nowrap rounded-xl px-3 py-2 text-sm ${i === active ? "bg-surface-2" : ""} ${selected ? "font-semibold text-primary" : ""} ${o.value === "" ? "text-muted" : ""}`}
+              >
+                {o.label}
+                {selected ? <IconCheck size={15} /> : null}
+              </li>
+            );
+          })}
+        </ul>,
+        document.body,
+      )
+      : null}
+    </div>
+  );
+}
+
+export function SelectField({ label, value, options, placeholder = "Not set", help, onChange }: { label: string; value: string | null; options: SelectOption[]; placeholder?: string; help?: string; onChange: (v: string | null) => void }) {
+  return (
+    <div className="text-sm font-medium">
+      <span>{label}</span>
+      <Select label={label} value={value} options={options} placeholder={placeholder} onChange={onChange} />
+      {help ? <span className="mt-1 block text-xs font-normal text-muted">{help}</span> : null}
+    </div>
   );
 }
 

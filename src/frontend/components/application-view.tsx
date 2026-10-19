@@ -16,6 +16,7 @@ import { hasProfileData } from "./profile-utils";
 import { ProgressCard, RailCard, RelatedList, SourceList, StepList, type StepItem } from "./rail";
 import { relatedFor, sourcesFor } from "./rail-data";
 import { RequirementRow } from "./requirement-row";
+import { Select } from "./form-controls";
 import { TaskCard } from "./task-card";
 import { Callout, Card, EmptyState, LinkButton, Tag } from "./ui";
 import { StatusBadge } from "./badges";
@@ -98,14 +99,15 @@ export function ApplicationView({ slug }: { slug: string }) {
               tabs={tabs}
               right={
                 tab === "roadmap" ? (
-                  <label className="inline-flex items-center gap-2 text-sm font-medium">
-                    <IconFilter size={16} />
-                    <span className="sr-only">Show</span>
-                    <select value={show} onChange={(e) => setShow(e.target.value as "all" | "todo")} className="rounded-full border border-line bg-surface px-3 py-1.5 text-sm">
-                      <option value="all">All tasks</option>
-                      <option value="todo">To do</option>
-                    </select>
-                  </label>
+                  <Select
+                    variant="pill"
+                    label="Show"
+                    icon={<IconFilter size={16} />}
+                    placeholder={null}
+                    value={show}
+                    options={[{ value: "all", label: "All tasks" }, { value: "todo", label: "To do" }]}
+                    onChange={(v) => setShow((v ?? "all") as "all" | "todo")}
+                  />
                 ) : null
               }
             />

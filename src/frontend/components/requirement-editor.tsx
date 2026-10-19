@@ -5,6 +5,7 @@ import { formatDate } from "@/lib/dates";
 import { describeRequired } from "@/lib/eligibility";
 import { getProgram } from "@/lib/mock-data";
 import { effectiveStatus, STATUS_HELP } from "@/lib/status";
+import { Select } from "./form-controls";
 import type { Requirement, SourceTier } from "@/lib/types";
 import { useAppState } from "./app-state";
 import { StatusBadge } from "./badges";
@@ -22,10 +23,12 @@ export function RequirementEditor({ id }: { id: string }) {
   const req = state.getRequirementById(id);
   const [message, setMessage] = useState<{ kind: "ok" | "error"; text: string } | null>(null);
   const [note, setNote] = useState("");
+  const [pickedTier, setTier] = useState<string | null>(null);
 
   if (!req) return <EmptyState title="Requirement not found" action={<LinkButton href="/admin/queue">Back to the queue</LinkButton>} />;
 
   const r = req;
+  const tier = pickedTier ?? String(req.source?.tier ?? 1);
   const program = getProgram(r.programSlug)!;
   const status = effectiveStatus(req, state.today);
   const history = state.audit.filter((a) => a.requirementId === id);
@@ -67,13 +70,17 @@ export function RequirementEditor({ id }: { id: string }) {
             <label className="block text-sm font-medium">Source URL
               <input name="url" defaultValue={req.source?.url ?? ""} className={input} placeholder="https://" />
             </label>
-            <label className="block text-sm font-medium">Source tier
-              <select name="tier" defaultValue={req.source?.tier ?? 1} className={input}>
-                <option value={1}>Tier 1: official page or document</option>
-                <option value={2}>Tier 2: official secondary material</option>
-                <option value={3}>Tier 3: third party or forum</option>
-              </select>
-            </label>
+            <div className="text-sm font-medium">
+              <span>Source tier</span>
+              <input type="hidden" name="tier" value={tier} />
+              <Select
+                label="Source tier"
+                placeholder={null}
+                value={tier}
+                options={[{ value: "1", label: "Tier 1: official page or document" }, { value: "2", label: "Tier 2: official secondary material" }, { value: "3", label: "Tier 3: third party or forum" }]}
+                onChange={(v) => setTier(v ?? "1")}
+              />
+            </div>
             <Button type="submit" variant="secondary">Save as Unverified</Button>
           </form>
         </Card>

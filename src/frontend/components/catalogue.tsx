@@ -9,6 +9,7 @@ import { LEVEL_LABEL, programs, universities } from "@/lib/mock-data";
 import type { DegreeLevel } from "@/lib/types";
 import { matchesPreferences } from "@/lib/settings";
 import { useAppState } from "./app-state";
+import { Select } from "./form-controls";
 import { StatusBadge } from "./badges";
 import { IconBook, IconChevron, IconCompass, IconFilter, IconList, IconSearch, IconShieldCheck, IconX } from "./icons";
 import { EmptyState, IllustrativeNote, Tag } from "./ui";
@@ -26,22 +27,8 @@ const IconGrid = (p: { size?: number }) => (
   </svg>
 );
 
-/** Dropdown with a leading icon and a visible label, as in the reference filter bar. */
-function FilterSelect({ label, icon, value, onChange, children }: { label: string; icon: ReactNode; value: string; onChange: (v: string) => void; children: ReactNode }) {
-  return (
-    <label className="relative block min-w-[11rem] flex-1 sm:flex-none">
-      <span className="sr-only">{label}</span>
-      <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted">{icon}</span>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-full border border-line bg-surface py-2.5 pl-10 pr-9 text-sm font-medium transition-colors hover:border-strong focus:border-primary"
-      >
-        {children}
-      </select>
-      <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 rotate-90 text-muted"><IconChevron size={14} /></span>
-    </label>
-  );
+function FilterSelect({ label, icon, value, onChange, options }: { label: string; icon: ReactNode; value: string; onChange: (v: string) => void; options: { value: string; label: string }[] }) {
+  return <Select variant="pill" label={label} icon={icon} placeholder={null} value={value} options={options} onChange={(v) => onChange(v ?? options[0].value)} className="min-w-[11rem]" />;
 }
 
 export function Catalogue() {
@@ -119,24 +106,22 @@ export function Catalogue() {
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <FilterSelect label="Country" icon={<IconCompass size={16} />} value={country} onChange={setCountry}>
-            <option value="all">All countries</option>
-            {countries.map((c) => <option key={c} value={c}>{c}</option>)}
-          </FilterSelect>
-          <FilterSelect label="Field of study" icon={<IconBook size={16} />} value={fieldOf} onChange={setFieldOf}>
-            <option value="all">All fields</option>
-            {fields.map((f) => <option key={f} value={f}>{f}</option>)}
-          </FilterSelect>
-          <FilterSelect label="Verification status" icon={<IconShieldCheck size={16} />} value={check} onChange={(v) => setCheck(v as Check)}>
-            <option value="all">Any verification</option>
-            <option value="full">Fully verified</option>
-            <option value="review">Needs review</option>
-          </FilterSelect>
-          <FilterSelect label="Sort by" icon={<IconFilter size={16} />} value={sort} onChange={(v) => setSort(v as Sort)}>
-            <option value="name">Sort: Name</option>
-            <option value="deadline">Sort: Deadline</option>
-            <option value="verified">Sort: Most verified</option>
-          </FilterSelect>
+          <FilterSelect label="Country" icon={<IconCompass size={16} />} value={country} onChange={setCountry} options={[{ value: "all", label: "All countries" }, ...countries.map((c) => ({ value: c, label: c }))]} />
+          <FilterSelect label="Field of study" icon={<IconBook size={16} />} value={fieldOf} onChange={setFieldOf} options={[{ value: "all", label: "All fields" }, ...fields.map((f) => ({ value: f, label: f }))]} />
+          <FilterSelect
+            label="Verification status"
+            icon={<IconShieldCheck size={16} />}
+            value={check}
+            onChange={(v) => setCheck(v as Check)}
+            options={[{ value: "all", label: "Any verification" }, { value: "full", label: "Fully verified" }, { value: "review", label: "Needs review" }]}
+          />
+          <FilterSelect
+            label="Sort by"
+            icon={<IconFilter size={16} />}
+            value={sort}
+            onChange={(v) => setSort(v as Sort)}
+            options={[{ value: "name", label: "Sort: Name" }, { value: "deadline", label: "Sort: Deadline" }, { value: "verified", label: "Sort: Most verified" }]}
+          />
           {filtered ? (
             <button type="button" onClick={clear} className="press inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-primary hover:bg-primary-soft">
               <IconX size={14} /> Clear filters

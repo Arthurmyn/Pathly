@@ -3,16 +3,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import { sampleProfile } from "@/lib/mock-data";
-import { effectiveTarget, examsFor } from "@/lib/exams";
+import { EXAMS, effectiveTarget, examsFor, type ExamMeta } from "@/lib/exams";
 import { intakeOptions } from "@/lib/intake";
 import { completeness, profileFields } from "@/lib/profile-fields";
 import type { ExamState, IeltsSections, Profile, WorkField } from "@/lib/types";
 import { EMPTY_PROFILE, useAppState } from "./app-state";
-import { CompleteBadge, Field, NumberField, Pills, SelectField, Section, TextField } from "./form-controls";
+import { CompleteBadge, Field, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
 import { ProgressRing } from "./rail";
 import { Button, Card, CardLabel, LinkButton, PageHeader } from "./ui";
 
 const COUNTRIES = ["Kazakhstan", "United States"];
+const OTHER = "__other";
 const SECTION_NAMES: (keyof IeltsSections)[] = ["listening", "reading", "writing", "speaking"];
 
 const DEGREES = [
@@ -119,7 +120,21 @@ function ProfileEditor({ saved }: { saved: Profile }) {
     set({ exams: state === "none" ? rest : [...rest, { name, state, score: state === "passed" ? (score !== undefined ? score : prev?.score ?? null) : null }] });
   }
 
-  const exams = examsFor(draft);
+  const relevant = examsFor(draft);
+  const shownExams: ExamMeta[] = [
+    ...relevant,
+    ...draft.exams.filter((e) => !relevant.some((r) => r.name === e.name)).map((e) => EXAMS.find((x) => x.name === e.name) ?? { name: e.name, levels: [] }),
+  ];
+  const addable = EXAMS.filter((e) => !shownExams.some((s) => s.name === e.name));
+  const [adding, setAdding] = useState(false);
+  const [pick, setPick] = useState<string | null>(null);
+  const [custom, setCustom] = useState("");
+  function addExam() {
+    const name = pick === OTHER ? custom.trim() : pick;
+    if (!name) return;
+    setExam(name, "planned");
+    setAdding(false); setPick(null); setCustom("");
+  }
   const targetLabel = ALL_TARGETS.find((t) => t.value === effectiveTarget(draft))?.label;
 
   function save() {
@@ -179,16 +194,14 @@ function ProfileEditor({ saved }: { saved: Profile }) {
                   <div key={t} className="py-4 first:pt-0 last:pb-0">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <p className="font-medium">{t.toUpperCase()}</p>
-                      <select
-                        aria-label={`${t.toUpperCase()} status`}
-                        className="rounded-xl border border-line bg-surface px-3 py-1.5 text-sm"
+                      <Select
+                        variant="compact"
+                        label={`${t.toUpperCase()} status`}
+                        placeholder={null}
                         value={st}
-                        onChange={(e) => setTest(t, e.target.value as "none" | "planned" | "taken")}
-                      >
-                        <option value="none">Not taken</option>
-                        <option value="planned">Planned</option>
-                        <option value="taken">Taken</option>
-                      </select>
+                        options={[{ value: "none", label: "Not taken" }, { value: "planned", label: "Planned" }, { value: "taken", label: "Taken" }]}
+                        onChange={(v) => setTest(t, (v ?? "none") as "none" | "planned" | "taken")}
+                      />
                     </div>
                     {st === "taken" && t === "ielts" ? (
                       <div className="mt-3">
@@ -218,18 +231,21 @@ function ProfileEditor({ saved }: { saved: Profile }) {
             description={targetLabel ? `Showing the exams that ${targetLabel} programmes ask for.` : "Showing all exams. Choose a current degree to see only the relevant ones."}
           >
             <div className="divide-y divide-line">
-              {exams.map((meta) => {
+              {shownExams.map((meta) => {
                 const entry = draft.exams.find((e) => e.name === meta.name);
                 const st = entry?.state ?? "none";
                 return (
                   <div key={meta.name} className="py-3 first:pt-0 last:pb-0">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <p className="font-medium">{meta.name}</p>
-                      <select aria-label={`${meta.name} status`} className="rounded-xl border border-line bg-surface px-3 py-1.5 text-sm" value={st} onChange={(e) => setExam(meta.name, e.target.value as ExamState | "none")}>
-                        <option value="none">Not taken</option>
-                        <option value="planned">Planned</option>
-                        <option value="passed">Taken</option>
-                      </select>
+                      <Select
+                        variant="compact"
+                        label={`${meta.name} status`}
+                        placeholder={null}
+                        value={st}
+                        options={[{ value: "none", label: "Not taken" }, { value: "planned", label: "Planned" }, { value: "passed", label: "Taken" }]}
+                        onChange={(v) => setExam(meta.name, (v ?? "none") as ExamState | "none")}
+                      />
                     </div>
                     {st === "passed" && meta.score ? (
                       <div className="mt-3 max-w-48">
@@ -240,6 +256,31 @@ function ProfileEditor({ saved }: { saved: Profile }) {
                 );
               })}
             </div>
+            {adding ? (
+              <div className="slide-down mt-4 rounded-2xl bg-surface-2 p-4">
+                <div className="flex flex-wrap items-end gap-3">
+                  <div className="text-sm font-medium">
+                    <span>Exam</span>
+                    <Select
+                      label="Exam to add"
+                      placeholder="Choose an exam"
+                      value={pick}
+                      options={[...addable.map((e) => ({ value: e.name, label: e.name })), { value: OTHER, label: "Other exam…" }]}
+                      onChange={setPick}
+                    />
+                  </div>
+                  {pick === OTHER ? (
+                    <div className="min-w-48 flex-1">
+                      <TextField label="Exam name" value={custom || null} placeholder="For example TestAS" onChange={(v) => setCustom(v ?? "")} />
+                    </div>
+                  ) : null}
+                  <Button onClick={addExam} disabled={!pick || (pick === OTHER && !custom.trim())}>Add</Button>
+                  <Button variant="ghost" onClick={() => { setAdding(false); setPick(null); setCustom(""); }}>Cancel</Button>
+                </div>
+              </div>
+            ) : (
+              <div className="mt-4"><Button variant="secondary" onClick={() => setAdding(true)}>Add exam</Button></div>
+            )}
           </Section>
 
           <Section title="Budget and funding" badge={<CompleteBadge {...stat.budget} />}>

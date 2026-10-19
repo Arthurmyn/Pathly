@@ -5,7 +5,7 @@ import { completeness, profileFields, type FieldGroup } from "@/lib/profile-fiel
 import { mockOnboardingReply, nextQuestion } from "@/lib/mock-chat";
 import type { Profile } from "@/lib/types";
 import { useAppState } from "./app-state";
-import { Composer, MessageList, QuickReplies, nowTime, useDelayed, type ChatMessage } from "./chat";
+import { CHAT_FRAME, Composer, MessageList, QuickReplies, nowTime, useDelayed, type ChatMessage } from "./chat";
 import { IconPencil } from "./icons";
 import { ProgressRing } from "./rail";
 import { Card, LinkButton, PageHeader } from "./ui";
@@ -71,10 +71,8 @@ function Chat({ profile, updateProfile }: { profile: Profile; updateProfile: (p:
       </div>
 
       <div className="grid gap-5 lg:grid-cols-[1fr_22rem] lg:items-start">
-        <Card className="flex min-h-[32rem] flex-col">
-          <div className="flex-1 space-y-4 overflow-y-auto pr-1 lg:max-h-[34rem]">
-            <MessageList messages={messages} typing={typing} label="Conversation" />
-          </div>
+        <Card className={CHAT_FRAME}>
+          <MessageList messages={messages} typing={typing} label="Conversation" />
           <div className="mt-4 space-y-3 border-t border-line pt-4">
             <QuickReplies options={quick} onPick={send} disabled={typing} />
             <Composer label="Your answer" placeholder="Type your answer, for example “GPA 3.5, IELTS 6.5, Fall 2027”" onSend={send} disabled={typing} />

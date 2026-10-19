@@ -7,7 +7,7 @@ import type { Settings } from "@/lib/settings";
 import type { DegreeLevel } from "@/lib/types";
 import { useAppState } from "./app-state";
 import { DemoControls } from "./demo-controls";
-import { Field, NumberField, Pills, Section, SelectField, TextField, Toggle, inputClass } from "./form-controls";
+import { NumberField, Pills, Section, Select, SelectField, TextField, Toggle, inputClass } from "./form-controls";
 import { Button, PageHeader } from "./ui";
 
 const DEADLINE_DAYS = [30, 14, 7, 1];
@@ -145,13 +145,10 @@ export function SettingsPanel() {
                 <MultiChips label="Fields of study" options={FIELDS.map((f) => ({ value: f, label: f }))} value={st.fields} onChange={(v) => updateSettings("study", { fields: v })} />
                 <div className="grid gap-4 sm:grid-cols-2">
                   <SelectField label="Language of instruction" value={st.teachingLanguage} placeholder="Any" options={LANGS.map((l) => ({ value: l, label: l }))} onChange={(v) => updateSettings("study", { teachingLanguage: v })} />
-                  <Field label="Currency">
-                    <select className={inputClass} value={st.currency} onChange={(e) => updateSettings("study", { currency: e.target.value as Settings["study"]["currency"] })}>
-                      <option value="USD">USD</option>
-                      <option value="KZT">KZT</option>
-                      <option value="EUR">EUR</option>
-                    </select>
-                  </Field>
+                  <div className="text-sm font-medium">
+                    <span>Currency</span>
+                    <Select label="Currency" placeholder={null} value={st.currency} options={[{ value: "USD", label: "USD" }, { value: "KZT", label: "KZT" }, { value: "EUR", label: "EUR" }]} onChange={(v) => updateSettings("study", { currency: (v ?? "USD") as Settings["study"]["currency"] })} />
+                  </div>
                   <NumberField label={`Budget from (${st.currency}, per year)`} value={st.budgetMin} min={0} max={10000000} step={500} onCommit={(v) => updateSettings("study", { budgetMin: v })} />
                   <NumberField label={`Budget up to (${st.currency}, per year)`} value={st.budgetMax} min={0} max={10000000} step={500} onCommit={(v) => updateSettings("study", { budgetMax: v })} />
                 </div>

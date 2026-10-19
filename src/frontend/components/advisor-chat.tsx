@@ -6,7 +6,8 @@ import { mockAdvisorReply, type AdvisorReply } from "@/lib/mock-chat";
 import { programs } from "@/lib/mock-data";
 import { useAppState } from "./app-state";
 import { StatusBadge } from "./badges";
-import { Composer, MessageList, QuickReplies, nowTime, useDelayed, type ChatMessage } from "./chat";
+import { Select } from "./form-controls";
+import { CHAT_FRAME, Composer, MessageList, QuickReplies, nowTime, useDelayed, type ChatMessage } from "./chat";
 import { IconLink, IconShieldCheck } from "./icons";
 import { Button, Card, PageHeader } from "./ui";
 
@@ -68,24 +69,24 @@ export function AdvisorChat() {
     <div>
       <PageHeader title="Advisor" subtitle="Answers use verified records only and always show their source. If there is no verified source, the advisor says so." />
       <div className="grid gap-5 lg:grid-cols-[1fr_20rem] lg:items-start">
-        <Card className="flex min-h-[32rem] flex-col">
-          <label className="mb-4 block text-sm font-medium">
-            Context
-            <select
+        <Card className={CHAT_FRAME}>
+          <div className="mb-4 flex flex-wrap items-center gap-3 text-sm font-medium">
+            <span>Context</span>
+            <Select
+              variant="pill"
+              label="Context programme"
+              placeholder={null}
               value={current}
-              onChange={(e) => { setSlug(e.target.value); setMessages([]); }}
-              className="mt-1.5 w-full rounded-xl border border-line bg-surface px-3 py-2 text-sm sm:max-w-md"
-            >
-              {programs.map((p) => <option key={p.slug} value={p.slug}>{p.name}</option>)}
-            </select>
-          </label>
-          <div className="flex-1 overflow-y-auto pr-1 lg:max-h-[34rem]">
-            {messages.length === 0 ? (
-              <p className="rounded-2xl bg-surface-2 px-4 py-3 text-sm">Ask about a requirement of <strong>{program.name}</strong>. I answer from verified records and show where each answer comes from.</p>
-            ) : (
-              <MessageList messages={messages} typing={typing} label="Conversation" />
-            )}
+              options={programs.map((p) => ({ value: p.slug, label: p.name }))}
+              onChange={(v) => { setSlug(v); setMessages([]); }}
+            />
           </div>
+          <MessageList
+            messages={messages}
+            typing={typing}
+            label="Conversation"
+            empty={<p className="rounded-2xl bg-surface-2 px-4 py-3 text-sm">Ask about a requirement of <strong>{program.name}</strong>. I answer from verified records and show where each answer comes from.</p>}
+          />
           <div className="mt-4 space-y-3 border-t border-line pt-4">
             <QuickReplies options={SUGGESTED} onPick={ask} disabled={typing} />
             <Composer label="Question" placeholder="Ask about a requirement" button="Ask" onSend={ask} disabled={typing} />

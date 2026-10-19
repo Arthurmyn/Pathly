@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { evaluateProgram, summarize } from "@/lib/eligibility";
@@ -13,6 +14,7 @@ import { IconChat, IconFilter } from "./icons";
 import { OutcomeBar } from "./outcome-bar";
 import { PillTabs } from "./pill-tabs";
 import { BookmarkButton, ShareButton, StatsCard, TitleRow, UniversityCard } from "./page-hero";
+import { Select } from "./form-controls";
 import { hasProfileData } from "./profile-utils";
 import { ProgressCard, RailCard, RelatedList, SourceList } from "./rail";
 import { relatedFor, sourcesFor } from "./rail-data";
@@ -90,14 +92,15 @@ export function ProgramView({ slug }: { slug: string }) {
           ]}
           right={
             tab === "requirements" ? (
-              <label className="inline-flex items-center gap-2 text-sm font-medium">
-                <IconFilter size={16} />
-                <span className="sr-only">Show</span>
-                <select value={show} onChange={(e) => setShow(e.target.value as "all" | "attention")} className="rounded-full border border-line bg-surface px-3 py-1.5 text-sm">
-                  <option value="all">All requirements</option>
-                  <option value="attention">Needs attention ({needAttention})</option>
-                </select>
-              </label>
+              <Select
+                variant="pill"
+                label="Show"
+                icon={<IconFilter size={16} />}
+                placeholder={null}
+                value={show}
+                options={[{ value: "all", label: "All requirements" }, { value: "attention", label: `Needs attention (${needAttention})` }]}
+                onChange={(v) => setShow((v ?? "all") as "all" | "attention")}
+              />
             ) : null
           }
         />
@@ -108,6 +111,11 @@ export function ProgramView({ slug }: { slug: string }) {
               {role === "guest" ? (
                 <Callout title="Check your own eligibility">
                   Build a profile in about three minutes and see Met, Not met, Pending or Unknown for each requirement below.
+                </Callout>
+              ) : null}
+              {role === "applicant" && !showResults ? (
+                <Callout title="Fill in your profile to see your results">
+                  Without a profile every requirement below stays Unknown. <Link href="/app/profile" className="font-medium underline">Open my profile</Link> or <Link href="/app/onboarding" className="font-medium underline">answer a few questions with AI</Link>.
                 </Callout>
               ) : null}
               {groups.length === 0 ? <Callout>Every requirement of this programme is Verified on this date.</Callout> : null}

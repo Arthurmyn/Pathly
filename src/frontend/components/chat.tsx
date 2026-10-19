@@ -25,33 +25,43 @@ function Avatar({ from }: { from: ChatMessage["from"] }) {
   );
 }
 
-export function MessageList({ messages, typing, label }: { messages: ChatMessage[]; typing: boolean; label: string }) {
-  const end = useRef<HTMLDivElement>(null);
+/** Scrolls inside its own box, so the page and the chat frame keep their size as messages arrive. */
+export function MessageList({ messages, typing, label, empty }: { messages: ChatMessage[]; typing: boolean; label: string; empty?: ReactNode }) {
+  const box = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    end.current?.scrollIntoView({ block: "end", behavior: "smooth" });
+    const el = box.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [messages.length, typing]);
   return (
-    <ol className="space-y-4" aria-label={label}>
-      {messages.map((m) => (
-        <li key={m.id} className={`pop flex items-start gap-3 ${m.from === "user" ? "flex-row-reverse" : ""}`}>
-          <Avatar from={m.from} />
-          <div className={`max-w-[85%] ${m.from === "user" ? "items-end text-right" : ""}`}>
-            <div className={`inline-block rounded-2xl px-3.5 py-2 text-left text-sm ${m.from === "user" ? "bg-primary text-primary-fg" : "bg-surface-2"}`}>{m.text}</div>
-            {m.extra ? <div className="mt-2 text-left">{m.extra}</div> : null}
-            <p className="mt-1 text-[11px] text-muted-2">{m.from === "assistant" ? "Pathly" : "You"}{m.time ? ` · ${m.time}` : ""}</p>
-          </div>
-        </li>
-      ))}
-      {typing ? (
-        <li className="flex items-center gap-3" aria-live="polite">
-          <Avatar from="assistant" />
-          <span className="rounded-2xl bg-surface-2 px-3.5 py-2 text-sm text-muted">Typing…</span>
-        </li>
-      ) : null}
-      <div ref={end} />
-    </ol>
+    <div ref={box} className="min-h-0 flex-1 overflow-y-auto pr-1">
+      {messages.length === 0 && empty ? (
+        empty
+      ) : (
+        <ol className="space-y-4" aria-label={label}>
+          {messages.map((m) => (
+            <li key={m.id} className={`pop flex items-start gap-3 ${m.from === "user" ? "flex-row-reverse" : ""}`}>
+              <Avatar from={m.from} />
+              <div className={`max-w-[85%] ${m.from === "user" ? "items-end text-right" : ""}`}>
+                <div className={`inline-block rounded-2xl px-3.5 py-2 text-left text-sm ${m.from === "user" ? "bg-primary text-primary-fg" : "bg-surface-2"}`}>{m.text}</div>
+                {m.extra ? <div className="mt-2 text-left">{m.extra}</div> : null}
+                <p className="mt-1 text-[11px] text-muted-2">{m.from === "assistant" ? "Pathly" : "You"}{m.time ? ` · ${m.time}` : ""}</p>
+              </div>
+            </li>
+          ))}
+          {typing ? (
+            <li className="flex items-center gap-3" aria-live="polite">
+              <Avatar from="assistant" />
+              <span className="rounded-2xl bg-surface-2 px-3.5 py-2 text-sm text-muted">Typing…</span>
+            </li>
+          ) : null}
+        </ol>
+      )}
+    </div>
   );
 }
+
+/** Fixed-height frame for a chat card. */
+export const CHAT_FRAME = "flex h-[min(38rem,calc(100vh-13rem))] min-h-[28rem] flex-col";
 
 export function Composer({ placeholder, label, button = "Send", onSend, disabled }: { placeholder: string; label: string; button?: string; onSend: (text: string) => void; disabled?: boolean }) {
   const [text, setText] = useState("");

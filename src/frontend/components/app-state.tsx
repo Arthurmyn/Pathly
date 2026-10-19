@@ -46,6 +46,8 @@ interface DemoState {
   /** Requirement ids for which an applicant asked an administrator to re-verify. */
   requests: string[];
   settings: Settings;
+  /** Ids of notifications the applicant has read. */
+  seen: string[];
 }
 
 const INITIAL: DemoState = {
@@ -58,6 +60,7 @@ const INITIAL: DemoState = {
   audit: [],
   requests: [],
   settings: DEFAULT_SETTINGS,
+  seen: [],
 };
 
 const STORAGE_KEY = "pathly-demo-v1";
@@ -80,6 +83,7 @@ interface Api extends DemoState {
   setRequirementStatus: (id: string, next: DataStatus, note: string) => string | null;
   requestVerification: (id: string) => void;
   resetDemo: () => void;
+  markSeen: (ids: string[]) => void;
   updateSettings: <K extends keyof Settings>(section: K, patch: Partial<Settings[K]>) => void;
 }
 
@@ -202,6 +206,7 @@ function buildApi(state: DemoState, ready: boolean): Api {
     },
     requestVerification: (id) => update((s) => (s.requests.includes(id) ? s : { ...s, requests: [...s.requests, id] })),
     resetDemo: () => update(() => INITIAL),
+    markSeen: (ids) => update((s) => ({ ...s, seen: Array.from(new Set([...s.seen, ...ids])) })),
     updateSettings: (section, patch) => update((s) => ({ ...s, settings: { ...s.settings, [section]: { ...s.settings[section], ...patch } } })),
   };
 }
