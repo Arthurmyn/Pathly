@@ -210,3 +210,37 @@ export const IconSend = (p: IconProps) => (
     <path d="m4 12 16-8-6 16-3-7-7-1Z" />
   </Svg>
 );
+
+export const IconCap = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="m2.5 9.5 9.5-5 9.5 5-9.5 5-9.5-5ZM6.5 12v4.5c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5V12M21.5 9.5V15" />
+  </Svg>
+);
+export const IconChecklist = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M10 6h10M10 12h10M10 18h10M3.5 6l1.3 1.3L7 5M3.5 12l1.3 1.3L7 11M3.5 18l1.3 1.3L7 17" />
+  </Svg>
+);
+export const IconCalendar = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="4" y="5" width="16" height="15" rx="2" />
+    <path d="M4 10h16M8 3v4M16 3v4M9 15l2 2 4-4" />
+  </Svg>
+);
+export const IconSeal = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="9.5" r="5.5" />
+    <path d="m9.7 9.7 1.7 1.7 3-3.4M9 14.5 7.5 21l4.5-2.5 4.5 2.5-1.5-6.5" />
+  </Svg>
+);
+export const IconEye = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+    <circle cx="12" cy="12" r="2.7" />
+  </Svg>
+);
+export const IconEyeOff = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M3 3l18 18M10.6 5.7A9.6 9.6 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a16 16 0 0 1-3 3.8M6.6 6.9A16 16 0 0 0 2.5 12S6 18.5 12 18.5c1.5 0 2.8-.4 4-.9M9.9 9.9a2.7 2.7 0 0 0 3.9 3.9" />
+  </Svg>
+);
