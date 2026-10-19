@@ -23,15 +23,15 @@
   --muted-2: #9ba1a7; /* Muted Gray: inactive text */
 
   /* Accent (coral) */
-  --primary: #ff6245; /* Coral Orange: main CTA */
-  --primary-hover: #e95338; /* Deep Coral */
-  --primary-fg: #ffffff;
-  --primary-soft: #fff0eb; /* Coral Tint */
-  --nav-active: #ff6647; /* Coral: active menu item */
-  --nav-line: #ff5d41; /* Bright Coral: active menu line */
-  --focus: #ff6245;
-  --dark: #1d2940;
-  --shadow: 0 1px 2px rgb(29 41 64 / 0.04), 0 8px 24px -12px rgb(29 41 64 / 0.12);
+  --primary: hsl(231, 100%, 64%); /* Main CTA: Blue */
+--primary-hover: #3858e9; /* Deep Blue */
+--primary-fg: #ffffff;
+--primary-soft: #eef0ff; /* Soft Blue Tint */
+--nav-active: #4661ff; /* Blue: active menu item */
+--nav-line: #3858e9; /* Bright Blue: active menu line */
+--focus: #4661ff;
+--dark: #1d2940;
+--shadow: 0 1px 2px rgb(29 41 64 / 0.04), 0 8px 24px -12px rgb(29 41 64 / 0.12);
 
   /* Status colours: text/icon and light background */
   --success: #249b6a;
