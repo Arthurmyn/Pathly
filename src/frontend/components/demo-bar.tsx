@@ -7,7 +7,7 @@ import { useAppState } from "./app-state";
 export function DemoBar() {
   const { today, setToday, resetDemo, ready } = useAppState();
   return (
-    <div className="bg-black text-xs text-white">
+    <div className="bg-[var(--dark)] text-xs text-white">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-1.5">
         <p>
           <strong>Demo</strong> · Illustrative data, no real universities. Nothing is sent anywhere.
@@ -21,7 +21,7 @@ export function DemoBar() {
               onChange={(e) => e.target.value && setToday(e.target.value)}
               disabled={!ready}
               aria-label="Demo date"
-              className="rounded border border-white/30 bg-white px-1.5 py-0.5 text-xs text-black"
+              className="rounded border border-white/30 bg-white px-1.5 py-0.5 text-xs text-[var(--dark)]"
             />
           </label>
           <span className="hidden text-white/60 sm:inline">({formatDate(today)})</span>
