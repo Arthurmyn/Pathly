@@ -22,7 +22,7 @@ export const EMPTY_PROFILE: Profile = {
   currentDegree: null,
   field: null,
   targetLevel: null,
-  targetCountry: null,
+  targetCountries: [],
   gpa: null,
   language: { test: null, score: null, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
   exams: [],
@@ -111,7 +111,9 @@ function loadOnce() {
     if (raw) {
       const saved = JSON.parse(raw) as Partial<DemoState>;
       // Older saved states miss newer profile fields; fill them from the empty profile.
-      const profile = { ...EMPTY_PROFILE, ...saved.profile, language: { ...EMPTY_PROFILE.language, ...saved.profile?.language, sections: { ...EMPTY_PROFILE.language.sections, ...saved.profile?.language?.sections } } };
+      const old = saved.profile as (Partial<Profile> & { targetCountry?: string | null }) | undefined;
+      const migrated = old && !old.targetCountries && old.targetCountry ? { targetCountries: [old.targetCountry] } : {};
+      const profile = { ...EMPTY_PROFILE, ...saved.profile, ...migrated, language: { ...EMPTY_PROFILE.language, ...saved.profile?.language, sections: { ...EMPTY_PROFILE.language.sections, ...saved.profile?.language?.sections } } };
       current = { ...INITIAL, ...saved, profile, settings: normalizeSettings(saved.settings) };
     }
   } catch {

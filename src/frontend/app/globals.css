@@ -316,6 +316,35 @@ h3 {
 .pop {
   animation: pop-in 180ms var(--ease-out) both;
 }
+.task-check {
+  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.task-check:active:not(:disabled) {
+  transform: scale(0.9);
+}
+.task-check[aria-checked="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.task-tick {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset 220ms var(--ease-out) 60ms;
+}
+.task-check[aria-checked="true"] .task-tick {
+  stroke-dashoffset: 0;
+}
+@keyframes task-flash {
+  from {
+    background: var(--primary-soft);
+  }
+  to {
+    background: var(--surface);
+  }
+}
+.task-flash {
+  animation: task-flash 700ms var(--ease-out);
+}
 .slide-down {
   animation: slide-down 180ms var(--ease-out) both;
 }
@@ -343,8 +372,13 @@ h3 {
   }
   .bar-reveal,
   .ring-arc,
-  .seal-turn {
+  .seal-turn,
+  .task-flash {
     animation: none;
+  }
+  .task-check,
+  .task-tick {
+    transition: none;
   }
   .stagger-lines .bulletin-row {
     animation: fade-in 150ms ease both;

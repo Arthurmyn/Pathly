@@ -59,10 +59,10 @@ export function normalizeSettings(saved: Partial<Settings> | undefined): Setting
 }
 
 /** True when a programme fits every study preference that is set. No preferences means no match claim. The budget is not used because programmes carry no tuition data yet. */
-export function matchesPreferences(s: Settings["study"], p: Program, country: string): boolean {
-  const any = s.countries.length || s.levels.length || s.fields.length || s.teachingLanguage;
+export function matchesPreferences(s: Settings["study"], targetCountries: string[], p: Program, country: string): boolean {
+  const any = targetCountries.length || s.levels.length || s.fields.length || s.teachingLanguage;
   if (!any) return false;
-  if (s.countries.length && !s.countries.includes(country)) return false;
+  if (targetCountries.length && !targetCountries.includes(country)) return false;
   if (s.levels.length && !s.levels.includes(p.level)) return false;
   if (s.fields.length && !s.fields.includes(p.field)) return false;
   if (s.teachingLanguage && p.language !== s.teachingLanguage) return false;

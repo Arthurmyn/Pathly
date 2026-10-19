@@ -277,3 +277,101 @@ export function CompleteBadge({ filled, total }: { filled: number; total: number
     </span>
   );
 }
+
+/** Multi-choice dropdown with a search box; chosen values appear as removable chips below. */
+export function MultiSelect({ label, value, options, placeholder = "Choose", onChange }: { label: string; value: string[]; options: string[]; placeholder?: string; onChange: (v: string[]) => void }) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [box, setBox] = useState<{ left: number; top: number; width: number } | null>(null);
+  const root = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLDivElement>(null);
+  const listId = useId();
+
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (!root.current?.contains(t) && !list.current?.contains(t)) setOpen(false);
+    };
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const follow = (e: Event) => {
+      if (list.current?.contains(e.target as Node)) return;
+      const r = root.current?.getBoundingClientRect();
+      if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+    };
+    document.addEventListener("pointerdown", away);
+    document.addEventListener("keydown", esc);
+    window.addEventListener("resize", follow);
+    window.addEventListener("scroll", follow, true);
+    return () => {
+      document.removeEventListener("pointerdown", away);
+      document.removeEventListener("keydown", esc);
+      window.removeEventListener("resize", follow);
+      window.removeEventListener("scroll", follow, true);
+    };
+  }, [open]);
+
+  function show() {
+    const r = root.current?.getBoundingClientRect();
+    if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+    setSearch("");
+    setOpen(true);
+  }
+  const shown = options.filter((o) => o.toLowerCase().includes(search.trim().toLowerCase()));
+  const toggle = (o: string) => onChange(value.includes(o) ? value.filter((x) => x !== o) : [...value, o]);
+
+  return (
+    <div ref={root}>
+      <button
+        type="button"
+        aria-label={`${label}: ${value.length ? `${value.length} selected` : "none selected"}`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={open ? listId : undefined}
+        onClick={() => (open ? setOpen(false) : show())}
+        className={`mt-1.5 flex w-full items-center justify-between gap-3 rounded-xl border bg-surface py-2 pl-3 pr-2.5 text-sm transition-colors ${open ? "border-primary" : "border-line hover:border-strong"}`}
+      >
+        <span className={value.length ? "font-medium" : "text-muted"}>{value.length ? `${value.length} selected` : placeholder}</span>
+        <span className={`shrink-0 text-muted transition-transform duration-150 ${open ? "-rotate-90" : "rotate-90"}`}><IconChevron size={14} /></span>
+      </button>
+      {value.length ? (
+        <ul className="mt-2 flex flex-wrap gap-2" aria-label={`${label}, selected`}>
+          {value.map((v) => (
+            <li key={v}>
+              <button type="button" onClick={() => toggle(v)} aria-label={`Remove ${v}`} className="press inline-flex items-center gap-1.5 rounded-full border border-primary bg-primary-soft px-3 py-1 text-sm font-medium text-primary">
+                {v} <span aria-hidden="true">×</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {open && box
+        ? createPortal(
+            <div ref={list} id={listId} style={{ position: "fixed", left: box.left, top: box.top, width: Math.max(box.width, 240) }} className="pop z-[60] origin-top rounded-2xl border border-line bg-surface p-2 shadow-[var(--shadow-lift)]">
+              <input
+                autoFocus
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                aria-label={`Search ${label.toLowerCase()}`}
+                placeholder="Search"
+                className="mb-1.5 w-full rounded-xl border border-line bg-surface-2 px-3 py-2 text-sm focus:border-primary focus:bg-surface"
+              />
+              <ul role="listbox" aria-multiselectable="true" aria-label={label} className="max-h-60 overflow-auto">
+                {shown.length === 0 ? <li className="px-3 py-2 text-sm text-muted">Nothing found</li> : null}
+                {shown.map((o) => {
+                  const on = value.includes(o);
+                  return (
+                    <li key={o} role="option" aria-selected={on} onClick={() => toggle(o)} className="flex cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm hover:bg-surface-2">
+                      <span className={on ? "font-semibold text-primary" : ""}>{o}</span>
+                      {on ? <IconCheck size={15} /> : null}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>,
+            document.body,
+          )
+        : null}
+    </div>
+  );
+}
