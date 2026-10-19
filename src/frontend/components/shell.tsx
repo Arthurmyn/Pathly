@@ -156,12 +156,12 @@ function SidebarNav({ groups, onNavigate }: { groups: NavGroup[]; onNavigate?: (
               const Icon = n.icon;
               return (
                 <li key={n.href} className="relative">
-                  {active ? <span className="absolute -left-5 top-1/2 h-7 w-[3px] -translate-y-1/2 rounded-r-full bg-primary" aria-hidden="true" /> : null}
+                  {active ? <span className="absolute -left-5 top-1/2 h-7 w-[3px] -translate-y-1/2 rounded-r-full bg-[var(--nav-line)]" aria-hidden="true" /> : null}
                   <Link
                     href={n.href}
                     onClick={onNavigate}
                     aria-current={active ? "page" : undefined}
-                    className={`flex items-center gap-3 rounded-xl px-2 py-2 text-[15px] transition-colors ${active ? "font-semibold text-ink" : "text-muted hover:text-ink"}`}
+                    className={`flex items-center gap-3 rounded-xl px-2 py-2 text-[15px] transition-colors ${active ? "font-semibold text-[var(--nav-active)]" : "text-muted hover:text-ink"}`}
                   >
                     <Icon size={19} />
                     <span className="flex-1">{n.label}</span>

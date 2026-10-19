@@ -117,14 +117,25 @@ export interface RelatedItem {
   initials: string;
 }
 
-/** Related programmes (the reference "related content"). Monochrome initials replace thumbnails. */
+const TILES = [
+  { bg: "var(--deco-cyan)", fg: "var(--deco-teal)" },
+  { bg: "var(--deco-sky)", fg: "var(--deco-navy)" },
+  { bg: "var(--deco-sand)", fg: "var(--deco-navy)" },
+  { bg: "var(--deco-aqua)", fg: "var(--deco-navy)" },
+];
+
+/** Related programmes (the reference "related content"). Initials on decorative colours replace thumbnails. */
 export function RelatedList({ items }: { items: RelatedItem[] }) {
   if (items.length === 0) return <p className="text-sm text-muted">No related programmes.</p>;
   return (
     <ul className="space-y-4">
       {items.map((it) => (
         <li key={it.slug} className="flex gap-3">
-          <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface-2 text-lg font-semibold text-muted" aria-hidden="true">
+          <span
+            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl text-lg font-semibold"
+            style={{ background: TILES[(it.initials.charCodeAt(0) + it.initials.length) % TILES.length].bg, color: TILES[(it.initials.charCodeAt(0) + it.initials.length) % TILES.length].fg }}
+            aria-hidden="true"
+          >
             {it.initials}
           </span>
           <div className="min-w-0 flex-1">

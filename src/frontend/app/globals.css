@@ -5,96 +5,122 @@
  * Meaning is never carried by colour alone: statuses and outcomes differ by fill, border style, pattern, icon and text.
  */
 :root {
-  --page: #e6e6e6; /* window background and sidebar (sampled from the reference) */
-  --sheet: #f2f2f2; /* main panel */
-  --bg: #e9ebeb; /* inputs inside cards */
-  --surface: #eceeee;
-  --surface-2: #e1e3e2;
-  --border: #d7dadb;
-  --text: #0b0d14;
-  --muted: #646668;
-  --primary: #3366f0; /* accent: blue instead of the reference orange #f04c36 */
-  --primary-hover: #254fd0;
+  /* Surfaces */
+  --page: #f6f6f4; /* window background and sidebar: Soft Gray */
+  --sheet: #fcfcfb; /* main page: Warm White */
+  --surface: #ffffff; /* cards: Pure White */
+  --surface-2: #f2f3f3; /* secondary background and inputs: Mist Gray */
+  --bg: #f2f3f3;
+  --border: #e4e6e6; /* Light Border */
+  --border-strong: #d7dadc; /* Medium Border */
+
+  /* Text */
+  --text: #1d2940; /* Deep Navy: body text and icons */
+  --heading: #202b42; /* Navy: headings */
+  --muted: #6e7681; /* Slate Gray: secondary text */
+  --muted-2: #9ba1a7; /* Muted Gray: inactive text */
+
+  /* Accent (coral) */
+  --primary: #ff6245; /* Coral Orange: main CTA */
+  --primary-hover: #e95338; /* Deep Coral */
   --primary-fg: #ffffff;
-  --primary-soft: #dfe6fb;
-  --focus: #3366f0;
-  --dark: #202533; /* the dark navy of the reference "Upgrade" pill: replaces pure black */
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.12);
+  --primary-soft: #fff0eb; /* Coral Tint */
+  --nav-active: #ff6647; /* Coral: active menu item */
+  --nav-line: #ff5d41; /* Bright Coral: active menu line */
+  --focus: #ff6245;
+  --dark: #1d2940;
+  --shadow: 0 1px 2px rgb(29 41 64 / 0.04), 0 8px 24px -12px rgb(29 41 64 / 0.12);
 
-  /* data status */
-  --st-verified-bg: var(--dark);
-  --st-verified-fg: #ffffff;
-  --st-verified-bd: var(--dark);
-  --st-unverified-bg: #ffffff;
-  --st-unverified-fg: #3d3d3d;
-  --st-unverified-bd: #b5b5b5;
-  --st-stale-bg: #e2e2e2;
-  --st-stale-fg: #1a1a1a;
-  --st-stale-bd: #8a8a8a;
-  --st-missing-bg: transparent;
-  --st-missing-fg: #555555;
-  --st-missing-bd: #8a8a8a;
-  --st-conflict-bg: #ffffff;
-  --st-conflict-fg: var(--dark);
-  --st-conflict-bd: var(--dark);
+  /* Status colours: text/icon and light background */
+  --success: #249b6a;
+  --success-bg: #eaf8f1;
+  --info: #377ddb;
+  --info-bg: #eaf2ff;
+  --warning: #d98a16;
+  --warning-bg: #fff5df;
+  --danger: #d94a4a;
+  --danger-bg: #fdecec;
+  --neutral: #6e7681;
+  --neutral-bg: #f3f4f5;
 
-  /* eligibility outcome */
-  --oc-met-bg: var(--dark);
-  --oc-met-fg: #ffffff;
-  --oc-not_met-bg: #ffffff;
-  --oc-not_met-fg: var(--dark);
-  --oc-pending-bg: #dcdcdc;
-  --oc-pending-fg: #111111;
-  --oc-unknown-bg: #f0f0f0;
-  --oc-unknown-fg: #111111;
-  --hatch-a: #f2f2f2;
-  --hatch-b: #dedede;
+  /* Data status of a record */
+  --st-verified-bg: var(--success-bg);
+  --st-verified-fg: var(--success);
+  --st-verified-bd: #b9e3cf;
+  --st-unverified-bg: var(--neutral-bg);
+  --st-unverified-fg: var(--neutral);
+  --st-unverified-bd: var(--border-strong);
+  --st-stale-bg: var(--warning-bg);
+  --st-stale-fg: var(--warning);
+  --st-stale-bd: #f3d9a3;
+  --st-missing-bg: var(--danger-bg);
+  --st-missing-fg: var(--danger);
+  --st-missing-bd: #efb4b4;
+  --st-conflict-bg: var(--danger-bg);
+  --st-conflict-fg: var(--danger);
+  --st-conflict-bd: var(--danger);
+
+  /* Eligibility outcome */
+  --oc-met-bg: var(--success-bg);
+  --oc-met-fg: var(--success);
+  --oc-not_met-bg: var(--danger-bg);
+  --oc-not_met-fg: var(--danger);
+  --oc-pending-bg: var(--info-bg);
+  --oc-pending-fg: var(--info);
+  --oc-unknown-bg: var(--warning-bg);
+  --oc-unknown-fg: var(--warning);
+  --hatch-a: #fff5df;
+  --hatch-b: #fbe9c3;
+
+  /* Decorative colours (illustrations and programme tiles only, never body text) */
+  --deco-sky: #8fd3e2;
+  --deco-aqua: #55b9d2;
+  --deco-cyan: #d8f0f1;
+  --deco-teal: #3b8595;
+  --deco-sand: #cbb79a;
+  --deco-navy: #263946;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --page: #0a0a0a;
-    --sheet: #141414;
-    --bg: #141414;
-    --surface: #1c1c1c;
-    --surface-2: #262626;
-    --border: #2f2f2f;
-    --text: #f5f5f5;
-    --muted: #a3a3a3;
-    --primary: #6f93ff;
-    --primary-hover: #93adff;
-    --primary-fg: #0a0a0a;
-    --primary-soft: #1d2745;
-    --focus: #93adff;
-    --dark: #f2f2f2;
+    --page: #0f131c;
+    --sheet: #151a25;
+    --surface: #1c2230;
+    --surface-2: #252c3b;
+    --bg: #151a25;
+    --border: #2b3345;
+    --border-strong: #3a4459;
+    --text: #e9ecf2;
+    --heading: #f3f5f9;
+    --muted: #9aa3b2;
+    --muted-2: #6f7889;
+    --primary: #ff7a5f;
+    --primary-hover: #ff9680;
+    --primary-fg: #1a1210;
+    --primary-soft: #3a211b;
+    --nav-active: #ff8168;
+    --nav-line: #ff7a5f;
+    --focus: #ff9680;
+    --dark: #0b0e15;
     --shadow: 0 1px 2px rgb(0 0 0 / 0.4);
 
-    --st-verified-bg: #f5f5f5;
-    --st-verified-fg: #0a0a0a;
-    --st-verified-bd: #f5f5f5;
-    --st-unverified-bg: #1c1c1c;
-    --st-unverified-fg: #d4d4d4;
-    --st-unverified-bd: #5c5c5c;
-    --st-stale-bg: #333333;
-    --st-stale-fg: #f0f0f0;
-    --st-stale-bd: #7a7a7a;
-    --st-missing-bg: transparent;
-    --st-missing-fg: #a3a3a3;
-    --st-missing-bd: #6b6b6b;
-    --st-conflict-bg: #0a0a0a;
-    --st-conflict-fg: #ffffff;
-    --st-conflict-bd: #ffffff;
+    --success: #4cc794;
+    --success-bg: #12301f;
+    --info: #6aa5f5;
+    --info-bg: #14243f;
+    --warning: #f0a93c;
+    --warning-bg: #3a2a0d;
+    --danger: #f07a7a;
+    --danger-bg: #3d1a1a;
+    --neutral: #9aa3b2;
+    --neutral-bg: #232a38;
 
-    --oc-met-bg: #f5f5f5;
-    --oc-met-fg: #0a0a0a;
-    --oc-not_met-bg: #0a0a0a;
-    --oc-not_met-fg: #ffffff;
-    --oc-pending-bg: #3a3a3a;
-    --oc-pending-fg: #f5f5f5;
-    --oc-unknown-bg: #262626;
-    --oc-unknown-fg: #f5f5f5;
-    --hatch-a: #262626;
-    --hatch-b: #3a3a3a;
+    --st-verified-bd: #1f5a3d;
+    --st-unverified-bd: #3a4459;
+    --st-stale-bd: #6b4b12;
+    --st-missing-bd: #6d2d2d;
+    --hatch-a: #3a2a0d;
+    --hatch-b: #4a3612;
   }
 }
 
@@ -104,6 +130,9 @@
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-strong: var(--border-strong);
+  --color-heading: var(--heading);
+  --color-muted-2: var(--muted-2);
   --color-line: var(--border);
   --color-ink: var(--text);
   --color-muted: var(--muted);
@@ -131,6 +160,7 @@ body {
 h1,
 h2,
 h3 {
+  color: var(--heading);
   letter-spacing: -0.02em;
 }
 
@@ -155,12 +185,8 @@ h3 {
   border-width: 2px;
   font-weight: 700;
 }
-.badge-status[data-status="missing"],
-.badge-status[data-status="unverified"] {
+.badge-status[data-status="missing"] {
   border-style: dashed;
-}
-.badge-status[data-status="unverified"] {
-  border-style: solid;
 }
 
 /* Eligibility outcome pills (larger, describe the applicant). */
@@ -176,7 +202,7 @@ h3 {
   font-weight: 600;
 }
 .badge-outcome[data-outcome="not_met"] {
-  border: 2px solid var(--dark);
+  border: 1.5px solid var(--danger);
 }
 .badge-outcome[data-outcome="unknown"] {
   border: 1.5px dashed currentColor;
@@ -185,16 +211,16 @@ h3 {
 
 /* Segments of the outcome bar. */
 .bar-met {
-  background: var(--dark);
+  background: var(--success);
 }
 .bar-not_met {
-  background: repeating-linear-gradient(135deg, var(--dark) 0 3px, var(--surface) 3px 6px);
+  background: var(--danger);
 }
 .bar-pending {
-  background: #8f8f8f;
+  background: var(--info);
 }
 .bar-unknown {
-  background: repeating-linear-gradient(135deg, var(--hatch-b) 0 5px, var(--surface-2) 5px 10px);
+  background: repeating-linear-gradient(135deg, var(--warning) 0 3px, var(--warning-bg) 3px 6px);
 }
 
 @media (prefers-reduced-motion: reduce) {
