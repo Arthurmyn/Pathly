@@ -7,7 +7,7 @@ import { useAppState } from "./app-state";
 export function DemoBar() {
   const { today, setToday, resetDemo, ready } = useAppState();
   return (
-    <div className="border-b border-line bg-primary-soft text-xs text-ink">
+    <div className="bg-black text-xs text-white">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-1.5">
         <p>
           <strong>Demo</strong> · Illustrative data, no real universities. Nothing is sent anywhere.
@@ -21,16 +21,16 @@ export function DemoBar() {
               onChange={(e) => e.target.value && setToday(e.target.value)}
               disabled={!ready}
               aria-label="Demo date"
-              className="rounded border border-line bg-surface px-1.5 py-0.5 text-xs"
+              className="rounded border border-white/30 bg-white px-1.5 py-0.5 text-xs text-black"
             />
           </label>
-          <span className="hidden text-muted sm:inline">({formatDate(today)})</span>
+          <span className="hidden text-white/60 sm:inline">({formatDate(today)})</span>
           {today !== DEMO_TODAY ? (
-            <button type="button" onClick={() => setToday(DEMO_TODAY)} className="rounded border border-line bg-surface px-1.5 py-0.5 hover:bg-surface-2">
+            <button type="button" onClick={() => setToday(DEMO_TODAY)} className="rounded border border-white/30 px-1.5 py-0.5 hover:bg-white/15">
               Back to {formatDate(DEMO_TODAY)}
             </button>
           ) : null}
-          <button type="button" onClick={resetDemo} className="rounded border border-line bg-surface px-1.5 py-0.5 hover:bg-surface-2">
+          <button type="button" onClick={resetDemo} className="rounded border border-white/30 px-1.5 py-0.5 hover:bg-white/15">
             Reset demo
           </button>
         </div>

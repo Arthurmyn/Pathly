@@ -65,7 +65,7 @@ export default function Landing() {
         <h2 id="how" className="text-2xl font-semibold tracking-tight">How it works</h2>
         <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s) => (
-            <li key={s.n} className="rounded-xl border border-line bg-surface p-5">
+            <li key={s.n} className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] p-5">
               <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-primary-soft text-sm font-semibold text-primary">{s.n}</span>
               <h3 className="mt-3 font-semibold">{s.title}</h3>
               <p className="mt-1 text-sm text-muted">{s.text}</p>
@@ -101,7 +101,7 @@ export default function Landing() {
         </ul>
       </section>
 
-      <section aria-labelledby="not" className="rounded-xl border border-line bg-surface p-6">
+      <section aria-labelledby="not" className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] p-6">
         <h2 id="not" className="text-xl font-semibold">What Pathly does not do</h2>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-muted">
           <li>It does not submit applications. You submit on the official website of the university or scholarship.</li>

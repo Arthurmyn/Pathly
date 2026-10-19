@@ -24,7 +24,7 @@ export function AdminOverview() {
 
       <section aria-label="Queues" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {QUEUE_ORDER.map((s) => (
-          <Link key={s} href="/admin/queue" className="rounded-xl border border-line bg-surface p-4 hover:border-primary">
+          <Link key={s} href="/admin/queue" className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] p-4 hover:border-primary">
             <StatusBadge status={s} />
             <p className="mt-3 text-3xl font-semibold tabular-nums">{queue.filter((q) => q.status === s).length}</p>
             <p className="text-sm text-muted">record{queue.filter((q) => q.status === s).length === 1 ? "" : "s"}</p>
@@ -36,7 +36,7 @@ export function AdminOverview() {
         <h2 className="font-semibold">Data health</h2>
         <p className="mt-1 text-sm text-muted">{verified} of {all.length} requirements are Verified on {formatDate(today)}.</p>
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-surface-2" role="img" aria-label={`${verified} of ${all.length} verified`}>
-          <div className="h-full" style={{ width: `${(verified / all.length) * 100}%`, background: "var(--st-verified-fg)" }} />
+          <div className="h-full" style={{ width: `${(verified / all.length) * 100}%`, background: "var(--text)" }} />
         </div>
       </Card>
 

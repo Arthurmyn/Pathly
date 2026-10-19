@@ -1,87 +1,104 @@
 @import "tailwindcss";
 
-/* Design tokens. Light and dark values; status and outcome colours are never the only signal (icon + text). */
+/*
+ * Strictly monochrome design tokens: pure black, white and neutral grays only.
+ * Meaning is never carried by colour: statuses and outcomes differ by fill, border style, pattern, icon and text.
+ */
 :root {
-  --bg: #fafafb;
+  --page: #ebebeb; /* window background and sidebar */
+  --sheet: #f5f5f5; /* main panel */
+  --bg: #f5f5f5; /* inputs inside cards */
   --surface: #ffffff;
-  --surface-2: #f4f5f7;
-  --border: #e4e7ec;
-  --text: #101828;
-  --muted: #475467;
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
+  --surface-2: #efefef;
+  --border: #dcdcdc;
+  --text: #0a0a0a;
+  --muted: #6b6b6b;
+  --primary: #0a0a0a;
+  --primary-hover: #2b2b2b;
   --primary-fg: #ffffff;
-  --primary-soft: #eef2ff;
-  --focus: #4f46e5;
+  --primary-soft: #e8e8e8;
+  --focus: #0a0a0a;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.12);
 
-  --st-verified-bg: #ecfdf3;
-  --st-verified-fg: #067647;
-  --st-verified-bd: #abefc6;
-  --st-unverified-bg: #f2f4f7;
-  --st-unverified-fg: #344054;
-  --st-unverified-bd: #d0d5dd;
-  --st-stale-bg: #fffaeb;
-  --st-stale-fg: #93370d;
-  --st-stale-bd: #fedf89;
-  --st-missing-bg: #f9fafb;
-  --st-missing-fg: #475467;
-  --st-missing-bd: #98a2b3;
-  --st-conflict-bg: #fef3f2;
-  --st-conflict-fg: #b42318;
-  --st-conflict-bd: #fecdca;
+  /* data status */
+  --st-verified-bg: #0a0a0a;
+  --st-verified-fg: #ffffff;
+  --st-verified-bd: #0a0a0a;
+  --st-unverified-bg: #ffffff;
+  --st-unverified-fg: #3d3d3d;
+  --st-unverified-bd: #b5b5b5;
+  --st-stale-bg: #e2e2e2;
+  --st-stale-fg: #1a1a1a;
+  --st-stale-bd: #8a8a8a;
+  --st-missing-bg: transparent;
+  --st-missing-fg: #555555;
+  --st-missing-bd: #8a8a8a;
+  --st-conflict-bg: #ffffff;
+  --st-conflict-fg: #000000;
+  --st-conflict-bd: #000000;
 
-  --oc-met-bg: #d1fadf;
-  --oc-met-fg: #05603a;
-  --oc-not_met-bg: #fee4e2;
-  --oc-not_met-fg: #b42318;
-  --oc-pending-bg: #d1e9ff;
-  --oc-pending-fg: #175cd3;
-  --oc-unknown-bg: #fef0c7;
-  --oc-unknown-fg: #7a2e0e;
+  /* eligibility outcome */
+  --oc-met-bg: #0a0a0a;
+  --oc-met-fg: #ffffff;
+  --oc-not_met-bg: #ffffff;
+  --oc-not_met-fg: #000000;
+  --oc-pending-bg: #dcdcdc;
+  --oc-pending-fg: #111111;
+  --oc-unknown-bg: #f0f0f0;
+  --oc-unknown-fg: #111111;
+  --hatch-a: #f2f2f2;
+  --hatch-b: #dedede;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b0f19;
-    --surface: #121826;
-    --surface-2: #182033;
-    --border: #263042;
-    --text: #f2f4f7;
-    --muted: #98a2b3;
-    --primary: #818cf8;
-    --primary-hover: #a5b4fc;
-    --primary-fg: #0b0f19;
-    --primary-soft: #1e2347;
-    --focus: #a5b4fc;
+    --page: #0a0a0a;
+    --sheet: #141414;
+    --bg: #141414;
+    --surface: #1c1c1c;
+    --surface-2: #262626;
+    --border: #2f2f2f;
+    --text: #f5f5f5;
+    --muted: #a3a3a3;
+    --primary: #f5f5f5;
+    --primary-hover: #d4d4d4;
+    --primary-fg: #0a0a0a;
+    --primary-soft: #262626;
+    --focus: #f5f5f5;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4);
 
-    --st-verified-bg: #053321;
-    --st-verified-fg: #75e0a7;
-    --st-verified-bd: #087443;
-    --st-unverified-bg: #1d2939;
-    --st-unverified-fg: #d0d5dd;
-    --st-unverified-bd: #475467;
-    --st-stale-bg: #4e1d09;
-    --st-stale-fg: #fec84b;
-    --st-stale-bd: #93370d;
-    --st-missing-bg: #101828;
-    --st-missing-fg: #98a2b3;
-    --st-missing-bd: #667085;
-    --st-conflict-bg: #55160c;
-    --st-conflict-fg: #fda29b;
-    --st-conflict-bd: #912018;
+    --st-verified-bg: #f5f5f5;
+    --st-verified-fg: #0a0a0a;
+    --st-verified-bd: #f5f5f5;
+    --st-unverified-bg: #1c1c1c;
+    --st-unverified-fg: #d4d4d4;
+    --st-unverified-bd: #5c5c5c;
+    --st-stale-bg: #333333;
+    --st-stale-fg: #f0f0f0;
+    --st-stale-bd: #7a7a7a;
+    --st-missing-bg: transparent;
+    --st-missing-fg: #a3a3a3;
+    --st-missing-bd: #6b6b6b;
+    --st-conflict-bg: #0a0a0a;
+    --st-conflict-fg: #ffffff;
+    --st-conflict-bd: #ffffff;
 
-    --oc-met-bg: #074d31;
-    --oc-met-fg: #75e0a7;
-    --oc-not_met-bg: #7a271a;
-    --oc-not_met-fg: #fda29b;
-    --oc-pending-bg: #194185;
-    --oc-pending-fg: #84caff;
-    --oc-unknown-bg: #54320a;
-    --oc-unknown-fg: #fedf89;
+    --oc-met-bg: #f5f5f5;
+    --oc-met-fg: #0a0a0a;
+    --oc-not_met-bg: #0a0a0a;
+    --oc-not_met-fg: #ffffff;
+    --oc-pending-bg: #3a3a3a;
+    --oc-pending-fg: #f5f5f5;
+    --oc-unknown-bg: #262626;
+    --oc-unknown-fg: #f5f5f5;
+    --hatch-a: #262626;
+    --hatch-b: #3a3a3a;
   }
 }
 
 @theme inline {
+  --color-page: var(--page);
+  --color-sheet: var(--sheet);
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -96,21 +113,91 @@
 }
 
 html {
-  background: var(--bg);
+  background: var(--page);
   color: var(--text);
 }
 
 body {
-  background: var(--bg);
+  background: var(--page);
   color: var(--text);
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  font-feature-settings: "tnum" 1;
+  font-feature-settings: "tnum" 1, "cv11" 1;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
 }
 
 :focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
+}
+
+/* Data status badges (small, describe the record). */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  border-radius: 9999px;
+  border: 1px solid;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.badge-status[data-status="conflict"] {
+  border-width: 2px;
+  font-weight: 700;
+}
+.badge-status[data-status="missing"],
+.badge-status[data-status="unverified"] {
+  border-style: dashed;
+}
+.badge-status[data-status="unverified"] {
+  border-style: solid;
+}
+
+/* Eligibility outcome pills (larger, describe the applicant). */
+.badge-outcome {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  white-space: nowrap;
+  border-radius: 0.625rem;
+  border: 1.5px solid transparent;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.badge-outcome[data-outcome="not_met"] {
+  border: 2px solid #000;
+}
+@media (prefers-color-scheme: dark) {
+  .badge-outcome[data-outcome="not_met"] {
+    border-color: #fff;
+  }
+}
+.badge-outcome[data-outcome="unknown"] {
+  border: 1.5px dashed currentColor;
+  background: repeating-linear-gradient(135deg, var(--hatch-a) 0 5px, var(--hatch-b) 5px 10px);
+}
+
+/* Segments of the outcome bar. */
+.bar-met {
+  background: var(--text);
+}
+.bar-not_met {
+  background: repeating-linear-gradient(135deg, var(--text) 0 3px, var(--surface) 3px 6px);
+}
+.bar-pending {
+  background: #8f8f8f;
+}
+.bar-unknown {
+  background: repeating-linear-gradient(135deg, var(--hatch-b) 0 5px, var(--surface-2) 5px 10px);
 }
 
 @media (prefers-reduced-motion: reduce) {

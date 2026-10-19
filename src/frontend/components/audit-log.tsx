@@ -15,7 +15,7 @@ export function AuditLog() {
       {audit.length === 0 ? (
         <EmptyState title="No changes yet">Verify, edit or mark a requirement to see it here.</EmptyState>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+        <div className="relative overflow-x-auto rounded-[20px] border border-line bg-surface shadow-[var(--shadow)]">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead className="border-b border-line text-muted">
               <tr><th className="px-3 py-2 font-medium">Date</th><th className="px-3 py-2 font-medium">Requirement</th><th className="px-3 py-2 font-medium">From</th><th className="px-3 py-2 font-medium">To</th><th className="px-3 py-2 font-medium">By</th><th className="px-3 py-2 font-medium">Note</th></tr>

@@ -80,7 +80,7 @@ export function Dashboard() {
         ) : (
           <ul className="space-y-2">
             {nextActions.map((t) => (
-              <li key={`${t.slug}-${t.id}`} className="rounded-xl border border-line bg-surface px-4 py-3">
+              <li key={`${t.slug}-${t.id}`} className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] px-4 py-3">
                 <p className="font-medium">{t.title}</p>
                 <p className="text-sm text-muted">{t.program} · {t.dueDate ? `due ${formatDate(t.dueDate)}` : "date pending"} · {t.reason}</p>
                 <Link href={`/app/applications/${t.slug}`} className="mt-1 inline-block text-sm text-primary hover:underline">Open roadmap</Link>
@@ -109,7 +109,7 @@ export function Dashboard() {
           ) : (
             <ul className="space-y-3">
               {cards.map((c) => (
-                <li key={c.slug} className="rounded-xl border border-line bg-surface p-4">
+                <li key={c.slug} className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] p-4">
                   <Link href={`/app/applications/${c.slug}`} className="font-semibold hover:underline">{c.program.name}</Link>
                   <div className="mt-3"><OutcomeBar summary={c.summary} /></div>
                 </li>

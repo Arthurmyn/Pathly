@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { formatDate } from "@/lib/dates";
 import { effectiveStatus } from "@/lib/status";
@@ -17,7 +18,10 @@ export function Catalogue() {
   const { today, requirementsFor } = useAppState();
   const [level, setLevel] = useState<DegreeLevel | "all">("all");
   const [country, setCountry] = useState("all");
-  const [query, setQuery] = useState("");
+  const urlQuery = useSearchParams().get("q") ?? "";
+  const [typed, setTyped] = useState<string | null>(null);
+  const query = typed ?? urlQuery;
+  const setQuery = (v: string) => setTyped(v);
   const [sort, setSort] = useState<Sort>("name");
 
   const countries = useMemo(() => Array.from(new Set(universities.map((u) => u.country))), []);
@@ -93,7 +97,7 @@ export function Catalogue() {
           <ul className="space-y-3">
             {rows.map(({ p, uni, verified, total, dStatus }) => (
               <li key={p.slug}>
-                <Link href={`/programs/${p.slug}`} className="block rounded-xl border border-line bg-surface p-5 transition-colors hover:border-primary">
+                <Link href={`/programs/${p.slug}`} className="block rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] p-5 transition-colors hover:border-primary">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <h2 className="text-lg font-semibold">{p.name}</h2>
@@ -110,7 +114,7 @@ export function Catalogue() {
                     <div className="flex items-center gap-2">
                       <span className="text-muted">{verified} of {total} requirements verified</span>
                       <span className="inline-block h-1.5 w-20 overflow-hidden rounded-full bg-surface-2" aria-hidden="true">
-                        <span className="block h-full" style={{ width: `${(verified / total) * 100}%`, background: "var(--st-verified-fg)" }} />
+                        <span className="block h-full" style={{ width: `${(verified / total) * 100}%`, background: "var(--text)" }} />
                       </span>
                       <IconChevron size={16} />
                     </div>

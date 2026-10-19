@@ -36,7 +36,7 @@ export default function HowItWorks() {
       <section aria-labelledby="statuses" className="space-y-4">
         <h2 id="statuses" className="text-xl font-semibold">Five data statuses</h2>
         <p className="text-muted">The status describes the record, not you. It decides how far the record can be trusted.</p>
-        <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+        <div className="relative overflow-x-auto rounded-[20px] border border-line bg-surface shadow-[var(--shadow)]">
           <table className="w-full min-w-[34rem] text-left text-sm">
             <thead className="border-b border-line text-muted">
               <tr>

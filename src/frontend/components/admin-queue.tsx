@@ -8,6 +8,7 @@ import { STATUS_LABEL } from "@/lib/status";
 import { buildQueue, QUEUE_ORDER, type QueueItem } from "./admin-data";
 import { useAppState } from "./app-state";
 import { StatusBadge } from "./badges";
+import { PillTabs } from "./pill-tabs";
 import { EmptyState, PageHeader } from "./ui";
 
 export function AdminQueue() {
@@ -19,22 +20,18 @@ export function AdminQueue() {
   return (
     <div>
       <PageHeader title="Verification queue" subtitle="Records that cannot be used as facts. Open one to review the source, fix the value and change its status." />
-      <div role="tablist" aria-label="Queues" className="mb-4 flex flex-wrap gap-1 border-b border-line">
-        {QUEUE_ORDER.map((s) => {
-          const n = queue.filter((q) => q.status === s).length;
-          return (
-            <button key={s} role="tab" aria-selected={tab === s} onClick={() => setTab(s)} className={`-mb-px flex items-center gap-2 border-b-2 px-4 py-2 text-sm font-medium ${tab === s ? "border-primary text-ink" : "border-transparent text-muted hover:text-ink"}`}>
-              {STATUS_LABEL[s]}
-              <span className="rounded-full bg-surface-2 px-2 text-xs font-semibold">{n}</span>
-            </button>
-          );
-        })}
-      </div>
+      <PillTabs<QueueItem["status"]>
+        label="Queues"
+        value={tab}
+        onChange={setTab}
+        tabs={QUEUE_ORDER.map((s) => ({ id: s, label: STATUS_LABEL[s], count: queue.filter((q) => q.status === s).length }))}
+      />
+      <div className="mt-5" />
 
       {rows.length === 0 ? (
         <EmptyState title={`No ${STATUS_LABEL[tab].toLowerCase()} records`}>Nothing in this queue on {formatDate(state.today)}.</EmptyState>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+        <div className="relative overflow-x-auto rounded-[20px] border border-line bg-surface shadow-[var(--shadow)]">
           <table className="w-full min-w-[46rem] text-left text-sm">
             <thead className="border-b border-line text-muted">
               <tr>

@@ -143,3 +143,70 @@ export const IconLock = (p: IconProps) => (
     <path d="M8 11V8a4 4 0 0 1 8 0v3" />
   </Svg>
 );
+
+export const IconSearch = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </Svg>
+);
+export const IconBell = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15L6 16ZM10 21h4" />
+  </Svg>
+);
+export const IconBookmark = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M6 4h12v17l-6-4-6 4V4Z" />
+  </Svg>
+);
+export const IconShare = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="6" cy="12" r="2.5" />
+    <circle cx="18" cy="6" r="2.5" />
+    <circle cx="18" cy="18" r="2.5" />
+    <path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6" />
+  </Svg>
+);
+export const IconMenu = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M4 7h16M4 12h16M4 17h16" />
+  </Svg>
+);
+export const IconFilter = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M4 7h16M7 12h10M10 17h4" />
+  </Svg>
+);
+export const IconCompass = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" />
+  </Svg>
+);
+export const IconLayers = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="m12 3 9 5-9 5-9-5 9-5ZM3 13l9 5 9-5" />
+  </Svg>
+);
+export const IconInfo = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 11v5M12 7.5v.01" />
+  </Svg>
+);
+export const IconLogout = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9" />
+  </Svg>
+);
+export const IconFile = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M7 3h7l4 4v14H7V3ZM14 3v4h4" />
+  </Svg>
+);
+export const IconSend = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="m4 12 16-8-6 16-3-7-7-1Z" />
+  </Svg>
+);

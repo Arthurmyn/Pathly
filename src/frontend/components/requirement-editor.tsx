@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { formatDate } from "@/lib/dates";
 import { describeRequired } from "@/lib/eligibility";
@@ -53,7 +52,6 @@ export function RequirementEditor({ id }: { id: string }) {
 
   return (
     <div>
-      <nav aria-label="Breadcrumb" className="mb-3 text-sm text-muted"><Link href="/admin/queue" className="hover:text-ink">Verification queue</Link> / <span className="text-ink">{req.label}</span></nav>
       <PageHeader title={req.label} subtitle={`${program.name} · ${req.pathway}`} actions={<StatusBadge status={status} />} />
 
       {message ? <div className="mb-4"><Callout tone={message.kind === "error" ? "warn" : "info"}><span role={message.kind === "error" ? "alert" : "status"}>{message.text}</span></Callout></div> : null}

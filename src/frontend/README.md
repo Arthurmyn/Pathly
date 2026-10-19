@@ -30,6 +30,8 @@ Production build: `npm run build && npm start`. Checks: `npm test` (unit tests),
 | `lib/` | Types, mock data, `status.ts`, `eligibility.ts`, `roadmap.ts` and their tests |
 
 ## Design rules
-Status describes the data (small badge); outcome describes the applicant (larger pill). Unknown, Stale, Missing and Conflict are never styled as success, and colour is never the only signal. Dates are absolute. See [docs/en/site-structure.md](../../docs/en/site-structure.md).
+The interface is strictly monochrome (black, white and neutral grays; tokens in `app/globals.css`, light and dark). Status describes the data (small badge); outcome describes the applicant (larger pill). Because there are no colours, meaning is carried by fill, border style (solid, thick, dashed), hatching, icon and text: Verified and Met are solid black, Not met and Conflict have a thick outline, Pending and Stale are gray, Unknown and Missing are dashed. Unknown, Stale, Missing and Conflict are never styled as success. Dates are absolute.
+
+Layout: a gray window with a sidebar of grouped navigation, a rounded main sheet with breadcrumbs and search, pill tabs with counts and a right rail (progress ring, steps, sources, related programmes) on programme and application pages. The layout pattern follows a reference design; no assets or branding of the reference are used. See [docs/en/site-structure.md](../../docs/en/site-structure.md).
 
 The app follows the Next.js version bundled in `node_modules/next/dist/docs` (see `AGENTS.md`).

@@ -8,13 +8,10 @@ const ORDER: Outcome[] = ["met", "not_met", "pending", "unknown"];
 export function OutcomeBar({ summary }: { summary: Summary }) {
   return (
     <div>
-      <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-surface-2" role="img" aria-label={ORDER.map((o) => `${summary[o]} ${OUTCOME_LABEL[o]}`).join(", ")}>
+      <div className="flex h-2.5 w-full overflow-hidden rounded-full border border-line bg-surface-2" role="img" aria-label={ORDER.map((o) => `${summary[o]} ${OUTCOME_LABEL[o]}`).join(", ")}>
         {ORDER.map((o) =>
           summary[o] > 0 ? (
-            <span
-              key={o}
-              style={{ width: `${(summary[o] / Math.max(summary.total, 1)) * 100}%`, background: `var(--oc-${o}-fg)`, opacity: o === "unknown" ? 0.55 : 1 }}
-            />
+            <span key={o} className={`bar-${o}`} style={{ width: `${(summary[o] / Math.max(summary.total, 1)) * 100}%` }} />
           ) : null,
         )}
       </div>

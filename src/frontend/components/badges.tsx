@@ -27,13 +27,8 @@ export function StatusBadge({ status }: { status: DataStatus }) {
     <span
       title={STATUS_HELP[status]}
       data-status={status}
-      className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium whitespace-nowrap"
-      style={{
-        background: `var(--st-${status}-bg)`,
-        color: `var(--st-${status}-fg)`,
-        borderColor: `var(--st-${status}-bd)`,
-        borderStyle: status === "missing" ? "dashed" : "solid",
-      }}
+      className="badge-status"
+      style={{ background: `var(--st-${status}-bg)`, color: `var(--st-${status}-fg)`, borderColor: `var(--st-${status}-bd)` }}
     >
       {STATUS_ICON[status]}
       {STATUS_LABEL[status]}
@@ -60,12 +55,8 @@ export function OutcomeBadge({ outcome }: { outcome: Outcome }) {
   return (
     <span
       data-outcome={outcome}
-      className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-semibold whitespace-nowrap"
-      style={{
-        background: `var(--oc-${outcome}-bg)`,
-        color: `var(--oc-${outcome}-fg)`,
-        border: outcome === "unknown" ? "1.5px dashed currentColor" : "1.5px solid transparent",
-      }}
+      className="badge-outcome"
+      style={{ background: `var(--oc-${outcome}-bg)`, color: `var(--oc-${outcome}-fg)` }}
     >
       {OUTCOME_ICON[outcome]}
       {OUTCOME_LABEL[outcome]}

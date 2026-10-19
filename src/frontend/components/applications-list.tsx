@@ -39,7 +39,7 @@ export function ApplicationsList() {
             const done = (state.done[slug] ?? []).filter((id) => tasks.some((t) => t.id === id)).length;
             const dStatus = effectiveStatus(program.deadline, today);
             return (
-              <li key={slug} className="rounded-xl border border-line bg-surface p-5">
+              <li key={slug} className="rounded-[20px] border border-line bg-surface shadow-[var(--shadow)] p-5">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <h2 className="text-lg font-semibold"><Link href={`/app/applications/${slug}`} className="hover:underline">{program.name}</Link></h2>
