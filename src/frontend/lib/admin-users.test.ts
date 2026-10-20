@@ -1,13 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { DEMO_USERS, searchUsers } from "./admin-users";
+import { searchUsers, type AdminUser } from "./admin-users";
+
+const users: AdminUser[] = [
+  { id: "a", name: "Test One", email: "one@example.com", registeredAt: "2026-09-02", status: "active" },
+  { id: "b", name: "Test Two", email: "two@example.com", registeredAt: "2026-09-04", status: "suspended" },
+];
 
 describe("searchUsers", () => {
   it("finds by name or email, case-insensitively", () => {
-    expect(searchUsers(DEMO_USERS, "ARUZHAN", "all").map((u) => u.id)).toEqual(["u01"]);
-    expect(searchUsers(DEMO_USERS, "dana.a@", "all").map((u) => u.id)).toEqual(["u07"]);
+    expect(searchUsers(users, "ONE", "all").map((u) => u.id)).toEqual(["a"]);
+    expect(searchUsers(users, "two@", "all").map((u) => u.id)).toEqual(["b"]);
   });
   it("filters by account status and combines it with the query", () => {
-    expect(searchUsers(DEMO_USERS, "", "suspended").every((u) => u.status === "suspended")).toBe(true);
-    expect(searchUsers(DEMO_USERS, "madina", "active")).toHaveLength(0);
+    expect(searchUsers(users, "", "suspended").map((u) => u.id)).toEqual(["b"]);
+    expect(searchUsers(users, "one", "suspended")).toHaveLength(0);
+  });
+  it("returns nothing for an empty list", () => {
+    expect(searchUsers([], "", "all")).toEqual([]);
   });
 });
