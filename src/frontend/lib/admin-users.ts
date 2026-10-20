@@ -6,8 +6,6 @@ export interface AdminUser {
   email: string;
   registeredAt: string;
   status: AccountStatus;
-  /** True for the account of whoever is using this browser in the demo. */
-  you?: boolean;
 }
 
 /**

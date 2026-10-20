@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { DEMO_USERS, STATUS_LABEL, searchUsers, type AccountStatus, type AdminUser } from "@/lib/admin-users";
+import { DEMO_USERS, STATUS_LABEL, searchUsers, type AccountStatus } from "@/lib/admin-users";
 import { formatDate } from "@/lib/dates";
-import { useAppState } from "./app-state";
 import { Select } from "./form-controls";
 import { IconSearch } from "./icons";
 import { Callout, EmptyState, PageHeader } from "./ui";
@@ -17,15 +16,11 @@ const TONE: { [K in AccountStatus]: string } = {
 
 /** Administrator view of accounts. Access is enforced by the admin layout (RequireRole). */
 export function AdminUsers() {
-  const { settings, registeredAt, role, ready } = useAppState();
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<AccountStatus | "all">("all");
   const [page, setPage] = useState(1);
 
-  const you: AdminUser[] = ready && registeredAt && role !== "guest"
-    ? [{ id: "you", name: settings.account.name || "Demo account (you)", email: settings.account.email || "not set", registeredAt, status: "active", you: true }]
-    : [];
-  const rows = searchUsers([...you, ...DEMO_USERS], query, status);
+  const rows = searchUsers(DEMO_USERS, query, status);
   const pages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE));
   const current = Math.min(page, pages);
   const shown = rows.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
@@ -33,7 +28,7 @@ export function AdminUsers() {
   return (
     <div>
       <PageHeader title="Users" subtitle="Registered accounts: name, email, registration date and status." />
-      <div className="mb-4"><Callout>The demo has no user database yet, so apart from your own demo account these rows are invented to show the page. The real list will come from the API.</Callout></div>
+      <div className="mb-4"><Callout>The demo has no user database yet, so these rows are invented to show the page. The real list will come from the API.</Callout></div>
 
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <label className="relative block min-w-0 flex-1 basis-64">
@@ -62,7 +57,7 @@ export function AdminUsers() {
             <tbody className="divide-y divide-line">
               {shown.map((u) => (
                 <tr key={u.id}>
-                  <td className="px-4 py-3 font-medium">{u.name}{u.you ? <span className="ml-2 text-xs font-normal text-muted">this browser</span> : null}</td>
+                  <td className="px-4 py-3 font-medium">{u.name}</td>
                   <td className="px-4 py-3 text-muted">{u.email}</td>
                   <td className="px-4 py-3">{formatDate(u.registeredAt)}</td>
                   <td className="px-4 py-3"><span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${TONE[u.status]}`}>{STATUS_LABEL[u.status]}</span></td>
