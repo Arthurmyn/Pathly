@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { DEMO_USERS, STATUS_LABEL, searchUsers, type AccountStatus } from "@/lib/admin-users";
+import { STATUS_LABEL, searchUsers, type AccountStatus, type AdminUser } from "@/lib/admin-users";
 import { formatDate } from "@/lib/dates";
 import { Select } from "./form-controls";
 import { IconSearch } from "./icons";
-import { Callout, EmptyState, PageHeader } from "./ui";
+import { EmptyState, PageHeader } from "./ui";
 
 const PAGE_SIZE = 8;
+
+/** Accounts. The demo has no user database or sign-up backend yet, so the list is empty until the API provides it. */
+const USERS: AdminUser[] = [];
 const TONE: { [K in AccountStatus]: string } = {
   active: "bg-success-bg text-success",
   unconfirmed: "bg-surface-2 text-muted",
@@ -20,7 +23,7 @@ export function AdminUsers() {
   const [status, setStatus] = useState<AccountStatus | "all">("all");
   const [page, setPage] = useState(1);
 
-  const rows = searchUsers(DEMO_USERS, query, status);
+  const rows = searchUsers(USERS, query, status);
   const pages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE));
   const current = Math.min(page, pages);
   const shown = rows.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
@@ -28,8 +31,12 @@ export function AdminUsers() {
   return (
     <div>
       <PageHeader title="Users" subtitle="Registered accounts: name, email, registration date and status." />
-      <div className="mb-4"><Callout>The demo has no user database yet, so these rows are invented to show the page. The real list will come from the API.</Callout></div>
+      {USERS.length === 0 ? (
+        <EmptyState title="No registered users yet">Accounts will appear here once sign-up is connected to the backend. The demo has no user database.</EmptyState>
+      ) : null}
 
+      {USERS.length > 0 ? (
+      <>
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <label className="relative block min-w-0 flex-1 basis-64">
           <span className="sr-only">Search users</span>
@@ -73,6 +80,8 @@ export function AdminUsers() {
           <span className="text-muted">Page {current} of {pages} · {rows.length} users</span>
           <button type="button" disabled={current === pages} onClick={() => setPage(current + 1)} className="press rounded-full border border-line bg-surface px-4 py-2 font-medium disabled:opacity-50">Next</button>
         </nav>
+      ) : null}
+      </>
       ) : null}
     </div>
   );
