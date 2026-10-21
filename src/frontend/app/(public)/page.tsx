@@ -2,40 +2,13 @@ import Link from "next/link";
 import { StatusBadge } from "@/components/badges";
 import { IconArrowRight } from "@/components/icons";
 import { RouteStrip } from "@/components/route-stations";
-import { SourceChip } from "@/components/source-chip";
 import { LinkButton } from "@/components/ui";
-import { getRequirements } from "@/lib/mock-data";
 import { STATUS_HELP, STATUS_LABEL } from "@/lib/status";
 import type { DataStatus } from "@/lib/types";
 
 const STATUSES: DataStatus[] = ["verified", "unverified", "stale", "missing", "conflict"];
 
-/** A round "verified source" seal that overlaps the corner of the bulletin. Decorative. */
-function Seal() {
-  return (
-    <svg viewBox="0 0 160 160" className="seal-turn h-[116px] w-[116px] text-primary" aria-hidden="true">
-      <defs>
-        <path id="seal-ring" d="M80 80m-56 0a56 56 0 1 1 112 0a56 56 0 1 1-112 0" />
-      </defs>
-      <circle cx="80" cy="80" r="76" fill="var(--sheet)" stroke="currentColor" strokeWidth="2" />
-      <circle cx="80" cy="80" r="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
-      <text fontSize="12" fontWeight="600" fill="currentColor">
-        <textPath href="#seal-ring" textLength="344" lengthAdjust="spacing">VERIFIED SOURCE · TIER 1 · ADMISSIONS PAGE ·</textPath>
-      </text>
-      <path d="m64 80 11 11 22-25" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 export default function Landing() {
-  const rows = getRequirements("steppe-msc-data-science");
-  const verified = rows.filter((r) => r.status === "verified").length;
-  const open = rows.length - verified;
-  const parts = (["conflict", "unverified", "missing", "stale"] as const)
-    .map((st) => [st, rows.filter((r) => r.status === st).length] as const)
-    .filter(([, n]) => n > 0)
-    .map(([st, n]) => `${n} ${st}`)
-    .join(", ");
   return (
     <div className="space-y-28">
       <section aria-labelledby="hero">
@@ -59,34 +32,6 @@ export default function Landing() {
           </div>
         </div>
 
-        <figure className="stagger-lines relative mt-12" aria-label="Example: requirements of MSc Data Science as Pathly shows them">
-          <div className="absolute -top-8 right-6 z-10 -rotate-[9deg] sm:right-12">
-            <Seal />
-          </div>
-          <div className="rounded-[28px] border border-line bg-surface px-6 py-7 shadow-[var(--shadow)] sm:px-10 sm:py-9">
-            <figcaption className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-ink/80 pb-4 pr-24 sm:pr-32">
-              <span className="text-xl font-medium tracking-tight text-heading">MSc Data Science, Steppe Technical University</span>
-            </figcaption>
-            <p className="border-b border-line py-4 text-[1.0625rem] leading-snug text-ink">
-              <strong className="font-semibold">{verified} of {rows.length} requirements verified, {open} cannot be confirmed ({parts}).</strong>{" "}
-              <span className="text-muted">So Pathly will not call you eligible. It shows what to verify.</span>
-            </p>
-            <ul>
-              {rows.map((r) => (
-                <li key={r.id} className="bulletin-row border-b border-line py-3 last:border-b-0">
-                  <div className="flex items-end gap-3">
-                    <span className="text-[1.0625rem] font-medium text-ink">{r.label}</span>
-                    <span className="leader" aria-hidden="true" />
-                    <StatusBadge status={r.status} hideVerified />
-                  </div>
-                  <div className="mt-1">
-                    <SourceChip source={r.source} date={r.verifiedAt} dateLabel={r.status === "verified" ? "Verified" : "Checked"} plain />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </figure>
       </section>
 
       <section aria-labelledby="route">

@@ -8,7 +8,7 @@ import { specialities } from "@/lib/specialities";
 import { EXAMS, effectiveTarget, examsFor, type ExamMeta } from "@/lib/exams";
 import { intakeOptions } from "@/lib/intake";
 import { completeness, profileFields } from "@/lib/profile-fields";
-import type { ExamState, IeltsSections, Profile, WorkField } from "@/lib/types";
+import type { ExamState, IeltsSections, LanguageTest, Profile, WorkField } from "@/lib/types";
 import { EMPTY_PROFILE, useAppState } from "./app-state";
 import { Combobox, CompleteBadge, Field, MultiSelect, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
 import { ProgressRing } from "./rail";
@@ -100,21 +100,20 @@ function ProfileEditor({ saved }: { saved: Profile }) {
     set({ targetLevel: v as Profile["targetLevel"] });
   }
 
-  function setTest(test: "ielts" | "toefl", state: "none" | "planned" | "taken") {
-    if (state === "none") {
-      if (lang.test === test) set({ language: { ...lang, test: null, score: null, planned: false, sections: { listening: null, reading: null, writing: null, speaking: null } } });
-      return;
-    }
-    const fresh = lang.test === test ? lang : { ...lang, score: null, sections: { listening: null, reading: null, writing: null, speaking: null } };
-    set({ language: { ...fresh, test, planned: state === "planned" } });
+  function patchTest(t: "ielts" | "toefl", patch: Partial<LanguageTest>) {
+    set({ language: { ...lang, [t]: { ...lang[t], ...patch } } });
   }
-  const testState = (test: "ielts" | "toefl") =>
-    lang.test !== test ? "none" : lang.planned && lang.score == null ? "planned" : "taken";
+  function setTest(t: "ielts" | "toefl", state: "none" | "planned" | "taken") {
+    if (state === "none") patchTest(t, { score: null, planned: false, taken: false, sections: { listening: null, reading: null, writing: null, speaking: null } });
+    else if (state === "planned") patchTest(t, { planned: true, taken: false, score: null });
+    else patchTest(t, { planned: false, taken: true });
+  }
+  const testState = (t: "ielts" | "toefl") => (lang[t].planned ? "planned" : lang[t].taken || lang[t].score != null ? "taken" : "none");
 
   function setSection(name: keyof IeltsSections, v: number | null) {
-    const sections = { ...lang.sections, [name]: v };
+    const sections = { ...lang.ielts.sections, [name]: v };
     const overall = ieltsOverall(sections);
-    set({ language: { ...lang, sections, score: overall ?? lang.score } });
+    patchTest("ielts", { sections, score: overall ?? lang.ielts.score });
   }
 
   function setExam(name: string, state: ExamState | "none", score?: number | null) {
@@ -194,7 +193,7 @@ function ProfileEditor({ saved }: { saved: Profile }) {
             </div>
           </Section>
 
-          <Section title="Language tests" badge={<CompleteBadge {...stat.language} />} description="Pathly does not convert between tests. A programme that asks for IELTS is compared with an IELTS score.">
+          <Section title="Language tests" badge={<CompleteBadge {...stat.language} />} description="You can record both tests. A programme that asks for IELTS is compared with your IELTS score, and one that asks for TOEFL with your TOEFL score. Pathly does not convert between them.">
             <div className="divide-y divide-line">
               {(["ielts", "toefl"] as const).map((t) => {
                 const st = testState(t);
@@ -216,15 +215,15 @@ function ProfileEditor({ saved }: { saved: Profile }) {
                         <p className="text-xs text-muted">Some programmes ask for a minimum in every section, so enter all four.</p>
                         <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-5">
                           {SECTION_NAMES.map((n) => (
-                            <NumberField key={n} compact label={n[0].toUpperCase() + n.slice(1)} value={lang.sections[n]} min={0} max={9} step={0.5} onCommit={(v) => setSection(n, v)} />
+                            <NumberField key={n} compact label={n[0].toUpperCase() + n.slice(1)} value={lang.ielts.sections[n]} min={0} max={9} step={0.5} onCommit={(v) => setSection(n, v)} />
                           ))}
-                          <NumberField compact label="Overall" value={lang.score} min={0} max={9} step={0.5} help={ieltsOverall(lang.sections) != null ? "Calculated" : undefined} onCommit={(v) => set({ language: { ...lang, score: v } })} />
+                          <NumberField compact label="Overall" value={lang.ielts.score} min={0} max={9} step={0.5} help={ieltsOverall(lang.ielts.sections) != null ? "Calculated" : undefined} onCommit={(v) => patchTest("ielts", { score: v })} />
                         </div>
                       </div>
                     ) : null}
                     {st === "taken" && t === "toefl" ? (
                       <div className="mt-3 max-w-40">
-                        <NumberField compact label="Total score" value={lang.score} min={0} max={120} onCommit={(v) => set({ language: { ...lang, score: v } })} />
+                        <NumberField compact label="Total score" value={lang.toefl.score} min={0} max={120} onCommit={(v) => patchTest("toefl", { score: v })} />
                       </div>
                     ) : null}
                   </div>

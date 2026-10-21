@@ -400,7 +400,6 @@ h3 {
   }
   .bar-reveal,
   .ring-arc,
-  .seal-turn,
   .task-flash {
     animation: none;
   }
@@ -411,10 +410,6 @@ h3 {
   }
   .task-leave {
     animation: none;
-  }
-  .stagger-lines .bulletin-row {
-    animation: fade-in 150ms ease both;
-    animation-delay: 0ms !important;
   }
   .btn:active:not(:disabled),
   .press:active:not(:disabled),
@@ -429,36 +424,6 @@ h3 {
     animation: fade-in 150ms ease both;
   }
 }
-
-/* Home page bulletin: dot leaders between a requirement and its status, a slowly turning seal. */
-.leader {
-  flex: 1;
-  min-width: 1.5rem;
-  margin-bottom: 0.4rem;
-  border-bottom: 2px dotted var(--border-strong);
-}
-@keyframes seal-turn {
-  from {
-    transform: rotate(-12deg) scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-.seal-turn {
-  animation: seal-turn 600ms var(--ease-out) 250ms both;
-}
-.stagger-lines .bulletin-row {
-  animation: enter 320ms var(--ease-out) both;
-}
-.stagger-lines .bulletin-row:nth-child(1) { animation-delay: 120ms; }
-.stagger-lines .bulletin-row:nth-child(2) { animation-delay: 170ms; }
-.stagger-lines .bulletin-row:nth-child(3) { animation-delay: 220ms; }
-.stagger-lines .bulletin-row:nth-child(4) { animation-delay: 270ms; }
-.stagger-lines .bulletin-row:nth-child(5) { animation-delay: 320ms; }
-.stagger-lines .bulletin-row:nth-child(n + 6) { animation-delay: 370ms; }
 
 /* Browser surfaces take their colour from the palette. */
 ::selection {

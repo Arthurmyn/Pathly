@@ -35,7 +35,7 @@ export function profileFields(p: Profile): ProfileField[] {
       key: "language",
       label: "Language test",
       group: "Test scores and budget",
-      value: lang.test && lang.score != null ? `${lang.test.toUpperCase()} ${lang.score}` : lang.test && lang.planned ? `${lang.test.toUpperCase()} planned` : null,
+      value: languageText(lang),
     },
     ...(needsExam ? [{ key: "exams", label: "Entrance exams", group: "Test scores and budget" as const, value: exams.length ? exams.join(", ") : null }] : []),
     { key: "budget", label: "Budget per year", group: "Test scores and budget", value: p.budgetUsd != null ? `$${p.budgetUsd.toLocaleString("en-US")}` : null },
@@ -49,6 +49,11 @@ export function profileFields(p: Profile): ProfileField[] {
     { key: "documents", label: "Documents ready", group: "Work and documents", value: p.documentsReady == null ? null : p.documentsReady ? "Ready" : "Not ready" },
   ];
   return fields;
+}
+
+function languageText(l: Profile["language"]): string | null {
+  const parts = (["ielts", "toefl"] as const).flatMap((t) => (l[t].score != null ? [`${t.toUpperCase()} ${l[t].score}`] : l[t].planned ? [`${t.toUpperCase()} planned`] : []));
+  return parts.length ? parts.join(", ") : null;
 }
 
 export function completeness(p: Profile): { filled: number; total: number; percent: number } {

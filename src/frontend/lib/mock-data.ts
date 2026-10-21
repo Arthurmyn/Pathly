@@ -241,7 +241,10 @@ export const sampleProfile = {
   targetLevel: "master" as const,
   targetCountries: ["United States"] as string[],
   gpa: 3.5,
-  language: { test: "toefl" as const, score: 96, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
+  language: {
+    ielts: { score: null, planned: false, taken: false, sections: { listening: null, reading: null, writing: null, speaking: null } },
+    toefl: { score: 96, planned: false, taken: true, sections: { listening: null, reading: null, writing: null, speaking: null } },
+  },
   exams: [{ name: "GRE", state: "planned" as const }],
   workYears: null,
   workField: null,

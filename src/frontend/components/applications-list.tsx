@@ -45,7 +45,7 @@ export function ApplicationsList() {
                   <div className="flex items-center gap-2 text-sm">
                     <span className="text-muted">Deadline</span>
                     <strong>{dStatus === "verified" ? formatDate(program.deadline.date) : "not verified"}</strong>
-                    <StatusBadge status={dStatus} hideVerified />
+                    <StatusBadge status={dStatus} quiet />
                   </div>
                 </div>
                 <div className="mt-4"><OutcomeBar summary={summary} /></div>

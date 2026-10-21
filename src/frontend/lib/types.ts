@@ -85,6 +85,15 @@ export interface IeltsSections {
   speaking: number | null;
 }
 
+export interface LanguageTest {
+  score: number | null;
+  planned: boolean;
+  /** The test was taken (the score may not be entered yet). */
+  taken: boolean;
+  /** IELTS only. */
+  sections: IeltsSections;
+}
+
 /** How close the work is to the target programme: decides whether the years can count. */
 export type WorkField = "same" | "related" | "other";
 
@@ -101,7 +110,8 @@ export interface Profile {
   targetCountries: string[];
   /** GPA on a 4.0 scale. */
   gpa: number | null;
-  language: { test: "ielts" | "toefl" | null; score: number | null; sections: IeltsSections; planned: boolean };
+  /** Both tests can be recorded at once; a programme is compared with the test it names. */
+  language: { ielts: LanguageTest; toefl: LanguageTest };
   exams: { name: string; state: ExamState; score?: number | null }[];
   /** Total years of work. Only years in a "same" or "related" field count towards a requirement. */
   workYears: number | null;

@@ -27,8 +27,12 @@ export function mockOnboardingReply(text: string, profile: Profile): { patch: Pa
 
   const ielts = t.match(/ielts\s*(?:of|is|:)?\s*(\d(?:\.\d)?)/);
   const toefl = t.match(/toefl\s*(?:of|is|:)?\s*(\d{2,3})/);
-  if (ielts) { patch.language = { ...profile.language, test: "ielts", score: Number(ielts[1]), planned: false }; got.push(`IELTS: ${ielts[1]}`); }
-  else if (toefl) { patch.language = { ...profile.language, test: "toefl", score: Number(toefl[1]), planned: false }; got.push(`TOEFL: ${toefl[1]}`); }
+  if (ielts || toefl) {
+    const language = { ...profile.language };
+    if (ielts) { language.ielts = { ...language.ielts, score: Number(ielts[1]), planned: false, taken: true }; got.push(`IELTS: ${ielts[1]}`); }
+    if (toefl) { language.toefl = { ...language.toefl, score: Number(toefl[1]), planned: false, taken: true }; got.push(`TOEFL: ${toefl[1]}`); }
+    patch.language = language;
+  }
 
   const budget = t.match(/\$\s*(\d[\d,]*)\s*(k)?/) ?? t.match(/(\d[\d,]*)\s*(k|тыс)?\s*(?:usd|dollars|долл)/);
   if (budget) {
@@ -70,7 +74,7 @@ export function nextQuestion(p: Profile): string {
   if (p.targetCountries.length === 0) return "Which countries are you aiming for?";
   if (p.gpa == null) return "What is your GPA on a 4.0 scale?";
   if (p.currentDegree !== "high_school" && !p.field) return "What is the speciality of your degree?";
-  if (!p.language.test) return "Did you take an English test, such as IELTS or TOEFL?";
+  if (p.language.ielts.score == null && p.language.toefl.score == null) return "Did you take an English test, such as IELTS or TOEFL?";
   if (!p.intake) return "Which intake do you plan to start in, for example Fall 2027?";
   if (p.budgetUsd == null) return "What is your budget per year, in US dollars?";
   if (p.currentDegree !== "high_school" && p.workYears == null) return "How many years of work experience do you have, and is it close to your field?";

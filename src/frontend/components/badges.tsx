@@ -4,10 +4,10 @@ import type { DataStatus, Outcome } from "@/lib/types";
 /**
  * Describes the DATA: how far a stored record can be trusted. A coloured dot and a label.
  * The dot also differs by shape (filled, hollow, dashed), so the meaning never rests on colour alone.
- * `hideVerified` leaves a Verified record without a badge where its source line already says so.
+ * `quiet` leaves Verified and Unverified records without a badge where the source line next to them already says so.
  */
-export function StatusBadge({ status, hideVerified = false }: { status: DataStatus; hideVerified?: boolean }) {
-  if (hideVerified && status === "verified") return null;
+export function StatusBadge({ status, quiet = false }: { status: DataStatus; quiet?: boolean }) {
+  if (quiet && (status === "verified" || status === "unverified")) return null;
   return (
     <span title={STATUS_HELP[status]} data-status={status} className="badge-status" style={{ ["--dot" as string]: `var(--st-${status}-fg)` }}>
       {STATUS_LABEL[status]}

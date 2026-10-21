@@ -4,6 +4,12 @@ import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { IconCheck, IconChevron } from "./icons";
 
+/** Where a fixed popup goes: below its trigger, or above it when there is little room below. */
+function placement(r: DOMRect): { top?: number; bottom?: number } {
+  const below = window.innerHeight - r.bottom;
+  return below < 280 && r.top > below ? { bottom: window.innerHeight - r.top + 6 } : { top: r.bottom + 6 };
+}
+
 export const inputClass =
   "mt-1.5 w-full rounded-xl border border-line bg-surface px-3 py-2 text-sm transition-colors hover:border-strong focus:border-primary";
 
@@ -63,7 +69,7 @@ export function Select({
   const [active, setActive] = useState(0);
   const root = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
-  const [box, setBox] = useState<{ left: number; top: number; minWidth: number } | null>(null);
+  const [box, setBox] = useState<{ left: number; top?: number; bottom?: number; minWidth: number } | null>(null);
   const listId = useId();
   const all: SelectOption[] = placeholder != null ? [{ value: "", label: placeholder }, ...options] : options;
   const current = all.find((o) => o.value === (value ?? ""));
@@ -78,7 +84,7 @@ export function Select({
     const follow = (e: Event) => {
       if (list.current?.contains(e.target as Node)) return;
       const r = root.current?.getBoundingClientRect();
-      if (r) setBox({ left: r.left, top: r.bottom + 6, minWidth: r.width });
+      if (r) setBox({ left: r.left, ...placement(r), minWidth: r.width });
     };
     document.addEventListener("pointerdown", away);
     window.addEventListener("resize", follow);
@@ -92,7 +98,7 @@ export function Select({
 
   function show() {
     const r = root.current?.getBoundingClientRect();
-    if (r) setBox({ left: r.left, top: r.bottom + 6, minWidth: r.width });
+    if (r) setBox({ left: r.left, ...placement(r), minWidth: r.width });
     setActive(Math.max(0, all.findIndex((o) => o.value === (value ?? ""))));
     setOpen(true);
   }
@@ -140,7 +146,7 @@ export function Select({
           id={listId}
           role="listbox"
           aria-label={label}
-          style={{ position: "fixed", left: box.left, top: box.top, minWidth: box.minWidth }}
+          style={{ position: "fixed", left: box.left, top: box.top, bottom: box.bottom, minWidth: box.minWidth }}
           className="pop z-[60] max-h-64 origin-top overflow-auto rounded-2xl border border-line bg-surface p-1.5 shadow-[var(--shadow-lift)]"
         >
           {all.map((o, i) => {
@@ -282,7 +288,7 @@ export function CompleteBadge({ filled, total }: { filled: number; total: number
 export function MultiSelect({ label, value, options, placeholder = "Choose", onChange }: { label: string; value: string[]; options: string[]; placeholder?: string; onChange: (v: string[]) => void }) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [box, setBox] = useState<{ left: number; top: number; width: number } | null>(null);
+  const [box, setBox] = useState<{ left: number; top?: number; bottom?: number; width: number } | null>(null);
   const root = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLDivElement>(null);
   const listId = useId();
@@ -297,7 +303,7 @@ export function MultiSelect({ label, value, options, placeholder = "Choose", onC
     const follow = (e: Event) => {
       if (list.current?.contains(e.target as Node)) return;
       const r = root.current?.getBoundingClientRect();
-      if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+      if (r) setBox({ left: r.left, ...placement(r), width: r.width });
     };
     document.addEventListener("pointerdown", away);
     document.addEventListener("keydown", esc);
@@ -313,7 +319,7 @@ export function MultiSelect({ label, value, options, placeholder = "Choose", onC
 
   function show() {
     const r = root.current?.getBoundingClientRect();
-    if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+    if (r) setBox({ left: r.left, ...placement(r), width: r.width });
     setSearch("");
     setOpen(true);
   }
@@ -347,7 +353,7 @@ export function MultiSelect({ label, value, options, placeholder = "Choose", onC
       ) : null}
       {open && box
         ? createPortal(
-            <div ref={list} id={listId} style={{ position: "fixed", left: box.left, top: box.top, width: Math.max(box.width, 240) }} className="pop z-[60] origin-top rounded-2xl border border-line bg-surface p-2 shadow-[var(--shadow-lift)]">
+            <div ref={list} id={listId} style={{ position: "fixed", left: box.left, top: box.top, bottom: box.bottom, width: Math.max(box.width, 240) }} className="pop z-[60] origin-top rounded-2xl border border-line bg-surface p-2 shadow-[var(--shadow-lift)]">
               <input
                 autoFocus
                 value={search}
@@ -386,12 +392,13 @@ export interface ComboOption {
 export function Combobox({ label, value, options, placeholder, help, onChange }: { label: string; value: string | null; options: ComboOption[]; placeholder?: string; help?: string; onChange: (v: string | null) => void }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
-  const [box, setBox] = useState<{ left: number; top: number; width: number } | null>(null);
+  const [box, setBox] = useState<{ left: number; top?: number; bottom?: number; width: number } | null>(null);
   const root = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
   const listId = useId();
   const text = (value ?? "").trim().toLowerCase();
-  const shown = options.filter((o) => !text || `${o.label} ${o.hint ?? ""}`.toLowerCase().includes(text)).slice(0, 40);
+  // Suggestions appear while typing (two letters or more); the field is a normal text input, not a select.
+  const shown = text.length < 2 ? [] : options.filter((o) => `${o.label} ${o.hint ?? ""}`.toLowerCase().includes(text)).slice(0, 40);
 
   useEffect(() => {
     if (!open) return;
@@ -402,7 +409,7 @@ export function Combobox({ label, value, options, placeholder, help, onChange }:
     const follow = (e: Event) => {
       if (list.current?.contains(e.target as Node)) return;
       const r = root.current?.getBoundingClientRect();
-      if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+      if (r) setBox({ left: r.left, ...placement(r), width: r.width });
     };
     document.addEventListener("pointerdown", away);
     window.addEventListener("resize", follow);
@@ -416,7 +423,7 @@ export function Combobox({ label, value, options, placeholder, help, onChange }:
 
   function show() {
     const r = root.current?.getBoundingClientRect();
-    if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+    if (r) setBox({ left: r.left, ...placement(r), width: r.width });
     setOpen(true);
   }
   function pick(o: ComboOption) {
@@ -442,7 +449,6 @@ export function Combobox({ label, value, options, placeholder, help, onChange }:
           value={value ?? ""}
           placeholder={placeholder}
           onChange={(e) => { onChange(e.target.value || null); setActive(0); if (!open) show(); }}
-          onFocus={show}
           onKeyDown={key}
           className={inputClass}
         />
@@ -450,7 +456,7 @@ export function Combobox({ label, value, options, placeholder, help, onChange }:
       {help ? <span className="mt-1 block text-xs font-normal text-muted">{help}</span> : null}
       {open && box && shown.length > 0
         ? createPortal(
-            <ul ref={list} id={listId} role="listbox" aria-label={label} style={{ position: "fixed", left: box.left, top: box.top, width: box.width }} className="pop z-[60] max-h-64 origin-top overflow-auto rounded-2xl border border-line bg-surface p-1.5 shadow-[var(--shadow-lift)]">
+            <ul ref={list} id={listId} role="listbox" aria-label={label} style={{ position: "fixed", left: box.left, top: box.top, bottom: box.bottom, width: box.width }} className="pop z-[60] max-h-64 origin-top overflow-auto rounded-2xl border border-line bg-surface p-1.5 shadow-[var(--shadow-lift)]">
               {shown.map((o, i) => (
                 <li key={o.value} role="option" aria-selected={o.value === value} onPointerEnter={() => setActive(i)} onClick={() => pick(o)} className={`cursor-pointer rounded-xl px-3 py-2 text-sm ${i === active ? "bg-surface-2" : ""}`}>
                   <span className="block font-medium">{o.label}</span>

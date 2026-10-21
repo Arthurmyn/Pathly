@@ -85,7 +85,7 @@ export function StatsCard({ program, verified, total, lastChecked, today }: { pr
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
         <span className="inline-flex items-center gap-1.5"><IconShieldCheck size={16} /><strong>{verified} of {total}</strong> verified</span>
         <span className="inline-flex items-center gap-1.5"><IconClock size={16} />Checked {formatDate(lastChecked)}</span>
-        <span className="inline-flex items-center gap-2">Deadline <strong>{dStatus === "verified" ? formatDate(program.deadline.date) : "not verified"}</strong><StatusBadge status={dStatus} hideVerified /></span>
+        <span className="inline-flex items-center gap-2">Deadline <strong>{dStatus === "verified" ? formatDate(program.deadline.date) : "not verified"}</strong><StatusBadge status={dStatus} quiet /></span>
       </div>
       <p className={`mt-3 text-sm text-muted ${more ? "" : "line-clamp-2"}`}>
         {program.summary} Pathly does not replace the official application system: submit your application on the university&apos;s official website, and check every requirement against its source.

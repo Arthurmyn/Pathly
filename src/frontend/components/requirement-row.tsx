@@ -41,7 +41,7 @@ export function RequirementRow({ requirement, today, result }: { requirement: Re
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {result ? <OutcomeBadge outcome={result.outcome} /> : null}
-          <StatusBadge status={status} hideVerified />
+          <StatusBadge status={status} quiet />
         </div>
       </div>
 
