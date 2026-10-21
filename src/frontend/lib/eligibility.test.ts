@@ -7,7 +7,9 @@ import type { Profile } from "./types";
 
 const emptyProfile: Profile = {
   currentDegree: null,
+  programme: null,
   field: null,
+  targetField: null,
   targetLevel: null,
   targetCountries: [],
   gpa: null,
@@ -24,7 +26,9 @@ const emptyProfile: Profile = {
 
 const strongProfile: Profile = {
   currentDegree: "bachelor",
+  programme: "Computer Science",
   field: "Computer Science",
+  targetField: "Computer Science",
   targetLevel: "master",
   targetCountries: ["United States"],
   gpa: 4.0,

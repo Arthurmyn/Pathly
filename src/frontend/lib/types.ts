@@ -90,7 +90,12 @@ export type WorkField = "same" | "related" | "other";
 
 export interface Profile {
   currentDegree: "high_school" | "bachelor" | "master" | null;
+  /** The educational programme the applicant studied (or studies). */
+  programme: string | null;
+  /** Speciality of the education the applicant has. */
   field: string | null;
+  /** Field of study the applicant wants next. */
+  targetField: string | null;
   targetLevel: DegreeLevel | null;
   /** Countries the applicant is willing to study in. Empty means any. */
   targetCountries: string[];

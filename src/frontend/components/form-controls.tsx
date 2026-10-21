@@ -375,3 +375,92 @@ export function MultiSelect({ label, value, options, placeholder = "Choose", onC
     </div>
   );
 }
+
+export interface ComboOption {
+  value: string;
+  label: string;
+  hint?: string;
+}
+
+/** Text field with a list of suggestions from a long list. Any typed text is also accepted. */
+export function Combobox({ label, value, options, placeholder, help, onChange }: { label: string; value: string | null; options: ComboOption[]; placeholder?: string; help?: string; onChange: (v: string | null) => void }) {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
+  const [box, setBox] = useState<{ left: number; top: number; width: number } | null>(null);
+  const root = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLUListElement>(null);
+  const listId = useId();
+  const text = (value ?? "").trim().toLowerCase();
+  const shown = options.filter((o) => !text || `${o.label} ${o.hint ?? ""}`.toLowerCase().includes(text)).slice(0, 40);
+
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (!root.current?.contains(t) && !list.current?.contains(t)) setOpen(false);
+    };
+    const follow = (e: Event) => {
+      if (list.current?.contains(e.target as Node)) return;
+      const r = root.current?.getBoundingClientRect();
+      if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+    };
+    document.addEventListener("pointerdown", away);
+    window.addEventListener("resize", follow);
+    window.addEventListener("scroll", follow, true);
+    return () => {
+      document.removeEventListener("pointerdown", away);
+      window.removeEventListener("resize", follow);
+      window.removeEventListener("scroll", follow, true);
+    };
+  }, [open]);
+
+  function show() {
+    const r = root.current?.getBoundingClientRect();
+    if (r) setBox({ left: r.left, top: r.bottom + 6, width: r.width });
+    setOpen(true);
+  }
+  function pick(o: ComboOption) {
+    onChange(o.value);
+    setOpen(false);
+  }
+  function key(e: React.KeyboardEvent) {
+    if (e.key === "ArrowDown") { e.preventDefault(); if (!open) show(); setActive((a) => Math.min(shown.length - 1, a + 1)); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(0, a - 1)); }
+    else if (e.key === "Enter" && open && shown[active]) { e.preventDefault(); pick(shown[active]); }
+    else if (e.key === "Escape") setOpen(false);
+  }
+
+  return (
+    <div ref={root} className="text-sm font-medium">
+      <label>
+        {label}
+        <input
+          role="combobox"
+          aria-expanded={open}
+          aria-controls={open ? listId : undefined}
+          aria-autocomplete="list"
+          value={value ?? ""}
+          placeholder={placeholder}
+          onChange={(e) => { onChange(e.target.value || null); setActive(0); if (!open) show(); }}
+          onFocus={show}
+          onKeyDown={key}
+          className={inputClass}
+        />
+      </label>
+      {help ? <span className="mt-1 block text-xs font-normal text-muted">{help}</span> : null}
+      {open && box && shown.length > 0
+        ? createPortal(
+            <ul ref={list} id={listId} role="listbox" aria-label={label} style={{ position: "fixed", left: box.left, top: box.top, width: box.width }} className="pop z-[60] max-h-64 origin-top overflow-auto rounded-2xl border border-line bg-surface p-1.5 shadow-[var(--shadow-lift)]">
+              {shown.map((o, i) => (
+                <li key={o.value} role="option" aria-selected={o.value === value} onPointerEnter={() => setActive(i)} onClick={() => pick(o)} className={`cursor-pointer rounded-xl px-3 py-2 text-sm ${i === active ? "bg-surface-2" : ""}`}>
+                  <span className="block font-medium">{o.label}</span>
+                  {o.hint ? <span className="block text-xs font-normal text-muted">{o.hint}</span> : null}
+                </li>
+              ))}
+            </ul>,
+            document.body,
+          )
+        : null}
+    </div>
+  );
+}

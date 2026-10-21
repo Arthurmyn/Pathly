@@ -20,7 +20,9 @@ export interface AuditEntry {
 
 export const EMPTY_PROFILE: Profile = {
   currentDegree: null,
+  programme: null,
   field: null,
+  targetField: null,
   targetLevel: null,
   targetCountries: [],
   gpa: null,

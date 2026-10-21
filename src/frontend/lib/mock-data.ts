@@ -235,7 +235,9 @@ export const LEVEL_LABEL = { bachelor: "Bachelor's", master: "Master's", phd: "D
 /** A fictional sample applicant used by the demo. */
 export const sampleProfile = {
   currentDegree: "bachelor" as const,
-  field: "Computer Science",
+  programme: "Computer Science" as string | null,
+  field: "Искусственный интеллект" as string | null,
+  targetField: "Искусственный интеллект" as string | null,
   targetLevel: "master" as const,
   targetCountries: ["United States"] as string[],
   gpa: 3.5,

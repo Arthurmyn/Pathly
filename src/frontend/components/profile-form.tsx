@@ -4,17 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { sampleProfile } from "@/lib/mock-data";
 import { allCountries } from "@/lib/countries";
+import { specialities } from "@/lib/specialities";
 import { EXAMS, effectiveTarget, examsFor, type ExamMeta } from "@/lib/exams";
 import { intakeOptions } from "@/lib/intake";
 import { completeness, profileFields } from "@/lib/profile-fields";
 import type { ExamState, IeltsSections, Profile, WorkField } from "@/lib/types";
 import { EMPTY_PROFILE, useAppState } from "./app-state";
-import { CompleteBadge, Field, MultiSelect, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
+import { Combobox, CompleteBadge, Field, MultiSelect, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
 import { ProgressRing } from "./rail";
 import { Button, Card, CardLabel, LinkButton, PageHeader } from "./ui";
 
 const COUNTRIES = allCountries();
 const OTHER = "__other";
+const SPECIALITY_OPTIONS = specialities.map((s) => ({ value: s.nameRu, label: `${s.code} ${s.nameRu}`, hint: s.examples.join(", ") }));
 const SECTION_NAMES: (keyof IeltsSections)[] = ["listening", "reading", "writing", "speaking"];
 
 const DEGREES = [
@@ -74,8 +76,8 @@ function ProfileEditor({ saved }: { saved: Profile }) {
     return { filled: f.filter((x) => x.value != null).length, total: f.length };
   };
   const stat = {
-    education: groupStat(["degree", "field", "gpa"]),
-    goals: groupStat(["target", "country", "intake"]),
+    education: groupStat(["degree", "programme", "gpa", "speciality"]),
+    goals: groupStat(["target", "targetField", "intake", "country"]),
     language: groupStat(["language"]),
     exams: groupStat(["exams"]),
     budget: groupStat(["budget", "funding"]),
@@ -145,7 +147,7 @@ function ProfileEditor({ saved }: { saved: Profile }) {
 
   const checklist = [
     { label: "Education", ...stat.education },
-    { label: "Study goals", ...stat.goals },
+    { label: "Target", ...stat.goals },
     { label: "Language tests", ...stat.language },
     ...(stat.exams.total ? [{ label: "Entrance exams", ...stat.exams }] : []),
     { label: "Budget and funding", ...stat.budget },
@@ -174,19 +176,21 @@ function ProfileEditor({ saved }: { saved: Profile }) {
           <Section title="Education" badge={<CompleteBadge {...stat.education} />}>
             <div className="grid gap-4 sm:grid-cols-2">
               <SelectField label="Current degree" value={draft.currentDegree} options={DEGREES} onChange={changeDegree} />
-              <TextField label={isSchool ? "Intended field of study" : "Field of study"} value={draft.field} placeholder="For example Computer Science" onChange={(v) => set({ field: v })} />
+              {isSchool ? null : <TextField label="Educational programme" value={draft.programme} placeholder="The programme you studied, for example Computer Science" onChange={(v) => set({ programme: v })} />}
               <NumberField label={isSchool ? "School GPA (4.0 scale)" : "GPA (4.0 scale)"} value={draft.gpa} min={0} max={4} step={0.01} help="Convert your grades to a 4.0 scale." onCommit={(v) => set({ gpa: v })} />
+              {isSchool ? null : <Combobox label="Speciality" value={draft.field} options={SPECIALITY_OPTIONS} placeholder="Choose from the list or type your own" help="The speciality of your degree." onChange={(v) => set({ field: v })} />}
             </div>
           </Section>
 
-          <Section title="Study goals" badge={<CompleteBadge {...stat.goals} />}>
+          <Section title="Target" badge={<CompleteBadge {...stat.goals} />}>
             <div className="grid gap-4 sm:grid-cols-2">
               <SelectField label="Target degree" value={draft.targetLevel} options={draft.currentDegree ? TARGETS_BY_DEGREE[draft.currentDegree] : ALL_TARGETS} onChange={changeTarget} />
+              <Combobox label="Field of study" value={draft.targetField} options={SPECIALITY_OPTIONS} placeholder="Choose from the list or type your own" help="What you want to study next." onChange={(v) => set({ targetField: v })} />
+              <SelectField label="Intake" value={draft.intake} placeholder="Choose an intake" options={intakes.map((i) => ({ value: i, label: i }))} help="The next three years of Spring, Summer and Fall intakes." onChange={(v) => set({ intake: v })} />
               <div className="text-sm font-medium">
                 <span>Target countries</span>
                 <MultiSelect label="Target countries" placeholder="Any country" value={draft.targetCountries} options={COUNTRIES} onChange={(v) => set({ targetCountries: v })} />
               </div>
-              <SelectField label="Intake" value={draft.intake} placeholder="Choose an intake" options={intakes.map((i) => ({ value: i, label: i }))} help="The next three years of Spring, Summer and Fall intakes." onChange={(v) => set({ intake: v })} />
             </div>
           </Section>
 

@@ -46,8 +46,16 @@ export function mockOnboardingReply(text: string, profile: Profile): { patch: Pa
   const years = t.match(/(\d+(?:\.\d)?)\s*(?:years?|лет|года?)\s*(?:of\s*)?(?:work|experience|опыт)/);
   if (years) { patch.workYears = Number(years[1]); got.push(`work: ${years[1]} year(s)`); }
 
-  const field = t.match(/(?:in|по)\s+(computer science|data science|economics|education|artificial intelligence|информатик\w*)/);
-  if (field) { patch.field = field[1].replace(/\b\w/g, (c) => c.toUpperCase()); got.push(`field: ${patch.field}`); }
+  // Text before "want" describes the education the applicant has, text after it describes the target.
+  const split = t.search(/want|хочу|planning|plan to/);
+  const before = split === -1 ? t : t.slice(0, split);
+  const after = split === -1 ? "" : t.slice(split);
+  const FIELD = /(?:in|по)\s+(computer science|data science|economics|education|artificial intelligence|информатик\w*)/;
+  const cap = (x: string) => x.replace(/\b\w/g, (c) => c.toUpperCase());
+  const had = before.match(FIELD);
+  if (had) { patch.field = cap(had[1]); got.push(`speciality: ${patch.field}`); }
+  const wants = after.match(FIELD);
+  if (wants) { patch.targetField = cap(wants[1]); got.push(`field of study: ${patch.targetField}`); }
 
   const merged = { ...profile, ...patch };
   const next = nextQuestion(merged);
@@ -58,8 +66,10 @@ export function mockOnboardingReply(text: string, profile: Profile): { patch: Pa
 export function nextQuestion(p: Profile): string {
   if (!p.currentDegree) return "What is your current education: high school, a Bachelor's or a Master's degree?";
   if (!p.targetLevel) return "Which degree do you want to study next?";
+  if (!p.targetField) return "Which field of study do you want?";
   if (p.targetCountries.length === 0) return "Which countries are you aiming for?";
   if (p.gpa == null) return "What is your GPA on a 4.0 scale?";
+  if (p.currentDegree !== "high_school" && !p.field) return "What is the speciality of your degree?";
   if (!p.language.test) return "Did you take an English test, such as IELTS or TOEFL?";
   if (!p.intake) return "Which intake do you plan to start in, for example Fall 2027?";
   if (p.budgetUsd == null) return "What is your budget per year, in US dollars?";

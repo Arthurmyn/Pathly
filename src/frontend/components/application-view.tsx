@@ -55,7 +55,7 @@ export function ApplicationView({ slug }: { slug: string }) {
           </UniversityCard>
           <Card className="p-4">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-              <span className="inline-flex items-center gap-2">Deadline <strong>{dStatus === "verified" ? formatDate(program.deadline.date) : "not verified"}</strong><StatusBadge status={dStatus} /></span>
+              <span className="inline-flex items-center gap-2">Deadline <strong>{dStatus === "verified" ? formatDate(program.deadline.date) : "not verified"}</strong><StatusBadge status={dStatus} hideVerified /></span>
             </div>
             <div className="mt-3"><OutcomeBar summary={summary} /></div>
             <p className="mt-3 text-sm text-muted">{summary.sentence}</p>

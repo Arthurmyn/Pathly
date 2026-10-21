@@ -17,7 +17,7 @@ export function DeadlineLine({ deadline, today }: { deadline: Deadline; today: s
         {status === "stale" ? <p className="text-sm" style={{ color: "var(--st-stale-fg)" }}>Source expired on {formatDate(deadline.validUntil)}.</p> : null}
         <div className="mt-1"><SourceChip source={deadline.source} date={deadline.verifiedAt} /></div>
       </div>
-      <StatusBadge status={status} />
+      <StatusBadge status={status} hideVerified />
     </div>
   );
 }

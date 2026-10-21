@@ -1,7 +1,7 @@
 import { examsFor } from "./exams";
 import type { Profile } from "./types";
 
-export type FieldGroup = "Education" | "Study goals" | "Test scores and budget" | "Work and documents";
+export type FieldGroup = "Education" | "Target" | "Test scores and budget" | "Work and documents";
 
 export interface ProfileField {
   key: string;
@@ -21,13 +21,16 @@ export function profileFields(p: Profile): ProfileField[] {
   const lang = p.language;
   const exams = p.exams.map((e) => `${e.name} ${e.state === "passed" ? (e.score != null ? e.score : "taken") : "planned"}`);
   const needsExam = examsFor(p).length > 0;
+  const school = p.currentDegree === "high_school";
   const fields: ProfileField[] = [
     { key: "degree", label: "Current degree", group: "Education", value: p.currentDegree ? DEGREE[p.currentDegree] : null },
-    { key: "field", label: "Field of study", group: "Education", value: p.field },
-    { key: "gpa", label: "GPA", group: "Education", value: p.gpa != null ? `${p.gpa} / 4.0` : null },
-    { key: "target", label: "Target degree", group: "Study goals", value: p.targetLevel ? LEVEL[p.targetLevel] : null },
-    { key: "country", label: "Target countries", group: "Study goals", value: p.targetCountries.length ? p.targetCountries.join(", ") : null },
-    { key: "intake", label: "Intake", group: "Study goals", value: p.intake },
+    ...(school ? [] : [{ key: "programme", label: "Educational programme", group: "Education" as const, value: p.programme }]),
+    { key: "gpa", label: school ? "School GPA" : "GPA", group: "Education", value: p.gpa != null ? `${p.gpa} / 4.0` : null },
+    ...(school ? [] : [{ key: "speciality", label: "Speciality", group: "Education" as const, value: p.field }]),
+    { key: "target", label: "Target degree", group: "Target", value: p.targetLevel ? LEVEL[p.targetLevel] : null },
+    { key: "targetField", label: "Field of study", group: "Target", value: p.targetField },
+    { key: "intake", label: "Intake", group: "Target", value: p.intake },
+    { key: "country", label: "Target countries", group: "Target", value: p.targetCountries.length ? p.targetCountries.join(", ") : null },
     {
       key: "language",
       label: "Language test",
@@ -37,12 +40,12 @@ export function profileFields(p: Profile): ProfileField[] {
     ...(needsExam ? [{ key: "exams", label: "Entrance exams", group: "Test scores and budget" as const, value: exams.length ? exams.join(", ") : null }] : []),
     { key: "budget", label: "Budget per year", group: "Test scores and budget", value: p.budgetUsd != null ? `$${p.budgetUsd.toLocaleString("en-US")}` : null },
     { key: "funding", label: "Funding", group: "Test scores and budget", value: p.funding ? FUNDING[p.funding] : null },
-    {
+    ...(school ? [] : [{
       key: "work",
       label: "Work experience",
-      group: "Work and documents",
+      group: "Work and documents" as const,
       value: p.workYears != null ? `${p.workYears} year(s)${p.workField ? `, ${FIELD_WORK[p.workField]}` : ""}` : null,
-    },
+    }]),
     { key: "documents", label: "Documents ready", group: "Work and documents", value: p.documentsReady == null ? null : p.documentsReady ? "Ready" : "Not ready" },
   ];
   return fields;

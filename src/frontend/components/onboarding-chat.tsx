@@ -10,7 +10,7 @@ import { IconPencil } from "./icons";
 import { ProgressRing } from "./rail";
 import { Card, LinkButton, PageHeader } from "./ui";
 
-const GROUPS: FieldGroup[] = ["Education", "Study goals", "Test scores and budget", "Work and documents"];
+const GROUPS: FieldGroup[] = ["Education", "Target", "Test scores and budget", "Work and documents"];
 
 const QUICK: { [key: string]: string[] } = {
   degree: ["I finished high school", "I have a Bachelor's degree", "I have a Master's degree"],

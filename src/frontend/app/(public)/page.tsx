@@ -66,7 +66,6 @@ export default function Landing() {
           <div className="rounded-[28px] border border-line bg-surface px-6 py-7 shadow-[var(--shadow)] sm:px-10 sm:py-9">
             <figcaption className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-ink/80 pb-4 pr-24 sm:pr-32">
               <span className="text-xl font-medium tracking-tight text-heading">MSc Data Science, Steppe Technical University</span>
-              <span className="text-sm text-muted">Illustrative data</span>
             </figcaption>
             <p className="border-b border-line py-4 text-[1.0625rem] leading-snug text-ink">
               <strong className="font-semibold">{verified} of {rows.length} requirements verified, {open} cannot be confirmed ({parts}).</strong>{" "}
@@ -78,7 +77,7 @@ export default function Landing() {
                   <div className="flex items-end gap-3">
                     <span className="text-[1.0625rem] font-medium text-ink">{r.label}</span>
                     <span className="leader" aria-hidden="true" />
-                    <StatusBadge status={r.status} plain />
+                    <StatusBadge status={r.status} hideVerified />
                   </div>
                   <div className="mt-1">
                     <SourceChip source={r.source} date={r.verifiedAt} dateLabel={r.status === "verified" ? "Verified" : "Checked"} plain />
