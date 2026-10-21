@@ -4,17 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { sampleProfile } from "@/lib/mock-data";
 import { allCountries } from "@/lib/countries";
+import { specialities } from "@/lib/specialities";
 import { EXAMS, effectiveTarget, examsFor, type ExamMeta } from "@/lib/exams";
 import { intakeOptions } from "@/lib/intake";
 import { completeness, profileFields } from "@/lib/profile-fields";
-import type { ExamState, IeltsSections, Profile, WorkField } from "@/lib/types";
+import type { ExamState, IeltsSections, LanguageTest, Profile, WorkField } from "@/lib/types";
 import { EMPTY_PROFILE, useAppState } from "./app-state";
-import { CompleteBadge, Field, MultiSelect, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
+import { Combobox, CompleteBadge, Field, MultiSelect, NumberField, Pills, Select, SelectField, Section, TextField } from "./form-controls";
 import { ProgressRing } from "./rail";
 import { Button, Card, CardLabel, LinkButton, PageHeader } from "./ui";
 
 const COUNTRIES = allCountries();
 const OTHER = "__other";
+const SPECIALITY_OPTIONS = specialities.map((s) => ({ value: s.nameRu, label: `${s.code} ${s.nameRu}`, hint: s.examples.join(", ") }));
 const SECTION_NAMES: (keyof IeltsSections)[] = ["listening", "reading", "writing", "speaking"];
 
 const DEGREES = [
@@ -74,8 +76,8 @@ function ProfileEditor({ saved }: { saved: Profile }) {
     return { filled: f.filter((x) => x.value != null).length, total: f.length };
   };
   const stat = {
-    education: groupStat(["degree", "field", "gpa"]),
-    goals: groupStat(["target", "country", "intake"]),
+    education: groupStat(["degree", "programme", "gpa", "speciality"]),
+    goals: groupStat(["target", "targetField", "intake", "country"]),
     language: groupStat(["language"]),
     exams: groupStat(["exams"]),
     budget: groupStat(["budget", "funding"]),
@@ -98,21 +100,20 @@ function ProfileEditor({ saved }: { saved: Profile }) {
     set({ targetLevel: v as Profile["targetLevel"] });
   }
 
-  function setTest(test: "ielts" | "toefl", state: "none" | "planned" | "taken") {
-    if (state === "none") {
-      if (lang.test === test) set({ language: { ...lang, test: null, score: null, planned: false, sections: { listening: null, reading: null, writing: null, speaking: null } } });
-      return;
-    }
-    const fresh = lang.test === test ? lang : { ...lang, score: null, sections: { listening: null, reading: null, writing: null, speaking: null } };
-    set({ language: { ...fresh, test, planned: state === "planned" } });
+  function patchTest(t: "ielts" | "toefl", patch: Partial<LanguageTest>) {
+    set({ language: { ...lang, [t]: { ...lang[t], ...patch } } });
   }
-  const testState = (test: "ielts" | "toefl") =>
-    lang.test !== test ? "none" : lang.planned && lang.score == null ? "planned" : "taken";
+  function setTest(t: "ielts" | "toefl", state: "none" | "planned" | "taken") {
+    if (state === "none") patchTest(t, { score: null, planned: false, taken: false, sections: { listening: null, reading: null, writing: null, speaking: null } });
+    else if (state === "planned") patchTest(t, { planned: true, taken: false, score: null });
+    else patchTest(t, { planned: false, taken: true });
+  }
+  const testState = (t: "ielts" | "toefl") => (lang[t].planned ? "planned" : lang[t].taken || lang[t].score != null ? "taken" : "none");
 
   function setSection(name: keyof IeltsSections, v: number | null) {
-    const sections = { ...lang.sections, [name]: v };
+    const sections = { ...lang.ielts.sections, [name]: v };
     const overall = ieltsOverall(sections);
-    set({ language: { ...lang, sections, score: overall ?? lang.score } });
+    patchTest("ielts", { sections, score: overall ?? lang.ielts.score });
   }
 
   function setExam(name: string, state: ExamState | "none", score?: number | null) {
@@ -145,7 +146,7 @@ function ProfileEditor({ saved }: { saved: Profile }) {
 
   const checklist = [
     { label: "Education", ...stat.education },
-    { label: "Study goals", ...stat.goals },
+    { label: "Target", ...stat.goals },
     { label: "Language tests", ...stat.language },
     ...(stat.exams.total ? [{ label: "Entrance exams", ...stat.exams }] : []),
     { label: "Budget and funding", ...stat.budget },
@@ -174,23 +175,25 @@ function ProfileEditor({ saved }: { saved: Profile }) {
           <Section title="Education" badge={<CompleteBadge {...stat.education} />}>
             <div className="grid gap-4 sm:grid-cols-2">
               <SelectField label="Current degree" value={draft.currentDegree} options={DEGREES} onChange={changeDegree} />
-              <TextField label={isSchool ? "Intended field of study" : "Field of study"} value={draft.field} placeholder="For example Computer Science" onChange={(v) => set({ field: v })} />
+              {isSchool ? null : <TextField label="Educational programme" value={draft.programme} placeholder="The programme you studied, for example Computer Science" onChange={(v) => set({ programme: v })} />}
               <NumberField label={isSchool ? "School GPA (4.0 scale)" : "GPA (4.0 scale)"} value={draft.gpa} min={0} max={4} step={0.01} help="Convert your grades to a 4.0 scale." onCommit={(v) => set({ gpa: v })} />
+              {isSchool ? null : <Combobox label="Speciality" value={draft.field} options={SPECIALITY_OPTIONS} placeholder="Choose from the list or type your own" help="The speciality of your degree." onChange={(v) => set({ field: v })} />}
             </div>
           </Section>
 
-          <Section title="Study goals" badge={<CompleteBadge {...stat.goals} />}>
+          <Section title="Target" badge={<CompleteBadge {...stat.goals} />}>
             <div className="grid gap-4 sm:grid-cols-2">
               <SelectField label="Target degree" value={draft.targetLevel} options={draft.currentDegree ? TARGETS_BY_DEGREE[draft.currentDegree] : ALL_TARGETS} onChange={changeTarget} />
+              <Combobox label="Field of study" value={draft.targetField} options={SPECIALITY_OPTIONS} placeholder="Choose from the list or type your own" help="What you want to study next." onChange={(v) => set({ targetField: v })} />
+              <SelectField label="Intake" value={draft.intake} placeholder="Choose an intake" options={intakes.map((i) => ({ value: i, label: i }))} help="The next three years of Spring, Summer and Fall intakes." onChange={(v) => set({ intake: v })} />
               <div className="text-sm font-medium">
                 <span>Target countries</span>
                 <MultiSelect label="Target countries" placeholder="Any country" value={draft.targetCountries} options={COUNTRIES} onChange={(v) => set({ targetCountries: v })} />
               </div>
-              <SelectField label="Intake" value={draft.intake} placeholder="Choose an intake" options={intakes.map((i) => ({ value: i, label: i }))} help="The next three years of Spring, Summer and Fall intakes." onChange={(v) => set({ intake: v })} />
             </div>
           </Section>
 
-          <Section title="Language tests" badge={<CompleteBadge {...stat.language} />} description="Pathly does not convert between tests. A programme that asks for IELTS is compared with an IELTS score.">
+          <Section title="Language tests" badge={<CompleteBadge {...stat.language} />} description="You can record both tests. A programme that asks for IELTS is compared with your IELTS score, and one that asks for TOEFL with your TOEFL score. Pathly does not convert between them.">
             <div className="divide-y divide-line">
               {(["ielts", "toefl"] as const).map((t) => {
                 const st = testState(t);
@@ -212,15 +215,15 @@ function ProfileEditor({ saved }: { saved: Profile }) {
                         <p className="text-xs text-muted">Some programmes ask for a minimum in every section, so enter all four.</p>
                         <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-5">
                           {SECTION_NAMES.map((n) => (
-                            <NumberField key={n} compact label={n[0].toUpperCase() + n.slice(1)} value={lang.sections[n]} min={0} max={9} step={0.5} onCommit={(v) => setSection(n, v)} />
+                            <NumberField key={n} compact label={n[0].toUpperCase() + n.slice(1)} value={lang.ielts.sections[n]} min={0} max={9} step={0.5} onCommit={(v) => setSection(n, v)} />
                           ))}
-                          <NumberField compact label="Overall" value={lang.score} min={0} max={9} step={0.5} help={ieltsOverall(lang.sections) != null ? "Calculated" : undefined} onCommit={(v) => set({ language: { ...lang, score: v } })} />
+                          <NumberField compact label="Overall" value={lang.ielts.score} min={0} max={9} step={0.5} help={ieltsOverall(lang.ielts.sections) != null ? "Calculated" : undefined} onCommit={(v) => patchTest("ielts", { score: v })} />
                         </div>
                       </div>
                     ) : null}
                     {st === "taken" && t === "toefl" ? (
                       <div className="mt-3 max-w-40">
-                        <NumberField compact label="Total score" value={lang.score} min={0} max={120} onCommit={(v) => set({ language: { ...lang, score: v } })} />
+                        <NumberField compact label="Total score" value={lang.toefl.score} min={0} max={120} onCommit={(v) => patchTest("toefl", { score: v })} />
                       </div>
                     ) : null}
                   </div>

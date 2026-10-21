@@ -7,11 +7,13 @@ import type { Profile } from "./types";
 
 const emptyProfile: Profile = {
   currentDegree: null,
+  programme: null,
   field: null,
+  targetField: null,
   targetLevel: null,
   targetCountries: [],
   gpa: null,
-  language: { test: null, score: null, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
+  language: { ielts: { score: null, planned: false, taken: false, sections: { listening: null, reading: null, writing: null, speaking: null } }, toefl: { score: null, planned: false, taken: false, sections: { listening: null, reading: null, writing: null, speaking: null } } },
   exams: [],
   workYears: null,
   workField: null,
@@ -24,11 +26,13 @@ const emptyProfile: Profile = {
 
 const strongProfile: Profile = {
   currentDegree: "bachelor",
+  programme: "Computer Science",
   field: "Computer Science",
+  targetField: "Computer Science",
   targetLevel: "master",
   targetCountries: ["United States"],
   gpa: 4.0,
-  language: { test: "toefl", score: 120, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
+  language: { ielts: { score: null, planned: false, taken: false, sections: { listening: null, reading: null, writing: null, speaking: null } }, toefl: { score: 120, planned: false, taken: true, sections: { listening: null, reading: null, writing: null, speaking: null } } },
   exams: [{ name: "GRE", state: "passed" }],
   workYears: 10,
   workField: "same",
@@ -59,12 +63,12 @@ describe("evaluateRequirement", () => {
   it("is Pending for a planned exam or language test", () => {
     const planned = { ...emptyProfile, exams: [{ name: "GRE", state: "planned" as const }] };
     expect(evaluateRequirement(planned, req("ms-cs-exam"), DEMO_TODAY).outcome).toBe("pending");
-    const tl = { ...emptyProfile, language: { test: "toefl" as const, score: null, sections: emptyProfile.language.sections, planned: true } };
+    const tl = { ...emptyProfile, language: { ...emptyProfile.language, toefl: { ...emptyProfile.language.toefl, planned: true } } };
     expect(evaluateRequirement(tl, req("ms-cs-language"), DEMO_TODAY).outcome).toBe("pending");
   });
 
   it("does not convert between language tests automatically", () => {
-    const ielts = { ...emptyProfile, language: { test: "ielts" as const, score: 8, sections: emptyProfile.language.sections, planned: false } };
+    const ielts = { ...emptyProfile, language: { ...emptyProfile.language, ielts: { ...emptyProfile.language.ielts, score: 8, taken: true } } };
     expect(evaluateRequirement(ielts, req("ms-cs-language"), DEMO_TODAY).outcome).toBe("unknown");
   });
 
@@ -143,9 +147,9 @@ describe("IELTS sections and work experience", () => {
     validUntil: "2099-01-01",
     source: req("ms-cs-docs").source,
   };
-  const ielts = (sections: Partial<Profile["language"]["sections"]>, score = 6.5): Profile => ({
+  const ielts = (sections: Partial<Profile["language"]["ielts"]["sections"]>, score = 6.5): Profile => ({
     ...emptyProfile,
-    language: { test: "ielts", score, sections: { listening: 6, reading: 6, writing: 6, speaking: 6, ...sections }, planned: false },
+    language: { ...emptyProfile.language, ielts: { score, planned: false, taken: true, sections: { listening: 6, reading: 6, writing: 6, speaking: 6, ...sections } } },
   });
 
   it("is Not met when one section is below the section minimum", () => {
@@ -175,5 +179,26 @@ describe("IELTS sections and work experience", () => {
   it("asks for the field of work before deciding", () => {
     const r = workReq;
     expect(evaluateRequirement({ ...strongProfile, workField: null }, r, DEMO_TODAY).outcome).toBe("unknown");
+  });
+});
+
+describe("two language tests at once", () => {
+  const both: Profile = {
+    ...emptyProfile,
+    language: {
+      ielts: { score: 7, planned: false, taken: true, sections: { listening: 7, reading: 7, writing: 7, speaking: 7 } },
+      toefl: { score: 105, planned: false, taken: true, sections: { listening: null, reading: null, writing: null, speaking: null } },
+    },
+  };
+  const verifiedReq = (id: string) => ({ ...req(id), validUntil: "2099-01-01" });
+
+  it("compares each programme with the test it names", () => {
+    expect(evaluateRequirement(both, verifiedReq("ms-cs-language"), DEMO_TODAY).outcome).toBe("met"); // TOEFL at least 100
+    expect(evaluateRequirement(both, verifiedReq("bsc-cs-language"), DEMO_TODAY).outcome).toBe("met"); // IELTS with sections
+  });
+
+  it("does not use the other test when only one is recorded", () => {
+    const onlyToefl: Profile = { ...both, language: { ...both.language, ielts: { ...both.language.ielts, score: null, taken: false } } };
+    expect(evaluateRequirement(onlyToefl, verifiedReq("bsc-cs-language"), DEMO_TODAY).outcome).toBe("unknown");
   });
 });

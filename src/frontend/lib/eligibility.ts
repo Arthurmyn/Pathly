@@ -54,10 +54,11 @@ function applicantText(req: Requirement, profile: Profile): string {
     case "gpa_min":
       return profile.gpa == null ? "not in your profile" : `${profile.gpa} / 4.0`;
     case "language_min": {
-      const l = profile.language;
-      if (l.score != null && l.test) return `${l.test.toUpperCase()} ${l.score}`;
-      if (l.planned && l.test) return `${l.test.toUpperCase()} planned`;
-      return "no score in your profile";
+      const mine = profile.language[req.test as "ielts" | "toefl"];
+      if (mine?.score != null) return `${String(req.test).toUpperCase()} ${mine.score}`;
+      if (mine?.planned) return `${String(req.test).toUpperCase()} planned`;
+      const other = (["ielts", "toefl"] as const).find((t) => t !== req.test && profile.language[t].score != null);
+      return other ? `${other.toUpperCase()} ${profile.language[other].score}, not the test named here` : "no score in your profile";
     }
     case "degree_required":
       return profile.currentDegree ? DEGREE_NAME[profile.currentDegree] : "not in your profile";
@@ -81,32 +82,34 @@ function compare(req: Requirement, profile: Profile): { outcome: Outcome; why: s
         : { outcome: "not_met", why: `Your GPA ${profile.gpa} is below the required ${req.value}.` };
     }
     case "language_min": {
-      const l = profile.language;
-      if (l.test && l.test !== req.test && l.score != null) {
-        return {
-          outcome: "unknown",
-          why: `Your profile has ${l.test.toUpperCase()}, but this programme states ${String(req.test).toUpperCase()}. Equivalence is not decided automatically.`,
-        };
-      }
-      if (l.test === req.test && l.score != null) {
-        if (l.score < (req.value as number)) {
-          return { outcome: "not_met", why: `Your score ${l.score} is below the required ${req.value}.` };
+      const key = req.test as "ielts" | "toefl";
+      const mine = profile.language[key];
+      const other = (["ielts", "toefl"] as const).find((t) => t !== key && profile.language[t].score != null);
+      if (mine?.score != null) {
+        if (mine.score < (req.value as number)) {
+          return { outcome: "not_met", why: `Your score ${mine.score} is below the required ${req.value}.` };
         }
         if (req.sectionMin != null) {
-          const parts = Object.values(l.sections);
+          const parts = Object.values(mine.sections);
           if (parts.some((x) => x == null)) {
             return { outcome: "unknown", why: `This programme also requires at least ${req.sectionMin} in every section. Enter all four section scores.` };
           }
-          const low = Object.entries(l.sections).filter(([, v]) => (v as number) < req.sectionMin!);
+          const low = Object.entries(mine.sections).filter(([, v]) => (v as number) < req.sectionMin!);
           if (low.length > 0) {
             return { outcome: "not_met", why: `Your overall score is enough, but ${low.map(([k, v]) => `${k} (${v})`).join(", ")} is below the section minimum ${req.sectionMin}.` };
           }
-          return { outcome: "met", why: `Your score ${l.score} and every section are at least ${req.sectionMin}.` };
+          return { outcome: "met", why: `Your score ${mine.score} and every section are at least ${req.sectionMin}.` };
         }
-        return { outcome: "met", why: `Your score ${l.score} is at least ${req.value}.` };
+        return { outcome: "met", why: `Your score ${mine.score} is at least ${req.value}.` };
       }
-      if (l.planned && (l.test === req.test || !l.test)) {
+      if (mine?.planned) {
         return { outcome: "pending", why: "You plan to take the test; the score is not available yet." };
+      }
+      if (other) {
+        return {
+          outcome: "unknown",
+          why: `Your profile has ${other.toUpperCase()}, but this programme states ${String(req.test).toUpperCase()}. Equivalence is not decided automatically.`,
+        };
       }
       return { outcome: "not_met", why: "No language test score in your profile." };
     }

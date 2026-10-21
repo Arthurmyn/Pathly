@@ -137,44 +137,38 @@ h3 {
   outline-offset: 2px;
 }
 
-/* Data status badges (small, describe the record). */
-.badge-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  white-space: nowrap;
-  border-radius: 9999px;
-  border: 1px solid;
-  padding: 0.125rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-.badge-status[data-status="conflict"] {
-  border-width: 2px;
-  font-weight: 700;
-}
-.badge-status[data-status="missing"] {
-  border-style: dashed;
-}
-
-/* Eligibility outcome pills (larger, describe the applicant). */
+/* Status and outcome badges: a coloured dot and a label. Shape varies too: filled, hollow or dashed. */
+.badge-status,
 .badge-outcome {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.5rem;
   white-space: nowrap;
-  border-radius: 0.625rem;
-  border: 1.5px solid transparent;
-  padding: 0.25rem 0.625rem;
   font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.badge-status::before,
+.badge-outcome::before {
+  content: "";
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  border: 2px solid var(--dot);
+  background: var(--dot);
+}
+.badge-status[data-status="unverified"]::before,
+.badge-status[data-status="missing"]::before,
+.badge-outcome[data-outcome="unknown"]::before {
+  background: transparent;
+}
+.badge-status[data-status="missing"]::before {
+  border-style: dashed;
+}
+.badge-status[data-status="conflict"] {
   font-weight: 600;
-}
-.badge-outcome[data-outcome="not_met"] {
-  border: 1.5px solid var(--danger);
-}
-.badge-outcome[data-outcome="unknown"] {
-  border: 1.5px dashed currentColor;
-  background: repeating-linear-gradient(135deg, var(--hatch-a) 0 5px, var(--hatch-b) 5px 10px);
 }
 
 /* Segments of the outcome bar. */
@@ -406,7 +400,6 @@ h3 {
   }
   .bar-reveal,
   .ring-arc,
-  .seal-turn,
   .task-flash {
     animation: none;
   }
@@ -417,10 +410,6 @@ h3 {
   }
   .task-leave {
     animation: none;
-  }
-  .stagger-lines .bulletin-row {
-    animation: fade-in 150ms ease both;
-    animation-delay: 0ms !important;
   }
   .btn:active:not(:disabled),
   .press:active:not(:disabled),
@@ -435,36 +424,6 @@ h3 {
     animation: fade-in 150ms ease both;
   }
 }
-
-/* Home page bulletin: dot leaders between a requirement and its status, a slowly turning seal. */
-.leader {
-  flex: 1;
-  min-width: 1.5rem;
-  margin-bottom: 0.4rem;
-  border-bottom: 2px dotted var(--border-strong);
-}
-@keyframes seal-turn {
-  from {
-    transform: rotate(-12deg) scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-.seal-turn {
-  animation: seal-turn 600ms var(--ease-out) 250ms both;
-}
-.stagger-lines .bulletin-row {
-  animation: enter 320ms var(--ease-out) both;
-}
-.stagger-lines .bulletin-row:nth-child(1) { animation-delay: 120ms; }
-.stagger-lines .bulletin-row:nth-child(2) { animation-delay: 170ms; }
-.stagger-lines .bulletin-row:nth-child(3) { animation-delay: 220ms; }
-.stagger-lines .bulletin-row:nth-child(4) { animation-delay: 270ms; }
-.stagger-lines .bulletin-row:nth-child(5) { animation-delay: 320ms; }
-.stagger-lines .bulletin-row:nth-child(n + 6) { animation-delay: 370ms; }
 
 /* Browser surfaces take their colour from the palette. */
 ::selection {

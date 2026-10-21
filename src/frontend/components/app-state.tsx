@@ -18,13 +18,17 @@ export interface AuditEntry {
   note: string;
 }
 
+const EMPTY_TEST: Profile["language"]["ielts"] = { score: null, planned: false, taken: false, sections: { listening: null, reading: null, writing: null, speaking: null } };
+
 export const EMPTY_PROFILE: Profile = {
   currentDegree: null,
+  programme: null,
   field: null,
+  targetField: null,
   targetLevel: null,
   targetCountries: [],
   gpa: null,
-  language: { test: null, score: null, sections: { listening: null, reading: null, writing: null, speaking: null }, planned: false },
+  language: { ielts: EMPTY_TEST, toefl: EMPTY_TEST },
   exams: [],
   workYears: null,
   workField: null,
@@ -53,6 +57,15 @@ interface DemoState {
   /** Programmes the applicant reports as enrolled in. */
   enrolled: string[];
   registeredAt: string | null;
+}
+
+/** Older saves hold one test (`test`, `score`, `planned`); newer ones hold both. */
+function migrateLanguage(saved: unknown): Profile["language"] {
+  const l = (saved ?? {}) as { test?: "ielts" | "toefl" | null; score?: number | null; planned?: boolean; sections?: Profile["language"]["ielts"]["sections"]; ielts?: Partial<Profile["language"]["ielts"]>; toefl?: Partial<Profile["language"]["ielts"]> };
+  const fill = (t?: Partial<Profile["language"]["ielts"]>) => ({ ...EMPTY_TEST, ...t, sections: { ...EMPTY_TEST.sections, ...t?.sections } });
+  if (l.ielts || l.toefl) return { ielts: fill(l.ielts), toefl: fill(l.toefl) };
+  const old = l.test ? { score: l.score ?? null, planned: l.planned ?? false, taken: !(l.planned ?? false), sections: l.sections } : undefined;
+  return { ielts: fill(l.test === "ielts" ? old : undefined), toefl: fill(l.test === "toefl" ? old : undefined) };
 }
 
 const INITIAL: DemoState = {
@@ -113,7 +126,8 @@ function loadOnce() {
       // Older saved states miss newer profile fields; fill them from the empty profile.
       const old = saved.profile as (Partial<Profile> & { targetCountry?: string | null }) | undefined;
       const migrated = old && !old.targetCountries && old.targetCountry ? { targetCountries: [old.targetCountry] } : {};
-      const profile = { ...EMPTY_PROFILE, ...saved.profile, ...migrated, language: { ...EMPTY_PROFILE.language, ...saved.profile?.language, sections: { ...EMPTY_PROFILE.language.sections, ...saved.profile?.language?.sections } } };
+      const lang = migrateLanguage(saved.profile?.language);
+      const profile = { ...EMPTY_PROFILE, ...saved.profile, ...migrated, language: lang };
       current = { ...INITIAL, ...saved, profile, settings: normalizeSettings(saved.settings) };
     }
   } catch {
