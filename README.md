@@ -68,7 +68,7 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 | `config/` | Configuration templates |
 | `.env.example` | Configuration example with placeholder values |
 | `docker-compose.yml` | Local PostgreSQL, migrations and backend |
-| `.github/` | Pull request and issue templates, code owners |
+| `.github/` | Pull request template and code owners |
 
 Dependency definitions: `src/backend/pyproject.toml` and `src/frontend/package.json` (with `package-lock.json`).
 
