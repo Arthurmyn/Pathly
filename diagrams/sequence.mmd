@@ -1,0 +1,64 @@
+sequenceDiagram
+  autonumber
+  actor A as Applicant
+  participant FE as Next.js frontend
+  participant API as FastAPI backend
+  participant AI as AI service
+  participant LLM as LLM API
+  participant DB as PostgreSQL
+  actor ADM as Administrator
+
+  rect rgb(240, 245, 255)
+  Note over A,DB: Onboarding
+  A->>FE: Answer onboarding questions
+  FE->>API: POST /onboarding/messages (JWT)
+  API->>AI: Message and conversation
+  AI->>LLM: Extract profile fields
+  LLM-->>AI: Structured fields
+  AI-->>API: Proposed profile
+  API-->>FE: Proposed profile and next question
+  A->>FE: Confirm profile
+  FE->>API: PUT /profile
+  API->>DB: Save profile
+  end
+
+  rect rgb(240, 255, 245)
+  Note over A,DB: Eligibility analysis
+  A->>FE: Open a programme
+  FE->>API: GET /programmes/{slug}/eligibility
+  API->>DB: Profile, requirements, sources, status
+  DB-->>API: Records
+  API->>API: Deterministic rules: Met, Not met, Pending, Unknown
+  API-->>FE: Results with sources, dates and gaps
+  FE->>API: GET /applications/{id}/roadmap
+  API->>DB: Save generated tasks
+  API-->>FE: Ordered tasks with dates
+  end
+
+  rect rgb(255, 248, 235)
+  Note over A,DB: AI advisor
+  A->>FE: Ask a question
+  FE->>API: POST /advisor/messages
+  API->>AI: Question and profile
+  AI->>DB: Retrieve Verified records by SQL
+  DB-->>AI: Records with sources
+  alt Verified records found
+    AI->>LLM: Question and records only
+    LLM-->>AI: Draft answer
+    AI->>AI: Check citations
+    AI-->>API: Answer with citations
+  else Nothing verified
+    AI-->>API: Refusal and a pointer to the official source
+  end
+  API-->>FE: Reply
+  end
+
+  rect rgb(250, 240, 245)
+  Note over A,ADM: Administrator verification
+  A->>FE: Ask to re-verify a record
+  ADM->>FE: Open the verification queue
+  FE->>API: PATCH /requirements/{id}/status
+  API->>API: Only a Tier 1 source can make a record Verified
+  API->>DB: Update status and write the audit entry
+  API-->>FE: Updated record
+  end
