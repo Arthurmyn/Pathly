@@ -33,7 +33,7 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 **Out of scope**: payments, live classes, community features, a mobile app, automatic scraping of university websites, document upload, and mentor, teacher and supervisor dashboards (future extension). The platform does not replace official application systems.
 
 **Status on 23 Oct 2026 (pre-defense preparation):**
-- Done: repository structure and workflow (branches, `DIP-<n>` commits, pull requests, templates); development plan and task list; backend skeleton (FastAPI, PostgreSQL, SQL migrations, Docker Compose, tests); frontend demo on invented data with the public area, the applicant workspace and the administrator area (see [src/frontend/README.md](src/frontend/README.md)); import of the Bolashak 2024-2026 university list and the 2026 priority specialities; Mermaid diagrams with exports.
+- Done: repository structure and workflow (branches, `DIP-<n>` commits, pull requests, templates); backend skeleton (FastAPI, PostgreSQL, SQL migrations, Docker Compose, tests); frontend demo on invented data with the public area, the applicant workspace and the administrator area (see [src/frontend/README.md](src/frontend/README.md)); import of the Bolashak 2024-2026 university list and the 2026 priority specialities; Mermaid diagrams with exports.
 - Open (tracked in YouTrack): the pre-defense documents (evidence log, literature review, comparisons, requirements, architecture description, evaluation plan, risks).
 - Not started: connection of the frontend to the backend, authentication, the AI layer (extraction, retrieval, citations, refusal), email reminders, the pilot dataset of 20 verified programmes and the evaluation studies.
 - Limits of the demo: data are invented, state lives in the browser, sign-in is simulated and the chats use scripted replies.
@@ -52,11 +52,7 @@ Reasons and alternatives: [ADR-0001](docs/decisions/ADR-0001-tech-stack.md).
 ## Links
 - YouTrack: [project DIP](https://udp.youtrack.cloud/dashboard?id=177-0) and [Scrum board](https://udp.youtrack.cloud/agiles/204-5/current)
 - Documentation index: [docs/README.md](docs/README.md)
-  - Proposal (source of truth): [docs/source/](docs/source/)
-  - Development plan: [docs/en/development-plan.md](docs/en/development-plan.md)
   - Architectural decision: [docs/decisions/ADR-0001-tech-stack.md](docs/decisions/ADR-0001-tech-stack.md)
-  - Site structure: [docs/en/site-structure.md](docs/en/site-structure.md)
-  - Product context: [docs/PRODUCT.md](docs/PRODUCT.md)
   - Diagrams: [diagrams/](diagrams/) (sources) and [docs/img/](docs/img/) (exports)
   - Evaluation protocol: [evaluation/README.md](evaluation/README.md)
   - Contribution log: [docs/CONTRIBUTION_LOG.md](docs/CONTRIBUTION_LOG.md)
@@ -68,7 +64,7 @@ Reasons and alternatives: [ADR-0001](docs/decisions/ADR-0001-tech-stack.md).
 | `src/frontend/` | Source code: Next.js application ([README](src/frontend/README.md)) |
 | `src/backend/` | Source code: FastAPI application, SQL migrations ([README](src/backend/README.md)) |
 | `src/ai/` | Source code: AI layer (not started) |
-| `docs/` | Documentation: proposal, plan, decisions, planning CSVs, images ([index](docs/README.md)) |
+| `docs/` | Documentation: architectural decisions, contribution log, diagram exports ([index](docs/README.md)); the proposal and the other documents will be added here |
 | `diagrams/` | Editable Mermaid sources; exports are in `docs/img/` |
 | `tests/` | Automated tests: `backend/` (pytest) and `frontend/` (Vitest) ([README](tests/README.md)) |
 | `evaluation/` | Evaluation protocol and, later, datasets |

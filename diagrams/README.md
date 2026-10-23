@@ -8,7 +8,7 @@ Editable [Mermaid](https://mermaid.js.org/) sources live here; readable exports 
 | Use cases | `use-cases.mmd` | `docs/img/use-cases.svg`, `.png` |
 | Components (draft) | `components.mmd` | `docs/img/components.svg`, `.png` |
 
-The diagrams are drafts that match the current project description; review them with the supervisor. The entity-relationship, activity and sequence diagrams are planned (see `docs/planning/youtrack-tasks.csv`).
+The diagrams are drafts that match the current project description; review them with the supervisor. The entity-relationship, activity and sequence diagrams are planned (tracked in YouTrack).
 
 ## Re-export after editing a source
 ```
