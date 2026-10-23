@@ -26,14 +26,14 @@ Applicants to Bachelor's, Master's and Doctoral programmes in Kazakhstan and abr
 | Artur Jaxygaliyev | Backend, database, API, main frontend (layout, dashboard, catalogue, eligibility results, roadmap, administrator panel), repository and project management |
 | Dinara Medeubek | AI and machine learning (onboarding, extraction, source-grounded answering), data, business analysis, evaluation and documentation |
 
-Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the proposal; see [docs/CONTRIBUTION_LOG.md](docs/CONTRIBUTION_LOG.md) for how contributions are traced.
+Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the proposal. Contributions are traced through commits, pull requests, reviews and YouTrack tasks.
 
 ## Scope and current status
 **In scope (MVP)**: applicant profiles and AI-assisted onboarding (Must); programme and university information with verified requirements (Must); eligibility matching and gap analysis (Must); personalised roadmaps (Must); source-grounded AI advisor and administrator verification workflow (Must); application checklist, deadline tracking and email reminders (Should).
 **Out of scope**: payments, live classes, community features, a mobile app, automatic scraping of university websites, document upload, and mentor, teacher and supervisor dashboards (future extension). The platform does not replace official application systems.
 
 **Status on 23 Oct 2026 (pre-defense preparation):**
-- Done: repository structure and workflow (branches, `DIP-<n>` commits, pull requests, templates); backend skeleton (FastAPI, PostgreSQL, SQL migrations, Docker Compose, tests); frontend demo on invented data with the public area, the applicant workspace and the administrator area (see [src/frontend/README.md](src/frontend/README.md)); import of the Bolashak 2024-2026 university list and the 2026 priority specialities; Mermaid diagrams with exports.
+- Done: repository structure and workflow (branches, `DIP-<n>` commits, pull requests, templates); backend skeleton (FastAPI, PostgreSQL, SQL migrations, Docker Compose, tests); frontend demo on invented data with the public area, the applicant workspace and the administrator area (see [src/frontend/README.md](src/frontend/README.md)); import of the Bolashak 2024-2026 university list and the 2026 priority specialities; Mermaid diagram sources.
 - Open (tracked in YouTrack): the pre-defense documents (evidence log, literature review, comparisons, requirements, architecture description, evaluation plan, risks).
 - Not started: connection of the frontend to the backend, authentication, the AI layer (extraction, retrieval, citations, refusal), email reminders, the pilot dataset of 20 verified programmes and the evaluation studies.
 - Limits of the demo: data are invented, state lives in the browser, sign-in is simulated and the chats use scripted replies.
@@ -50,9 +50,8 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 ## Links
 - YouTrack: [project DIP](https://udp.youtrack.cloud/dashboard?id=177-0) and [Scrum board](https://udp.youtrack.cloud/agiles/204-5/current)
 - Documentation index: [docs/README.md](docs/README.md)
-  - Diagrams: [diagrams/](diagrams/) (sources) and [docs/img/](docs/img/) (exports)
+  - Diagrams: [diagrams/](diagrams/) (Mermaid sources)
   - Evaluation protocol: [evaluation/README.md](evaluation/README.md)
-  - Contribution log: [docs/CONTRIBUTION_LOG.md](docs/CONTRIBUTION_LOG.md)
   - Working rules: see [Contributing](#contributing) below
 
 ## Repository structure
@@ -61,8 +60,8 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 | `src/frontend/` | Source code: Next.js application ([README](src/frontend/README.md)) |
 | `src/backend/` | Source code: FastAPI application, SQL migrations ([README](src/backend/README.md)) |
 | `src/ai/` | Source code: AI layer (not started) |
-| `docs/` | Documentation: architectural decisions, contribution log, diagram exports ([index](docs/README.md)); the proposal and the other documents will be added here |
-| `diagrams/` | Editable Mermaid sources; exports are in `docs/img/` |
+| `docs/` | Documentation ([index](docs/README.md)); the proposal and the other documents will be added here |
+| `diagrams/` | Editable Mermaid sources (readable exports are generated with the command in [diagrams/README.md](diagrams/README.md)) |
 | `tests/` | Automated tests: `backend/` (pytest) and `frontend/` (Vitest) ([README](tests/README.md)) |
 | `evaluation/` | Evaluation protocol and, later, datasets |
 | `config/` | Configuration templates |
