@@ -47,12 +47,10 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 | AI layer (planned) | Retrieval of Verified records by SQL with full-text search, an LLM API behind a provider-neutral interface |
 | Tooling | Docker Compose, pytest, ESLint, GitHub, YouTrack, Vercel (demo hosting) |
 
-Reasons and alternatives: [ADR-0001](docs/decisions/ADR-0001-tech-stack.md).
 
 ## Links
 - YouTrack: [project DIP](https://udp.youtrack.cloud/dashboard?id=177-0) and [Scrum board](https://udp.youtrack.cloud/agiles/204-5/current)
 - Documentation index: [docs/README.md](docs/README.md)
-  - Architectural decision: [docs/decisions/ADR-0001-tech-stack.md](docs/decisions/ADR-0001-tech-stack.md)
   - Diagrams: [diagrams/](diagrams/) (sources) and [docs/img/](docs/img/) (exports)
   - Evaluation protocol: [evaluation/README.md](evaluation/README.md)
   - Contribution log: [docs/CONTRIBUTION_LOG.md](docs/CONTRIBUTION_LOG.md)
