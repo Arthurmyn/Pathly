@@ -32,9 +32,9 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 **In scope (MVP)**: applicant profiles and AI-assisted onboarding (Must); programme and university information with verified requirements (Must); eligibility matching and gap analysis (Must); personalised roadmaps (Must); source-grounded AI advisor and administrator verification workflow (Must); application checklist, deadline tracking and email reminders (Should).
 **Out of scope**: payments, live classes, community features, a mobile app, automatic scraping of university websites, document upload, and mentor, teacher and supervisor dashboards (future extension). The platform does not replace official application systems.
 
-**Status on 23 Oct 2026 (pre-defense preparation):**
-- Done: repository structure and workflow (branches, `DIP-<n>` commits, pull requests, templates); backend skeleton (FastAPI, PostgreSQL, SQL migrations, Docker Compose, tests); frontend demo on invented data with the public area, the applicant workspace and the administrator area (see [src/frontend/README.md](src/frontend/README.md)); import of the Bolashak 2024-2026 university list and the 2026 priority specialities; Mermaid diagram sources.
-- Open (tracked in YouTrack): the pre-defense documents (evidence log, literature review, comparisons, requirements, architecture description, evaluation plan, risks).
+**Status on 24 Oct 2026 (pre-defense preparation):**
+- Done: repository structure and workflow (branches, `DIP-<n>` commits, pull requests, templates); backend skeleton (FastAPI, PostgreSQL, SQL migrations, Docker Compose, tests); frontend demo on invented data with the public area, the applicant workspace and the administrator area (see [src/frontend/README.md](src/frontend/README.md)); import of the Bolashak 2024-2026 university list and the 2026 priority specialities; documentation (proposal, evidence log, literature review, comparison with existing systems, technology comparison, ADR-0001, architecture description, evaluation plan, project management and risks, supervisor feedback); six Mermaid diagrams (system context, use cases, components, ERD, activity, sequence) with SVG and PNG exports.
+- Open (tracked in YouTrack): the requirements document, the UX prototype link, and the consistency points between the proposal and the other documents ([architecture.md](docs/architecture.md), section 6); confirmation of the technology decisions by the supervisor.
 - Not started: connection of the frontend to the backend, authentication, the AI layer (extraction, retrieval, citations, refusal), email reminders, the pilot dataset of 20 verified programmes and the evaluation studies.
 - Limits of the demo: data are invented, state lives in the browser, sign-in is simulated and the chats use scripted replies.
 
@@ -50,8 +50,10 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 ## Links
 - YouTrack: [project DIP](https://udp.youtrack.cloud/dashboard?id=177-0) and [Scrum board](https://udp.youtrack.cloud/agiles/204-5/current)
 - Documentation index: [docs/README.md](docs/README.md)
-  - Diagrams: [diagrams/](diagrams/) (Mermaid sources)
-  - Evaluation protocol: [evaluation/README.md](evaluation/README.md)
+  - [Project proposal](docs/proposal.md), [evidence log](docs/evidence.md), [literature review](docs/literature_review.md), [comparison with existing systems](docs/existing_system_comparison.md)
+  - [Technology comparison](docs/technology-comparison.md), [ADR-0001: technology stack](docs/decisions/ADR-0001-tech-stack.md), [architecture description](docs/architecture.md)
+  - Diagrams: [diagrams/](diagrams/) (Mermaid sources) and [docs/img/](docs/img/) (SVG and PNG exports)
+  - [Evaluation plan](docs/evaluation.md), [evaluation protocol](evaluation/README.md), [project management and risks](docs/project_management.md)
   - Working rules: see [Contributing](#contributing) below
 
 ## Repository structure
@@ -60,8 +62,8 @@ Supervisor: Altynbek Seitenov. The allocation follows section 10.2 of the propos
 | `src/frontend/` | Source code: Next.js application ([README](src/frontend/README.md)) |
 | `src/backend/` | Source code: FastAPI application, SQL migrations ([README](src/backend/README.md)) |
 | `src/ai/` | Source code: AI layer (not started) |
-| `docs/` | Documentation ([index](docs/README.md)); the proposal and the other documents will be added here |
-| `diagrams/` | Editable Mermaid sources (readable exports are generated with the command in [diagrams/README.md](diagrams/README.md)) |
+| `docs/` | Documentation ([index](docs/README.md)): proposal, evidence, literature review, comparisons, ADR, architecture description; images in `docs/img/` |
+| `diagrams/` | Editable Mermaid sources; readable exports in `docs/img/` (command to regenerate them in [diagrams/README.md](diagrams/README.md)) |
 | `tests/` | Automated tests: `backend/` (pytest) and `frontend/` (Vitest) ([README](tests/README.md)) |
 | `evaluation/` | Evaluation protocol and, later, datasets |
 | `config/` | Configuration templates |
