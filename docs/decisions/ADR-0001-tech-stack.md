@@ -1,29 +1,35 @@
 # ADR-0001: Technology stack
 
-Status: **Proposed, to confirm with supervisor**
+Status: **Accepted by the team on 18 Oct 2026 and implemented in the skeleton. To confirm with the supervisor (Altynbek Seitenov).**
 
 ## Context
-The platform needs role-based access, a relational data model (programs, requirements with sources and verification dates, deadlines, applications), and an AI assistant grounded in a verified knowledge base. The team is two students with a short timeline.
+The platform needs role-based access, a relational data model (programmes, requirements with source, status and validity dates, deadlines, applications), deterministic eligibility rules and an AI advisor that answers only from verified records. The team is two students with a short timeline.
 
 ## Options
-**Backend framework:** FastAPI / Node.js (Express/Nest) / Django
-- FastAPI: async, automatic OpenAPI docs, strong fit with Python AI tooling.
-- Node.js: single language with the frontend, but weaker AI ecosystem.
-- Django: batteries included (admin, ORM), heavier for an API-first design.
+**Backend framework:** FastAPI / Node.js (Express, NestJS) / Django
+- FastAPI: typed API, automatic OpenAPI documentation, the same language as the AI and retrieval libraries.
+- Node.js: one language with the frontend, but a weaker AI ecosystem.
+- Django: administration and authentication built in, heavier for an API-first design.
 
 **Database:** PostgreSQL / MongoDB / MySQL
-- PostgreSQL: relational integrity, JSON support, pgvector extension.
-- MongoDB: flexible schema, but the domain is strongly relational.
-- MySQL: viable, no mature vector extension.
+- PostgreSQL: relational integrity, transactions, JSON support, full-text search.
+- MongoDB: flexible documents, but the domain is strongly relational.
+- MySQL: viable, fewer built-in search features.
 
-**Vector search:** pgvector / Qdrant
-- pgvector: one datastore, simpler operations, sufficient for a small knowledge base.
-- Qdrant: dedicated and scalable, but an extra service to run.
+**Data access:** plain SQL with psycopg 3 / an ORM (SQLAlchemy with Alembic)
+- Plain SQL: every query is visible and testable, the status filter lives in the query, no extra layer to learn.
+- ORM: less boilerplate, but one more abstraction and a second migration tool.
 
-## Decision (proposed)
-FastAPI + PostgreSQL with pgvector, Next.js frontend, REST/JSON, JWT auth, provider-neutral LLM interface.
+**Retrieval for the advisor:** SQL lookup of Verified records with PostgreSQL full-text search as a fallback / a vector index (pgvector, Qdrant)
+- The knowledge base is small and structured, so no embeddings are needed; the non-Verified filter is part of the SQL query.
+
+## Decision
+- **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS.
+- **Backend:** FastAPI (Python), REST/JSON.
+- **Database:** plain PostgreSQL 16, psycopg 3 with a thin repository layer, versioned `.sql` migrations applied by dbmate. No ORM, no pgvector.
+- **AI layer (planned):** retrieval of Verified records by SQL with full-text search as fallback; an LLM API behind a provider-neutral interface; citation checks and a refusal policy.
+- **Authentication (planned):** JWT with applicant and administrator roles.
+- **Local environment and deployment:** Docker Compose for the backend and database; the frontend demo is deployed on Vercel.
 
 ## Consequences
-Python for backend and AI layer; one database to operate. Revisit pgvector vs Qdrant if the knowledge base outgrows it.
-
-To be confirmed with the supervisor (Altynbek Seitenov).
+Python for the backend and the AI layer, TypeScript for the web interface, one database to operate. Relations and row mapping are written by hand. Revisit the vector index if the knowledge base outgrows full-text search.
