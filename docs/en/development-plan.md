@@ -4,7 +4,7 @@ Author: Arthur. Status: **proposal, to confirm with the supervisor**. Source: `P
 
 All dates after 24 Oct are relative weeks counted from 25 Oct 2026. The proposal says later-phase dates are "to be fixed with the supervisor", so they are not stated here as fixed. Owners follow section 10.2 of the latest proposal: **Artur** is responsible for backend, database, API, and the main frontend (layout, dashboard, catalogue, eligibility results, roadmap, checklist, administrator panel) and for CI and deployment; **Dinara** is responsible for machine learning and AI (onboarding, retrieval, citation checks, refusal, AI evaluation), business analysis and documents, and builds the AI onboarding chat and AI advisor screens. For S0 the 22 tasks are split 11 and 11. For S1 to S6 the split by item is 50 for Artur and 29 for Dinara, because Dinara's items (data entry, annotation, studies, AI evaluation) are long manual work rather than many small tickets; review the load after S1. Exception kept on purpose: each member enters one half of the pilot data and cross-verifies the other half (proposal requirement: every record cross-checked by the other member). Reconcile owners with the work actually done before claiming ownership.
 
-Work is created in YouTrack sprint by sprint. The **22 tasks until the pre-defense on 24 Oct** (sprint S0) are in [youtrack-tasks.csv](../youtrack-tasks.csv). The **82 items after it** (S1 to S6) are planned in this document and in [task-breakdown.csv](../task-breakdown.csv) with descriptions and acceptance criteria; they are not in YouTrack yet. Item IDs (`T-xx`) are internal to this plan. Branches and commits use the `DIP-<n>` key of the YouTrack task they belong to.
+Work is created in YouTrack sprint by sprint. The **22 tasks until the pre-defense on 24 Oct** (sprint S0) are in [youtrack-tasks.csv](../planning/youtrack-tasks.csv). The **82 items after it** (S1 to S6) are planned in this document and in [task-breakdown.csv](../planning/task-breakdown.csv) with descriptions and acceptance criteria; they are not in YouTrack yet. Item IDs (`T-xx`) are internal to this plan. Branches and commits use the `DIP-<n>` key of the YouTrack task they belong to.
 
 ## Decisions applied on 18 Oct 2026
 
@@ -69,7 +69,7 @@ The items after the pre-defense (S1 to S6) are grouped into 9 work packages. The
 
 Pre-defense 1: documents, diagrams, prototype link, interviews, tag pre-defense-1.
 
-The 22 tasks of this sprint are in [youtrack-tasks.csv](../youtrack-tasks.csv); they are not repeated here.
+The 22 tasks of this sprint are in [youtrack-tasks.csv](../planning/youtrack-tasks.csv); they are not repeated here.
 
 ### S1 (Weeks 1-2)
 
@@ -206,8 +206,8 @@ Evaluation studies, performance and security checks, deployment, final documenta
 
 ## 7. YouTrack structure
 
-1. Project key `DIP`. Only the work of the current sprint is in YouTrack. Right now that is the 22 pre-defense tasks in [youtrack-tasks.csv](../youtrack-tasks.csv), each with assignee, expected outcome, acceptance criteria, priority and deadline.
-2. When a sprint starts, create its items from [task-breakdown.csv](../task-breakdown.csv) as YouTrack tasks with real deadlines. Sprint dates after 24 Oct are not fixed yet, so give each item a deadline only when the sprint is planned.
+1. Project key `DIP`. Only the work of the current sprint is in YouTrack. Right now that is the 22 pre-defense tasks in [youtrack-tasks.csv](../planning/youtrack-tasks.csv), each with assignee, expected outcome, acceptance criteria, priority and deadline.
+2. When a sprint starts, create its items from [task-breakdown.csv](../planning/task-breakdown.csv) as YouTrack tasks with real deadlines. Sprint dates after 24 Oct are not fixed yet, so give each item a deadline only when the sprint is planned.
 3. Branches, commits and pull requests use the `DIP-<n>` key of the task.
 4. Do not move a task to Done without a merged pull request linked in the task and its acceptance criteria met.
 5. The work packages in section 4 are only a grouping of later work for planning; they are not YouTrack tasks.

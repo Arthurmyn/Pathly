@@ -4,7 +4,7 @@ Usage:  python3 scripts/import_bolashak.py path/to/vuzy_bolashak_2026_rus.pdf
 
 Reads the table of the official PDF (needs PyMuPDF: pip install pymupdf) and writes
   lib/data/bolashak-institutions.json   one record per institution, nothing invented
-  lib/data/bolashak-import-report.json  rows that need a human look (duplicates, bad URLs)
+  docs/bolashak-import-report.json      rows that need a human look (duplicates, bad URLs)
 
 The records match the backend table `universities` (name, country, website_url); the extra fields
 (Russian name, list number) keep the link to the source. Names, countries and URLs are copied from
@@ -155,7 +155,8 @@ def main(pdf: str) -> None:
     base = Path(__file__).resolve().parent.parent / "lib" / "data"
     base.mkdir(parents=True, exist_ok=True)
     (base / "bolashak-institutions.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    (base / "bolashak-import-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    docs = Path(__file__).resolve().parents[3] / "docs"
+    (docs / "bolashak-import-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{len(out)} institutions written; report: " + ", ".join(f"{k}={len(v)}" for k, v in report.items()))
 
 
