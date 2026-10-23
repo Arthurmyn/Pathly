@@ -1,0 +1,140 @@
+erDiagram
+  USERS ||--o| APPLICANT_PROFILES : has
+  USERS ||--o{ APPLICATIONS : creates
+  USERS ||--o{ CONVERSATIONS : starts
+  USERS ||--o{ VERIFICATION_LOG : "acts in"
+  UNIVERSITIES ||--o{ PROGRAMMES : offers
+  PROGRAMMES ||--o{ REQUIREMENTS : has
+  PROGRAMMES ||--o{ DEADLINES : has
+  PROGRAMMES ||--o{ APPLICATIONS : "is chosen in"
+  SOURCES ||--o{ REQUIREMENTS : supports
+  SOURCES ||--o{ DEADLINES : supports
+  REQUIREMENTS ||--o{ VERIFICATION_LOG : "changes recorded in"
+  REQUIREMENTS ||--o{ ROADMAP_TASKS : "causes gap task"
+  APPLICATIONS ||--o{ ROADMAP_TASKS : contains
+  APPLICATIONS ||--o{ REMINDERS : schedules
+  ROADMAP_TASKS ||--o{ ROADMAP_TASKS : "depends on"
+  CONVERSATIONS ||--o{ MESSAGES : contains
+  SOURCES ||--o{ KNOWLEDGE_CHUNKS : "text taken from"
+  PROGRAMMES ||--o{ KNOWLEDGE_CHUNKS : describes
+
+  USERS {
+    bigint id PK
+    text email
+    text role "applicant or administrator"
+    timestamptz created_at
+  }
+  APPLICANT_PROFILES {
+    bigint user_id PK
+    text current_degree
+    text field
+    text target_level
+    text target_countries
+    numeric gpa
+    jsonb language_tests
+    jsonb exams
+    numeric work_years
+    text work_field
+    text funding
+    boolean documents_ready
+  }
+  UNIVERSITIES {
+    bigint id PK
+    text name
+    text country
+    text website_url
+    timestamptz created_at
+  }
+  PROGRAMMES {
+    bigint id PK
+    bigint university_id FK
+    text slug
+    text name
+    text level
+    text field
+    text language
+    text format
+    text official_url
+  }
+  SOURCES {
+    bigint id PK
+    text url
+    text title
+    int tier "1 official, 2 or 3 secondary"
+  }
+  REQUIREMENTS {
+    bigint id PK
+    bigint programme_id FK
+    bigint source_id FK
+    text kind
+    text pathway
+    jsonb value
+    text status "verified unverified stale missing conflict"
+    date verified_at
+    date valid_until
+    text conflict_note
+  }
+  DEADLINES {
+    bigint id PK
+    bigint programme_id FK
+    bigint source_id FK
+    text label
+    date due_date
+    text status
+    date verified_at
+    date valid_until
+  }
+  VERIFICATION_LOG {
+    bigint id PK
+    bigint requirement_id FK
+    bigint admin_id FK
+    text from_status
+    text to_status
+    text note
+    timestamptz at
+  }
+  APPLICATIONS {
+    bigint id PK
+    bigint user_id FK
+    bigint programme_id FK
+    boolean enrolled
+    timestamptz created_at
+  }
+  ROADMAP_TASKS {
+    bigint id PK
+    bigint application_id FK
+    bigint gap_requirement_id FK
+    bigint depends_on_id FK
+    text title
+    text type "action verify submit"
+    int offset_days
+    date due_date "null when deadline is not verified"
+    boolean done
+  }
+  REMINDERS {
+    bigint id PK
+    bigint application_id FK
+    date send_on
+    boolean sent
+  }
+  CONVERSATIONS {
+    bigint id PK
+    bigint user_id FK
+    text kind "onboarding or advisor"
+    timestamptz started_at
+  }
+  MESSAGES {
+    bigint id PK
+    bigint conversation_id FK
+    text author "user or assistant"
+    text body
+    jsonb citations
+    timestamptz at
+  }
+  KNOWLEDGE_CHUNKS {
+    bigint id PK
+    bigint programme_id FK
+    bigint source_id FK
+    text body "plain text, no embeddings"
+    text status
+  }

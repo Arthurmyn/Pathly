@@ -1,0 +1,25 @@
+flowchart TD
+  A([Start]) --> B[Register and sign in]
+  B --> C[AI-assisted onboarding: answer questions]
+  C --> D[System extracts a structured profile]
+  D --> E{Profile confirmed by the applicant?}
+  E -- No --> C
+  E -- Yes --> F[Browse programmes and open one]
+  F --> G[Review requirements with sources and verification dates]
+  G --> H[Rule engine compares the profile with each requirement]
+  H --> I{Is the record Verified?}
+  I -- No --> J[Outcome Unknown: explain and ask to verify on the official site]
+  I -- Yes --> K{Requirement met?}
+  K -- Yes --> L[Outcome Met]
+  K -- No --> M[Outcome Not met or Pending, gap recorded]
+  J --> N[Gap analysis]
+  L --> N
+  M --> N
+  N --> O[Roadmap generator orders tasks by deadline and dependencies]
+  O --> P{Deadline Verified?}
+  P -- No --> Q[Tasks without dates, task to verify the deadline]
+  P -- Yes --> R[Tasks dated back from the deadline]
+  Q --> S[Applicant works through the roadmap and reminders]
+  R --> S
+  S --> T[Applicant submits on the official website]
+  T --> U([Personalised roadmap completed])

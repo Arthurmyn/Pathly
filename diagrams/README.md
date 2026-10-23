@@ -1,6 +1,8 @@
 # Diagrams
 
-Editable [Mermaid](https://mermaid.js.org/) sources: `system-context.mmd`, `use-cases.mmd` and `components.mmd`. They are drafts that match the current project description; review them with the supervisor. The entity-relationship, activity and sequence diagrams are planned (tracked in YouTrack).
+Editable [Mermaid](https://mermaid.js.org/) sources: `system-context.mmd`, `use-cases.mmd`, `components.mmd`, `erd.mmd`, `activity.mmd` and `sequence.mmd`. They are drafts that match the current project description; review them with the supervisor. Readable SVG and PNG exports are in `docs/img/`.
+
+The entity-relationship diagram shows the planned data model. Only the `universities` table exists in the migrations so far (`src/backend/db/migrations/`).
 
 ## Export to SVG or PNG
 ```
