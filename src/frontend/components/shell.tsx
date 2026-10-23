@@ -141,7 +141,7 @@ const STATIC_CRUMBS: { [path: string]: Crumb[] } = {
   "/admin/users": [{ label: "Admin", href: "/admin" }, { label: "Users" }],
 };
 
-export function crumbsFor(pathname: string): Crumb[] {
+function crumbsFor(pathname: string): Crumb[] {
   const path = pathname.replace(/\/$/, "") || "/";
   if (STATIC_CRUMBS[path]) return STATIC_CRUMBS[path];
   const parts = path.split("/").filter(Boolean);
