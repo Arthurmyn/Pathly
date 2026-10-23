@@ -60,7 +60,7 @@ Reasons and alternatives: [ADR-0001](docs/decisions/ADR-0001-tech-stack.md).
   - Diagrams: [diagrams/](diagrams/) (sources) and [docs/img/](docs/img/) (exports)
   - Evaluation protocol: [evaluation/README.md](evaluation/README.md)
   - Contribution log: [docs/CONTRIBUTION_LOG.md](docs/CONTRIBUTION_LOG.md)
-  - How to contribute: [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md)
+  - Working rules: see [Contributing](#contributing) below
 
 ## Repository structure
 | Path | Content |
@@ -75,7 +75,7 @@ Reasons and alternatives: [ADR-0001](docs/decisions/ADR-0001-tech-stack.md).
 | `config/` | Configuration templates |
 | `.env.example` | Configuration example with placeholder values |
 | `docker-compose.yml` | Local PostgreSQL, migrations and backend |
-| `.github/` | Pull request and issue templates, code owners, contributing guide |
+| `.github/` | Pull request and issue templates, code owners |
 
 Dependency definitions: `src/backend/pyproject.toml` and `src/frontend/package.json` (with `package-lock.json`).
 
@@ -113,7 +113,12 @@ pytest tests/backend
 Without a database the backend health and migration-file tests still run and the database tests are skipped.
 
 ## Contributing
-Branches `DIP-<n>-short-description`, commits `DIP-<n>: Summary`, every change through a pull request reviewed by the other team member. Details: [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md).
+- Branches: `DIP-<n>-short-description`, for example `DIP-12-er-diagram`. Commits: `DIP-<n>: Imperative summary`.
+- Every change goes through a pull request that names the YouTrack task; the pull request template lists what to fill in.
+- At least one review by the other team member is required before merge. No direct pushes to `main`, no force pushes, no history rewriting.
+- Each member commits from their own GitHub account. Tags such as `prob-period-1` are never moved or deleted.
+- No secrets, real applicant data or real documents in the repository; use `.env.example` for placeholders.
+- Language: English; Russian translations, if any, go under `docs/ru/`.
 
 ## License
 No licence has been chosen yet. Until one is added, all rights are reserved by the authors.
