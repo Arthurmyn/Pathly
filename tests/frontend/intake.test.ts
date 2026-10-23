@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { intakeOptions } from "./intake";
+import { intakeOptions } from "@/lib/intake";
 
 describe("intakeOptions", () => {
   it("lists only future intakes within three years", () => {

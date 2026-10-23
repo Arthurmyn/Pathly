@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { searchUsers, type AdminUser } from "./admin-users";
+import { searchUsers, type AdminUser } from "@/lib/admin-users";
 
 const users: AdminUser[] = [
   { id: "a", name: "Test One", email: "one@example.com", registeredAt: "2026-09-02", status: "active" },

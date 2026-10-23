@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { effectiveStatus } from "./status";
-import type { Checkable } from "./status";
+import { effectiveStatus } from "@/lib/status";
+import type { Checkable } from "@/lib/status";
 
 const tier1 = { url: "https://x.example", title: "Official", tier: 1 as const };
 

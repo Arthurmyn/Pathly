@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { institutions } from "./institutions";
+import { institutions } from "@/lib/institutions";
 
 describe("institutions", () => {
   const listed = institutions.filter((i) => i.origin === "bolashak");

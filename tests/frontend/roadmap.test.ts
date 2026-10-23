@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { DEMO_TODAY } from "./dates";
-import { evaluateProgram } from "./eligibility";
-import { getProgram, getRequirements, programs, sampleProfile } from "./mock-data";
-import { generateRoadmap } from "./roadmap";
-import type { Profile } from "./types";
+import { DEMO_TODAY } from "@/lib/dates";
+import { evaluateProgram } from "@/lib/eligibility";
+import { getProgram, getRequirements, programs, sampleProfile } from "@/lib/mock-data";
+import { generateRoadmap } from "@/lib/roadmap";
+import type { Profile } from "@/lib/types";
 
 const profile = sampleProfile as Profile;
 

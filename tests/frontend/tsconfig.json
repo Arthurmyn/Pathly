@@ -1,0 +1,11 @@
+{
+  "extends": "../../src/frontend/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../../src/frontend",
+    "paths": { "@/*": ["./*"], "vitest": ["./node_modules/vitest"] },
+    "plugins": [],
+    "incremental": false
+  },
+  "include": ["./**/*.ts"],
+  "exclude": []
+}
