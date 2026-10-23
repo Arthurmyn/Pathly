@@ -18,7 +18,7 @@ export function TitleRow({ title, children }: { title: string; children?: ReactN
   );
 }
 
-export function CircleButton({ label, pressed, onClick, children }: { label: string; pressed?: boolean; onClick: () => void; children: ReactNode }) {
+function CircleButton({ label, pressed, onClick, children }: { label: string; pressed?: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button
       type="button"

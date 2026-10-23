@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { IconCheck, IconClock, IconFile, IconLink } from "./icons";
+import { IconFile, IconLink } from "./icons";
 import { CardLabel } from "./ui";
 
 /** Card of the right rail: small uppercase label and content. */
@@ -29,53 +29,6 @@ export function ProgressRing({ percent, size = 44 }: { percent: number; size?: n
       </svg>
       <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums">{Math.round(p)}<span className="text-[0.6em]">%</span></span>
     </div>
-  );
-}
-
-/** Compact progress card: label, headline and a ring on the right (the reference "course progress"). */
-export function ProgressCard({ label, title, subtitle, percent }: { label: string; title: string; subtitle?: string; percent: number }) {
-  return (
-    <section className="flex items-center justify-between gap-4 rounded-[20px] border border-line bg-surface p-4 shadow-[var(--shadow)]">
-      <div className="min-w-0">
-        <CardLabel>{label}</CardLabel>
-        <p className="mt-1.5 text-[15px] font-semibold leading-snug">{title}</p>
-        {subtitle ? <p className="mt-0.5 text-xs text-muted">{subtitle}</p> : null}
-      </div>
-      <ProgressRing percent={percent} size={52} />
-    </section>
-  );
-}
-
-export interface StepItem {
-  id: string;
-  title: string;
-  subtitle?: string;
-  meta?: string;
-  state: "done" | "current" | "todo";
-}
-
-/** Vertical step list with check circles joined by a line, as in the reference "lesson tasks" card. */
-export function StepList({ steps }: { steps: StepItem[] }) {
-  return (
-    <ol className="stagger relative space-y-3" aria-label="Steps">
-      {steps.map((s, i) => (
-        <li key={s.id} className="relative flex items-center gap-3">
-          {i < steps.length - 1 ? <span className="absolute left-[15px] top-8 h-[calc(100%-4px)] w-px bg-line" aria-hidden="true" /> : null}
-          <span
-            className={`relative z-[1] flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 transition-colors duration-200 ${
-              s.state === "done" ? "border-primary bg-primary text-primary-fg" : s.state === "current" ? "border-primary bg-surface text-ink" : "border-line bg-surface text-transparent"
-            }`}
-          >
-            {s.state === "done" ? <span className="pop flex"><IconCheck size={15} /></span> : s.state === "current" ? <IconClock size={14} /> : null}
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className={`truncate text-sm font-medium ${s.state === "done" ? "text-muted line-through" : ""}`}>{s.title}</p>
-            {s.subtitle ? <p className="truncate text-xs text-muted">{s.subtitle}</p> : null}
-          </div>
-          {s.meta ? <span className="shrink-0 text-xs font-medium tabular-nums text-muted">{s.meta}</span> : null}
-        </li>
-      ))}
-    </ol>
   );
 }
 

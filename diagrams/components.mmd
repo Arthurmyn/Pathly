@@ -8,7 +8,7 @@ flowchart TB
   AI --> RET[Retriever]
   AI --> LLMI[Provider-neutral LLM interface]
   LLMI --> LLM[External LLM API]
-  RET --> DB[(PostgreSQL + pgvector)]
+  RET --> DB[(PostgreSQL)]
   RULES --> DB
   RM --> DB
   AUTH --> DB

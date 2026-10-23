@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import programmes from "./data/bolashak-specialities-programmes.json";
-import { specialities } from "./specialities";
+import programmes from "@/lib/data/bolashak-specialities-programmes.json";
+import { specialities } from "@/lib/specialities";
 
 describe("Bolashak priority specialities", () => {
   it("has the 93 rows of the list with unique codes", () => {

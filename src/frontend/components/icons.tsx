@@ -27,29 +27,6 @@ export const IconShieldCheck = (p: IconProps) => (
     <path d="m9 12 2 2 4-4" />
   </Svg>
 );
-export const IconCircleDashed = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M10.1 2.2a10 10 0 0 1 3.8 0M17.5 3.7a10 10 0 0 1 2.8 2.8M21.8 10.1a10 10 0 0 1 0 3.8M20.3 17.5a10 10 0 0 1-2.8 2.8M13.9 21.8a10 10 0 0 1-3.8 0M6.5 20.3a10 10 0 0 1-2.8-2.8M2.2 13.9a10 10 0 0 1 0-3.8M3.7 6.5a10 10 0 0 1 2.8-2.8" />
-  </Svg>
-);
-export const IconClockAlert = (p: IconProps) => (
-  <Svg {...p}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" />
-  </Svg>
-);
-export const IconCircleOff = (p: IconProps) => (
-  <Svg {...p}>
-    <circle cx="12" cy="12" r="9" strokeDasharray="3 3" />
-    <path d="M8 12h8" />
-  </Svg>
-);
-export const IconConflict = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M12 3 2.5 20h19L12 3Z" />
-    <path d="M12 10v4M12 17.5v.01" />
-  </Svg>
-);
 export const IconCheck = (p: IconProps) => (
   <Svg {...p}>
     <path d="m5 12.5 4.5 4.5L19 7.5" />
@@ -58,17 +35,6 @@ export const IconCheck = (p: IconProps) => (
 export const IconX = (p: IconProps) => (
   <Svg {...p}>
     <path d="M6 6l12 12M18 6 6 18" />
-  </Svg>
-);
-export const IconHourglass = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M6 3h12M6 21h12M7 3c0 5 5 5 5 9s-5 4-5 9M17 3c0 5-5 5-5 9s5 4 5 9" />
-  </Svg>
-);
-export const IconQuestion = (p: IconProps) => (
-  <Svg {...p}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17.5v.01" />
   </Svg>
 );
 export const IconLink = (p: IconProps) => (
@@ -135,12 +101,6 @@ export const IconClock = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="12" cy="12" r="9" />
     <path d="M12 7v5l3 2" />
-  </Svg>
-);
-export const IconLock = (p: IconProps) => (
-  <Svg {...p}>
-    <rect x="5" y="11" width="14" height="9" rx="2" />
-    <path d="M8 11V8a4 4 0 0 1 8 0v3" />
   </Svg>
 );
 

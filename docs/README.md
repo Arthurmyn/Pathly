@@ -1,13 +1,12 @@
-# Documentation index
-- [Diploma pre-defense (EN)](en/diploma-pre-defense.md) - TODO: add after converting the source .docx
-- [Diploma pre-defense (RU)](ru/diploma-pre-defense.md) - TODO
-- YouTrack: [project DIP](https://udp.youtrack.cloud/dashboard?id=177-0), [Scrum board](https://udp.youtrack.cloud/agiles/204-5/current)
-- [Development plan](en/development-plan.md), [YouTrack tasks until 24 Oct (CSV)](youtrack-tasks.csv) and [breakdown of later work (CSV)](task-breakdown.csv)
-- [Site structure](en/site-structure.md)
-- [UI/UX generation prompt](en/ui-ux-prompt.md)
-- [ADR-0001: Tech stack](decisions/ADR-0001-tech-stack.md)
-- [Contribution log](CONTRIBUTION_LOG.md)
-- [Diagrams](../diagrams/README.md)
-- [Evaluation protocol](../evaluation/README.md)
+# Documentation
 
-Images used by documents live in `img/`.
+| Topic | Where |
+|---|---|
+| Who contributed what | [CONTRIBUTION_LOG.md](CONTRIBUTION_LOG.md) |
+| Diagram sources and exports | [../diagrams/](../diagrams/) and [img/](img/) |
+| Evaluation protocol | [../evaluation/README.md](../evaluation/README.md) |
+| Import of Bolashak data: records that need a human check | [bolashak-import-report.json](bolashak-import-report.json) |
+
+YouTrack: [project DIP](https://udp.youtrack.cloud/dashboard?id=177-0) and [Scrum board](https://udp.youtrack.cloud/agiles/204-5/current).
+
+To be added: the project proposal (being revised), architectural decisions (technology stack), literature review, existing system comparison, technology comparison, requirements, architecture description and the UX prototype. Images that documents use live in [img/](img/). Russian translations, if any, go to `ru/`.

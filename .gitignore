@@ -27,3 +27,6 @@ Thumbs.db
 uploads/
 documents/
 *.pdf
+
+# Design tool state (local only)
+.impeccable/

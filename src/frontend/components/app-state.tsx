@@ -8,7 +8,7 @@ import type { DataStatus, Profile, Requirement, Source } from "@/lib/types";
 
 export type Role = "guest" | "applicant" | "admin";
 
-export interface AuditEntry {
+interface AuditEntry {
   id: number;
   at: string;
   requirementId: string;

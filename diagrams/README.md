@@ -1,10 +1,19 @@
 # Diagrams
-Editable Mermaid sources: `system-context.mmd`, `use-cases.mmd`, `components.mmd`. These are drafts matching the current project description; review with the supervisor.
 
-## Export to PNG/SVG
+Editable [Mermaid](https://mermaid.js.org/) sources live here; readable exports (SVG and PNG) live in [`docs/img/`](../docs/img/).
+
+| Diagram | Source | Exports |
+|---|---|---|
+| System context | `system-context.mmd` | `docs/img/system-context.svg`, `.png` |
+| Use cases | `use-cases.mmd` | `docs/img/use-cases.svg`, `.png` |
+| Components (draft) | `components.mmd` | `docs/img/components.svg`, `.png` |
+
+The diagrams are drafts that match the current project description; review them with the supervisor. The entity-relationship, activity and sequence diagrams are planned (tracked in YouTrack).
+
+## Re-export after editing a source
 ```
 npm install -g @mermaid-js/mermaid-cli
-mmdc -i system-context.mmd -o system-context.svg
-mmdc -i system-context.mmd -o system-context.png
+mmdc -i diagrams/components.mmd -o docs/img/components.svg -b white
+mmdc -i diagrams/components.mmd -o docs/img/components.png -b white -s 2
 ```
-Alternatively paste the source into https://mermaid.live and export.
+Alternatively paste the source into https://mermaid.live and export from there.

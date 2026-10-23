@@ -16,7 +16,7 @@ export interface Source {
   tier: SourceTier;
 }
 
-export type RequirementKind =
+type RequirementKind =
   | "degree_required"
   | "gpa_min"
   | "language_min"

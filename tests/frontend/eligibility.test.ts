@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { DEMO_TODAY } from "./dates";
-import { evaluateProgram, evaluateRequirement, summarize } from "./eligibility";
-import { getRequirement, requirements, sampleProfile } from "./mock-data";
-import { effectiveStatus } from "./status";
-import type { Profile } from "./types";
+import { DEMO_TODAY } from "@/lib/dates";
+import { evaluateProgram, evaluateRequirement, summarize } from "@/lib/eligibility";
+import { getRequirement, requirements, sampleProfile } from "@/lib/mock-data";
+import { effectiveStatus } from "@/lib/status";
+import type { Profile } from "@/lib/types";
 
 const emptyProfile: Profile = {
   currentDegree: null,
